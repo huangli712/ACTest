@@ -1,0 +1,10 @@
+*~
+*.swp
+.DS_Store
+*.data
+Aout.*
+fmesh.inp
+model.inp
+test.jl
+test.toml
+docs/build
