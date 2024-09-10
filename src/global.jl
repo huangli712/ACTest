@@ -1,10 +1,10 @@
 #
-# Project : Gardenia
+# Project : Lily
 # Source  : global.jl
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/02
+# Last modified: 2024/09/10
 #
 
 #=
@@ -163,7 +163,7 @@ Name of this julia toolkit.
 
 See also: [`__VERSION__`](@ref).
 """
-const __LIBNAME__ = "ACFlow"
+const __LIBNAME__ = "ACTest"
 
 """
     __VERSION__
@@ -172,7 +172,7 @@ Version of this julia toolkit.
 
 See also: [`__RELEASE__`](@ref).
 """
-const __VERSION__ = v"2.0.5-devel.240910"
+const __VERSION__ = v"0.0.1-devel.240910"
 
 """
     __RELEASE__
