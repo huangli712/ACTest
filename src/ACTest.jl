@@ -20,6 +20,7 @@ include("types.jl")
 include("util.jl")
 include("grid.jl")
 include("mesh.jl")
+include("peak.jl")
 include("config.jl")
 include("inout.jl")
 
