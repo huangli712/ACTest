@@ -163,14 +163,21 @@ end
 abstract type AbstractPeak end
 
 mutable struct GaussianPeak <: AbstractPeak
+    A :: F64
+    Γ :: F64
+    ϵ :: F64
 end
 
 mutable struct LorentzianPeak <: AbstractPeak
+    s :: F64
+    ϵ :: F64
 end
 
 mutable struct RectanglePeak <: AbstractPeak
+    c :: F64
+    w :: F64
+    h :: F64
 end
-
 
 abstract type AbstractFunction end
 
