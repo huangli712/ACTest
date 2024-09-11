@@ -46,7 +46,7 @@ end
 =#
 
 """
-    TangentMesh(nmesh::I64, wmin::T, wmax::T, 𝑝::T = 2.1) where {T}
+    TangentMesh(nmesh::I64, wmin::F64, wmax::F64, 𝑝::F64 = 2.1)
 
 A constructor for the TangentMesh struct, which is announced in
 `src/types.jl`.
@@ -62,7 +62,7 @@ A constructor for the TangentMesh struct, which is announced in
 
 See also: [`TangentMesh`](@ref).
 """
-function TangentMesh(nmesh::I64, wmin::T, wmax::T, 𝑝::T = 2.1) where {T}
+function TangentMesh(nmesh::I64, wmin::F64, wmax::F64, 𝑝::F64 = 2.1)
     @assert nmesh ≥ 1
     @assert wmax > 0.0 > wmin
     @assert wmax == abs(wmin)
@@ -84,7 +84,7 @@ end
 =#
 
 """
-    LorentzMesh(nmesh::I64, wmin::T, wmax::T, 𝑝::T = 0.01) where {T}
+    LorentzMesh(nmesh::I64, wmin::F64, wmax::F64, 𝑝::F64 = 0.01)
 
 A constructor for the LorentzMesh struct, which is announced in
 `src/types.jl`. The algorithm for generating a lorentzian mesh
@@ -103,14 +103,14 @@ is taken from:
 
 See also: [`LorentzMesh`](@ref).
 """
-function LorentzMesh(nmesh::I64, wmin::T, wmax::T, 𝑝::T = 0.01) where {T}
+function LorentzMesh(nmesh::I64, wmin::F64, wmax::F64, 𝑝::F64 = 0.01)
     @assert nmesh ≥ 1
     @assert wmax > 0.0 > wmin
     @assert wmax == abs(wmin)
     @assert 1.0 > 𝑝 > 0.0
 
-    temp = zeros(T, nmesh)
-    mesh = zeros(T, nmesh)
+    temp = zeros(F64, nmesh)
+    mesh = zeros(F64, nmesh)
 
     for i in eachindex(temp)
         f = ( (i - 1) / (nmesh - 1) * (1.0 - 2.0 * 𝑝) + 𝑝 - 0.5 )
@@ -138,7 +138,7 @@ end
 =#
 
 """
-    HalfLorentzMesh(nmesh::I64, wmax::T, 𝑝::T = 0.01) where {T}
+    HalfLorentzMesh(nmesh::I64, wmax::F64, 𝑝::F64 = 0.01)
 
 A constructor for the HalfLorentzMesh struct, which is announced
 in `src/types.jl`. The algorithm for generating a half-lorentzian
@@ -156,14 +156,14 @@ mesh is taken from:
 
 See also: [`HalfLorentzMesh`](@ref).
 """
-function HalfLorentzMesh(nmesh::I64, wmax::T, 𝑝::T = 0.01) where {T}
+function HalfLorentzMesh(nmesh::I64, wmax::F64, 𝑝::F64 = 0.01)
     @assert nmesh ≥ 1
     @assert wmax > 0.0
     @assert 1.0 > 𝑝 > 0.0
 
-    wmin::T = 0.0
-    temp = zeros(T, nmesh)
-    mesh = zeros(T, nmesh)
+    wmin::F64 = 0.0
+    temp = zeros(F64, nmesh)
+    mesh = zeros(F64, nmesh)
 
     for i in eachindex(temp)
         f = (i - 2 + nmesh) / ( 2 * nmesh - 3 ) * (1.0 - 2.0 * 𝑝) + 𝑝 - 0.5
