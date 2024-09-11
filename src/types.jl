@@ -4,21 +4,22 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/10
+# Last modified: 2024/09/11
 #
 
 abstract type AbstractGrid end
-
-mutable struct MatsubaraGrid <: AbstractGrid
-    nfreq :: I64
-    β :: F64
-    ω :: Vector{F64}
-end
 
 mutable struct ImaginaryTimeGrid <: AbstractGrid
     ntime :: I64
     β :: F64
     τ :: Vector{F64}
+end
+
+mutable struct MatsubaraGrid <: AbstractGrid
+    type :: I64
+    nfreq :: I64
+    β :: F64
+    ω :: Vector{F64}
 end
 
 abstract type AbstractMesh end
