@@ -12,7 +12,7 @@
 =#
 
 """
-    LinearMesh(nmesh::I64, wmin::T, wmax::T) where {T}
+    LinearMesh(nmesh::I64, wmin::F64, wmax::F64)
 
 A constructor for the LinearMesh struct, which is announced in
 `src/types.jl`.
@@ -27,7 +27,7 @@ A constructor for the LinearMesh struct, which is announced in
 
 See also: [`LinearMesh`](@ref).
 """
-function LinearMesh(nmesh::I64, wmin::T, wmax::T) where {T}
+function LinearMesh(nmesh::I64, wmin::F64, wmax::F64)
     @assert nmesh ≥ 1
     @assert wmax > wmin
 
