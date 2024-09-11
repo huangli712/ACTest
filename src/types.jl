@@ -9,10 +9,10 @@
 
 abstract type AbstractGrid end
 
-mutable struct MatsubaraGrid{T} <: AbstractGrid
+mutable struct MatsubaraGrid <: AbstractGrid
     nfreq :: I64
-    β :: T
-    ω :: Vector{T}
+    β :: F64
+    ω :: Vector{F64}
 end
 
 mutable struct ImaginaryTimeGrid <: AbstractGrid
