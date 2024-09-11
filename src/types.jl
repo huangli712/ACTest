@@ -7,8 +7,30 @@
 # Last modified: 2024/09/11
 #
 
+#=
+### *Customized Structs* : *Input Grid*
+=#
+
+"""
+    AbstractGrid
+
+An abstract type representing the imaginary axis. It is used to build
+the internal type system.
+"""
 abstract type AbstractGrid end
 
+"""
+    ImaginaryTimeGrid
+
+Mutable struct. It represents the imaginary time grid.
+
+### Members
+* ntime -> Number of time slices.
+* β     -> Inverse temperature.
+* τ     -> Vector of grid points， τᵢ.
+
+See also: [`MatsubaraGrid`](@ref).
+"""
 mutable struct ImaginaryTimeGrid <: AbstractGrid
     ntime :: I64
     β :: F64
@@ -30,6 +52,30 @@ mutable struct LinearMesh <: AbstractMesh
     wmin :: F64
     mesh :: Vector{F64}
     weight :: Vector{F64}
+end
+
+mutable struct TangentMesh{T} <: AbstractMesh
+    nmesh :: I64
+    wmax :: T
+    wmin :: T
+    mesh :: Vector{T}
+    weight :: Vector{T}
+end
+
+mutable struct LorentzMesh{T} <: AbstractMesh
+    nmesh :: I64
+    wmax :: T
+    wmin :: T
+    mesh :: Vector{T}
+    weight :: Vector{T}
+end
+
+mutable struct HalfLorentzMesh{T} <: AbstractMesh
+    nmesh :: I64
+    wmax :: T
+    wmin :: T
+    mesh :: Vector{T}
+    weight :: Vector{T}
 end
 
 abstract type AbstractPeak end
