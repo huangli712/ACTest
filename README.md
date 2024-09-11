@@ -4,7 +4,7 @@ An Automatic Spectral Function Generator For Analytic Continuation Tools.
 
 ## Version
 
-v0.0.1-devel.240910
+v0.0.2-devel.240911
 
 ## License
 
