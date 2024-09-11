@@ -17,18 +17,18 @@ end
 
 mutable struct ImaginaryTimeGrid <: AbstractGrid
     ntime :: I64
-    β :: T
-    τ :: Vector{T}
+    β :: F64
+    τ :: Vector{F64}
 end
 
 abstract type AbstractMesh end
 
-mutable struct LinearMesh{T} <: AbstractMesh
+mutable struct LinearMesh <: AbstractMesh
     nmesh :: I64
-    wmax :: T
-    wmin :: T
-    mesh :: Vector{T}
-    weight :: Vector{T}
+    wmax :: F64
+    wmin :: F64
+    mesh :: Vector{F64}
+    weight :: Vector{F64}
 end
 
 abstract type AbstractPeak end
