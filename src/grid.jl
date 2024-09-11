@@ -34,112 +34,112 @@ function ImaginaryTimeGrid(ntime::I64, β::F64)
 end
 
 """
-    Base.length(fg::ImaginaryTimeGrid)
+    Base.length(grid::ImaginaryTimeGrid)
 
 Return number of grid points in a ImaginaryTimeGrid struct.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.length(fg::ImaginaryTimeGrid)
-    fg.ntime
+function Base.length(grid::ImaginaryTimeGrid)
+    grid.ntime
 end
 
 """
-    Base.iterate(fg::ImaginaryTimeGrid)
+    Base.iterate(grid::ImaginaryTimeGrid)
 
 Advance the iterator of a ImaginaryTimeGrid struct to obtain
 the next grid point.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.iterate(fg::ImaginaryTimeGrid)
-    iterate(fg.τ)
+function Base.iterate(grid::ImaginaryTimeGrid)
+    iterate(grid.τ)
 end
 
 """
-    Base.iterate(fg::ImaginaryTimeGrid, i::I64)
+    Base.iterate(grid::ImaginaryTimeGrid, i::I64)
 
 This is the key method that allows a ImaginaryTimeGrid struct
 to be iterated, yielding a sequences of grid points.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.iterate(fg::ImaginaryTimeGrid, i::I64)
-    iterate(fg.τ, i)
+function Base.iterate(grid::ImaginaryTimeGrid, i::I64)
+    iterate(grid.τ, i)
 end
 
 """
-    Base.eachindex(fg::ImaginaryTimeGrid)
+    Base.eachindex(grid::ImaginaryTimeGrid)
 
 Create an iterable object for visiting each index of a
 ImaginaryTimeGrid struct.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.eachindex(fg::ImaginaryTimeGrid)
-    eachindex(fg.τ)
+function Base.eachindex(grid::ImaginaryTimeGrid)
+    eachindex(grid.τ)
 end
 
 """
-    Base.firstindex(fg::ImaginaryTimeGrid)
+    Base.firstindex(grid::ImaginaryTimeGrid)
 
 Return the first index of a ImaginaryTimeGrid struct.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.firstindex(fg::ImaginaryTimeGrid)
-    firstindex(fg.τ)
+function Base.firstindex(grid::ImaginaryTimeGrid)
+    firstindex(grid.τ)
 end
 
 """
-    Base.lastindex(fg::ImaginaryTimeGrid)
+    Base.lastindex(grid::ImaginaryTimeGrid)
 
 Return the last index of a ImaginaryTimeGrid struct.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.lastindex(fg::ImaginaryTimeGrid)
-    lastindex(fg.τ)
+function Base.lastindex(grid::ImaginaryTimeGrid)
+    lastindex(grid.τ)
 end
 
 """
-    Base.getindex(fg::ImaginaryTimeGrid, ind::I64)
+    Base.getindex(grid::ImaginaryTimeGrid, ind::I64)
 
 Retrieve the value(s) stored at the given key or index within a
 ImaginaryTimeGrid struct.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.getindex(fg::ImaginaryTimeGrid, ind::I64)
-    @assert 1 ≤ ind ≤ fg.ntime
-    return fg.τ[ind]
+function Base.getindex(grid::ImaginaryTimeGrid, ind::I64)
+    @assert 1 ≤ ind ≤ grid.ntime
+    return grid.τ[ind]
 end
 
 """
-    Base.getindex(fg::ImaginaryTimeGrid, I::UnitRange{I64})
+    Base.getindex(grid::ImaginaryTimeGrid, I::UnitRange{I64})
 
 Return a subset of a ImaginaryTimeGrid struct as specified by `I`.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.getindex(fg::ImaginaryTimeGrid, I::UnitRange{I64})
-    @assert checkbounds(Bool, fg.τ, I)
+function Base.getindex(grid::ImaginaryTimeGrid, I::UnitRange{I64})
+    @assert checkbounds(Bool, grid.τ, I)
     lI = length(I)
-    X = similar(fg.τ, lI)
+    X = similar(grid.τ, lI)
     if lI > 0
-        unsafe_copyto!(X, 1, fg.τ, first(I), lI)
+        unsafe_copyto!(X, 1, grid.τ, first(I), lI)
     end
     return X
 end
 
 """
-    rebuild!(fg::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
+    rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
 
 Rebuild the ImaginaryTimeGrid struct via new `ntime` and `β`
 parameters.
 
 ### Arguments
-* fg -> A ImaginaryTimeGrid struct.
+* grid -> A ImaginaryTimeGrid struct.
 * ntime -> Number of time slices.
 * β -> Inverse temperature.
 
@@ -148,12 +148,12 @@ N/A
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function rebuild!(fg::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
+function rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
     @assert ntime ≥ 1
     @assert β ≥ 0.0
-    fg.ntime = ntime
-    fg.β = β
-    fg.τ = collect(LinRange(0.0, fg.β, fg.ntime))
+    grid.ntime = ntime
+    grid.β = β
+    grid.τ = collect(LinRange(0.0, grid.β, grid.ntime))
 end
 
 #=
@@ -185,112 +185,112 @@ function MatsubaraGrid(nfreq::I64, β::T) where {T}
 end
 
 """
-    Base.length(fg::MatsubaraGrid)
+    Base.length(grid::MatsubaraGrid)
 
 Return number of grid points in a MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.length(fg::MatsubaraGrid)
-    fg.nfreq
+function Base.length(grid::MatsubaraGrid)
+    grid.nfreq
 end
 
 """
-    Base.iterate(fg::MatsubaraGrid)
+    Base.iterate(grid::MatsubaraGrid)
 
 Advance the iterator of a MatsubaraGrid struct to obtain
 the next grid point.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.iterate(fg::MatsubaraGrid)
-    iterate(fg.ω)
+function Base.iterate(grid::MatsubaraGrid)
+    iterate(grid.ω)
 end
 
 """
-    Base.iterate(fg::MatsubaraGrid, i::I64)
+    Base.iterate(grid::MatsubaraGrid, i::I64)
 
 Create an iterable object for visiting each index of a
 MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.iterate(fg::MatsubaraGrid, i::I64)
-    iterate(fg.ω, i)
+function Base.iterate(grid::MatsubaraGrid, i::I64)
+    iterate(grid.ω, i)
 end
 
 """
-    Base.eachindex(fg::MatsubaraGrid)
+    Base.eachindex(grid::MatsubaraGrid)
 
 Create an iterable object for visiting each index of a
 MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.eachindex(fg::MatsubaraGrid)
-    eachindex(fg.ω)
+function Base.eachindex(grid::MatsubaraGrid)
+    eachindex(grid.ω)
 end
 
 """
-    Base.firstindex(fg::MatsubaraGrid)
+    Base.firstindex(grid::MatsubaraGrid)
 
 Return the first index of a MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.firstindex(fg::MatsubaraGrid)
-    firstindex(fg.ω)
+function Base.firstindex(grid::MatsubaraGrid)
+    firstindex(grid.ω)
 end
 
 """
-    Base.lastindex(fg::MatsubaraGrid)
+    Base.lastindex(grid::MatsubaraGrid)
 
 Return the last index of a MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.lastindex(fg::MatsubaraGrid)
-    lastindex(fg.ω)
+function Base.lastindex(grid::MatsubaraGrid)
+    lastindex(grid.ω)
 end
 
 """
-    Base.getindex(fg::MatsubaraGrid, ind::I64)
+    Base.getindex(grid::MatsubaraGrid, ind::I64)
 
 Retrieve the value(s) stored at the given key or index within a
 MatsubaraGrid struct.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.getindex(fg::MatsubaraGrid, ind::I64)
-    @assert 1 ≤ ind ≤ fg.nfreq
-    return fg.ω[ind]
+function Base.getindex(grid::MatsubaraGrid, ind::I64)
+    @assert 1 ≤ ind ≤ grid.nfreq
+    return grid.ω[ind]
 end
 
 """
-    Base.getindex(fg::MatsubaraGrid, I::UnitRange{I64})
+    Base.getindex(grid::MatsubaraGrid, I::UnitRange{I64})
 
 Return a subset of a MatsubaraGrid struct as specified by `I`.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.getindex(fg::MatsubaraGrid, I::UnitRange{I64})
-    @assert checkbounds(Bool, fg.ω, I)
+function Base.getindex(grid::MatsubaraGrid, I::UnitRange{I64})
+    @assert checkbounds(Bool, grid.ω, I)
     lI = length(I)
-    X = similar(fg.ω, lI)
+    X = similar(grid.ω, lI)
     if lI > 0
-        unsafe_copyto!(X, 1, fg.ω, first(I), lI)
+        unsafe_copyto!(X, 1, grid.ω, first(I), lI)
     end
     return X
 end
 
 """
-    rebuild!(fg::MatsubaraGrid, nfreq::I64, β::T) where {T}
+    rebuild!(grid::MatsubaraGrid, nfreq::I64, β::T) where {T}
 
 Rebuild the MatsubaraGrid struct via new `nfreq` and `β`
 parameters.
 
 ### Arguments
-* fg -> A MatsubaraGrid struct.
+* grid -> A MatsubaraGrid struct.
 * nfreq -> Number of Matsubara frequencies.
 * β -> Inverse temperature.
 
@@ -299,26 +299,26 @@ N/A
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function rebuild!(fg::MatsubaraGrid, nfreq::I64, β::T) where {T}
+function rebuild!(grid::MatsubaraGrid, nfreq::I64, β::T) where {T}
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
-    fg.nfreq = nfreq
-    fg.β = β
-    resize!(fg.ω, nfreq)
+    grid.nfreq = nfreq
+    grid.β = β
+    resize!(grid.ω, nfreq)
     for n = 1:nfreq
-        fg.ω[n] = (2 * n - 1) * π / fg.β
+        grid.ω[n] = (2 * n - 1) * π / grid.β
     end
 end
 
 """
-    Base.resize!(fg::MatsubaraGrid, nfreq::I64)
+    Base.resize!(grid::MatsubaraGrid, nfreq::I64)
 
 Reduce the size of the  Matsubara grid. Note that `nfreq` should
-be smaller than or equal to `fg.nfreq`. This function is called by the
+be smaller than or equal to `grid.nfreq`. This function is called by the
 NevanAC solver only.
 
 ### Arguments
-* fg -> A MatsubaraGrid struct.
+* grid -> A MatsubaraGrid struct.
 * nfreq -> Number of Matsubara frequencies.
 
 ### Returns
@@ -326,20 +326,20 @@ N/A
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.resize!(fg::MatsubaraGrid, nfreq::I64)
-    @assert fg.nfreq ≥ nfreq
-    fg.nfreq = nfreq
-    resize!(fg.ω, nfreq)
+function Base.resize!(grid::MatsubaraGrid, nfreq::I64)
+    @assert grid.nfreq ≥ nfreq
+    grid.nfreq = nfreq
+    resize!(grid.ω, nfreq)
 end
 
 """
-    Base.reverse!(fg::MatsubaraGrid)
+    Base.reverse!(grid::MatsubaraGrid)
 
 Reverse the  Matsubara grid. This function is called by the
 `NevanAC` solver only.
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function Base.reverse!(fg::MatsubaraGrid)
-    reverse!(fg.ω)
+function Base.reverse!(grid::MatsubaraGrid)
+    reverse!(grid.ω)
 end
