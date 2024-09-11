@@ -293,12 +293,13 @@ function Base.getindex(grid::MatsubaraGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(grid::MatsubaraGrid, nfreq::I64, β::F64)
+    rebuild!(grid::MatsubaraGrid, type::I64, nfreq::I64, β::F64)
 
 Rebuild the MatsubaraGrid struct via new `nfreq` and `β` parameters.
 
 ### Arguments
 * grid -> A MatsubaraGrid struct.
+* type -> Type of Matsubara grid, bosonic or fermionic.
 * nfreq -> Number of Matsubara frequencies.
 * β -> Inverse temperature.
 
@@ -314,7 +315,11 @@ function rebuild!(grid::MatsubaraGrid, nfreq::I64, β::F64)
     grid.β = β
     resize!(grid.ω, nfreq)
     for n = 1:nfreq
-        grid.ω[n] = (2 * n - 1) * π / grid.β
+        if type == 0 # Bosonic grid
+            grid.ω[n] = (2 * n - 2) * π / grid.β
+        else         # Fermionic grid
+            grid.ω[n] = (2 * n - 1) * π / grid.β
+        end
     end
 end
 
