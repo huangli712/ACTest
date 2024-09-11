@@ -57,8 +57,32 @@ mutable struct MatsubaraGrid <: AbstractGrid
     ω :: Vector{F64}
 end
 
+#=
+### *Customized Structs* : *Output Mesh*
+=#
+
+"""
+    AbstractMesh
+
+An abstract type representing the real axis. It is used to build the
+internal type system.
+"""
 abstract type AbstractMesh end
 
+"""
+    LinearMesh
+
+Mutable struct. A linear and uniform mesh.
+
+### Members
+* nmesh  -> Number of mesh points.
+* wmax   -> Right boundary (maximum value).
+* wmin   -> Left boundary (minimum value).
+* mesh   -> Mesh itself.
+* weight -> Precomputed integration weights (composite trapezoidal rule).
+
+See also: [`TangentMesh`](@ref).
+"""
 mutable struct LinearMesh <: AbstractMesh
     nmesh :: I64
     wmax :: F64
@@ -67,28 +91,73 @@ mutable struct LinearMesh <: AbstractMesh
     weight :: Vector{F64}
 end
 
-mutable struct TangentMesh{T} <: AbstractMesh
+"""
+    TangentMesh
+
+Mutable struct. A non-linear and non-uniform mesh. Note that it should
+be defined on both negative and positive half-axis.
+
+### Members
+* nmesh  -> Number of mesh points.
+* wmax   -> Right boundary (maximum value).
+* wmin   -> Left boundary (minimum value).
+* mesh   -> Mesh itself.
+* weight -> Precomputed integration weights (composite trapezoidal rule).
+
+See also: [`LinearMesh`](@ref).
+"""
+mutable struct TangentMesh <: AbstractMesh
     nmesh :: I64
-    wmax :: T
-    wmin :: T
-    mesh :: Vector{T}
-    weight :: Vector{T}
+    wmax :: F64
+    wmin :: F64
+    mesh :: Vector{F64}
+    weight :: Vector{F64}
 end
 
-mutable struct LorentzMesh{T} <: AbstractMesh
+"""
+    LorentzMesh
+
+Mutable struct. A non-linear and non-uniform mesh. Note that it should
+be defined on both negative and positive half-axis.
+
+### Members
+* nmesh  -> Number of mesh points.
+* wmax   -> Right boundary (maximum value).
+* wmin   -> Left boundary (minimum value).
+* mesh   -> Mesh itself.
+* weight -> Precomputed integration weights (composite trapezoidal rule).
+
+See also: [`HalfLorentzMesh`](@ref).
+"""
+mutable struct LorentzMesh <: AbstractMesh
     nmesh :: I64
-    wmax :: T
-    wmin :: T
-    mesh :: Vector{T}
-    weight :: Vector{T}
+    wmax :: F64
+    wmin :: F64
+    mesh :: Vector{F64}
+    weight :: Vector{F64}
 end
 
-mutable struct HalfLorentzMesh{T} <: AbstractMesh
+"""
+    HalfLorentzMesh
+
+Mutable struct. A non-linear and non-uniform mesh. Note that it should
+be defined on positive half-axis only.
+
+### Members
+* nmesh  -> Number of mesh points.
+* wmax   -> Right boundary (maximum value).
+* wmin   -> Left boundary (minimum value). It must be 0.0.
+* mesh   -> Mesh itself.
+* weight -> Precomputed integration weights (composite trapezoidal rule).
+
+See also: [`LorentzMesh`](@ref).
+"""
+mutable struct HalfLorentzMesh <: AbstractMesh
     nmesh :: I64
-    wmax :: T
-    wmin :: T
-    mesh :: Vector{T}
-    weight :: Vector{T}
+    wmax :: F64
+    wmin :: F64
+    mesh :: Vector{F64}
+    weight :: Vector{F64}
 end
 
 abstract type AbstractPeak end
