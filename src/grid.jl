@@ -8,13 +8,13 @@
 #
 
 #=
-### *Struct : FermionicImaginaryTimeGrid*
+### *Struct : ImaginaryTimeGrid*
 =#
 
 """
-    FermionicImaginaryTimeGrid(ntime::I64, β::T) where {T}
+    ImaginaryTimeGrid(ntime::I64, β::T) where {T}
 
-A constructor for the FermionicImaginaryTimeGrid struct, which is defined
+A constructor for the ImaginaryTimeGrid struct, which is defined
 in `src/types.jl`.
 
 ### Arguments
@@ -22,107 +22,107 @@ in `src/types.jl`.
 * β     -> Inverse temperature.
 
 ### Returns
-* grid -> A FermionicImaginaryTimeGrid struct.
+* grid -> A ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function FermionicImaginaryTimeGrid(ntime::I64, β::T) where {T}
+function ImaginaryTimeGrid(ntime::I64, β::T) where {T}
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     τ = collect(LinRange(0.0, β, ntime))
-    return FermionicImaginaryTimeGrid(ntime, β, τ)
+    return ImaginaryTimeGrid(ntime, β, τ)
 end
 
 """
-    Base.length(fg::FermionicImaginaryTimeGrid)
+    Base.length(fg::ImaginaryTimeGrid)
 
-Return number of grid points in a FermionicImaginaryTimeGrid struct.
+Return number of grid points in a ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.length(fg::FermionicImaginaryTimeGrid)
+function Base.length(fg::ImaginaryTimeGrid)
     fg.ntime
 end
 
 """
-    Base.iterate(fg::FermionicImaginaryTimeGrid)
+    Base.iterate(fg::ImaginaryTimeGrid)
 
-Advance the iterator of a FermionicImaginaryTimeGrid struct to obtain
+Advance the iterator of a ImaginaryTimeGrid struct to obtain
 the next grid point.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.iterate(fg::FermionicImaginaryTimeGrid)
+function Base.iterate(fg::ImaginaryTimeGrid)
     iterate(fg.τ)
 end
 
 """
-    Base.iterate(fg::FermionicImaginaryTimeGrid, i::I64)
+    Base.iterate(fg::ImaginaryTimeGrid, i::I64)
 
-This is the key method that allows a FermionicImaginaryTimeGrid struct
+This is the key method that allows a ImaginaryTimeGrid struct
 to be iterated, yielding a sequences of grid points.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.iterate(fg::FermionicImaginaryTimeGrid, i::I64)
+function Base.iterate(fg::ImaginaryTimeGrid, i::I64)
     iterate(fg.τ, i)
 end
 
 """
-    Base.eachindex(fg::FermionicImaginaryTimeGrid)
+    Base.eachindex(fg::ImaginaryTimeGrid)
 
 Create an iterable object for visiting each index of a
-FermionicImaginaryTimeGrid struct.
+ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.eachindex(fg::FermionicImaginaryTimeGrid)
+function Base.eachindex(fg::ImaginaryTimeGrid)
     eachindex(fg.τ)
 end
 
 """
-    Base.firstindex(fg::FermionicImaginaryTimeGrid)
+    Base.firstindex(fg::ImaginaryTimeGrid)
 
-Return the first index of a FermionicImaginaryTimeGrid struct.
+Return the first index of a ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.firstindex(fg::FermionicImaginaryTimeGrid)
+function Base.firstindex(fg::ImaginaryTimeGrid)
     firstindex(fg.τ)
 end
 
 """
-    Base.lastindex(fg::FermionicImaginaryTimeGrid)
+    Base.lastindex(fg::ImaginaryTimeGrid)
 
-Return the last index of a FermionicImaginaryTimeGrid struct.
+Return the last index of a ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.lastindex(fg::FermionicImaginaryTimeGrid)
+function Base.lastindex(fg::ImaginaryTimeGrid)
     lastindex(fg.τ)
 end
 
 """
-    Base.getindex(fg::FermionicImaginaryTimeGrid, ind::I64)
+    Base.getindex(fg::ImaginaryTimeGrid, ind::I64)
 
 Retrieve the value(s) stored at the given key or index within a
-FermionicImaginaryTimeGrid struct.
+ImaginaryTimeGrid struct.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.getindex(fg::FermionicImaginaryTimeGrid, ind::I64)
+function Base.getindex(fg::ImaginaryTimeGrid, ind::I64)
     @assert 1 ≤ ind ≤ fg.ntime
     return fg.τ[ind]
 end
 
 """
-    Base.getindex(fg::FermionicImaginaryTimeGrid, I::UnitRange{I64})
+    Base.getindex(fg::ImaginaryTimeGrid, I::UnitRange{I64})
 
-Return a subset of a FermionicImaginaryTimeGrid struct as specified by `I`.
+Return a subset of a ImaginaryTimeGrid struct as specified by `I`.
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function Base.getindex(fg::FermionicImaginaryTimeGrid, I::UnitRange{I64})
+function Base.getindex(fg::ImaginaryTimeGrid, I::UnitRange{I64})
     @assert checkbounds(Bool, fg.τ, I)
     lI = length(I)
     X = similar(fg.τ, lI)
@@ -133,22 +133,22 @@ function Base.getindex(fg::FermionicImaginaryTimeGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+    rebuild!(fg::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
 
-Rebuild the FermionicImaginaryTimeGrid struct via new `ntime` and `β`
+Rebuild the ImaginaryTimeGrid struct via new `ntime` and `β`
 parameters.
 
 ### Arguments
-* fg -> A FermionicImaginaryTimeGrid struct.
+* fg -> A ImaginaryTimeGrid struct.
 * ntime -> Number of time slices.
 * β -> Inverse temperature.
 
 ### Returns
 N/A
 
-See also: [`FermionicImaginaryTimeGrid`](@ref).
+See also: [`ImaginaryTimeGrid`](@ref).
 """
-function rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+function rebuild!(fg::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     fg.ntime = ntime
@@ -157,13 +157,13 @@ function rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::T) where {T}
 end
 
 #=
-### *Struct : FermionicMatsubaraGrid*
+### *Struct : MatsubaraGrid*
 =#
 
 """
-    FermionicMatsubaraGrid(nfreq::I64, β::T) where {T}
+    MatsubaraGrid(nfreq::I64, β::T) where {T}
 
-A constructor for the FermionicMatsubaraGrid struct, which is defined in
+A constructor for the MatsubaraGrid struct, which is defined in
 `src/types.jl`. The Matsubara grid is evaluated as ωₙ = (2n - 1) π / β.
 
 ### Arguments
@@ -171,109 +171,109 @@ A constructor for the FermionicMatsubaraGrid struct, which is defined in
 * β     -> Inverse temperature.
 
 ### Returns
-* grid -> A FermionicMatsubaraGrid struct.
+* grid -> A MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function FermionicMatsubaraGrid(nfreq::I64, β::T) where {T}
+function MatsubaraGrid(nfreq::I64, β::T) where {T}
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     wmin = π / β
     wmax = (2 * nfreq - 1) * π / β
     ω = collect(LinRange(wmin, wmax, nfreq))
-    return FermionicMatsubaraGrid(nfreq, β, ω)
+    return MatsubaraGrid(nfreq, β, ω)
 end
 
 """
-    Base.length(fg::FermionicMatsubaraGrid)
+    Base.length(fg::MatsubaraGrid)
 
-Return number of grid points in a FermionicMatsubaraGrid struct.
+Return number of grid points in a MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.length(fg::FermionicMatsubaraGrid)
+function Base.length(fg::MatsubaraGrid)
     fg.nfreq
 end
 
 """
-    Base.iterate(fg::FermionicMatsubaraGrid)
+    Base.iterate(fg::MatsubaraGrid)
 
-Advance the iterator of a FermionicMatsubaraGrid struct to obtain
+Advance the iterator of a MatsubaraGrid struct to obtain
 the next grid point.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.iterate(fg::FermionicMatsubaraGrid)
+function Base.iterate(fg::MatsubaraGrid)
     iterate(fg.ω)
 end
 
 """
-    Base.iterate(fg::FermionicMatsubaraGrid, i::I64)
+    Base.iterate(fg::MatsubaraGrid, i::I64)
 
 Create an iterable object for visiting each index of a
-FermionicMatsubaraGrid struct.
+MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.iterate(fg::FermionicMatsubaraGrid, i::I64)
+function Base.iterate(fg::MatsubaraGrid, i::I64)
     iterate(fg.ω, i)
 end
 
 """
-    Base.eachindex(fg::FermionicMatsubaraGrid)
+    Base.eachindex(fg::MatsubaraGrid)
 
 Create an iterable object for visiting each index of a
-FermionicMatsubaraGrid struct.
+MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.eachindex(fg::FermionicMatsubaraGrid)
+function Base.eachindex(fg::MatsubaraGrid)
     eachindex(fg.ω)
 end
 
 """
-    Base.firstindex(fg::FermionicMatsubaraGrid)
+    Base.firstindex(fg::MatsubaraGrid)
 
-Return the first index of a FermionicMatsubaraGrid struct.
+Return the first index of a MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.firstindex(fg::FermionicMatsubaraGrid)
+function Base.firstindex(fg::MatsubaraGrid)
     firstindex(fg.ω)
 end
 
 """
-    Base.lastindex(fg::FermionicMatsubaraGrid)
+    Base.lastindex(fg::MatsubaraGrid)
 
-Return the last index of a FermionicMatsubaraGrid struct.
+Return the last index of a MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.lastindex(fg::FermionicMatsubaraGrid)
+function Base.lastindex(fg::MatsubaraGrid)
     lastindex(fg.ω)
 end
 
 """
-    Base.getindex(fg::FermionicMatsubaraGrid, ind::I64)
+    Base.getindex(fg::MatsubaraGrid, ind::I64)
 
 Retrieve the value(s) stored at the given key or index within a
-FermionicMatsubaraGrid struct.
+MatsubaraGrid struct.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.getindex(fg::FermionicMatsubaraGrid, ind::I64)
+function Base.getindex(fg::MatsubaraGrid, ind::I64)
     @assert 1 ≤ ind ≤ fg.nfreq
     return fg.ω[ind]
 end
 
 """
-    Base.getindex(fg::FermionicMatsubaraGrid, I::UnitRange{I64})
+    Base.getindex(fg::MatsubaraGrid, I::UnitRange{I64})
 
-Return a subset of a FermionicMatsubaraGrid struct as specified by `I`.
+Return a subset of a MatsubaraGrid struct as specified by `I`.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.getindex(fg::FermionicMatsubaraGrid, I::UnitRange{I64})
+function Base.getindex(fg::MatsubaraGrid, I::UnitRange{I64})
     @assert checkbounds(Bool, fg.ω, I)
     lI = length(I)
     X = similar(fg.ω, lI)
@@ -284,22 +284,22 @@ function Base.getindex(fg::FermionicMatsubaraGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::T) where {T}
+    rebuild!(fg::MatsubaraGrid, nfreq::I64, β::T) where {T}
 
-Rebuild the FermionicMatsubaraGrid struct via new `nfreq` and `β`
+Rebuild the MatsubaraGrid struct via new `nfreq` and `β`
 parameters.
 
 ### Arguments
-* fg -> A FermionicMatsubaraGrid struct.
+* fg -> A MatsubaraGrid struct.
 * nfreq -> Number of Matsubara frequencies.
 * β -> Inverse temperature.
 
 ### Returns
 N/A
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::T) where {T}
+function rebuild!(fg::MatsubaraGrid, nfreq::I64, β::T) where {T}
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     fg.nfreq = nfreq
@@ -311,35 +311,35 @@ function rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::T) where {T}
 end
 
 """
-    Base.resize!(fg::FermionicMatsubaraGrid, nfreq::I64)
+    Base.resize!(fg::MatsubaraGrid, nfreq::I64)
 
-Reduce the size of the fermionic Matsubara grid. Note that `nfreq` should
+Reduce the size of the  Matsubara grid. Note that `nfreq` should
 be smaller than or equal to `fg.nfreq`. This function is called by the
 NevanAC solver only.
 
 ### Arguments
-* fg -> A FermionicMatsubaraGrid struct.
+* fg -> A MatsubaraGrid struct.
 * nfreq -> Number of Matsubara frequencies.
 
 ### Returns
 N/A
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.resize!(fg::FermionicMatsubaraGrid, nfreq::I64)
+function Base.resize!(fg::MatsubaraGrid, nfreq::I64)
     @assert fg.nfreq ≥ nfreq
     fg.nfreq = nfreq
     resize!(fg.ω, nfreq)
 end
 
 """
-    Base.reverse!(fg::FermionicMatsubaraGrid)
+    Base.reverse!(fg::MatsubaraGrid)
 
-Reverse the fermionic Matsubara grid. This function is called by the
+Reverse the  Matsubara grid. This function is called by the
 `NevanAC` solver only.
 
-See also: [`FermionicMatsubaraGrid`](@ref).
+See also: [`MatsubaraGrid`](@ref).
 """
-function Base.reverse!(fg::FermionicMatsubaraGrid)
+function Base.reverse!(fg::MatsubaraGrid)
     reverse!(fg.ω)
 end
