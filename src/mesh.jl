@@ -200,7 +200,6 @@ the basic operations for the following types of mesh:
 * TangentMesh
 * LorentzMesh
 * HalfLorentzMesh
-* DynamicMesh
 
 With the help of these functions, we can easily access the mesh's elements.
 =#
