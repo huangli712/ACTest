@@ -35,6 +35,46 @@ usually contain four elements:
 The following dictionaries are used as global variables.
 =#
 
+"""
+    PTEST
+
+Dictionary for configuration parameters: general setup.
+"""
+const PTEST    = Dict{String,ADT}(
+    "finput"  => [missing, 1, :String, "Filename for input data"],
+    "solver"  => [missing, 1, :String, "Solver for the analytic continuation problem"],
+    "ktype"   => [missing, 1, :String, "Type of kernel function"],
+    "mtype"   => [missing, 1, :String, "Type of default model function"],
+    "grid"    => [missing, 1, :String, "Grid for input data (imaginary axis)"],
+    "mesh"    => [missing, 1, :String, "Mesh for output data (real axis)"],
+    "ngrid"   => [missing, 1, :I64   , "Number of grid points"],
+    "nmesh"   => [missing, 1, :I64   , "Number of mesh points"],
+    "wmax"    => [missing, 1, :F64   , "Right boundary (maximum value) of output mesh"],
+    "wmin"    => [missing, 1, :F64   , "Left boundary (minimum value) of output mesh"],
+    "beta"    => [missing, 1, :F64   , "Inverse temperature"],
+    "offdiag" => [missing, 1, :Bool  , "Is it the offdiagonal part in matrix-valued function"],
+    "fwrite"  => [missing, 0, :Bool  , "Are the analytic continuation results written into files"],
+    "pmodel"  => [missing, 0, :Array , "Additional parameters for customizing the model"],
+    "pmesh"   => [missing, 0, :Array , "Additional parameters for customizing the mesh"],
+    "exclude" => [missing, 0, :Array , "Restriction of the energy range of the spectrum"],
+)
+
+# Default parameters for PTEST
+const _PTEST   = Dict{String,Any}(
+    "finput"  => "green.data",
+    "solver"  => "MaxEnt",
+    "ktype"   => "fermi",
+    "mtype"   => "flat",
+    "grid"    => "ffreq",
+    "mesh"    => "linear",
+    "ngrid"   => 10,
+    "nmesh"   => 501,
+    "wmax"    => 5.0,
+    "wmin"    => -5.0,
+    "beta"    => 10.0,
+    "offdiag" => false,
+)
+
 #=
 ### *Customized Structs* : *Input Grid*
 =#
