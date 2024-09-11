@@ -12,7 +12,7 @@
 =#
 
 """
-    ImaginaryTimeGrid(ntime::I64, β::T) where {T}
+    ImaginaryTimeGrid(ntime::I64, β::F64)
 
 A constructor for the ImaginaryTimeGrid struct, which is defined
 in `src/types.jl`.
@@ -26,7 +26,7 @@ in `src/types.jl`.
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function ImaginaryTimeGrid(ntime::I64, β::T) where {T}
+function ImaginaryTimeGrid(ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     τ = collect(LinRange(0.0, β, ntime))
