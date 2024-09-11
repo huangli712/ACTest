@@ -37,6 +37,19 @@ mutable struct ImaginaryTimeGrid <: AbstractGrid
     τ :: Vector{F64}
 end
 
+"""
+    MatsubaraGrid
+
+Mutable struct. It represents the Matsubara frequency grid.
+
+### Members
+* type  -> Type of Matsubara grid (0 for bosonic, 1 for fermionic).
+* nfreq -> Number of Matsubara frequency points.
+* β     -> Inverse temperature.
+* ω     -> Vector of grid points, iωₙ.
+
+See also: [`ImaginaryTimeGrid`](@ref).
+"""
 mutable struct MatsubaraGrid <: AbstractGrid
     type :: I64
     nfreq :: I64
