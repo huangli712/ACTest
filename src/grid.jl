@@ -133,7 +133,7 @@ function Base.getindex(grid::ImaginaryTimeGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
+    rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::F64)
 
 Rebuild the ImaginaryTimeGrid struct via new `ntime` and `β`
 parameters.
@@ -148,7 +148,7 @@ N/A
 
 See also: [`ImaginaryTimeGrid`](@ref).
 """
-function rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::T) where {T}
+function rebuild!(grid::ImaginaryTimeGrid, ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     grid.ntime = ntime
@@ -161,12 +161,14 @@ end
 =#
 
 """
-    MatsubaraGrid(nfreq::I64, β::T) where {T}
+    MatsubaraGrid(type::I64, nfreq::I64, β::F64)
 
 A constructor for the MatsubaraGrid struct, which is defined in
-`src/types.jl`. The Matsubara grid is evaluated as ωₙ = (2n - 1) π / β.
+`src/types.jl`. The Matsubara grid is evaluated as ωₙ = (2n - 2) π / β
+or ωₙ = (2n - 1) π / β.
 
 ### Arguments
+* type  -> Type of Matsubara grid, bosonic or fermionic.
 * nfreq -> Number of Matsubara frequencies.
 * β     -> Inverse temperature.
 
@@ -175,13 +177,20 @@ A constructor for the MatsubaraGrid struct, which is defined in
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function MatsubaraGrid(nfreq::I64, β::T) where {T}
+function MatsubaraGrid(type::I64, nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
-    wmin = π / β
-    wmax = (2 * nfreq - 1) * π / β
+    #
+    if type == 0 # Bosonic grid
+        wmin = 0.0
+        wmax = (2 * nfreq - 2) * π / β
+    else         # Fermionic grid
+        wmin = π / β
+        wmax = (2 * nfreq - 1) * π / β
+    end
+    #
     ω = collect(LinRange(wmin, wmax, nfreq))
-    return MatsubaraGrid(nfreq, β, ω)
+    return MatsubaraGrid(type, nfreq, β, ω)
 end
 
 """
@@ -284,10 +293,9 @@ function Base.getindex(grid::MatsubaraGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(grid::MatsubaraGrid, nfreq::I64, β::T) where {T}
+    rebuild!(grid::MatsubaraGrid, nfreq::I64, β::F64)
 
-Rebuild the MatsubaraGrid struct via new `nfreq` and `β`
-parameters.
+Rebuild the MatsubaraGrid struct via new `nfreq` and `β` parameters.
 
 ### Arguments
 * grid -> A MatsubaraGrid struct.
@@ -299,7 +307,7 @@ N/A
 
 See also: [`MatsubaraGrid`](@ref).
 """
-function rebuild!(grid::MatsubaraGrid, nfreq::I64, β::T) where {T}
+function rebuild!(grid::MatsubaraGrid, nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     grid.nfreq = nfreq
@@ -313,9 +321,8 @@ end
 """
     Base.resize!(grid::MatsubaraGrid, nfreq::I64)
 
-Reduce the size of the  Matsubara grid. Note that `nfreq` should
-be smaller than or equal to `grid.nfreq`. This function is called by the
-NevanAC solver only.
+Reduce the size of the Matsubara grid. Note that `nfreq` should be
+smaller than or equal to `grid.nfreq`.
 
 ### Arguments
 * grid -> A MatsubaraGrid struct.
@@ -330,16 +337,4 @@ function Base.resize!(grid::MatsubaraGrid, nfreq::I64)
     @assert grid.nfreq ≥ nfreq
     grid.nfreq = nfreq
     resize!(grid.ω, nfreq)
-end
-
-"""
-    Base.reverse!(grid::MatsubaraGrid)
-
-Reverse the  Matsubara grid. This function is called by the
-`NevanAC` solver only.
-
-See also: [`MatsubaraGrid`](@ref).
-"""
-function Base.reverse!(grid::MatsubaraGrid)
-    reverse!(grid.ω)
 end
