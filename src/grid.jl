@@ -12,7 +12,7 @@
 =#
 
 """
-    FermionicImaginaryTimeGrid(ntime::I64, β::T) where {T}
+    FermionicImaginaryTimeGrid(ntime::I64, β::F64)
 
 A constructor for the FermionicImaginaryTimeGrid struct, which is defined
 in `src/types.jl`.
@@ -26,7 +26,7 @@ in `src/types.jl`.
 
 See also: [`FermionicImaginaryTimeGrid`](@ref).
 """
-function FermionicImaginaryTimeGrid(ntime::I64, β::T) where {T}
+function FermionicImaginaryTimeGrid(ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     τ = collect(LinRange(0.0, β, ntime))
@@ -133,7 +133,7 @@ function Base.getindex(fg::FermionicImaginaryTimeGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+    rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::F64)
 
 Rebuild the FermionicImaginaryTimeGrid struct via new `ntime` and `β`
 parameters.
@@ -148,7 +148,7 @@ N/A
 
 See also: [`FermionicImaginaryTimeGrid`](@ref).
 """
-function rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+function rebuild!(fg::FermionicImaginaryTimeGrid, ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     fg.ntime = ntime
@@ -161,7 +161,7 @@ end
 =#
 
 """
-    FermionicMatsubaraGrid(nfreq::I64, β::T) where {T}
+    FermionicMatsubaraGrid(nfreq::I64, β::F64)
 
 A constructor for the FermionicMatsubaraGrid struct, which is defined in
 `src/types.jl`. The Matsubara grid is evaluated as ωₙ = (2n - 1) π / β.
@@ -175,7 +175,7 @@ A constructor for the FermionicMatsubaraGrid struct, which is defined in
 
 See also: [`FermionicMatsubaraGrid`](@ref).
 """
-function FermionicMatsubaraGrid(nfreq::I64, β::T) where {T}
+function FermionicMatsubaraGrid(nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     wmin = π / β
@@ -284,7 +284,7 @@ function Base.getindex(fg::FermionicMatsubaraGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::T) where {T}
+    rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::F64)
 
 Rebuild the FermionicMatsubaraGrid struct via new `nfreq` and `β`
 parameters.
@@ -299,7 +299,7 @@ N/A
 
 See also: [`FermionicMatsubaraGrid`](@ref).
 """
-function rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::T) where {T}
+function rebuild!(fg::FermionicMatsubaraGrid, nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     fg.nfreq = nfreq
@@ -349,7 +349,7 @@ end
 =#
 
 """
-    BosonicImaginaryTimeGrid(ntime::I64, β::T)
+    BosonicImaginaryTimeGrid(ntime::I64, β::F64)
 
 A constructor for the BosonicImaginaryTimeGrid struct, which is defined
 in `src/types.jl`.
@@ -363,7 +363,7 @@ in `src/types.jl`.
 
 See also: [`BosonicImaginaryTimeGrid`](@ref).
 """
-function BosonicImaginaryTimeGrid(ntime::I64, β::T) where {T}
+function BosonicImaginaryTimeGrid(ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     τ = collect(LinRange(0.0, β, ntime))
@@ -470,7 +470,7 @@ function Base.getindex(bg::BosonicImaginaryTimeGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(bg::BosonicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+    rebuild!(bg::BosonicImaginaryTimeGrid, ntime::I64, β::F64)
 
 Rebuild the BosonicImaginaryTimeGrid struct via new `ntime` and `β`
 parameters.
@@ -485,7 +485,7 @@ N/A
 
 See also: [`BosonicImaginaryTimeGrid`](@ref).
 """
-function rebuild!(bg::BosonicImaginaryTimeGrid, ntime::I64, β::T) where {T}
+function rebuild!(bg::BosonicImaginaryTimeGrid, ntime::I64, β::F64)
     @assert ntime ≥ 1
     @assert β ≥ 0.0
     bg.ntime = ntime
@@ -498,7 +498,7 @@ end
 =#
 
 """
-    BosonicMatsubaraGrid(nfreq::I64, β::T) where {T}
+    BosonicMatsubaraGrid(nfreq::I64, β::F64)
 
 A constructor for the BosonicMatsubaraGrid struct, which is defined in
 `src/types.jl`. The Matsubara grid is evaluated as ωₙ = (2n - 2) π / β.
@@ -512,7 +512,7 @@ A constructor for the BosonicMatsubaraGrid struct, which is defined in
 
 See also: [`BosonicMatsubaraGrid`](@ref).
 """
-function BosonicMatsubaraGrid(nfreq::I64, β::T) where {T}
+function BosonicMatsubaraGrid(nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     wmin = 0.0
@@ -621,7 +621,7 @@ function Base.getindex(bg::BosonicMatsubaraGrid, I::UnitRange{I64})
 end
 
 """
-    rebuild!(bg::BosonicMatsubaraGrid, nfreq::I64, β::T) where {T}
+    rebuild!(bg::BosonicMatsubaraGrid, nfreq::I64, β::F64)
 
 Rebuild the BosonicMatsubaraGrid struct via new `nfreq` and `β`
 parameters.
@@ -636,7 +636,7 @@ N/A
 
 See also: [`BosonicMatsubaraGrid`](@ref).
 """
-function rebuild!(bg::BosonicMatsubaraGrid, nfreq::I64, β::T) where {T}
+function rebuild!(bg::BosonicMatsubaraGrid, nfreq::I64, β::F64)
     @assert nfreq ≥ 1
     @assert β ≥ 0.0
     bg.nfreq = nfreq
