@@ -12,7 +12,7 @@
 
 **Preliminary Knowledge: Background**
 
-The purpose of `ACFlow` is to solve the following equation:
+The purpose of `ACTest` is to solve the following equation:
 
 ```math
 \begin{equation}
@@ -20,10 +20,11 @@ The purpose of `ACFlow` is to solve the following equation:
 \end{equation}
 ```
 
-Here, ``\mathbf{G}``, ``\mathbf{K}``, and ``\mathbf{A}`` are the input
-Green's function, kernel function, and spectral density, respectively.
-`ACFlow` supports various kernel functions. Here, we would like to dive
-into them.
+That is to say, given ``\mathbf{K}``, and ``\mathbf{A}``, we want to get
+``\mathbf{G}`` according to Eq.(1). Here, ``\mathbf{G}``, ``\mathbf{K}``,
+and ``\mathbf{A}`` are the input Green's function, kernel function, and
+spectral density, respectively. So far `ACTest` supports various kernel
+functions. Here, we would like to dive into them.
 
 ---
 
