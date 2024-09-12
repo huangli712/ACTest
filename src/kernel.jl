@@ -391,8 +391,7 @@ end
 """
     build_kernel(am::AbstractMesh, fg::FermionicMatsubaraGrid)
 
-Try to build fermionic kernel function in Matsubara frequency axis. This
-function support the so-called preblur algorithm.
+Try to build fermionic kernel function in Matsubara frequency axis.
 
 ### Arguments
 * am -> Real frequency mesh.
@@ -536,8 +535,7 @@ end
     build_kernel_symm(am::AbstractMesh, bg::BosonicMatsubaraGrid)
 
 Try to build bosonic kernel function in Matsubara frequency axis (just
-for correlator of Hermitian operator only). This function support the
-so-called preblur algorithm.
+for correlator of Hermitian operator only).
 
 ### Arguments
 * am -> Real frequency mesh.
