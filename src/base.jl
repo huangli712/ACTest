@@ -108,21 +108,19 @@ function make_grid()
     _grid = nothing
     @cswitch grid begin
         @case "ftime"
-            _grid = ImaginaryTimeGrid(ngrid, β)
+            _grid = FermionicImaginaryTimeGrid(ngrid, β)
             break
 
         @case "btime"
-            _grid = ImaginaryTimeGrid(ngrid, β)
+            _grid = BosonicImaginaryTimeGrid(ngrid, β)
             break
 
         @case "ffreq"
-            gtype = 1
-            _grid = MatsubaraGrid(gtype, ngrid, β)
+            _grid = FermionicMatsubaraGrid(ngrid, β)
             break
 
         @case "bfreq"
-            gtype = 0
-            _grid = MatsubaraGrid(gtype, ngrid, β)
+            _grid = BosonicMatsubaraGrid(ngrid, β)
             break
 
         @default
