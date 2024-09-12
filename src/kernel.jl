@@ -388,68 +388,6 @@ function build_kernel(am::AbstractMesh, fg::FermionicImaginaryTimeGrid)
 end
 
 """
-    build_kernel(am::AbstractMesh, fg::FermionicFragmentTimeGrid)
-
-Try to build fermionic kernel function in imaginary time axis. Note that
-`fg` contains incomplete imaginary time data.
-
-### Arguments
-* am -> Real frequency mesh.
-* fg -> Imaginary time grid.
-
-### Returns
-* kernel -> Kernel function, K(τ,ω).
-
-See also: [`AbstractMesh`](@ref), [`FermionicFragmentTimeGrid`](@ref).
-"""
-function build_kernel(am::AbstractMesh, fg::FermionicFragmentTimeGrid)
-    ntime = fg.ntime
-    nmesh = am.nmesh
-    β = fg.β
-
-    kernel = zeros(F64, ntime, nmesh)
-
-    # Old implementation
-    # exp(βω ≈ 700.0) will throw an Inf and K becomes NaN.
-    # We should avoid this situation.
-    #
-    # for i = 1:nmesh
-    #     de = 1.0 + exp(-β * am[i])
-    #     for j = 1:ntime
-    #         kernel[j,i] = exp(-fg[j] * am[i]) / de
-    #     end
-    # end
-    #
-    # New implementation to avoid numerical overflow
-    #
-    for i = 1:nmesh
-        # ω ≥ 0.0
-        if am[i] ≥ 0.0
-            de = 1.0 + exp(-β * am[i])
-            for j = 1:ntime
-                kernel[j,i] = exp(-fg[j] * am[i]) / de
-            end
-        # ω < 0.0
-        else
-            for j = 1:ntime
-                # Now denominator goes to infinity and K goes to zero.
-                if (fg[j] - β) * am[i] ≥ 700.0
-                    kernel[j,i] = 0.0
-                else
-                    # de1 is always smaller than 1.0 because τω < 0.0.
-                    # de2 could be a large number.
-                    de1 = exp(fg[j] * am[i])
-                    de2 = exp((fg[j] - β) * am[i])
-                    kernel[j,i] = 1.0 / (de1 + de2)
-                end
-            end
-        end
-    end
-
-    return kernel
-end
-
-"""
     build_kernel(am::AbstractMesh, fg::FermionicMatsubaraGrid)
 
 Try to build fermionic kernel function in Matsubara frequency axis. This
@@ -465,56 +403,6 @@ function support the so-called preblur algorithm.
 See also: [`AbstractMesh`](@ref), [`FermionicMatsubaraGrid`](@ref).
 """
 function build_kernel(am::AbstractMesh, fg::FermionicMatsubaraGrid)
-    blur = get_m("blur")
-    nfreq = fg.nfreq
-    nmesh = am.nmesh
-
-    _kernel = zeros(C64, nfreq, nmesh)
-
-    # No preblur
-    if blur isa Missing || blur < 0.0
-        for i = 1:nmesh
-            for j = 1:nfreq
-                _kernel[j,i] = 1.0 / (im * fg[j] - am[i])
-            end
-        end
-    # The preblur trick is used
-    else
-        bmesh, gaussian = make_gauss_peaks(blur)
-        nsize = length(bmesh)
-        integrand = zeros(C64, nsize)
-        for i = 1:nmesh
-            for j = 1:nfreq
-                z = im * fg[j] - am[i]
-                for k = 1:nsize
-                    integrand[k] = gaussian[k] / (z - bmesh[k])
-                end
-                _kernel[j,i] = simpson(bmesh, integrand)
-            end
-        end
-    end
-
-    kernel = vcat(real(_kernel), imag(_kernel))
-
-    return kernel
-end
-
-"""
-    build_kernel(am::AbstractMesh, fg::FermionicFragmentMatsubaraGrid)
-
-Try to build fermionic kernel function in Matsubara frequency axis. This
-function support the so-called preblur algorithm.
-
-### Arguments
-* am -> Real frequency mesh.
-* fg -> Matsubara frequency grid.
-
-### Returns
-* kernel -> Kernel function, K(iωₙ,ω).
-
-See also: [`AbstractMesh`](@ref), [`FermionicFragmentMatsubaraGrid`](@ref).
-"""
-function build_kernel(am::AbstractMesh, fg::FermionicFragmentMatsubaraGrid)
     blur = get_m("blur")
     nfreq = fg.nfreq
     nmesh = am.nmesh
@@ -588,45 +476,6 @@ function build_kernel(am::AbstractMesh, bg::BosonicImaginaryTimeGrid)
 end
 
 """
-    build_kernel(am::AbstractMesh, bg::BosonicFragmentTimeGrid)
-
-Try to build bosonic kernel function in imaginary time axis. Note that
-`bg` contains incomplete imaginary time data.
-
-### Arguments
-* am -> Real frequency mesh.
-* bg -> Imaginary time grid.
-
-### Returns
-* kernel -> Kernel function, K(τ,ω).
-
-See also: [`AbstractMesh`](@ref), [`BosonicFragmentTimeGrid`](@ref).
-"""
-function build_kernel(am::AbstractMesh, bg::BosonicFragmentTimeGrid)
-    ntime = bg.ntime
-    nmesh = am.nmesh
-    β = bg.β
-
-    kernel = zeros(F64, ntime, nmesh)
-    #
-    for i = 1:nmesh
-        de = 1.0 - exp(-β * am[i])
-        for j = 1:ntime
-            kernel[j,i] = am[i] * exp(-bg[j] * am[i]) / de
-        end
-    end
-    #
-    # Be careful, am[1] is not 0.0! We have to find out where
-    # the zero point is in the real mesh.
-    _, zero_point = findmin(abs.(am.mesh))
-    if am[zero_point] == 0.0
-        @. kernel[:,zero_point] = 1.0 / β
-    end
-
-    return kernel
-end
-
-"""
     build_kernel(am::AbstractMesh, bg::BosonicMatsubaraGrid)
 
 Try to build bosonic kernel function in Matsubara frequency axis.
@@ -641,44 +490,6 @@ Try to build bosonic kernel function in Matsubara frequency axis.
 See also: [`AbstractMesh`](@ref), [`BosonicMatsubaraGrid`](@ref).
 """
 function build_kernel(am::AbstractMesh, bg::BosonicMatsubaraGrid)
-    nfreq = bg.nfreq
-    nmesh = am.nmesh
-
-    _kernel = zeros(C64, nfreq, nmesh)
-    #
-    for i = 1:nmesh
-        for j = 1:nfreq
-            _kernel[j,i] = am[i] / (im * bg[j] - am[i])
-        end
-    end
-    #
-    # Be careful, am[1] is not 0.0! We have to find out where
-    # the zero point is in the real mesh.
-    _, zero_point = findmin(abs.(am.mesh))
-    if am[zero_point] == 0.0 && bg[1] == 0.0
-        _kernel[1,zero_point] = -1.0
-    end
-    #
-    kernel = vcat(real(_kernel), imag(_kernel))
-
-    return kernel
-end
-
-"""
-    build_kernel(am::AbstractMesh, bg::BosonicFragmentMatsubaraGrid)
-
-Try to build bosonic kernel function in Matsubara frequency axis.
-
-### Arguments
-* am -> Real frequency mesh.
-* bg -> Matsubara frequency grid.
-
-### Returns
-* kernel -> Kernel function, K(iωₙ,ω).
-
-See also: [`AbstractMesh`](@ref), [`BosonicFragmentMatsubaraGrid`](@ref).
-"""
-function build_kernel(am::AbstractMesh, bg::BosonicFragmentMatsubaraGrid)
     nfreq = bg.nfreq
     nmesh = am.nmesh
 
@@ -739,43 +550,6 @@ function build_kernel_symm(am::AbstractMesh, bg::BosonicImaginaryTimeGrid)
 end
 
 """
-    build_kernel_symm(am::AbstractMesh, bg::BosonicFragmentTimeGrid)
-
-Try to build bosonic kernel function in imaginary time axis (just for
-correlator of Hermitian operator only). Note that `bg` contains
-incomplete imaginary time data.
-
-### Arguments
-* am -> Real frequency mesh.
-* bg -> Imaginary time grid.
-
-### Returns
-* kernel -> Kernel function, K(τ,ω).
-
-See also: [`AbstractMesh`](@ref), [`BosonicFragmentTimeGrid`](@ref).
-"""
-function build_kernel_symm(am::AbstractMesh, bg::BosonicFragmentTimeGrid)
-    ntime = bg.ntime
-    nmesh = am.nmesh
-    β = bg.β
-
-    kernel = zeros(F64, ntime, nmesh)
-    #
-    for i = 1:nmesh
-        r = am[i] / (1.0 - exp(-β * am[i]))
-        for j = 1:ntime
-            kernel[j,i] = r * (exp(-am[i] * bg[j]) + exp(-am[i] * (β - bg[j])))
-        end
-    end
-    #
-    # Perhaps we should check am[1] here!
-    @assert am[1] == 0.0
-    @. kernel[:,1] = 2.0 / β
-
-    return kernel
-end
-
-"""
     build_kernel_symm(am::AbstractMesh, bg::BosonicMatsubaraGrid)
 
 Try to build bosonic kernel function in Matsubara frequency axis (just
@@ -792,73 +566,6 @@ so-called preblur algorithm.
 See also: [`AbstractMesh`](@ref), [`BosonicMatsubaraGrid`](@ref).
 """
 function build_kernel_symm(am::AbstractMesh, bg::BosonicMatsubaraGrid)
-    blur = get_m("blur")
-    nfreq = bg.nfreq
-    nmesh = am.nmesh
-
-    kernel = zeros(F64, nfreq, nmesh)
-
-    # No preblur
-    if blur isa Missing || blur < 0.0
-        for i = 1:nmesh
-            for j = 1:nfreq
-                kernel[j,i] = am[i] ^ 2.0 / ( bg[j] ^ 2.0 + am[i] ^ 2.0 )
-                kernel[j,i] = -2.0 * kernel[j,i]
-            end
-        end
-        # Perhaps we should check am[i] and bg[j] here!
-        if am[1] == 0.0 && bg[1] == 0.0
-            kernel[1,1] = -2.0
-        end
-    # The preblur trick is used
-    else
-        bmesh, gaussian = make_gauss_peaks(blur)
-        nsize = length(bmesh)
-
-        I₁ = zeros(F64, nsize)
-        I₂ = zeros(F64, nsize)
-        I₃ = zeros(F64, nsize)
-
-        for i = 1:nmesh
-            for j = 1:nfreq
-                g² = bg[j] ^ 2.0
-                for k = 1:nsize
-                    A² = (bmesh[k] + am[i]) ^ 2.0; I₁[k] = -2.0 * A² / (A² + g²)
-                    B² = (bmesh[k] - am[i]) ^ 2.0; I₂[k] = -2.0 * B² / (B² + g²)
-                end
-                if i == 1 && j == 1
-                    # Perhaps we should check am[i] and bg[j] here!
-                    @assert am[i] == 0.0
-                    @assert bg[j] == 0.0
-                    I₁ .= -2.0
-                    I₂ .= -2.0
-                end
-                @. I₃ = (I₁ + I₂) * gaussian / 2.0
-                kernel[j,i] = simpson(bmesh, I₃)
-            end
-        end
-    end
-
-    return kernel
-end
-
-"""
-    build_kernel_symm(am::AbstractMesh, bg::BosonicFragmentMatsubaraGrid)
-
-Try to build bosonic kernel function in Matsubara frequency axis (just
-for correlator of Hermitian operator only). This function support the
-so-called preblur algorithm.
-
-### Arguments
-* am -> Real frequency mesh.
-* bg -> Matsubara frequency grid.
-
-### Returns
-* kernel -> Kernel function, K(iωₙ,ω).
-
-See also: [`AbstractMesh`](@ref), [`BosonicFragmentMatsubaraGrid`](@ref).
-"""
-function build_kernel_symm(am::AbstractMesh, bg::BosonicFragmentMatsubaraGrid)
     blur = get_m("blur")
     nfreq = bg.nfreq
     nmesh = am.nmesh
