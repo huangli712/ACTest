@@ -69,6 +69,10 @@ function make_data()
     mesh = make_mesh()
     println("Build mesh for spectrum: ", length(mesh), " points")
 
+    # Prepare kernel function
+    kernel = make_kernel(mesh, grid)
+    println("Build default kernel: ", get_t("ktype"))
+
     for i = 1:nspec
         @printf("[dataset]: %4i / %4i\n", i, nspec)
     end
