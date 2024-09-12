@@ -29,6 +29,21 @@ function read_param()
 end
 
 function make_data()
+    nspec = get_t("nspec")
+
+    # Prepare grid for input data
+    grid = make_grid()
+    println("Build grid for input data: ", length(grid), " points")
+
+    # Prepare mesh for output spectrum
+    mesh = make_mesh()
+    println("Build mesh for spectrum: ", length(mesh), " points")
+
+    for i = 1:nspec
+        @printf("[dataset]: %4i / %4i\n", i, nspec)
+    end
+
+    println()
 end
 
 function make_peak()
