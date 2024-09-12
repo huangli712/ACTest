@@ -80,3 +80,24 @@ See also: [`chk_dict`](@ref).
         error("Sorry, type of key ($key) is wrong")
     end
 end
+
+"""
+    get_t(key::String)
+
+Extract configurations from dict: PTEST.
+
+### Arguments
+* key -> Key of parameter.
+
+### Returns
+* value -> Value of parameter.
+
+See also: [`PTEST`](@ref).
+"""
+@inline function get_t(key::String)
+    if haskey(PTEST, key)
+        PBASE[key][1]
+    else
+        error("Sorry, PTEST does not contain key: $key")
+    end
+end
