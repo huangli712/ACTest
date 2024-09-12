@@ -60,6 +60,7 @@ end
 
 function make_data()
     nspec = get_t("nspec")
+    rng = MersenneTwister(rand(1:10000) * myid() + 1981)
 
     # Prepare grid for input data
     grid = make_grid()
@@ -73,18 +74,18 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    g₁ = GaussianPeak(1.00, 0.20, 0.50)
-    g₂ = GaussianPeak(0.30, 0.80, -2.5)
-    image = g₁.(mesh.mesh) + g₂.(mesh.mesh)
-    image = image ./ trapz(mesh,image)
+    #g₁ = GaussianPeak(1.00, 0.20, 0.50)
+    #g₂ = GaussianPeak(0.30, 0.80, -2.5)
+    #image = g₁.(mesh.mesh) + g₂.(mesh.mesh)
+    #image = image ./ trapz(mesh,image)
 
-    #for i = 1:nspec
-    #    @printf("[dataset]: %4i / %4i\n", i, nspec)
-    #end
-
-    G = reprod(mesh, kernel, image)
-    write_spectrum(mesh, image)
-    write_backward(grid, G)
+    for i = 1:1
+        @printf("[dataset]: %4i / %4i\n", i, nspec)
+        image = make_spectrum(rng, mesh)
+        G = reprod(mesh, kernel, image)
+        write_spectrum(mesh, image)
+        write_backward(grid, G)
+    end
 
     println()
 end
@@ -92,7 +93,27 @@ end
 function make_peak()
 end
 
-function make_spectrum()
+function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
+    ptype = get_t("ptype")
+    lpeak = get_t("lpeak")
+    pmax  = get_t("pmax")
+    pmin  = get_t("pmin")
+    npeak, = rand(rng, lpeak, 1)
+    @show lpeak
+    @show npeak
+
+    image = zeros(F64, length(mesh))
+    for i = 1:npeak
+        A = rand(rng)
+        Γ = rand(rng)
+        ϵ = rand(rng) * (pmax - pmin) + pmin
+        g = GaussianPeak(A, Γ, ϵ)
+        @show i, A, Γ, ϵ
+        image = image + g.(mesh.mesh)
+    end
+    image = image ./ trapz(mesh,image)
+
+    return image
 end
 
 function make_green()
