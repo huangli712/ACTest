@@ -79,7 +79,7 @@ const _PTEST   = Dict{String,Any}(
     "noise"   => 1.0e-6,
     "offdiag" => false,
     "pwrite"  => true,
-    "lpeak"   => 3,
+    "lpeak"   => [1,2,3],
 )
 
 #=
