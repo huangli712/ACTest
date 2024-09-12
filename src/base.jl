@@ -82,7 +82,9 @@ function make_data()
     #    @printf("[dataset]: %4i / %4i\n", i, nspec)
     #end
 
+    G = reprod(mesh, kernel, image)
     write_spectrum(mesh, image)
+    write_backward(grid, G)
 
     println()
 end
