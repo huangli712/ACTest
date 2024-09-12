@@ -29,13 +29,13 @@ function read_param()
 end
 
 """
-    make_grid(rd::RawData; T::DataType = F64)
+    make_grid(T::DataType = F64)
 
-Extract grid for input data from a `RawData` struct (`RD`). It will return
-a sub-type of the AbstractGrid struct.
+To generate imaginary time grid or Masubara grid for many-body correlator.
+It will return a sub-type of the AbstractGrid struct.
 
 ### Arguments
-See above explanations.
+* T -> Numerical type.
 
 ### Returns
 * grid -> Imaginary time or imaginary frequency grid.
