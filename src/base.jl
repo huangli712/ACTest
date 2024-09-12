@@ -8,6 +8,36 @@
 #
 
 """
+    reprod(am::AbstractMesh, kernel::Matrix{F64}, A::Vector{F64})
+
+Try to reproduce the input data, which can be compared with the raw data
+to see whether the analytic continuation is reasonable.
+
+### Arguments
+* am -> Real frequency mesh.
+* kernel -> The kernel function.
+* A -> The calculated spectral function, A(ω).
+
+### Returns
+* G -> Reconstructed correlators, G(τ) or G(iωₙ), Vector{F64}.
+
+See also: [`AbstractMesh`](@ref).
+"""
+function reprod(am::AbstractMesh, kernel::Matrix{F64}, A::Vector{F64})
+    ndim, nmesh = size(kernel)
+    @assert nmesh == length(am) == length(A)
+
+    @einsum KA[i,j] := kernel[i,j] * A[j]
+
+    G = zeros(F64, ndim)
+    for i = 1:ndim
+        G[i] = trapz(am, view(KA, i, :))
+    end
+
+    return G
+end
+
+"""
     read_param()
 
 Setup the configuration dictionaries via an external file. The valid
