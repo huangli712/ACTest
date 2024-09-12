@@ -37,6 +37,7 @@ include("mesh.jl")
 include("peak.jl")
 include("config.jl")
 include("inout.jl")
+include("kernel.jl")
 include("base.jl")
 export reprod
 export read_param
