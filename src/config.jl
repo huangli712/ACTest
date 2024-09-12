@@ -74,7 +74,7 @@ function chk_dict()
     @assert get_t("mesh") in ("linear", "tangent", "lorentz", "halflorentz")
     @assert get_t("ngrid") ≥ 1
     @assert get_t("nmesh") ≥ 1
-    @assert get_t("wmax") > get_b("wmin")
+    @assert get_t("wmax") > get_t("wmin")
     @assert get_t("beta") ≥ 0.0
 
     foreach(x -> _v(x.first, x.second), PTEST)
