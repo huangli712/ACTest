@@ -23,6 +23,8 @@ include("mesh.jl")
 include("peak.jl")
 include("config.jl")
 include("inout.jl")
+include("base.jl")
+export read_param
 
 """
     _precompile()
