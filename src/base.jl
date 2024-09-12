@@ -42,39 +42,30 @@ N/A
 
 See also: [`AbstractGrid`](@ref).
 """
-function make_grid(T::DataType = F64)
+function make_grid()
     # Extract key parameters
     grid = get_t("grid")
     ngrid = get_t("ngrid")
     β = get_t("beta")
 
-    v = T.(rd._grid)
-    @assert ngrid == length(v)
-
     _grid = nothing
     @cswitch grid begin
         @case "ftime"
-            _β = v[end]
-            @assert abs(_β - β) ≤ 1e-6
-            _grid = FermionicImaginaryTimeGrid(ngrid, β, v)
+            _grid = ImaginaryTimeGrid(ngrid, β)
             break
 
         @case "btime"
-            _β = v[end]
-            @assert abs(_β - β) ≤ 1e-6
-            _grid = BosonicImaginaryTimeGrid(ngrid, β, v)
+            _grid = ImaginaryTimeGrid(ngrid, β)
             break
 
         @case "ffreq"
-            _β = 2.0 * π / (v[2] - v[1])
-            @assert abs(_β - β) ≤ 1e-6
-            _grid = FermionicMatsubaraGrid(ngrid, β, v)
+            gtype = 1
+            _grid = MatsubaraGrid(gtype, ngrid, β)
             break
 
         @case "bfreq"
-            _β = 2.0 * π / (v[2] - v[1])
-            @assert abs(_β - β) ≤ 1e-6
-            _grid = BosonicMatsubaraGrid(ngrid, β, v)
+            gtype = 0
+            _grid = MatsubaraGrid(gtype, ngrid, β)
             break
 
         @default
