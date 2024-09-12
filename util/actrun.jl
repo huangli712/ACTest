@@ -16,3 +16,4 @@ using ACTest
 welcome()
 overview()
 read_param()
+goodbye()
