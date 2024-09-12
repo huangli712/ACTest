@@ -29,23 +29,24 @@ function read_param()
 end
 
 """
-    make_grid(T::DataType = F64)
+    make_grid()
 
 To generate imaginary time grid or Masubara grid for many-body correlator.
 It will return a sub-type of the AbstractGrid struct.
 
 ### Arguments
-* T -> Numerical type.
+N/A
 
 ### Returns
 * grid -> Imaginary time or imaginary frequency grid.
 
-See also: [`RawData`](@ref), [`AbstractGrid`](@ref).
+See also: [`AbstractGrid`](@ref).
 """
-function make_grid(rd::RawData; T::DataType = F64)
-    grid = get_b("grid")
-    ngrid = get_b("ngrid")
-    β::T = get_b("beta")
+function make_grid(T::DataType = F64)
+    # Extract key parameters
+    grid = get_t("grid")
+    ngrid = get_t("ngrid")
+    β = get_t("beta")
 
     v = T.(rd._grid)
     @assert ngrid == length(v)
@@ -58,18 +59,10 @@ function make_grid(rd::RawData; T::DataType = F64)
             _grid = FermionicImaginaryTimeGrid(ngrid, β, v)
             break
 
-        @case "fpart"
-            _grid = FermionicFragmentTimeGrid(β, v)
-            break
-
         @case "btime"
             _β = v[end]
             @assert abs(_β - β) ≤ 1e-6
             _grid = BosonicImaginaryTimeGrid(ngrid, β, v)
-            break
-
-        @case "bpart"
-            _grid = BosonicFragmentTimeGrid(β, v)
             break
 
         @case "ffreq"
@@ -78,18 +71,10 @@ function make_grid(rd::RawData; T::DataType = F64)
             _grid = FermionicMatsubaraGrid(ngrid, β, v)
             break
 
-        @case "ffrag"
-            _grid = FermionicFragmentMatsubaraGrid(β, v)
-            break
-
         @case "bfreq"
             _β = 2.0 * π / (v[2] - v[1])
             @assert abs(_β - β) ≤ 1e-6
             _grid = BosonicMatsubaraGrid(ngrid, β, v)
-            break
-
-        @case "bfrag"
-            _grid = BosonicFragmentMatsubaraGrid(β, v)
             break
 
         @default
