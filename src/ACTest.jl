@@ -9,6 +9,7 @@
 
 module ACTest
 
+using Distributed
 using Statistics
 using Random
 using Dates
