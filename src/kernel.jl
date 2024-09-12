@@ -403,35 +403,17 @@ function support the so-called preblur algorithm.
 See also: [`AbstractMesh`](@ref), [`FermionicMatsubaraGrid`](@ref).
 """
 function build_kernel(am::AbstractMesh, fg::FermionicMatsubaraGrid)
-    blur = get_m("blur")
     nfreq = fg.nfreq
     nmesh = am.nmesh
 
     _kernel = zeros(C64, nfreq, nmesh)
-
-    # No preblur
-    if blur isa Missing || blur < 0.0
-        for i = 1:nmesh
-            for j = 1:nfreq
-                _kernel[j,i] = 1.0 / (im * fg[j] - am[i])
-            end
-        end
-    # The preblur trick is used
-    else
-        bmesh, gaussian = make_gauss_peaks(blur)
-        nsize = length(bmesh)
-        integrand = zeros(C64, nsize)
-        for i = 1:nmesh
-            for j = 1:nfreq
-                z = im * fg[j] - am[i]
-                for k = 1:nsize
-                    integrand[k] = gaussian[k] / (z - bmesh[k])
-                end
-                _kernel[j,i] = simpson(bmesh, integrand)
-            end
+    #
+    for i = 1:nmesh
+        for j = 1:nfreq
+            _kernel[j,i] = 1.0 / (im * fg[j] - am[i])
         end
     end
-
+    #
     kernel = vcat(real(_kernel), imag(_kernel))
 
     return kernel
@@ -566,179 +548,21 @@ so-called preblur algorithm.
 See also: [`AbstractMesh`](@ref), [`BosonicMatsubaraGrid`](@ref).
 """
 function build_kernel_symm(am::AbstractMesh, bg::BosonicMatsubaraGrid)
-    blur = get_m("blur")
     nfreq = bg.nfreq
     nmesh = am.nmesh
 
     kernel = zeros(F64, nfreq, nmesh)
 
-    # No preblur
-    if blur isa Missing || blur < 0.0
-        for i = 1:nmesh
-            for j = 1:nfreq
-                kernel[j,i] = am[i] ^ 2.0 / ( bg[j] ^ 2.0 + am[i] ^ 2.0 )
-                kernel[j,i] = -2.0 * kernel[j,i]
-            end
+    for i = 1:nmesh
+        for j = 1:nfreq
+            kernel[j,i] = am[i] ^ 2.0 / ( bg[j] ^ 2.0 + am[i] ^ 2.0 )
+            kernel[j,i] = -2.0 * kernel[j,i]
         end
-        # Perhaps we should check am[i] and bg[j] here!
-        if am[1] == 0.0 && bg[1] == 0.0
-            kernel[1,1] = -2.0
-        end
-    # The preblur trick is used
-    else
-        bmesh, gaussian = make_gauss_peaks(blur)
-        nsize = length(bmesh)
-
-        I₁ = zeros(F64, nsize)
-        I₂ = zeros(F64, nsize)
-        I₃ = zeros(F64, nsize)
-
-        for i = 1:nmesh
-            for j = 1:nfreq
-                g² = bg[j] ^ 2.0
-                for k = 1:nsize
-                    A² = (bmesh[k] + am[i]) ^ 2.0; I₁[k] = -2.0 * A² / (A² + g²)
-                    B² = (bmesh[k] - am[i]) ^ 2.0; I₂[k] = -2.0 * B² / (B² + g²)
-                end
-                if i == 1 && j == 1
-                    # Perhaps we should check am[i] and bg[j] here!
-                    @assert am[i] == 0.0
-                    @assert bg[j] == 0.0
-                    I₁ .= -2.0
-                    I₂ .= -2.0
-                end
-                @. I₃ = (I₁ + I₂) * gaussian / 2.0
-                kernel[j,i] = simpson(bmesh, I₃)
-            end
-        end
+    end
+    # Perhaps we should check am[i] and bg[j] here!
+    if am[1] == 0.0 && bg[1] == 0.0
+        kernel[1,1] = -2.0
     end
 
     return kernel
-end
-
-"""
-    make_blur(am::AbstractMesh, A::Vector{F64}, blur::F64)
-
-Try to blur the given spectrum `A`, which is defined in `am`. And `blur`
-is the blur parameter.
-
-### Arguments
-* am   -> Real frequency mesh.
-* A    -> Spectral function.
-* blur -> Blur parameter. It must be larger than 0.0.
-
-### Returns
-* A    -> It is updated in this function.
-"""
-function make_blur(am::AbstractMesh, A::Vector{F64}, blur::F64)
-    ktype = get_b("ktype")
-
-    spl = nothing
-    if ktype == "fermi" || ktype == "boson"
-        spl = CubicSplineInterpolation(A, am.mesh)
-    else
-        vM = vcat(-am.mesh[end:-1:2], am.mesh)
-        vA = vcat(A[end:-1:2], A)
-        spl = CubicSplineInterpolation(vA, vM)
-    end
-
-    bmesh, gaussian = make_gauss_peaks(blur)
-
-    nsize = length(bmesh)
-    nmesh = length(am)
-
-    Mb = reshape(bmesh, (nsize, 1))
-    Mx = reshape(gaussian, (nsize, 1))
-    Mm = reshape(am.mesh, (1, nmesh))
-    I = Mx .* spl.(Mm .+ Mb)
-
-    for j = 1:nmesh
-        A[j] = simpson(bmesh, view(I, :, j))
-    end
-end
-
-"""
-    make_singular_space(kernel::Matrix{F64})
-
-Perform singular value decomposition for the input matrix `kernel`.
-
-kernel = U Σ Vᵀ
-
-Supposed that kernel is a m × n matrix, then U is m × m, Σ is m × n,
-and V is n × n. For Σ, only the diagonal elements are non-zero.
-
-### Arguments
-* kernel -> Fermionic or bosonic kernel matrix.
-
-### Returns
-* U -> A m × n matrix.
-* S -> Diagonal elements of Σ.
-* V -> A n × n matrix.
-"""
-function make_singular_space(kernel::Matrix{F64})
-    U, S, V = svd(kernel)
-
-    n_svd = count(x -> x ≥ 1e-10, S)
-    U_svd = U[:,1:n_svd]
-    V_svd = V[:,1:n_svd]
-    S_svd = S[1:n_svd]
-
-    return U_svd, V_svd, S_svd
-end
-
-#=
-*Remarks* : *About Preblur*
-
-The Gaussian is
-
-```math
-\begin{equation}
-g(x) = \frac{1}{b \sqrt{2 \pi}}
-       \exp\left(-\frac{x^2}{2b^2}\right).
-\end{equation}
-```
-
-Here `b` is the blur parameter. In the fermionic case, the convolution
-can be written as:
-
-```math
-\begin{equation}
-K_{preblur}(i\nu_n,\omega) = \int_{-5b}^{5b} dx~
-    \frac{g(x)}{i\nu_n - x - \omega}.
-\end{equation}
-```
-
-In the bosonic case, the convolution can be written as
-
-```math
-K_{preblur}(i\omega_n,\nu) = \frac{1}{2} \int_{-5b}^{5b} dx~g(x)
-    \left[
-        \frac{(x+\nu)^2 }{(x+\nu)^2 + \omega_n^2} +
-        \frac{(x-\nu)^2 }{(x-\nu)^2 + \omega_n^2}
-    \right].
-```
-
-Integration over the Gaussian from \(-5b\) to \(5b\) is certainly sufficient.
-=#
-
-"""
-    make_gauss_peaks(blur::F64)
-
-Try to generate a gaussian peak along a linear mesh, whose energy range
-is `[-5 * blur, +5 * blur]`. The number of mesh points is fixed to 201.
-
-### Arguments
-* blur -> This parameter is used to control the width of gaussian peak.
-
-### Returns
-* bmesh -> A linear mesh in [-5 * blur, 5 * blur].
-* gaussian -> A gaussian peak at `bmesh`.
-"""
-function make_gauss_peaks(blur::F64)
-    @assert blur > 0.0
-    nsize = 201
-    bmesh = collect(LinRange(-5.0 * blur, 5.0 * blur, nsize))
-    norm = 1.0 / (blur * sqrt(2.0 * π))
-    gaussian = norm * exp.(-0.5 * (bmesh / blur) .^ 2.0)
-    return bmesh, gaussian
 end
