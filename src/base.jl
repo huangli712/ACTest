@@ -28,6 +28,18 @@ function read_param()
     see_dict()
 end
 
+function make_data()
+end
+
+function make_peak()
+end
+
+function make_spectrum()
+end
+
+function make_green()
+end
+
 """
     make_grid()
 

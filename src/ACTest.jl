@@ -24,6 +24,7 @@ include("types.jl")
 include("util.jl")
 export welcome
 export overview
+export goodbye
 
 include("grid.jl")
 include("mesh.jl")
@@ -32,6 +33,12 @@ include("config.jl")
 include("inout.jl")
 include("base.jl")
 export read_param
+export make_data
+export make_peak
+export make_spectrum
+export make_green
+export make_grid
+export make_mesh
 
 """
     _precompile()
