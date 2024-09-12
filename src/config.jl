@@ -69,15 +69,23 @@ N/A
 See also: [`fil_dict`](@ref).
 """
 function see_dict()
+    println("atype   : ", get_t("atype")  )
+    println("ptype   : ", get_t("ptype")  )
     println("ktype   : ", get_t("ktype")  )
     println("grid    : ", get_t("grid")   )
     println("mesh    : ", get_t("mesh")   )
     println("ngrid   : ", get_t("ngrid")  )
     println("nmesh   : ", get_t("nmesh")  )
+    println("nspec   : ", get_t("nspec")  )
     println("wmax    : ", get_t("wmax")   )
     println("wmin    : ", get_t("wmin")   )
+    println("pmax    : ", get_t("pmax")   )
+    println("pmin    : ", get_t("pmin")   )
     println("beta    : ", get_t("beta")   )
+    println("noise   : ", get_t("noise")  )
     println("offdiag : ", get_t("offdiag"))
+    println("pwrite  : ", get_t("pwrite") )
+    println("lpeak   : ", get_t("lpeak")  )
     println("pmesh   : ", get_t("pmesh")  )
     #
     println()
