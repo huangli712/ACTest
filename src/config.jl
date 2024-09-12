@@ -121,7 +121,7 @@ See also: [`PTEST`](@ref).
 """
 @inline function get_t(key::String)
     if haskey(PTEST, key)
-        PBASE[key][1]
+        PTEST[key][1]
     else
         error("Sorry, PTEST does not contain key: $key")
     end
