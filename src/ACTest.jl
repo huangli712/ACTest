@@ -25,7 +25,13 @@ include("util.jl")
 export welcome
 export overview
 export goodbye
+
 include("math.jl")
+export trapz
+export simpson
+#
+export @einsum
+
 include("grid.jl")
 include("mesh.jl")
 include("peak.jl")
