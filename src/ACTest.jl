@@ -25,7 +25,7 @@ include("util.jl")
 export welcome
 export overview
 export goodbye
-
+include("math.jl")
 include("grid.jl")
 include("mesh.jl")
 include("peak.jl")
