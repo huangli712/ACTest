@@ -49,7 +49,6 @@ const PTEST    = Dict{String,ADT}(
     "ngrid"   => [missing, 1, :I64   , "Number of grid points"],
     "nmesh"   => [missing, 1, :I64   , "Number of mesh points"],
     "nspec"   => [missing, 1, :I64   , "Number of spectral functions"],
-    "npeak"   => [missing, 1, :I64   , "Number of peaks in the spectrum"],
     "wmax"    => [missing, 1, :F64   , "Right boundary (maximum value) of output mesh"],
     "wmin"    => [missing, 1, :F64   , "Left boundary (minimum value) of output mesh"],
     "pmax"    => [missing, 1, :F64   , "Right boundary (maximum value) for peaks"],
@@ -58,23 +57,29 @@ const PTEST    = Dict{String,ADT}(
     "noise"   => [missing, 1, :F64   , "Noise level"],
     "offdiag" => [missing, 1, :Bool  , "Is it the offdiagonal part in matrix-valued function"],
     "pwrite"  => [missing, 1, :Bool  , "Write the configuration or not"],
+    "lpeak"   => [missing, 1, :Array , "Number of peaks in the spectrum"],
     "pmesh"   => [missing, 0, :Array , "Additional parameters for customizing the mesh"],
 )
 
 # Default parameters for PTEST
 const _PTEST   = Dict{String,Any}(
-    "finput"  => "green.data",
-    "solver"  => "MaxEnt",
+    "atype"   => "cont",
+    "ptype"   => "gauss",
     "ktype"   => "fermi",
-    "mtype"   => "flat",
     "grid"    => "ffreq",
     "mesh"    => "linear",
     "ngrid"   => 10,
     "nmesh"   => 501,
+    "nspec"   => 100,
     "wmax"    => 5.0,
     "wmin"    => -5.0,
+    "pmax"    => 4.0,
+    "pmin"    => -4.0,
     "beta"    => 10.0,
+    "noise"   => 1.0e-6,
     "offdiag" => false,
+    "pwrite"  => true,
+    "lpeak"   => 3,
 )
 
 #=
