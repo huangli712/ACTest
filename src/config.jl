@@ -56,6 +56,31 @@ function fil_dict(cfg::Dict{String,Any})
 end
 
 """
+    chk_dict()
+
+Validate the correctness and consistency of configurations.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+
+See also: [`fil_dict`](@ref), [`_v`](@ref).
+"""
+function chk_dict()
+    @assert get_t("ktype") in ("fermi", "boson", "bsymm")
+    @assert get_t("grid") in ("ftime", "btime", "ffreq", "bfreq")
+    @assert get_t("mesh") in ("linear", "tangent", "lorentz", "halflorentz")
+    @assert get_t("ngrid") ≥ 1
+    @assert get_t("nmesh") ≥ 1
+    @assert get_t("wmax") > get_b("wmin")
+    @assert get_t("beta") ≥ 0.0
+
+    foreach(x -> _v(x.first, x.second), PTEST)
+end
+
+"""
     _v(key::String, val::Array{Any,1})
 
 Verify the value array. Called by chk_dict() function only.
