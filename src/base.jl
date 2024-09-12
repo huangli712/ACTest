@@ -77,32 +77,30 @@ function make_grid()
 end
 
 """
-    make_mesh(; T::DataType = F64)
+    make_mesh()
 
 Try to generate an uniform (linear) or non-uniform (non-linear) mesh for
-the spectral function in real axis. Notice that it supports arbitrary
-precision mesh. By default, the precision is F64. One can specify the
-precision by the argument `T`.
+the spectral function in real axis.
 
 ### Arguments
-See above explanations.
+N/A
 
 ### Returns
 * mesh -> Real frequency mesh. It should be a subtype of AbstractMesh.
 
 See also: [`LinearMesh`](@ref), [`TangentMesh`](@ref), [`LorentzMesh`](@ref).
 """
-function make_mesh(; T::DataType = F64)
+function make_mesh()
     # Predefined parameters for mesh generation
     #
     # Note that the parameters `f1` and `cut` are only for the generation
     # of the non-uniform mesh.
     #
-    f1::T = 2.1
-    cut::T = 0.01
+    f1::F64 = 2.1
+    cut::F64 = 0.01
 
-    # Setup parameters according to case.toml
-    pmesh = get_b("pmesh")
+    # Setup parameters according to act.toml
+    pmesh = get_t("pmesh")
     if !isa(pmesh, Missing)
         (length(pmesh) == 1) && begin
             Γ, = pmesh
@@ -112,11 +110,11 @@ function make_mesh(; T::DataType = F64)
     end
 
     # Get essential parameters
-    ktype = get_b("ktype")
-    nmesh = get_b("nmesh")
-    mesh = get_b("mesh")
-    wmax::T = get_b("wmax")
-    wmin::T = get_b("wmin")
+    ktype = get_t("ktype")
+    nmesh = get_t("nmesh")
+    mesh = get_t("mesh")
+    wmax::F64 = get_t("wmax")
+    wmin::F64 = get_t("wmin")
     #
     # For bosonic correlators of Hermitian operators, the spectral
     # function is defined in (0, ∞) only.
