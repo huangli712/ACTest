@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/11
+# Last modified: 2024/09/12
 #
 
 #=
@@ -41,22 +41,24 @@ The following dictionaries are used as global variables.
 Dictionary for configuration parameters: general setup.
 """
 const PTEST    = Dict{String,ADT}(
-    "finput"  => [missing, 1, :String, "Filename for input data"],
-    "solver"  => [missing, 1, :String, "Solver for the analytic continuation problem"],
+    "atype"   => [missing, 1, :String, "Type of spectral function"],
+    "ptype"   => [missing, 1, :String, "Type of peaks in the spectrum"],
     "ktype"   => [missing, 1, :String, "Type of kernel function"],
-    "mtype"   => [missing, 1, :String, "Type of default model function"],
     "grid"    => [missing, 1, :String, "Grid for input data (imaginary axis)"],
     "mesh"    => [missing, 1, :String, "Mesh for output data (real axis)"],
     "ngrid"   => [missing, 1, :I64   , "Number of grid points"],
     "nmesh"   => [missing, 1, :I64   , "Number of mesh points"],
+    "nspec"   => [missing, 1, :I64   , "Number of spectral functions"],
+    "npeak"   => [missing, 1, :I64   , "Number of peaks in the spectrum"],
     "wmax"    => [missing, 1, :F64   , "Right boundary (maximum value) of output mesh"],
     "wmin"    => [missing, 1, :F64   , "Left boundary (minimum value) of output mesh"],
+    "pmax"    => [missing, 1, :F64   , "Right boundary (maximum value) for peaks"],
+    "pmin"    => [missing, 1, :F64   , "Left boundary (minimum value) for peaks"],
     "beta"    => [missing, 1, :F64   , "Inverse temperature"],
+    "noise"   => [missing, 1, :F64   , "Noise level"],
     "offdiag" => [missing, 1, :Bool  , "Is it the offdiagonal part in matrix-valued function"],
-    "fwrite"  => [missing, 0, :Bool  , "Are the analytic continuation results written into files"],
-    "pmodel"  => [missing, 0, :Array , "Additional parameters for customizing the model"],
+    "pwrite"  => [missing, 1, :Bool  , "Write the configuration or not"],
     "pmesh"   => [missing, 0, :Array , "Additional parameters for customizing the mesh"],
-    "exclude" => [missing, 0, :Array , "Restriction of the energy range of the spectrum"],
 )
 
 # Default parameters for PTEST
