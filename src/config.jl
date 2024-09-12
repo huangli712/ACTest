@@ -56,6 +56,34 @@ function fil_dict(cfg::Dict{String,Any})
 end
 
 """
+    see_dict()
+
+Display all of the relevant configuration parameters to the terminal.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+
+See also: [`fil_dict`](@ref).
+"""
+function see_dict()
+    println("ktype   : ", get_t("ktype")  )
+    println("grid    : ", get_t("grid")   )
+    println("mesh    : ", get_t("mesh")   )
+    println("ngrid   : ", get_t("ngrid")  )
+    println("nmesh   : ", get_t("nmesh")  )
+    println("wmax    : ", get_t("wmax")   )
+    println("wmin    : ", get_t("wmin")   )
+    println("beta    : ", get_t("beta")   )
+    println("offdiag : ", get_t("offdiag"))
+    println("pmesh   : ", get_t("pmesh")  )
+    #
+    println()
+end
+
+"""
     chk_dict()
 
 Validate the correctness and consistency of configurations.
