@@ -95,41 +95,75 @@ the internal type system.
 abstract type AbstractGrid end
 
 """
-    ImaginaryTimeGrid
+    FermionicImaginaryTimeGrid
 
-Mutable struct. It represents the imaginary time grid.
+Mutable struct. It represents the fermionic imaginary time grid.
 
 ### Members
 * ntime -> Number of time slices.
 * β     -> Inverse temperature.
 * τ     -> Vector of grid points， τᵢ.
 
-See also: [`MatsubaraGrid`](@ref).
+See also: [`FermionicFragmentTimeGrid`](@ref).
 """
-mutable struct ImaginaryTimeGrid <: AbstractGrid
+mutable struct FermionicImaginaryTimeGrid{T} <: AbstractGrid
     ntime :: I64
-    β :: F64
-    τ :: Vector{F64}
+    β :: T
+    τ :: Vector{T}
 end
 
 """
-    MatsubaraGrid
+    FermionicMatsubaraGrid
 
-Mutable struct. It represents the Matsubara frequency grid.
+Mutable struct. It represents the fermionic Matsubara frequency grid.
 
 ### Members
-* type  -> Type of Matsubara grid (0 for bosonic, 1 for fermionic).
 * nfreq -> Number of Matsubara frequency points.
 * β     -> Inverse temperature.
 * ω     -> Vector of grid points, iωₙ.
 
-See also: [`ImaginaryTimeGrid`](@ref).
+See also: [`FermionicFragmentMatsubaraGrid`](@ref).
 """
-mutable struct MatsubaraGrid <: AbstractGrid
-    type :: I64
+mutable struct FermionicMatsubaraGrid{T} <: AbstractGrid
     nfreq :: I64
-    β :: F64
-    ω :: Vector{F64}
+    β :: T
+    ω :: Vector{T}
+end
+
+"""
+    BosonicImaginaryTimeGrid
+
+Mutable struct. It represents the bosonic imaginary time grid.
+
+### Members
+* ntime -> Number of time slices.
+* β     -> Inverse temperature.
+* τ     -> Vector of grid points, τᵢ.
+
+See also: [`BosonicFragmentTimeGrid`](@ref).
+"""
+mutable struct BosonicImaginaryTimeGrid{T} <: AbstractGrid
+    ntime :: I64
+    β :: T
+    τ :: Vector{T}
+end
+
+"""
+    BosonicMatsubaraGrid
+
+Mutable struct. It represents the bosonic Matsubara frequency grid.
+
+### Members
+* nfreq -> Number of Matsubara frequency points.
+* β     -> Inverse temperature.
+* ω     -> Vector of grid points, iωₙ.
+
+See also: [`BosonicFragmentMatsubaraGrid`](@ref).
+"""
+mutable struct BosonicMatsubaraGrid{T} <: AbstractGrid
+    nfreq :: I64
+    β :: T
+    ω :: Vector{T}
 end
 
 #=
