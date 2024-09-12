@@ -73,12 +73,17 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
+    g₁ = GaussianPeak(1.00, 0.20, 0.50)
+    g₂ = GaussianPeak(0.30, 0.80, -2.5)
+    image = g₁.(mesh.mesh) + g₂.(mesh.mesh)
+    image = image ./ trapz(mesh,image)
+
     #for i = 1:nspec
     #    @printf("[dataset]: %4i / %4i\n", i, nspec)
-
     #end
 
-    
+    write_spectrum(mesh, image)
+
     println()
 end
 

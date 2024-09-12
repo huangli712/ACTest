@@ -13,6 +13,7 @@
 module ACTest
 
 using Distributed
+using LinearAlgebra
 using Statistics
 using Random
 using Dates
