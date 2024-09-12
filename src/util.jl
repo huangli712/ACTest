@@ -7,6 +7,79 @@
 # Last modified: 2024/09/12
 #
 
+#=
+### *Basic Macros*
+=#
+
+"""
+    @pcs(x...)
+
+Try to print colorful strings. Here `x` is a combination of strings and
+colors. Its format likes `string1 color1 string2 color2 (repeat)`. For
+the supported colors, please check the global dict `COLORS`.
+
+### Examples
+```julia-repl
+julia> @pcs "Hello world!" blue
+julia> @pcs "Hello " red "world!" green
+```
+
+See also: [`COLORS`](@ref), [`welcome`](@ref).
+"""
+macro pcs(x...)
+    ex = quote
+        # The `args` is actually a Tuple
+        args = $x
+
+        # We have to make sure the strings and colors are paired.
+        @assert iseven(length(args))
+
+        for i = 1:2:length(args)
+            # Construct and check string
+            # Sometimes args[i] contains interpolated variables, its
+            # type is `Expr`. At this time, we have to evaluate this
+            # `Expr` at first to convert it to a format `String`.
+            str   = eval(args[i])
+            @assert str isa AbstractString
+            #
+            # Construct and check color
+            color = args[i+1]
+            @assert color isa Symbol
+
+            # Generate expression
+            print(eval(color)(str))
+        end
+    end
+
+    return :( $(esc(ex)) )
+end
+
+#=
+### *Query Runtime Environment*
+=#
+
+"""
+    require()
+
+Check the version of julia runtime environment. It should be higher
+than v1.6.x. One of the most important philosophies of the `ACTest`
+toolkit is minimizing the dependence on the third-party libraries as
+far as possible. Note that the `ACFlow` toolkit relys on the `TOML`
+package to parse the *.toml file. Only in v1.6.0 and higher versions,
+julia includes the `TOML` package in its standard library.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+"""
+function require()
+    if VERSION < v"1.6-"
+        error("Please upgrade your julia to v1.6.0 or higher")
+    end
+end
+
 """
     setup_args(x::Vararg{String})
 
@@ -86,9 +159,9 @@ N/A
 N/A
 """
 function welcome()
-    println(  red("╔═╗╔═╗╔═╗"), magenta("┌─┐┌─┐┌┬┐"))
-    println(green("╠═╣║  ╠╣ "), magenta("├┤ └─┐ │ "))
-    println( blue("╩ ╩╚═╝╚  "), magenta("└─┘└─┘ ┴ "))
+    println(  red("╔═╗╔═╗╔╦╗"), magenta("┌─┐┌─┐┌┬┐"))
+    println(green("╠═╣║   ║ "), magenta("├┤ └─┐ │ "))
+    println( blue("╩ ╩╚═╝ ╩ "), magenta("└─┘└─┘ ┴ "))
     #
     @pcs "An Automatic Spectral Function Generation Tool\n" black
     @pcs "Package: " black "$__LIBNAME__\n" magenta

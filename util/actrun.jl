@@ -13,4 +13,6 @@ push!(LOAD_PATH, "../src")
 
 using ACTest
 
+welcome()
+overview()
 read_param()
