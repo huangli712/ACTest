@@ -32,3 +32,25 @@ function inp_toml(f::String, necessary::Bool)
     end
 end
 
+"""
+    fil_dict(cfg::Dict{String,Any})
+
+Transfer configurations from dict `cfg` to internal dict (`PTEST`). In
+other words, all the relevant internal dicts should be filled / updated
+in this function.
+
+### Arguments
+* cfg -> A dict struct that contains all the configurations (from act.toml).
+
+### Returns
+N/A
+"""
+function fil_dict(cfg::Dict{String,Any})
+    for key in keys(cfg)
+        if haskey(PTEST, key)
+            PTEST[key][1] = cfg[key]
+        else
+            error("Sorry, $key is not supported currently")
+        end
+    end
+end
