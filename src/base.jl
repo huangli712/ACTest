@@ -73,10 +73,12 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    for i = 1:nspec
-        @printf("[dataset]: %4i / %4i\n", i, nspec)
-    end
+    #for i = 1:nspec
+    #    @printf("[dataset]: %4i / %4i\n", i, nspec)
 
+    #end
+
+    
     println()
 end
 
