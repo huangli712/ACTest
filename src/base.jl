@@ -174,3 +174,43 @@ function make_mesh()
             break
     end
 end
+
+"""
+    make_kernel(am::AbstractMesh, ag::AbstractGrid)
+
+Try to generate various kernel functions.
+
+### Arguments
+* am -> Real frequency mesh.
+* ag -> Imaginary axis grid.
+
+### Returns
+* kernel -> Kernel function, a 2D array, (ntime,nmesh) or (nfreq,nmesh).
+
+See also: [`AbstractMesh`](@ref), [`AbstractGrid`](@ref).
+"""
+function make_kernel(am::AbstractMesh, ag::AbstractGrid)
+    ktype = get_t("ktype")
+    grid = get_t("grid")
+
+    @cswitch ktype begin
+        @case "fermi"
+            @assert grid in ("ftime", "ffreq")
+            return build_kernel(am, ag)
+            break
+
+        @case "boson"
+            @assert grid in ("btime", "bfreq")
+            return build_kernel(am, ag)
+            break
+
+        @case "bsymm"
+            @assert grid in ("btime", "bfreq")
+            return build_kernel_symm(am, ag)
+            break
+
+        @default
+            sorry()
+            break
+    end
+end

@@ -39,6 +39,7 @@ export make_spectrum
 export make_green
 export make_grid
 export make_mesh
+export make_kernel
 
 """
     _precompile()
