@@ -29,3 +29,42 @@ function write_spectrum(am::AbstractMesh, Aout::Vector{F64})
         end
     end
 end
+
+"""
+    write_backward(ag::AbstractGrid, G::Vector{F64})
+
+We can use the calculated spectrum in real axis to reproduce the input
+data in imaginary axis. This function will write the reproduced data to
+`repr.data`, which can be compared with the original data. Here, `G` is
+the reproduced data.
+
+### Arguments
+* ag -> Grid for input data.
+* G  -> Reconstructed Green's function.
+
+### Returns
+N/A
+
+See also: [`reprod`](@ref).
+"""
+function write_backward(ag::AbstractGrid, G::Vector{F64})
+    ngrid = length(ag)
+    ng = length(G)
+    @assert ngrid == ng || ngrid * 2 == ng
+
+    # The reproduced data are defined in imaginary time axis.
+    if ngrid == ng
+        open("repr.data", "w") do fout
+            for i in eachindex(ag)
+                @printf(fout, "%16.12f %16.12f\n", ag[i], G[i])
+            end
+        end
+    # The reproduced data are defined in Matsubara frequency axis.
+    else
+        open("repr.data", "w") do fout
+            for i in eachindex(ag)
+                @printf(fout, "%16.12f %16.12f %16.12f\n", ag[i], G[i], G[i+ngrid])
+            end
+        end
+    end
+end
