@@ -69,6 +69,8 @@ N/A
 See also: [`fil_dict`](@ref).
 """
 function see_dict()
+    println("[ Configuration ]")
+    #
     println("atype   : ", get_t("atype")  )
     println("ptype   : ", get_t("ptype")  )
     println("ktype   : ", get_t("ktype")  )
