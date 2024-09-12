@@ -1,6 +1,6 @@
 # ACTest
 
-An Automatic Spectral Function Generator For Analytic Continuation Tools.
+An Automatic Spectral Function Generation Tool.
 
 ## Version
 
