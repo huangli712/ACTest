@@ -10,12 +10,12 @@ wmax = +5.0  # Right boundary
 nmesh = 2001 # Number of real-frequency points
 niw  = 10    # Number of Matsubara frequencies
 beta = 10.0  # Inverse temperature
-ϵ₁   = 0.50  # Parameters for gaussian peaks
+ϵ₁   = 2.50  # Parameters for gaussian peaks
 ϵ₂   = -2.5
-A₁   = 1.00
-A₂   = 0.30
-Γ₁   = 0.20
-Γ₂   = 0.80
+A₁   = 0.50
+A₂   = 0.50
+Γ₁   = 0.50
+Γ₂   = 0.50
 
 # Real frequency mesh
 rmesh = collect(LinRange(wmin, wmax, nmesh))
@@ -29,7 +29,7 @@ image = similar(rmesh)
 image = image ./ trapz(rmesh, image)
 
 # Matsubara frequency mesh
-iw = π / beta * (2.0 * collect(0:niw-1) .+ 1.0)
+iw = π / beta * (2.0 * collect(0:niw-1) .+ 0.0)
 
 # Noise
 seed = rand(1:100000000)
@@ -40,7 +40,14 @@ noise_phase = rand(rng, niw) * 2.0 * π
 noise = noise_abs .* exp.(noise_phase * im)
 
 # Kernel function
-kernel = 1.0 ./ (im * reshape(iw, (niw,1)) .- reshape(rmesh, (1,nmesh)))
+kernel = reshape(rmesh, (1,nmesh)) ./
+             (im * reshape(iw, (niw,1)) .- reshape(rmesh, (1,nmesh)))
+#
+# Locate the point at which ω = 0
+_, zero_point = findmin(abs.(rmesh))
+#
+# Treat special case with ωₙ = 0 and ω = 0
+kernel[1,zero_point] = -1.0
 
 # Build green's function
 KA = kernel .* reshape(image, (1,nmesh))
