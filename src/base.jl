@@ -135,28 +135,27 @@ end
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     offdiag = get_t("offdiag")
     lpeak = get_t("lpeak")
+
     npeak, = rand(rng, lpeak, 1)
-    @show lpeak
-    @show npeak
+    @printf("number of peaks : %2i\n", npeak)
 
     image = zeros(F64, length(mesh))
     ω = mesh.mesh
 
     for i = 1:npeak
-        𝑝 = make_peak(rng)
-        #
         if offdiag
             sign = rand(rng) > 0.5 ? 1.0 : -1.0
         else
             sign = 1.0
         end
+        @printf("sign : %4.2f\n", sign)
         #
-        @show sign
+        𝑝 = make_peak(rng)
         image = image + sign * 𝑝(ω)
     end
 
     if !offdiag
-    image = image ./ trapz(mesh,image)
+        image = image ./ trapz(mesh,image)
     end
 
     return image
