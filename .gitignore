@@ -1,7 +1,9 @@
 *~
 *.swp
 .DS_Store
+*.data.*
 *.data
+*.out
 Aout.*
 fmesh.inp
 model.inp

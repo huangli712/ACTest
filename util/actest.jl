@@ -10,6 +10,7 @@
 #
 
 push!(LOAD_PATH, "../src")
+push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACFlow/src/")
 
 using ACTest
 

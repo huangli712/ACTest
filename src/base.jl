@@ -81,14 +81,17 @@ function make_test()
     S = cfg["Solver"]
 
     for i = 1:nspec
-        @printf("test case : %6i", i)
+        @printf("test case -> %6i\n", i)
         B["finput"] = "green.data." * string(i)
         setup_param(B, S)
-        mesh, Aout, Gout = solve(read_data())
-
-        cp("Aout.data", "Aout.data." * string(i), force = true)
-        cp("Gout.data", "Gout.data." * string(i), force = true)
-        cp("repr.data", "repr.data." * string(i), force = true)
+        try
+            mesh, Aout, Gout = solve(read_data())
+            cp("Aout.data", "Aout.data." * string(i), force = true)
+            cp("Gout.data", "Gout.data." * string(i), force = true)
+            cp("repr.data", "repr.data." * string(i), force = true)
+        catch ex
+            println("something wrong for test case $i")
+        end
         println()
     end
 
