@@ -1,6 +1,5 @@
 [Test]
 solver  = "MaxEnt"
-atype   = "cont"
 ptype   = "gauss"
 ktype   = "boson"
 grid    = "bfreq"
@@ -22,6 +21,6 @@ lpeak   = [1,2,3,5,6]
 method = "chi2kink"
 stype  = "sj"
 nalph  = 12
-alpha  = 1e9
+alpha  = 1e12
 ratio  = 10.0
 blur   = -1.0
