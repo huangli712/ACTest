@@ -41,7 +41,7 @@ function write_spectrum(ind::I64, sf::SpectralFunction)
 end
 
 """
-    write_green(ag::AbstractGrid, G::Vector{F64})
+    write_backward(ag::AbstractGrid, G::Vector{F64})
 
 We can use the calculated spectrum in real axis to generate the Green's
 function data in imaginary axis. This function will write the data to
@@ -57,7 +57,7 @@ N/A
 
 See also: [`reprod`](@ref).
 """
-function write_green(ag::AbstractGrid, G::Vector{F64})
+function write_backward(ag::AbstractGrid, G::Vector{F64})
     ngrid = length(ag)
     ng = length(G)
     @assert ngrid == ng || ngrid * 2 == ng
@@ -72,6 +72,30 @@ function write_green(ag::AbstractGrid, G::Vector{F64})
     # The reproduced data are defined in Matsubara frequency axis.
     else
         open("green.data", "w") do fout
+            for i in eachindex(ag)
+                @printf(fout, "%16.12f %16.12f %16.12f\n", ag[i], G[i], G[i+ngrid])
+            end
+        end
+    end
+end
+
+function write_backward(ind::I64, green::GreenFunction)
+    @assert ind ≥ 1
+
+    ngrid = length(green.grid)
+    ng = length(green.green)
+    @assert ngrid == ng || ngrid * 2 == ng
+
+    # The reproduced data are defined in imaginary time axis.
+    if ngrid == ng
+        open("green.data." * string(ind), "w") do fout
+            for i in eachindex(ag)
+                @printf(fout, "%16.12f %16.12f\n", ag[i], G[i])
+            end
+        end
+    # The reproduced data are defined in Matsubara frequency axis.
+    else
+        open("green.data." * string(ind), "w") do fout
             for i in eachindex(ag)
                 @printf(fout, "%16.12f %16.12f %16.12f\n", ag[i], G[i], G[i+ngrid])
             end

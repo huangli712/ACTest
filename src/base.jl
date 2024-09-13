@@ -82,7 +82,7 @@ function make_data()
         sf = make_spectrum(rng, mesh)
         green = make_green(rng, sf, kernel, grid)
         write_spectrum(i, sf)
-        #write_backward(grid, G)
+        write_backward(i, green)
     end
 
     println()
