@@ -22,6 +22,7 @@
 
 ```@contents
 Pages = [
+    "library/grid.md",
     "library/mesh.md",
 ]
 Depth = 1
