@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/13
 #
 
 #=
@@ -278,7 +278,8 @@ mutable struct GaussianPeak <: AbstractPeak
 end
 
 mutable struct LorentzianPeak <: AbstractPeak
-    s :: F64
+    A :: F64
+    Γ :: F64
     ϵ :: F64
 end
 
