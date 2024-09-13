@@ -107,8 +107,9 @@ function make_peak(rng::AbstractRNG)
 
         @case "rectangle"
             c = rand(rng) * (pmax - pmin) + pmin
-            w = rand(rng) * min(c - pmin, pmax - c)
+            w = rand(rng) * min(c - pmin, pmax - c) * 2.0
             h = rand(rng)
+            @assert pmin ≤ c - w/2 ≤ c + w/2 ≤ pmax
             𝑝 = RectanglePeak(c, w, h)
             break
 

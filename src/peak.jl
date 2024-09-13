@@ -24,7 +24,7 @@ function (𝑝::LorentzianPeak)(ω::Vector{F64})
 end
 
 function (𝑝::RectanglePeak)(ω::F64)
-    if 𝑝.c - 𝑝.w ≤ ω ≤ 𝑝.c + 𝑝.w
+    if 𝑝.c - 𝑝.w / 2.0 ≤ ω ≤ 𝑝.c + 𝑝.w / 2.0
         return 𝑝.h
     else
         return zero(ω)
@@ -32,5 +32,8 @@ function (𝑝::RectanglePeak)(ω::F64)
 end
 
 function (𝑝::RectanglePeak)(ω::Vector{F64})
-    return map(x -> (𝑝.c - 𝑝.w ≤ x ≤ 𝑝.c + 𝑝.w) ? 𝑝.h : zero(eltype(ω)), ω )
+    function f(x)
+        𝑝.c - 𝑝.w / 2.0 ≤ x ≤ 𝑝.c + 𝑝.w / 2.0
+    end
+    return map(x -> f(x) ? 𝑝.h : zero(eltype(ω)), ω)
 end
