@@ -82,22 +82,29 @@ end
 function write_backward(ind::I64, green::GreenFunction)
     @assert ind ≥ 1
 
-    ngrid = length(green.grid)
-    ng = length(green.green)
+    ag = green.grid
+    G = green.green
+    err = green.error
+
+    ngrid = length(ag)
+    ng = length(G)
     @assert ngrid == ng || ngrid * 2 == ng
 
     # The reproduced data are defined in imaginary time axis.
     if ngrid == ng
         open("green.data." * string(ind), "w") do fout
             for i in eachindex(ag)
-                @printf(fout, "%16.12f %16.12f\n", ag[i], G[i])
+                @printf(fout, "%16.12f ", ag[i])
+                @printf(fout, "%16.12f %16.12f\n", G[i], err[i])
             end
         end
     # The reproduced data are defined in Matsubara frequency axis.
     else
         open("green.data." * string(ind), "w") do fout
             for i in eachindex(ag)
-                @printf(fout, "%16.12f %16.12f %16.12f\n", ag[i], G[i], G[i+ngrid])
+                @printf(fout, "%16.12f ", ag[i])
+                @printf(fout, "%16.12f %16.12f ", G[i], G[i+ngrid])
+                @printf(fout, "%16.12f %16.12f\n", err[i], err[i+ngrid])
             end
         end
     end
