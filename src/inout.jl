@@ -70,9 +70,17 @@ function write_backward(ag::AbstractGrid, G::Vector{F64})
 end
 
 function Base.show(io::IO, 𝑝::GaussianPeak)
+    println("peak type : gaussian")
+    @printf("    amplitude   : %16.12f\n", 𝑝.A)
+    @printf("    broadening  : %16.12f\n", 𝑝.Γ)
+    @printf("    shift       : %16.12f  ", 𝑝.ϵ)
 end
 
 function Base.show(io::IO, 𝑝::LorentzianPeak)
+    println("peak type : lorentzian")
+    @printf("    amplitude   : %16.12f\n", 𝑝.A)
+    @printf("    broadening  : %16.12f\n", 𝑝.Γ)
+    @printf("    shift       : %16.12f  ", 𝑝.ϵ)
 end
 
 function Base.show(io::IO, 𝑝::RectanglePeak)
