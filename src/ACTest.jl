@@ -21,9 +21,10 @@ using Printf
 using TOML
 
 include("global.jl")
-export I64
-export F64
-export C64
+export I32, I64, API
+export F32, F64, APF
+export C32, C64, APC
+export R32, R64, APR
 
 include("types.jl")
 export AbstractGrid
@@ -49,12 +50,19 @@ export simpson
 export @einsum
 
 include("grid.jl")
+export rebuild!
+export resize!
+export reverse!
+
 include("mesh.jl")
 export nearest
 
 include("peak.jl")
 include("config.jl")
 include("inout.jl")
+export write_spectrum
+export write_backward
+
 include("kernel.jl")
 
 include("base.jl")
