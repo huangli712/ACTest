@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/13
 #
 
 """
@@ -81,6 +81,13 @@ export nearest
 
 include("peak.jl")
 include("config.jl")
+export inp_toml
+export fil_dict
+export see_dict
+export chk_dict
+export _v
+export get_t
+
 include("inout.jl")
 export write_spectrum
 export write_backward
