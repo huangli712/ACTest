@@ -93,6 +93,8 @@ export write_spectrum
 export write_backward
 
 include("kernel.jl")
+export build_kernel
+export build_kernel_symm
 
 include("base.jl")
 export reprod
