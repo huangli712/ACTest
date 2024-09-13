@@ -1,3 +1,5 @@
+[Test]
+solver  = "MaxEnt"
 atype   = "cont"
 ptype   = "gauss"
 ktype   = "boson"
@@ -15,3 +17,11 @@ noise   = 1.0e-6
 offdiag = false
 pwrite  = true
 lpeak   = [1,2,3,5,6]
+
+[Solver]
+method = "chi2kink"
+stype  = "sj"
+nalph  = 12
+alpha  = 1e9
+ratio  = 10.0
+blur   = -1.0
