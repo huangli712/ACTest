@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/13
 #
 
 """
@@ -90,27 +90,34 @@ function make_data()
     println()
 end
 
-function make_peak()
+function make_peak(rng::AbstractRNG)
+    ptype = get_t("ptype")
+    pmax  = get_t("pmax")
+    pmin  = get_t("pmin")
+
+    A = rand(rng)
+    Γ = rand(rng)
+    ϵ = rand(rng) * (pmax - pmin) + pmin
+    g = GaussianPeak(A, Γ, ϵ)
+    @show A, Γ, ϵ
+
+    return g
 end
 
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
-    ptype = get_t("ptype")
     lpeak = get_t("lpeak")
-    pmax  = get_t("pmax")
-    pmin  = get_t("pmin")
     npeak, = rand(rng, lpeak, 1)
     @show lpeak
     @show npeak
 
     image = zeros(F64, length(mesh))
+    ω = mesh.mesh
+
     for i = 1:npeak
-        A = rand(rng)
-        Γ = rand(rng)
-        ϵ = rand(rng) * (pmax - pmin) + pmin
-        g = GaussianPeak(A, Γ, ϵ)
-        @show i, A, Γ, ϵ
-        image = image + g.(mesh.mesh)
+        g = make_peak(rng)
+        image = image + g.(ω)
     end
+
     image = image ./ trapz(mesh,image)
 
     return image
