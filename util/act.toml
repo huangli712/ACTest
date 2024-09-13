@@ -14,4 +14,4 @@ beta    = 10.0
 noise   = 1.0e-6
 offdiag = false
 pwrite  = true
-lpeak   = [1,2,3]
+lpeak   = [1,2,3,5,6]
