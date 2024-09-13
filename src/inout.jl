@@ -4,18 +4,18 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/13
 #
 
 """
     write_spectrum(am::AbstractMesh, Aout::Vector{F64})
 
-Write spectrum A(ω) to `Aout.data`. The grid is defined in `am`, and
+Write spectrum A(ω) to `image.data`. The grid is defined in `am`, and
 the spectral data are contained in `Aout`.
 
 ### Arguments
-* am   -> Real frequency mesh.
-* Aout -> Spectral function.
+* am   -> Real frequency mesh, ω.
+* Aout -> Spectral function, A(ω).
 
 ### Returns
 N/A
@@ -28,6 +28,9 @@ function write_spectrum(am::AbstractMesh, Aout::Vector{F64})
             @printf(fout, "%16.12f %16.12f\n", am[i], Aout[i])
         end
     end
+end
+
+function write_spectrum(ind::I64, sf::SpectralFunction)
 end
 
 """
