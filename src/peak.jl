@@ -11,9 +11,18 @@ function (𝑝::GaussianPeak)(ω::F64)
     return 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
 end
 
+function (𝑝::GaussianPeak)(ω::Vector{F64})
+    return @. 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
+end
+
 function (𝑝::LorentzianPeak)(ω::F64)
     return 𝑝.A / π * 𝑝.Γ / ((ω - 𝑝.ϵ) ^ 2.0 + 𝑝.Γ ^ 2.0)
 end
 
 function (𝑝::RectanglePeak)(ω::F64)
+    if 𝑝.c - 𝑝.w ω ≤ 𝑝.c + 𝑝.w
+        return 𝑝.h
+    else
+        return zero(ω)
+    end
 end

@@ -296,5 +296,3 @@ end
 
 mutable struct GreenFunction <: AbstractFunction
 end
-
-
