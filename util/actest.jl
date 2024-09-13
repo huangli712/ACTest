@@ -6,7 +6,7 @@
 #
 # Usage:
 #
-#     $ acgen.jl act.toml
+#     $ actest.jl act.toml
 #
 
 push!(LOAD_PATH, "../src")
@@ -16,5 +16,4 @@ using ACTest
 welcome()
 overview()
 read_param()
-make_data()
 goodbye()
