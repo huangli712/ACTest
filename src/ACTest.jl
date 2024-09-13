@@ -20,6 +20,8 @@ using Dates
 using Printf
 using TOML
 
+using ACFlow
+
 include("global.jl")
 export I32, I64, API
 export F32, F64, APF
@@ -64,7 +66,6 @@ export sorry
 export prompt
 export line_to_array
 
-
 include("math.jl")
 export trapz
 export simpson
@@ -100,6 +101,7 @@ export build_kernel_symm
 include("base.jl")
 export reprod
 export read_param
+export make_test
 export make_data
 export make_peak
 export make_spectrum

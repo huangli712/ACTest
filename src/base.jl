@@ -59,10 +59,44 @@ function read_param()
 end
 
 function make_test()
+    nspec = get_t("nspec")
+
+    B = Dict{String,Any}(
+        "finput" => "green.data",
+        "solver" => get_t("solver"),
+        "ktype"  => get_t("ktype"),
+        "mtype"  => "flat",
+        "grid"   => get_t("grid"),
+        "mesh"   => get_t("mesh"),
+        "ngrid"  => get_t("ngrid"),
+        "nmesh"  => get_t("nmesh"),
+        "wmax"   => get_t("wmax"),
+        "wmin"   => get_t("wmin"),
+        "beta"   => get_t("beta"),
+        "offdiag" => get_t("offdiag"),
+        "pmesh" => get_t("pmesh"),
+    )
+
+    cfg = inp_toml(query_args(), true)
+    S = cfg["Solver"]
+
+    for i = 1:nspec
+        @printf("test case : %6i", i)
+        B["finput"] = "green.data." * string(i)
+        setup_param(B, S)
+        mesh, Aout, Gout = solve(read_data())
+
+        cp("Aout.data", "Aout.data." * string(i), force = true)
+        cp("Gout.data", "Gout.data." * string(i), force = true)
+        cp("repr.data", "repr.data." * string(i), force = true)
+        println()
+    end
+
 end
 
 function make_data()
     nspec = get_t("nspec")
+
     rng = MersenneTwister(rand(1:10000) * myid() + 1981)
 
     # Prepare grid for input data
@@ -77,15 +111,14 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    for i = 1:1
+    for i = 1:nspec
         @printf("[dataset]: %4i / %4i\n", i, nspec)
         sf = make_spectrum(rng, mesh)
         green = make_green(rng, sf, kernel, grid)
         write_spectrum(i, sf)
         write_backward(i, green)
+        println()
     end
-
-    println()
 end
 
 function make_peak(rng::AbstractRNG)
