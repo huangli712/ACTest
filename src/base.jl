@@ -95,13 +95,36 @@ function make_peak(rng::AbstractRNG)
     pmax  = get_t("pmax")
     pmin  = get_t("pmin")
 
-    A = rand(rng)
-    Γ = rand(rng)
-    ϵ = rand(rng) * (pmax - pmin) + pmin
-    g = GaussianPeak(A, Γ, ϵ)
-    @show A, Γ, ϵ
+    @cswitch ptype begin
+        @case "gauss"
+            A = rand(rng)
+            Γ = rand(rng)
+            ϵ = rand(rng) * (pmax - pmin) + pmin
+            𝑝 = GaussianPeak(A, Γ, ϵ)
+            @show A, Γ, ϵ
+            break
+    
+        @case "lorentz"
+            A = rand(rng)
+            Γ = rand(rng)
+            ϵ = rand(rng) * (pmax - pmin) + pmin
+            𝑝 = LorentzianPeak(A, Γ, ϵ)
+            @show A, Γ, ϵ
 
-    return g
+        @case "rectangle"
+            c = rand(rng) * (pmax - pmin) + pmin
+            w = rand(rng) * min(c - pmin, pmax - c)
+            h = rand(rng)
+            𝑝 = RectanglePeak(c, w, h)
+            @show c, w, h
+            break
+
+        @default
+            sorry()
+            break
+    end
+
+    return 𝑝
 end
 
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
@@ -115,7 +138,7 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
 
     for i = 1:npeak
         g = make_peak(rng)
-        image = image + g.(ω)
+        image = image + g(ω)
     end
 
     image = image ./ trapz(mesh,image)
