@@ -23,6 +23,14 @@ function (𝑝::LorentzianPeak)(ω::Vector{F64})
     return @. 𝑝.A / π * 𝑝.Γ / ((ω - 𝑝.ϵ) ^ 2.0 + 𝑝.Γ ^ 2.0)
 end
 
+function (𝑝::DeltaPeak)(ω::F64)
+    return 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
+end
+
+function (𝑝::DeltaPeak)(ω::Vector{F64})
+    return @. 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
+end
+
 function (𝑝::RectanglePeak)(ω::F64)
     if 𝑝.c - 𝑝.w / 2.0 ≤ ω ≤ 𝑝.c + 𝑝.w / 2.0
         return 𝑝.h

@@ -105,6 +105,13 @@ function make_peak(rng::AbstractRNG)
             𝑝 = LorentzianPeak(A, Γ, ϵ)
             break
 
+        @case "delta"
+            A = rand(rng)
+            Γ = 0.01 # Very sharp gaussian peak
+            ϵ = rand(rng) * (pmax - pmin) + pmin
+            𝑝 = DeltaPeak(A, Γ, ϵ)
+            break
+
         @case "rectangle"
             c = rand(rng) * (pmax - pmin) + pmin
             w = rand(rng) * min(c - pmin, pmax - c) * 2.0
