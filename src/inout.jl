@@ -71,21 +71,21 @@ end
 
 function Base.show(io::IO, 𝑝::GaussianPeak)
     println("peak type : gaussian")
-    @printf("    amplitude   : %16.12f\n", 𝑝.A)
-    @printf("    broadening  : %16.12f\n", 𝑝.Γ)
-    @printf("    shift       : %16.12f  ", 𝑝.ϵ)
+    @printf("  amplitude   : %16.12f\n", 𝑝.A)
+    @printf("  broadening  : %16.12f\n", 𝑝.Γ)
+    @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
 function Base.show(io::IO, 𝑝::LorentzianPeak)
     println("peak type : lorentzian")
-    @printf("    amplitude   : %16.12f\n", 𝑝.A)
-    @printf("    broadening  : %16.12f\n", 𝑝.Γ)
-    @printf("    shift       : %16.12f  ", 𝑝.ϵ)
+    @printf("  amplitude   : %16.12f\n", 𝑝.A)
+    @printf("  broadening  : %16.12f\n", 𝑝.Γ)
+    @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
 function Base.show(io::IO, 𝑝::RectanglePeak)
     println("peak type : rectangle")
-    @printf("    center : %16.12f\n", 𝑝.c)
-    @printf("    width  : %16.12f\n", 𝑝.w)
-    @printf("    height : %16.12f  ", 𝑝.h)
+    @printf("  center : %16.12f\n", 𝑝.c)
+    @printf("  width  : %16.12f\n", 𝑝.w)
+    @printf("  height : %16.12f  ", 𝑝.h)
 end
