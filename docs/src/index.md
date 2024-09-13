@@ -26,7 +26,7 @@ Pages = [
     "library/actest.md",
     "library/global.md",
     "library/types.md",
-     "library/base.md",
+    "library/base.md",
     "library/grid.md",
     "library/mesh.md",
     "library/kernel.md",
