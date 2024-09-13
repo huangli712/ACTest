@@ -80,6 +80,7 @@ include("mesh.jl")
 export nearest
 
 include("peak.jl")
+
 include("config.jl")
 export inp_toml
 export fil_dict
@@ -106,6 +107,12 @@ export make_green
 export make_grid
 export make_mesh
 export make_kernel
+
+#=
+### *PreCompile*
+=#
+
+export _precompile
 
 """
     _precompile()
