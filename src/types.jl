@@ -42,7 +42,6 @@ Dictionary for configuration parameters: general setup.
 """
 const PTEST    = Dict{String,ADT}(
     "solver"  => [missing, 1, :String, "Name of analytic continuation solver"],
-    "atype"   => [missing, 1, :String, "Type of spectral function"],
     "ptype"   => [missing, 1, :String, "Type of peaks in the spectrum"],
     "ktype"   => [missing, 1, :String, "Type of kernel function"],
     "grid"    => [missing, 1, :String, "Grid for input data (imaginary axis)"],
@@ -65,7 +64,6 @@ const PTEST    = Dict{String,ADT}(
 # Default parameters for PTEST
 const _PTEST   = Dict{String,Any}(
     "solver"  => "MaxEnt",
-    "atype"   => "cont",
     "ptype"   => "gauss",
     "ktype"   => "fermi",
     "grid"    => "ffreq",

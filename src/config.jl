@@ -73,7 +73,6 @@ function see_dict()
     println("[ Configuration ]")
     #
     println("solver  : ", get_t("solver") )
-    println("atype   : ", get_t("atype")  )
     println("ptype   : ", get_t("ptype")  )
     println("ktype   : ", get_t("ktype")  )
     println("grid    : ", get_t("grid")   )
