@@ -19,3 +19,9 @@
 ## Manual
 
 ## Library
+
+```@contents
+Pages = [
+    "library/mesh.md",
+]
+Depth = 1
