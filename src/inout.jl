@@ -68,3 +68,16 @@ function write_backward(ag::AbstractGrid, G::Vector{F64})
         end
     end
 end
+
+function Base.show(io::IO, 𝑝::GaussianPeak)
+end
+
+function Base.show(io::IO, 𝑝::LorentzianPeak)
+end
+
+function Base.show(io::IO, 𝑝::RectanglePeak)
+    println("peak type : rectangle")
+    @printf("    center : %16.12f\n", 𝑝.c)
+    @printf("    width  : %16.12f\n", 𝑝.w)
+    @printf("    height : %16.12f  ", 𝑝.h)
+end

@@ -74,11 +74,6 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    #g₁ = GaussianPeak(1.00, 0.20, 0.50)
-    #g₂ = GaussianPeak(0.30, 0.80, -2.5)
-    #image = g₁.(mesh.mesh) + g₂.(mesh.mesh)
-    #image = image ./ trapz(mesh,image)
-
     for i = 1:1
         @printf("[dataset]: %4i / %4i\n", i, nspec)
         image = make_spectrum(rng, mesh)
@@ -101,7 +96,6 @@ function make_peak(rng::AbstractRNG)
             Γ = rand(rng)
             ϵ = rand(rng) * (pmax - pmin) + pmin
             𝑝 = GaussianPeak(A, Γ, ϵ)
-            @show A, Γ, ϵ
             break
     
         @case "lorentz"
@@ -109,20 +103,20 @@ function make_peak(rng::AbstractRNG)
             Γ = rand(rng)
             ϵ = rand(rng) * (pmax - pmin) + pmin
             𝑝 = LorentzianPeak(A, Γ, ϵ)
-            @show A, Γ, ϵ
+            break
 
         @case "rectangle"
             c = rand(rng) * (pmax - pmin) + pmin
             w = rand(rng) * min(c - pmin, pmax - c)
             h = rand(rng)
             𝑝 = RectanglePeak(c, w, h)
-            @show c, w, h
             break
 
         @default
             sorry()
             break
     end
+    println(𝑝)
 
     return 𝑝
 end
