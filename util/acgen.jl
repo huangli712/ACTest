@@ -1,12 +1,12 @@
 #!/usr/bin/env julia
   
 #
-# This script is used to start analytic continuation simulations.
-# It will launch only 1 process.
+# This script is used to generate spectral functions and corresponding
+# correlation functions. It will launch only 1 process.
 #
 # Usage:
 #
-#     $ actrun.jl act.toml
+#     $ acgen.jl act.toml
 #
 
 push!(LOAD_PATH, "../src")
