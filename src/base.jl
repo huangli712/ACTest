@@ -58,6 +58,9 @@ function read_param()
     see_dict()
 end
 
+function make_test()
+end
+
 function make_data()
     nspec = get_t("nspec")
     rng = MersenneTwister(rand(1:10000) * myid() + 1981)
