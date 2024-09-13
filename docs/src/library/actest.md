@@ -5,12 +5,12 @@
 ## Modules
 
 ```@docs
-ACFlow
+ACTest
 ```
 
 ## Initialization
 
 ```@docs
 _precompile
-ACFlow.__init__
+ACTest.__init__
 ```
