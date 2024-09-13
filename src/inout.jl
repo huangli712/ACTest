@@ -83,6 +83,13 @@ function Base.show(io::IO, 𝑝::LorentzianPeak)
     @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
+function Base.show(io::IO, 𝑝::DeltaPeak)
+    println("peak type : delta")
+    @printf("  amplitude   : %16.12f\n", 𝑝.A)
+    @printf("  broadening  : %16.12f\n", 𝑝.Γ)
+    @printf("  shift       : %16.12f  ", 𝑝.ϵ)
+end
+
 function Base.show(io::IO, 𝑝::RectanglePeak)
     println("peak type : rectangle")
     @printf("  center : %16.12f\n", 𝑝.c)

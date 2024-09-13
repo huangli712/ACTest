@@ -283,6 +283,12 @@ mutable struct LorentzianPeak <: AbstractPeak
     ϵ :: F64
 end
 
+mutable struct DeltaPeak <: AbstractPeak
+    A :: F64
+    Γ :: F64
+    ϵ :: F64
+end
+
 mutable struct RectanglePeak <: AbstractPeak
     c :: F64
     w :: F64
