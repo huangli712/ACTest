@@ -79,10 +79,10 @@ function make_data()
 
     for i = 1:1
         @printf("[dataset]: %4i / %4i\n", i, nspec)
-        image = make_spectrum(rng, mesh)
-        G = reprod(mesh, kernel, image)
-        write_spectrum(mesh, image)
-        write_backward(grid, G)
+        sf = make_spectrum(rng, mesh)
+        green = make_green(rng, sf, kernel, grid)
+        write_spectrum(i, sf)
+        #write_backward(grid, G)
     end
 
     println()
@@ -158,10 +158,33 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
         image = image ./ trapz(mesh,image)
     end
 
-    return image
+    return SpectralFunction(mesh, image)
 end
 
-function make_green()
+function make_green(
+    rng::AbstractRNG,
+    sf::SpectralFunction,
+    kernel::Matrix{F64},
+    grid::AbstractGrid
+    )
+    δ = get_t("noise")
+
+    # Calculate Green's function
+    green = reprod(sf.mesh, kernel, sf.image)
+
+    # Setup standard deviation
+    ngrid = length(green)
+    if δ < 0.0
+        δ = 0.0
+        error = fill(1.0e-4, ngrid)
+    else
+        error = fill(δ, ngrid)
+    end
+
+    # Setup random noise
+    noise = randn(rng, F64, ngrid) * δ
+
+    return GreenFunction(grid, green .+ noise, error)
 end
 
 """

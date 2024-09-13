@@ -300,7 +300,12 @@ end
 abstract type AbstractFunction end
 
 mutable struct SpectralFunction <: AbstractFunction
+    mesh  :: AbstractMesh
+    image :: Vector{F64}
 end
 
 mutable struct GreenFunction <: AbstractFunction
+    grid :: AbstractGrid
+    green :: Vector{F64}
+    error :: Vector{F64}
 end
