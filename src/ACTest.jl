@@ -25,6 +25,12 @@ export I32, I64, API
 export F32, F64, APF
 export C32, C64, APC
 export R32, R64, APR
+export N32, N64, APN
+export __LIBNAME__
+export __VERSION__
+export __RELEASE__
+export __AUTHORS__
+export authors
 
 include("types.jl")
 export AbstractGrid
