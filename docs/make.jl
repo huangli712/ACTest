@@ -20,6 +20,18 @@ makedocs(
     pages = [
         "Home" => "index.md",
         "Library" => Any[
+            "Outline" => "library/outline.md",
+            "ACTest" => "library/actest.md",
+            "Constants" => "library/global.md",
+            "Types" => "library/type.md",
+            "Core" => "library/base.md",
+            "Grids" => "library/grid.md",
+            "Meshes" => "library/mesh.md",
+            "Kernels" => "library/kernel.md",
+            "Configuration" => "library/config.md",
+            "Input and output" => "library/inout.md",
+            "Math" => "library/math.md",
+            "Utilities" => "library/util.md",
         ],
     ],
 )
