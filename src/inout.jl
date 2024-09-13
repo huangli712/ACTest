@@ -23,7 +23,7 @@ N/A
 function write_spectrum(am::AbstractMesh, Aout::Vector{F64})
     @assert length(am) == length(Aout)
 
-    open("Aout.data", "w") do fout
+    open("image.data", "w") do fout
         for i in eachindex(am)
             @printf(fout, "%16.12f %16.12f\n", am[i], Aout[i])
         end
@@ -31,6 +31,13 @@ function write_spectrum(am::AbstractMesh, Aout::Vector{F64})
 end
 
 function write_spectrum(ind::I64, sf::SpectralFunction)
+    @assert ind ≥ 1
+
+    open("image.data." * string(ind), "w") do fout
+        for i in eachindex(sf.mesh)
+            @printf(fout, "%16.12f %16.12f\n", sf.mesh[i], sf.image[i])
+        end
+    end
 end
 
 """
