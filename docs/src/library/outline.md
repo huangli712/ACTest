@@ -3,11 +3,10 @@
 ## Contents
 
 ```@contents
-Pages = ["acflow.md",
+Pages = ["actest.md",
          "global.md",
          "type.md",
          "base.md",
-         "solver.md",
          "grid.md",
          "mesh.md",
          "model.md",
@@ -25,34 +24,34 @@ Depth = 2
 ### Modules
 
 ```@index
-Modules = [ACFlow]
+Modules = [ACTest]
 Order = [:module]
 ```
 
 ### Constants
 
 ```@index
-Modules = [ACFlow]
+Modules = [ACTest]
 Order = [:constant]
 ```
 
 ### Types
 
 ```@index
-Modules = [ACFlow]
+Modules = [ACTest]
 Order = [:type]
 ```
 
 ### Macros
 
 ```@index
-Modules = [ACFlow]
+Modules = [ACTest]
 Order = [:macro]
 ```
 
 ### Functions
 
 ```@index
-Modules = [ACFlow]
+Modules = [ACTest]
 Order = [:function]
 ```
