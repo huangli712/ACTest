@@ -19,10 +19,18 @@ function (𝑝::LorentzianPeak)(ω::F64)
     return 𝑝.A / π * 𝑝.Γ / ((ω - 𝑝.ϵ) ^ 2.0 + 𝑝.Γ ^ 2.0)
 end
 
+function (𝑝::LorentzianPeak)(ω::Vector(F64))
+    return @. 𝑝.A / π * 𝑝.Γ / ((ω - 𝑝.ϵ) ^ 2.0 + 𝑝.Γ ^ 2.0)
+end
+
 function (𝑝::RectanglePeak)(ω::F64)
-    if 𝑝.c - 𝑝.w ω ≤ 𝑝.c + 𝑝.w
+    if 𝑝.c - 𝑝.w ≤ ω ≤ 𝑝.c + 𝑝.w
         return 𝑝.h
     else
         return zero(ω)
     end
+end
+
+function (𝑝::RectanglePeak)(ω::Vector{F64})
+    return map(x -> (𝑝.c - 𝑝.w ≤ x ≤ 𝑝.c + 𝑝.w) ? 𝑝.h : zero(eltype(ω)), ω )
 end
