@@ -46,9 +46,10 @@ in this function.
 N/A
 """
 function fil_dict(cfg::Dict{String,Any})
-    for key in keys(cfg)
+    TEST = cfg["Test"]
+    for key in keys(TEST)
         if haskey(PTEST, key)
-            PTEST[key][1] = cfg[key]
+            PTEST[key][1] = TEST[key]
         else
             error("Sorry, $key is not supported currently")
         end
@@ -71,6 +72,7 @@ See also: [`fil_dict`](@ref).
 function see_dict()
     println("[ Configuration ]")
     #
+    println("solver  : ", get_t("solver") )
     println("atype   : ", get_t("atype")  )
     println("ptype   : ", get_t("ptype")  )
     println("ktype   : ", get_t("ktype")  )
