@@ -311,7 +311,26 @@ export chk_dict
 export _v
 export get_t
 
+#=
+### *Includes And Exports* : *inout.jl*
+=#
+
+#=
+*Summary* :
+
+To read the input data or write the calculated results.
+
+*Members* :
+
+```text
+write_spectrum -> Write spectral functions.
+write_backward -> Write reproduced input data in imaginary axis.
+```
+=#
+
+#
 include("inout.jl")
+#
 export write_spectrum
 export write_backward
 
