@@ -236,12 +236,33 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     return SpectralFunction(mesh, image)
 end
 
+"""
+    make_green(
+        rng::AbstractRNG,
+        sf::SpectralFunction,
+        kernel::Matrix{F64},
+        grid::AbstractGrid
+    )
+
+For given spectral function A and kernel matrix K, try to generate the
+corresponding correlation function G ≡ KA.
+
+### Arguments
+* rng -> Random number generator.
+* sf -> A SpectralFunction struct, A(ω).
+* kernel -> Kernel matrix.
+* grid -> Grid for correlation function.
+
+### Returns
+* gf -> A GreenFunction struct.
+"""
 function make_green(
     rng::AbstractRNG,
     sf::SpectralFunction,
     kernel::Matrix{F64},
     grid::AbstractGrid
     )
+    # Get the noise level
     δ = get_t("noise")
 
     # Calculate Green's function
