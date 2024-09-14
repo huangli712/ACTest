@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/15
 #
 
 """
@@ -82,7 +82,51 @@ export __AUTHORS__
 #
 export authors
 
+#=
+### *Includes And Exports* : *types.jl*
+=#
+
+#=
+*Summary* :
+
+Define some dicts and structs, which are used to store the config
+parameters or represent some essential data structures.
+
+*Members* :
+
+```text
+DType           -> Customized type.
+ADT             -> Customized type.
+#
+PTEST           -> Configuration dict for general setup.
+#
+AbstractGrid    -> Abstract mesh for input data.
+FermionicImaginaryTimeGrid -> Grid in fermionic imaginary time axis.
+FermionicMatsubaraGrid -> Grid in fermionic Matsubara frequency axis.
+BosonicImaginaryTimeGrid -> Grid in bosonic imaginary time axis.
+BosonicMatsubaraGrid -> Grid in bosonic Matsubara frequency axis.
+#
+AbstractMesh    -> Abstract grid for calculated spectral function.
+LinearMesh      -> Linear mesh.
+TangentMesh     -> Tangent mesh.
+LorentzMesh     -> Lorentzian mesh.
+HalfLorentzMesh -> Lorentzian mesh at half-positive axis.
+#
+AbstractPeak    -> Abstract peak in spectral function.
+GaussianPeak    -> Gaussian peak in spectral function.
+LorentzianPeak  -> Lorentzian peak in spectral function.
+DeltaPeak       -> δ-like peak in spectral function.
+RectanglePeak   -> Rectangle peak in spectral function.
+#
+AbstractFunction -> Abstract function.
+SpectralFunction -> Spectral function.
+GreenFunction   -> Green's function.
+```
+=#
+
+#
 include("types.jl")
+#
 export DType
 export ADT
 #
@@ -99,6 +143,16 @@ export LinearMesh
 export TangentMesh
 export LorentzMesh
 export HalfLorentzMesh
+#
+export AbstractPeak
+export GaussianPeak
+export LorentzianPeak
+export DeltaPeak
+export RectanglePeak
+#
+export AbstractFunction
+export SpectralFunction
+export GreenFunction
 
 include("util.jl")
 export @cswitch
