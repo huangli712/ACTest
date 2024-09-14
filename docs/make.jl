@@ -25,6 +25,8 @@ makedocs(
             "Constants" => "library/global.md",
             "Types" => "library/type.md",
             "Core" => "library/base.md",
+            "Peaks" => "library/peak.md",
+            "Spectra" => "library/spectrum.md",
             "Grids" => "library/grid.md",
             "Meshes" => "library/mesh.md",
             "Kernels" => "library/kernel.md",
