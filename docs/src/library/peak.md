@@ -22,3 +22,12 @@ LorentzianPeak
 DeltaPeak
 RectanglePeak
 ```
+
+## Base.* Functions
+
+```@docs
+Base.show(io::IO, 𝑝::GaussianPeak)
+Base.show(io::IO, 𝑝::LorentzianPeak)
+Base.show(io::IO, 𝑝::DeltaPeak)
+Base.show(io::IO, 𝑝::RectanglePeak)
+```

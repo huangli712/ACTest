@@ -1,10 +1,10 @@
 # ACTest
 
-*An automatic spectral function generation tool in Julia.*
+*A spectral function and correlation function generator in Julia.*
 
 !!! info
 
-    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v0.0.2-devel.240913.
+    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v0.2.0-devel.240915.
 
 !!! note
 
@@ -27,6 +27,8 @@ Pages = [
     "library/global.md",
     "library/types.md",
     "library/base.md",
+    "library/peak.md",
+    "library/spectrum.md",
     "library/grid.md",
     "library/mesh.md",
     "library/kernel.md",
