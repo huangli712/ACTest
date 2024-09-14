@@ -311,6 +311,17 @@ mutable struct LorentzianPeak <: AbstractPeak
     ϵ :: F64
 end
 
+"""
+    DeltaPeak
+
+Mutable struct. It represents the δ-like peak. Actually, it is a variation
+of the GaussianPeak with Γ = 0.01.
+
+### Members
+* A -> Amplitude of the peak.
+* Γ -> Broadening of the peak.
+* ϵ -> shift of the peak.
+"""
 mutable struct DeltaPeak <: AbstractPeak
     A :: F64
     Γ :: F64
