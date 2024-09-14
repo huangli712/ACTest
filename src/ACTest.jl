@@ -201,7 +201,29 @@ export sorry
 export prompt
 export line_to_array
 
+#=
+### *Includes And Exports* : *math.jl*
+=#
+
+#=
+*Summary* :
+
+To provide some numerical algorithms, such as numerical integrations
+and Einstein summation notation.
+
+*Members* :
+
+```text
+trapz     -> Numerical integration (composite trapezoidal rule).
+simpson   -> Numerical integration (simpson rule).
+#
+@einsum   -> Macro for Einstein summation notation.
+```
+=#
+
+#
 include("math.jl")
+#
 export trapz
 export simpson
 #
