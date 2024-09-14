@@ -155,13 +155,18 @@ N/A
 See also: [`fil_dict`](@ref), [`_v`](@ref).
 """
 function chk_dict()
+    @assert get_t("solver") in ("MaxEnt", "BarRat", "NevanAC", "StochAC", "StochSK", "StochOM", "StochPX")
+    @assert get_t("ptype") in ("gauss", "lorentz", "delta", "rectangle")
     @assert get_t("ktype") in ("fermi", "boson", "bsymm")
     @assert get_t("grid") in ("ftime", "btime", "ffreq", "bfreq")
     @assert get_t("mesh") in ("linear", "tangent", "lorentz", "halflorentz")
     @assert get_t("ngrid") ≥ 1
     @assert get_t("nmesh") ≥ 1
+    @assert get_t("ntest") ≥ 1
     @assert get_t("wmax") > get_t("wmin")
+    @assert get_t("pmax") > get_t("pmin")
     @assert get_t("beta") ≥ 0.0
+    @assert all(x -> x > 0, get_t("lpeak"))
 
     foreach(x -> _v(x.first, x.second), PTEST)
 end
