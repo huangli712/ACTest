@@ -369,16 +369,16 @@ To provide basic workflow for the users of the ACFlow toolkit.
 *Members* :
 
 ```text
-reprod      -> Try to generate the input data via calculated spectrum.
+reprod      -> Try to generate the correlator via calculated spectrum.
 #
 setup_param -> Setup parameters.
 read_param  -> Read parameters from case.toml.
 #
-make_data   -> Preprocess the input data.
-make_peak
-make_spectrum
-make_green
-make_grid   -> Generate grid for the input data.
+make_data   -> Generate spectral functions and corresponding correlators.
+make_peak   -> Generate various peaks.
+make_spectrum -> Generate spectral function by peaks.
+make_green  -> Generate Green's functions at imaginary axis.
+make_grid   -> Generate grid for the Green's function data.
 make_mesh   -> Generate mesh for the calculated spectrum.
 make_kernel -> Generate kernel function.
 ```
