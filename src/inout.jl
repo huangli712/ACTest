@@ -99,7 +99,7 @@ Write the Green's function data to `green.data.i`. All information about
 the Green's function is included in `gf`.
 
 ### Arguments
-* ind -> Index for the spectral function.
+* ind -> Index for the Green's function.
 * gf -> A GreenFunction struct.
 
 ### Returns
@@ -107,12 +107,12 @@ N/A
 
 See also: [`reprod`](@ref).
 """
-function write_backward(ind::I64, green::GreenFunction)
+function write_backward(ind::I64, gf::GreenFunction)
     @assert ind ≥ 1
 
-    ag = green.grid
-    G = green.green
-    err = green.error
+    ag = gf.grid
+    G = gf.green
+    err = gf.error
 
     ngrid = length(ag)
     ng = length(G)
