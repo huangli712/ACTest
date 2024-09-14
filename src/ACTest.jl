@@ -277,10 +277,36 @@ export nearest
 
 include("peak.jl")
 
+#=
+### *Includes And Exports* : *config.jl*
+=#
+
+#=
+*Summary* :
+
+To extract, parse, verify, and print the configuration parameters.
+They are stored in external files (case.toml) or dictionaries.
+
+*Members* :
+
+```text
+inp_toml -> Parse case.toml, return raw configuration information.
+fil_dict -> Fill dicts for configuration parameters.
+see_dict -> Display all the relevant configuration parameters.
+rev_dict -> Update dict (PTEST) for configuration parameters.
+chk_dict -> Check dicts for configuration parameters.
+_v       -> Verify dict's values.
+get_t    -> Extract value from dict (PTEST dict), return raw value.
+```
+=#
+
+#
 include("config.jl")
+#
 export inp_toml
 export fil_dict
 export see_dict
+export rev_dict
 export chk_dict
 export _v
 export get_t
