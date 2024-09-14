@@ -2,6 +2,13 @@
 
 *Declare various peaks, which are used to build the spectral functions.*
 
+Now the ACTest toolkit supports the following four types of peaks:
+
+* Gaussian peak (`ptype = "gauss"`)
+* Lorentzian peak (`ptype = "lorentz"`)
+* ``\delta``-like peak (`ptype = "delta"`)
+* Rectangle peak (`ptype = "rectangle"`)
+
 ## Contents
 
 ```@contents
