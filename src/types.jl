@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/13
+# Last modified: 2024/09/14
 #
 
 #=
@@ -41,14 +41,14 @@ The following dictionaries are used as global variables.
 Dictionary for configuration parameters: general setup.
 """
 const PTEST    = Dict{String,ADT}(
-    "solver"  => [missing, 1, :String, "Name of analytic continuation solver"],
+    "solver"  => [missing, 1, :String, "Analytic continuation solver"],
     "ptype"   => [missing, 1, :String, "Type of peaks in the spectrum"],
     "ktype"   => [missing, 1, :String, "Type of kernel function"],
-    "grid"    => [missing, 1, :String, "Grid for input data (imaginary axis)"],
-    "mesh"    => [missing, 1, :String, "Mesh for output data (real axis)"],
+    "grid"    => [missing, 1, :String, "Grid for correlation function"],
+    "mesh"    => [missing, 1, :String, "Mesh for spectral function"],
     "ngrid"   => [missing, 1, :I64   , "Number of grid points"],
     "nmesh"   => [missing, 1, :I64   , "Number of mesh points"],
-    "nspec"   => [missing, 1, :I64   , "Number of spectral functions"],
+    "ntest"   => [missing, 1, :I64   , "Number of tests"],
     "wmax"    => [missing, 1, :F64   , "Right boundary (maximum value) of output mesh"],
     "wmin"    => [missing, 1, :F64   , "Left boundary (minimum value) of output mesh"],
     "pmax"    => [missing, 1, :F64   , "Right boundary (maximum value) for peaks"],
@@ -70,7 +70,7 @@ const _PTEST   = Dict{String,Any}(
     "mesh"    => "linear",
     "ngrid"   => 10,
     "nmesh"   => 501,
-    "nspec"   => 100,
+    "ntest"   => 100,
     "wmax"    => 5.0,
     "wmin"    => -5.0,
     "pmax"    => 4.0,

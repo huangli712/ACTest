@@ -58,10 +58,8 @@ function read_param()
     see_dict()
 end
 
-
-
 function make_data()
-    nspec = get_t("nspec")
+    ntest = get_t("ntest")
 
     rng = MersenneTwister(rand(1:10000) * myid() + 1981)
 
@@ -77,8 +75,8 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    for i = 1:nspec
-        @printf("[dataset]: %4i / %4i\n", i, nspec)
+    for i = 1:ntest
+        @printf("[dataset]: %4i / %4i\n", i, ntest)
         sf = make_spectrum(rng, mesh)
         green = make_green(rng, sf, kernel, grid)
         write_spectrum(i, sf)
