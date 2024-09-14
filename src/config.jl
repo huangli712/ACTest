@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/14
 #
 
 """
@@ -70,7 +70,7 @@ N/A
 See also: [`fil_dict`](@ref).
 """
 function see_dict()
-    println("[ Configuration ]")
+    println("[ Test ]")
     #
     println("solver  : ", get_t("solver") )
     println("ptype   : ", get_t("ptype")  )
@@ -87,11 +87,58 @@ function see_dict()
     println("beta    : ", get_t("beta")   )
     println("noise   : ", get_t("noise")  )
     println("offdiag : ", get_t("offdiag"))
-    println("pwrite  : ", get_t("pwrite") )
     println("lpeak   : ", get_t("lpeak")  )
     println("pmesh   : ", get_t("pmesh")  )
     #
     println()
+end
+
+"""
+    rev_dict(TEST::Dict{String,Any})
+
+Setup the configuration dictionary: `PTEST`.
+
+### Arguments
+* TEST -> A dict struct that contains configurations from the [Test] block.
+
+### Returns
+N/A
+
+See also: [`PTEST`](@ref).
+"""
+function rev_dict(TEST::Dict{String,Any})
+    for key in keys(TEST)
+        if haskey(PTEST, key)
+            PTEST[key][1] = TEST[key]
+        else
+            error("Sorry, $key is not supported currently")
+        end
+    end
+    foreach(x -> _v(x.first, x.second), PTEST)
+end
+
+"""
+    rev_dict(TEST::Dict{String,Vector{Any}})
+
+Setup the configuration dictionary: `PTEST`.
+
+### Arguments
+* TEST -> A dict struct that contains configurations from the [Test] block.
+
+### Returns
+N/A
+
+See also: [`PTEST`](@ref).
+"""
+function rev_dict(TEST::Dict{String,Vector{Any}})
+    for key in keys(TEST)
+        if haskey(PTEST, key)
+            PTEST[key][1] = TEST[key][1]
+        else
+            error("Sorry, $key is not supported currently")
+        end
+    end
+    foreach(x -> _v(x.first, x.second), PTEST)
 end
 
 """
