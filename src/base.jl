@@ -113,12 +113,21 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
+    # Run the task
+    println()
     for i = 1:ntest
-        @printf("test -> %4i / %4i\n", i, ntest)
+        @printf("Test -> %4i / %4i\n", i, ntest)
+        #
+        # Generate spectral functions
         sf = make_spectrum(rng, mesh)
+        #
+        # Generate Green's functions
         green = make_green(rng, sf, kernel, grid)
+        #
+        # Write generated functions
         write_spectrum(i, sf)
         write_backward(i, green)
+        #
         println()
     end
 end
