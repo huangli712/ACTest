@@ -81,7 +81,7 @@ const _PTEST   = Dict{String,Any}(
 )
 
 #=
-### *Customized Structs* : *Input Grid*
+### *Customized Structs* : *Green's Function Grid*
 =#
 
 """
@@ -165,7 +165,7 @@ mutable struct BosonicMatsubaraGrid <: AbstractGrid
 end
 
 #=
-### *Customized Structs* : *Output Mesh*
+### *Customized Structs* : *Spectral Function Mesh*
 =#
 
 """
@@ -267,8 +267,28 @@ mutable struct HalfLorentzMesh <: AbstractMesh
     weight :: Vector{F64}
 end
 
+#=
+### *Customized Structs* : *Peak*
+=#
+
+"""
+    AbstractPeak
+
+An abstract type representing the peaks in the spectral functions. It is
+used to build the internal type system.
+"""
 abstract type AbstractPeak end
 
+"""
+    GaussianPeak
+
+Mutable struct. It represents the gaussian peak.
+
+### Members
+* A -> Amplitude of the peak.
+* Γ -> Broadening of the peak.
+* ϵ -> shift of the peak.
+"""
 mutable struct GaussianPeak <: AbstractPeak
     A :: F64
     Γ :: F64
