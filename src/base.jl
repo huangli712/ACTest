@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/13
+# Last modified: 2024/09/14
 #
 
 """
@@ -38,6 +38,29 @@ function reprod(am::AbstractMesh, kernel::Matrix{F64}, A::Vector{F64})
 end
 
 """
+    setup_param(C::Dict{String,Any}, reset::Bool = true)
+
+Setup the configuration dictionaries via function call. Here `C` contains
+parameters for general setup. If `reset` is true, then the configuration
+dictionaries will be reset to their default values at first. Later, `C`
+will be used to customized the dictionaries further.
+
+### Arguments
+See above explanations.
+
+### Returns
+N/A
+
+See also: [`read_param`](@ref).
+"""
+function setup_param(C::Dict{String,Any}, reset::Bool = true)
+    # _PTEST contains the default parameters.
+    # If reset is true, it will be used to update the PTEST dictionary.
+    reset && rev_dict(_PTEST)
+    rev_dict(C)
+end
+
+"""
     read_param()
 
 Setup the configuration dictionaries via an external file. The valid
@@ -49,7 +72,7 @@ N/A
 ### Returns
 N/A
 
-See also: [`read_param`](@ref).
+See also: [`setup_param`](@ref).
 """
 function read_param()
     cfg = inp_toml(query_args(), true)
