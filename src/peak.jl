@@ -82,6 +82,7 @@ Evaluate the gaussian peak at real mesh.
 function (𝑝::GaussianPeak)(ω::Vector{F64})
     return @. 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
 end
+(𝑝::GaussianPeak)(ω::AbstractMesh) = 𝑝(ω.mesh)
 
 """
     (𝑝::LorentzianPeak)(ω::F64)

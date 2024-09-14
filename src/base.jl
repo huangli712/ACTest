@@ -202,15 +202,16 @@ Generate a spectral function randomly at given mesh.
 * sf -> A SpectralFunction struct.
 """
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
+    # Extract essential parameters
     offdiag = get_t("offdiag")
     lpeak = get_t("lpeak")
 
+    # Get number of peaks
     npeak, = rand(rng, lpeak, 1)
     @printf("number of peaks : %2i\n", npeak)
 
     image = zeros(F64, length(mesh))
-    ω = mesh.mesh
-
+    #
     for i = 1:npeak
         if offdiag
             sign = rand(rng) > 0.5 ? 1.0 : -1.0
@@ -220,9 +221,9 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
         @printf("sign : %4.2f\n", sign)
         #
         𝑝 = make_peak(rng)
-        image = image + sign * 𝑝(ω)
+        image = image + sign * 𝑝(mesh)
     end
-
+    #
     if !offdiag
         image = image ./ trapz(mesh,image)
     end
