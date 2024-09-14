@@ -1,6 +1,6 @@
 name = "ACTest"
 uuid = "ade41c4b-48e1-4837-9eaa-7964f3c77dad"
-authors = ["Li Huang <lihuang.dmft@gmail.com>"]
+authors = ["Li Huang <huangli@caep.cn>"]
 version = "0.1.0"
 
 [deps]
