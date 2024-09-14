@@ -344,6 +344,16 @@ mutable struct RectanglePeak <: AbstractPeak
     h :: F64
 end
 
+#=
+### *Customized Structs* : *Function*
+=#
+
+"""
+    AbstractFunction
+
+An abstract type representing the general functions. It is used to build
+the internal type system.
+"""
 abstract type AbstractFunction end
 
 mutable struct SpectralFunction <: AbstractFunction
