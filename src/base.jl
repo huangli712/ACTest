@@ -189,6 +189,18 @@ function make_peak(rng::AbstractRNG)
     return 𝑝
 end
 
+"""
+    make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
+
+Generate a spectral function randomly at given mesh.
+
+### Arguments
+* rng -> Random number generator.
+* mesh -> Real frequency mesh, ω.
+
+### Returns
+* sf -> A SpectralFunction struct.
+"""
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     offdiag = get_t("offdiag")
     lpeak = get_t("lpeak")
