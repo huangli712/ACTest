@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/13
+# Last modified: 2024/09/14
 #
 
 #=
@@ -70,6 +70,14 @@ end
 
 """
     (𝑝::GaussianPeak)(ω::Vector{F64})
+
+Evaluate the gaussian peak at real mesh.
+
+### Arguments
+* ω -> Real mesh, ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
 """
 function (𝑝::GaussianPeak)(ω::Vector{F64})
     return @. 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
@@ -93,6 +101,13 @@ end
 """
     (𝑝::LorentzianPeak)(ω::Vector{F64})
 
+Evaluate the lorentzian peak at real mesh.
+
+### Arguments
+* ω -> Real mesh, ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
 """
 function (𝑝::LorentzianPeak)(ω::Vector{F64})
     return @. 𝑝.A / π * 𝑝.Γ / ((ω - 𝑝.ϵ) ^ 2.0 + 𝑝.Γ ^ 2.0)
@@ -116,6 +131,13 @@ end
 """
     (𝑝::DeltaPeak)(ω::Vector{F64})
 
+Evaluate the δ-like peak at real mesh.
+
+### Arguments
+* ω -> Real mesh, ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
 """
 function (𝑝::DeltaPeak)(ω::Vector{F64})
     return @. 𝑝.A * exp( -(ω - 𝑝.ϵ) ^ 2.0 / (2.0 * 𝑝.Γ ^ 2.0) )
@@ -133,16 +155,22 @@ Evaluate the rectangle peak at ω.
 * val -> 𝑝(ω).
 """
 function (𝑝::RectanglePeak)(ω::F64)
-    if 𝑝.c - 𝑝.w / 2.0 ≤ ω ≤ 𝑝.c + 𝑝.w / 2.0
-        return 𝑝.h
-    else
-        return zero(ω)
+    function f(x)
+        𝑝.c - 𝑝.w / 2.0 ≤ x ≤ 𝑝.c + 𝑝.w / 2.0
     end
+    return f(ω) ? 𝑝.h : zero(ω)
 end
 
 """
     (𝑝::RectanglePeak)(ω::Vector{F64})
 
+Evaluate the rectangle peak at real mesh.
+
+### Arguments
+* ω -> Real mesh, ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
 """
 function (𝑝::RectanglePeak)(ω::Vector{F64})
     function f(x)
