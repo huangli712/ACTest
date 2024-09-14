@@ -370,6 +370,16 @@ mutable struct SpectralFunction <: AbstractFunction
     image :: Vector{F64}
 end
 
+"""
+    GreenFunction
+
+Mutable struct. It represents the Green's function G(iωₙ) or G(τ).
+
+### Members
+* grid -> Imaginary axis grid, ωₙ or τ.
+* green -> Green's function, G(iωₙ) or G(τ).
+* error -> Standard deviation of the Green's function, σ.
+"""
 mutable struct GreenFunction <: AbstractFunction
     grid :: AbstractGrid
     green :: Vector{F64}
