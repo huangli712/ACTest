@@ -229,7 +229,27 @@ export simpson
 #
 export @einsum
 
+#=
+### *Includes And Exports* : *grid.jl*
+=#
+
+#=
+*Summary* :
+
+To implement various grids for the correlation function data.
+
+*Members* :
+
+```text
+rebuild! -> Rebuild the grid.
+resize!  -> Change size of the grid.
+reverse! -> Reverse the grid.
+```
+=#
+
+#
 include("grid.jl")
+#
 export rebuild!
 export resize!
 export reverse!
