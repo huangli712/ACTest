@@ -254,7 +254,25 @@ export rebuild!
 export resize!
 export reverse!
 
+#=
+### *Includes And Exports* : *mesh.jl*
+=#
+
+#=
+*Summary* :
+
+To implement various meshes for the calculated spectral functions.
+
+*Members* :
+
+```text
+nearest -> Return index of the nearest point to a given number.
+```
+=#
+
+#
 include("mesh.jl")
+#
 export nearest
 
 include("peak.jl")
