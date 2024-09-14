@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/13
+# Last modified: 2024/09/14
 #
 
 """
@@ -30,6 +30,18 @@ function write_spectrum(am::AbstractMesh, Aout::Vector{F64})
     end
 end
 
+"""
+    write_spectrum(ind::I64, sf::SpectralFunction)
+
+Write spectrum A(ω) to `image.data.i`.
+
+### Arguments
+* ind -> Index for the spectral function.
+* sf -> A SpectralFunction struct.
+
+### Returns
+N/A
+"""
 function write_spectrum(ind::I64, sf::SpectralFunction)
     @assert ind ≥ 1
 
