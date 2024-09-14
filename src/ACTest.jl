@@ -334,7 +334,26 @@ include("inout.jl")
 export write_spectrum
 export write_backward
 
+#=
+### *Includes And Exports* : *kernel.jl*
+=#
+
+#=
+*Summary* :
+
+To define various kernel functions.
+
+*Members* :
+
+```text
+build_kernel      -> Build kernel function.
+build_kernel_symm -> Build kernel function for symmetric case.
+```
+=#
+
+#
 include("kernel.jl")
+#
 export build_kernel
 export build_kernel_symm
 
