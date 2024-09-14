@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/15
 #
 
 """
@@ -157,7 +157,7 @@ function make_peak(rng::AbstractRNG)
             ϵ = rand(rng) * (pmax - pmin) + pmin
             𝑝 = GaussianPeak(A, Γ, ϵ)
             break
-    
+
         @case "lorentz"
             A = rand(rng)
             Γ = rand(rng)
