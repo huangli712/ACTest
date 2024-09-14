@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/14
 #
 
 #=
@@ -348,6 +348,7 @@ function build_kernel(am::AbstractMesh, fg::FermionicImaginaryTimeGrid)
 
     kernel = zeros(F64, ntime, nmesh)
 
+    #
     # Old implementation
     # exp(βω ≈ 700.0) will throw an Inf and K becomes NaN.
     # We should avoid this situation.
@@ -447,8 +448,8 @@ function build_kernel(am::AbstractMesh, bg::BosonicImaginaryTimeGrid)
         end
     end
     #
-    # Be careful, am[1] is not 0.0! We have to find out where
-    # the zero point is in the real mesh.
+    # Be careful, am[1] is not 0.0!
+    # We have to find out where the zero point is in the real mesh.
     _, zero_point = findmin(abs.(am.mesh))
     if am[zero_point] == 0.0
         @. kernel[:,zero_point] = 1.0 / β
@@ -483,8 +484,8 @@ function build_kernel(am::AbstractMesh, bg::BosonicMatsubaraGrid)
         end
     end
     #
-    # Be careful, am[1] is not 0.0! We have to find out where
-    # the zero point is in the real mesh.
+    # Be careful, am[1] is not 0.0!
+    # We have to find out where the zero point is in the real mesh.
     _, zero_point = findmin(abs.(am.mesh))
     if am[zero_point] == 0.0 && bg[1] == 0.0
         _kernel[1,zero_point] = -1.0
@@ -551,13 +552,14 @@ function build_kernel_symm(am::AbstractMesh, bg::BosonicMatsubaraGrid)
     nmesh = am.nmesh
 
     kernel = zeros(F64, nfreq, nmesh)
-
+    #
     for i = 1:nmesh
         for j = 1:nfreq
             kernel[j,i] = am[i] ^ 2.0 / ( bg[j] ^ 2.0 + am[i] ^ 2.0 )
             kernel[j,i] = -2.0 * kernel[j,i]
         end
     end
+    #
     # Perhaps we should check am[i] and bg[j] here!
     if am[1] == 0.0 && bg[1] == 0.0
         kernel[1,1] = -2.0
