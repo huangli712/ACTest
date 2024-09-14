@@ -81,10 +81,25 @@ function read_param()
     see_dict()
 end
 
+"""
+    make_data()
+
+Try to generate spectral functions and the corresponding Green's functions.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+"""
 function make_data()
+    # Get number of tests
     ntest = get_t("ntest")
 
-    rng = MersenneTwister(rand(1:10000) * myid() + 1981)
+    # Initialize the random number generator
+    seed = rand(1:10000) * myid() + 1981
+    rng = MersenneTwister(seed)
+    println("Random number seed: ", seed)
 
     # Prepare grid for input data
     grid = make_grid()
@@ -99,7 +114,7 @@ function make_data()
     println("Build default kernel: ", get_t("ktype"))
 
     for i = 1:ntest
-        @printf("[dataset]: %4i / %4i\n", i, ntest)
+        @printf("test -> %4i / %4i\n", i, ntest)
         sf = make_spectrum(rng, mesh)
         green = make_green(rng, sf, kernel, grid)
         write_spectrum(i, sf)
