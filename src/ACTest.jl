@@ -357,9 +357,41 @@ include("kernel.jl")
 export build_kernel
 export build_kernel_symm
 
+#=
+### *Includes And Exports* : *base.jl*
+=#
+
+#=
+*Summary* :
+
+To provide basic workflow for the users of the ACFlow toolkit.
+
+*Members* :
+
+```text
+reprod      -> Try to generate the input data via calculated spectrum.
+#
+setup_param -> Setup parameters.
+read_param  -> Read parameters from case.toml.
+#
+make_data   -> Preprocess the input data.
+make_peak
+make_spectrum
+make_green
+make_grid   -> Generate grid for the input data.
+make_mesh   -> Generate mesh for the calculated spectrum.
+make_kernel -> Generate kernel function.
+```
+=#
+
+#
 include("base.jl")
+#
 export reprod
+#
+export setup_param
 export read_param
+#
 export make_data
 export make_peak
 export make_spectrum
