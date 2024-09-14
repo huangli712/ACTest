@@ -1,5 +1,7 @@
 # Spectra
 
+*Declare structs for spectral functions and Green's functions.*
+
 ## Contents
 
 ```@contents

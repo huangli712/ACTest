@@ -1,5 +1,7 @@
 # Peaks
 
+*Declare various peaks, which are used to build the spectral functions.*
+
 ## Contents
 
 ```@contents
