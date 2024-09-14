@@ -212,7 +212,8 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
 
     image = zeros(F64, length(mesh))
     #
-    for i = 1:npeak
+    for _ = 1:npeak
+        # Determine sign of the current peak
         if offdiag
             sign = rand(rng) > 0.5 ? 1.0 : -1.0
         else
@@ -220,10 +221,14 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
         end
         @printf("sign : %4.2f\n", sign)
         #
+        # Generate peak
         𝑝 = make_peak(rng)
+        #
+        # Add up to the spectrum
         image = image + sign * 𝑝(mesh)
     end
     #
+    # Normalize the spectrum
     if !offdiag
         image = image ./ trapz(mesh,image)
     end
