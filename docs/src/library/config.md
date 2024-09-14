@@ -20,6 +20,7 @@ Pages = ["config.md"]
 ```@docs
 inp_toml
 fil_dict
+rev_dict
 see_dict
 ```
 

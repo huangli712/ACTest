@@ -26,6 +26,7 @@ MODES
 
 ```@docs
 @cswitch
+@time_call
 @pcs
 ```
 

@@ -18,7 +18,17 @@ Pages = ["base.md"]
 ## Parameters
 
 ```@docs
+setup_param
 read_param
+```
+
+## Data
+
+```@docs
+make_data
+make_peak
+make_spectrum
+make_green
 ```
 
 ## Grids
