@@ -275,7 +275,25 @@ include("mesh.jl")
 #
 export nearest
 
+#=
+### *Includes And Exports* : *peak.jl*
+=#
+
+#=
+*Summary* :
+
+To generate various peaks, which should be used to construct the spectrum.
+
+*Members* :
+
+```text
+𝑝(ω) -> Function call to peak generator.
+```
+=#
+
+#
 include("peak.jl")
+#
 
 #=
 ### *Includes And Exports* : *config.jl*
