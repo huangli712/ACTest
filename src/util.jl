@@ -69,6 +69,25 @@ macro cswitch(constexpr, body)
 end
 
 """
+    @time_call(ex)
+
+Evaluate a function call (`ex`), and then print the elapsed time (number
+of seconds) it took to execute.
+
+This macro is a variation of the standard `@elapsed` macro.
+"""
+macro time_call(ex)
+    quote
+        while false; end
+        local t₀ = time_ns()
+        $(esc(ex))
+        δt = (time_ns() - t₀) / 1e9
+        println("Report: Total elapsed time $(δt) s\n")
+        flush(stdout)
+    end
+end
+
+"""
     @pcs(x...)
 
 Try to print colorful strings. Here `x` is a combination of strings and
@@ -181,7 +200,7 @@ end
 """
     query_args()
 
-Check whether the configuration file (`act.toml`) is provided.
+Check whether the configuration file (`case.toml`) is provided.
 
 ### Arguments
 N/A
@@ -220,7 +239,7 @@ function welcome()
     println(green("╠═╣║   ║ "), magenta("├┤ └─┐ │ "))
     println( blue("╩ ╩╚═╝ ╩ "), magenta("└─┘└─┘ ┴ "))
     #
-    @pcs "An Automatic Spectral Function Generation Tool\n" black
+    @pcs "A Spectral Function And Correlation Function Generator\n" black
     @pcs "Package: " black "$__LIBNAME__\n" magenta
     @pcs "Version: " black "$__VERSION__\n" magenta
     @pcs "Release: " black "$__RELEASE__\n" magenta
@@ -269,7 +288,7 @@ N/A
 N/A
 """
 function goodbye()
-    println("The analytic continuation problems are generated successfully.")
+    println("The spectral functions and correlation functions are generated successfully.")
     println("Current Time : ", Dates.format(now(), "yyyy-mm-dd / HH:MM:SS"))
     #
     flush(stdout)
