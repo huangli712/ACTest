@@ -101,7 +101,6 @@ export build_kernel_symm
 include("base.jl")
 export reprod
 export read_param
-export make_test
 export make_data
 export make_peak
 export make_spectrum
