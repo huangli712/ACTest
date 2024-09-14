@@ -287,7 +287,7 @@ Mutable struct. It represents the gaussian peak.
 ### Members
 * A -> Amplitude of the peak.
 * Γ -> Broadening of the peak.
-* ϵ -> shift of the peak.
+* ϵ -> Shift of the peak.
 """
 mutable struct GaussianPeak <: AbstractPeak
     A :: F64
@@ -303,7 +303,7 @@ Mutable struct. It represents the lorentzian peak.
 ### Members
 * A -> Amplitude of the peak.
 * Γ -> Broadening of the peak.
-* ϵ -> shift of the peak.
+* ϵ -> Shift of the peak.
 """
 mutable struct LorentzianPeak <: AbstractPeak
     A :: F64
@@ -320,7 +320,7 @@ of the GaussianPeak with Γ = 0.01.
 ### Members
 * A -> Amplitude of the peak.
 * Γ -> Broadening of the peak.
-* ϵ -> shift of the peak.
+* ϵ -> Shift of the peak.
 """
 mutable struct DeltaPeak <: AbstractPeak
     A :: F64
@@ -328,6 +328,16 @@ mutable struct DeltaPeak <: AbstractPeak
     ϵ :: F64
 end
 
+"""
+    LorentzianPeak
+
+Mutable struct. It represents the rectangle peak.
+
+### Members
+* c -> Center of the peak.
+* w -> Width of the peak.
+* h -> Height of the peak.
+"""
 mutable struct RectanglePeak <: AbstractPeak
     c :: F64
     w :: F64
