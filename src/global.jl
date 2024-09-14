@@ -172,7 +172,7 @@ Version of this julia toolkit.
 
 See also: [`__RELEASE__`](@ref).
 """
-const __VERSION__ = v"0.1.0-devel.240914"
+const __VERSION__ = v"0.2.0-devel.240915"
 
 """
     __RELEASE__
