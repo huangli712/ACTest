@@ -356,6 +356,15 @@ the internal type system.
 """
 abstract type AbstractFunction end
 
+"""
+    SpectralFunction
+
+Mutable struct. It represents the spectral function A(ω).
+
+### Members
+* mesh -> Real frequency mesh, ω.
+* image -> Spectral function, A(ω).
+"""
 mutable struct SpectralFunction <: AbstractFunction
     mesh  :: AbstractMesh
     image :: Vector{F64}
