@@ -9,8 +9,27 @@
 
 """
     ACTest
+
+ACTest is an automatical generator for fermionic or bosonic correlation
+functions. It is used to generate a lot of correlators and corresponding
+spectral functions. They are then employed to benchmark the analytic
+continuation methods or tools.
+
+Now ACTest is used together with the ACFlow toolkit. But it is easily to
+be interfaced with the other analytic continuation codes.
+
+For more details about how to obtain, install and use the ACTest toolkit,
+please visit the following website:
+
+* `https://huangli712.github.io/projects/actest/index.html`
+
+Any suggestions, comments, and feedbacks are welcome. Enjoy it!
 """
 module ACTest
+
+#=
+### *Using Standard Libraries*
+=#
 
 using Distributed
 using LinearAlgebra
@@ -20,16 +39,47 @@ using Dates
 using Printf
 using TOML
 
+#=
+### *Includes And Exports* : *global.jl*
+=#
+
+#=
+*Summary* :
+
+Define some type aliases and string constants for the ACFlow toolkit.
+
+*Members* :
+
+```text
+I32, I64, API -> Numerical types (Integer).
+F32, F64, APF -> Numerical types (Float).
+C32, C64, APC -> Numerical types (Complex).
+R32, R64, APR -> Numerical types (Union of Integer and Float).
+N32, N64, APN -> Numerical types (Union of Integer, Float, and Complex).
+#
+__LIBNAME__   -> Name of this julia toolkit.
+__VERSION__   -> Version of this julia toolkit.
+__RELEASE__   -> Released date of this julia toolkit.
+__AUTHORS__   -> Authors of this julia toolkit.
+#
+authors       -> Print the authors of ACFlow to screen.
+```
+=#
+
+#
 include("global.jl")
+#
 export I32, I64, API
 export F32, F64, APF
 export C32, C64, APC
 export R32, R64, APR
 export N32, N64, APN
+#
 export __LIBNAME__
 export __VERSION__
 export __RELEASE__
 export __AUTHORS__
+#
 export authors
 
 include("types.jl")
