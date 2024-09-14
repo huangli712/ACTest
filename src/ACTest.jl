@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/13
+# Last modified: 2024/09/14
 #
 
 """
@@ -19,8 +19,6 @@ using Random
 using Dates
 using Printf
 using TOML
-
-using ACFlow
 
 include("global.jl")
 export I32, I64, API

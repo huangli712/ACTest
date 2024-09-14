@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/11
+# Last modified: 2024/09/14
 #
 
 #=
@@ -172,7 +172,7 @@ Version of this julia toolkit.
 
 See also: [`__RELEASE__`](@ref).
 """
-const __VERSION__ = v"0.0.2-devel.240911"
+const __VERSION__ = v"0.1.0-devel.240914"
 
 """
     __RELEASE__
@@ -206,7 +206,7 @@ const __AUTHORS__ = [(name = "Li Huang", email = "huangli@caep.cn")]
 """
     authors()
 
-Print authors / contributors of the `ACFlow` toolkit.
+Print authors / contributors of the `ACTest` toolkit.
 
 See also: [`__AUTHORS__`](@ref).
 """

@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/12
+# Last modified: 2024/09/14
 #
 
 #=
@@ -121,7 +121,7 @@ end
 Check the version of julia runtime environment. It should be higher
 than v1.6.x. One of the most important philosophies of the `ACTest`
 toolkit is minimizing the dependence on the third-party libraries as
-far as possible. Note that the `ACFlow` toolkit relys on the `TOML`
+far as possible. Note that the `ACTest` toolkit relys on the `TOML`
 package to parse the *.toml file. Only in v1.6.0 and higher versions,
 julia includes the `TOML` package in its standard library.
 
@@ -293,7 +293,7 @@ end
 """
     prompt(msg::String)
 
-Print a stylized ACFlow message to the screen.
+Print a stylized ACTest message to the screen.
 
 ### Arguments
 * msg -> Message that need to be printed.
@@ -302,7 +302,7 @@ Print a stylized ACFlow message to the screen.
 N/A
 """
 function prompt(msg::String)
-    print(green("ACFlow > "))
+    print(green("ACTest > "))
     print(magenta(msg))
     println()
     #
