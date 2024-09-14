@@ -295,6 +295,16 @@ mutable struct GaussianPeak <: AbstractPeak
     ϵ :: F64
 end
 
+"""
+    LorentzianPeak
+
+Mutable struct. It represents the lorentzian peak.
+
+### Members
+* A -> Amplitude of the peak.
+* Γ -> Broadening of the peak.
+* ϵ -> shift of the peak.
+"""
 mutable struct LorentzianPeak <: AbstractPeak
     A :: F64
     Γ :: F64
