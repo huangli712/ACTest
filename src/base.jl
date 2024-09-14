@@ -132,6 +132,19 @@ function make_data()
     end
 end
 
+"""
+    make_peak(rng::AbstractRNG)
+
+Generate peak to build the final spectral function.
+
+### Arguments
+* rng -> Random number generator.
+
+### Returns
+* 𝑝 -> A Peak struct (subtype of AbstractPeak).
+
+See also: [`AbstractPeak`](@ref).
+"""
 function make_peak(rng::AbstractRNG)
     ptype = get_t("ptype")
     pmax  = get_t("pmax")
