@@ -92,6 +92,21 @@ function write_backward(ag::AbstractGrid, G::Vector{F64})
     end
 end
 
+"""
+    write_backward(ind::I64, gf::GreenFunction)
+
+Write the Green's function data to `green.data.i`. All information about
+the Green's function is included in `gf`.
+
+### Arguments
+* ind -> Index for the spectral function.
+* gf -> A GreenFunction struct.
+
+### Returns
+N/A
+
+See also: [`reprod`](@ref).
+"""
 function write_backward(ind::I64, green::GreenFunction)
     @assert ind ≥ 1
 
