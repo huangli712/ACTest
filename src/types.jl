@@ -56,7 +56,6 @@ const PTEST    = Dict{String,ADT}(
     "beta"    => [missing, 1, :F64   , "Inverse temperature"],
     "noise"   => [missing, 1, :F64   , "Noise level"],
     "offdiag" => [missing, 1, :Bool  , "Is it the offdiagonal part in matrix-valued function"],
-    "pwrite"  => [missing, 1, :Bool  , "Write the configuration or not"],
     "lpeak"   => [missing, 1, :Array , "Number of peaks in the spectrum"],
     "pmesh"   => [missing, 0, :Array , "Additional parameters for customizing the mesh"],
 )
@@ -78,7 +77,6 @@ const _PTEST   = Dict{String,Any}(
     "beta"    => 10.0,
     "noise"   => 1.0e-6,
     "offdiag" => false,
-    "pwrite"  => true,
     "lpeak"   => [1,2,3],
 )
 
