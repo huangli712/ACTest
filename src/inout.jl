@@ -138,6 +138,11 @@ function write_backward(ind::I64, gf::GreenFunction)
     end
 end
 
+"""
+    Base.show(io::IO, 𝑝::GaussianPeak)
+
+Write a GaussianPeak struct.
+"""
 function Base.show(io::IO, 𝑝::GaussianPeak)
     println("peak type : gaussian")
     @printf("  amplitude   : %16.12f\n", 𝑝.A)
@@ -145,6 +150,11 @@ function Base.show(io::IO, 𝑝::GaussianPeak)
     @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
+"""
+    Base.show(io::IO, 𝑝::LorentzianPeak)
+
+Write a LorentzianPeak struct.
+"""
 function Base.show(io::IO, 𝑝::LorentzianPeak)
     println("peak type : lorentzian")
     @printf("  amplitude   : %16.12f\n", 𝑝.A)
@@ -152,6 +162,11 @@ function Base.show(io::IO, 𝑝::LorentzianPeak)
     @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
+"""
+    Base.show(io::IO, 𝑝::DeltaPeak)
+
+Write a DeltaPeak struct.
+"""
 function Base.show(io::IO, 𝑝::DeltaPeak)
     println("peak type : delta")
     @printf("  amplitude   : %16.12f\n", 𝑝.A)
@@ -159,6 +174,11 @@ function Base.show(io::IO, 𝑝::DeltaPeak)
     @printf("  shift       : %16.12f  ", 𝑝.ϵ)
 end
 
+"""
+    Base.show(io::IO, 𝑝::RectanglePeak)
+
+Write a RectanglePeak struct.
+"""
 function Base.show(io::IO, 𝑝::RectanglePeak)
     println("peak type : rectangle")
     @printf("  center : %16.12f\n", 𝑝.c)
