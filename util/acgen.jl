@@ -9,7 +9,7 @@
 #     $ acgen.jl act.toml
 #
 
-push!(LOAD_PATH, "../src")
+push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src")
 
 using ACTest
 
