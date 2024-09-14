@@ -33,7 +33,8 @@ end
 """
     write_spectrum(ind::I64, sf::SpectralFunction)
 
-Write spectrum A(ω) to `image.data.i`.
+Write spectrum A(ω) to `image.data.i`. All information about the spectral
+function is included in `sf`.
 
 ### Arguments
 * ind -> Index for the spectral function.
