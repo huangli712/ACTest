@@ -64,17 +64,17 @@ function write_summary(error)
     ntest = get_t("ntest")
 
     open("summary.data", "w") do fout
-        println(fout, "# index           error     passed")
+        println(fout, "# index            error passed")
         for i = 1:ntest
-            @printf(fout, "%5i %16.12f ", i, error[i])
+            @printf(fout, "%7i %16.12f", i, error[i])
             if error[i] == 0.0
-                println(fout, "false")
+                @printf(fout, "%7s\n", "false")
             else
-                println(fout, "true")
+                @printf(fout, "%7s\n", "true")
             end
         end
-        println(fout, "Number of tests: ", ntest)
-        println(fout, "Successful tests: ", count(x -> x != 0.0, error))
+        println(fout, "# Number of tests: ", ntest)
+        println(fout, "# Successful tests: ", count(x -> x != 0.0, error))
     end
 end
 
