@@ -1,0 +1,33 @@
+#
+# Test: A01
+#
+# 1. Execute ../../util/acgen.jl act.toml
+# 2. Change solver = "MaxEnt" and the [Solver] block.
+# 3. Execute ../../util/actest.jl act.toml
+#
+
+[Test]
+solver  = "MaxEnt"
+ptype   = "gauss"
+ktype   = "fermi"
+grid    = "ffreq"
+mesh    = "linear"
+ngrid   = 10
+nmesh   = 601
+ntest   = 10000
+wmax    = 6.0
+wmin    = -6.0
+pmax    = 3.0
+pmin    = -3.0
+beta    = 10.0
+noise   = 1.0e-6
+offdiag = false
+lpeak   = [1,2,3,4,5,6]
+
+[Solver]
+method = "chi2kink"
+stype  = "sj"
+nalph  = 12
+alpha  = 1e12
+ratio  = 10.0
+blur   = -1.0
