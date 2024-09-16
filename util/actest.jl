@@ -16,6 +16,7 @@ using ACTest
 using ACFlow:setup_param
 using ACFlow:read_data
 using ACFlow:solve
+
 using Printf
 using DelimitedFiles
 
@@ -59,22 +60,26 @@ function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
 end
 
 # Write summary for the tests to external file: summary.data
-function write_summary(error)
+function write_summary(error, ctime)
     # Get number of tests
     ntest = get_t("ntest")
 
     open("summary.data", "w") do fout
-        println(fout, "# index            error passed")
+        println(fout, "# index            error         time (s) passed")
+        #
         for i = 1:ntest
-            @printf(fout, "%7i %16.12f", i, error[i])
+            @printf(fout, "%7i %16.12f %16.12f", i, error[i], ctime[i])
             if error[i] == 0.0
                 @printf(fout, "%7s\n", "false")
             else
                 @printf(fout, "%7s\n", "true")
             end
         end
+        #
+
         println(fout, "# Number of tests: ", ntest)
-        println(fout, "# Successful tests: ", count(x -> x != 0.0, error))
+        println(fout, "# Failed tests: ", count(x -> iszero(x), error))
+        println(fout, "# Abnormal tests: ", count(x -> isinf(x), error))
     end
 end
 
@@ -87,6 +92,7 @@ function make_test()
     nfail = 0
     nsucc = 0
     error = zeros(F64, ntest)
+    ctime = zeros(F64, ntest)
 
     # Prepare configurations
     B, S = get_dict()
@@ -99,8 +105,11 @@ function make_test()
         setup_param(B, S)
         #
         try
-            # Solve the analytic continuation problem
+            # Solve the analytic continuation problem.
+            # The elapsed time is recorded as well.
+            start = time_ns()
             mesh, Aout, _ = solve(read_data())
+            finish = time_ns()
             #
             # Backup the calculated results
             cp("Aout.data", "Aout.data." * string(i), force = true)
@@ -109,12 +118,14 @@ function make_test()
             #
             # Calculate the accuracy / error
             error[i] = get_error(i, mesh, Aout)
+            ctime[i] = (finish - start) / 1e9
             #
             # Increase the counter
             @printf("Accuracy: %16.12f\n", error[i])
             nsucc = nsucc + 1
         catch ex
             error[i] = 0.0
+            ctime[i] = 0.0
             nfail = nfail + 1
             println("something wrong for test case $i")
         end
@@ -127,7 +138,7 @@ function make_test()
     println()
 
     # Write summary for the test
-    write_summary(error)
+    write_summary(error, ctime)
 end
 
 welcome()
