@@ -18,3 +18,12 @@
 * **A04**
     * Bosonic + Matsubara
     * Gaussian peaks
+
+* **A05**
+    * Bosonic + Matsubara
+    * Delta peaks
+
+* **A06**
+    * Bosonic + Matsubara
+    * Lorentzian peaks
+    * Offdiagonal
