@@ -1,5 +1,5 @@
 #
-# Test: A01
+# Test: A04
 #
 # 1. Execute ../../util/acgen.jl act.toml
 # 2. Change solver = "MaxEnt" and the [Solver] block.
@@ -9,12 +9,12 @@
 [Test]
 solver  = "MaxEnt"
 ptype   = "gauss"
-ktype   = "fermi"
-grid    = "ffreq"
+ktype   = "boson"
+grid    = "bfreq"
 mesh    = "linear"
 ngrid   = 10
 nmesh   = 601
-ntest   = 10000
+ntest   = 100
 wmax    = 6.0
 wmin    = -6.0
 pmax    = 3.0
