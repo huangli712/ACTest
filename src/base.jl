@@ -83,6 +83,43 @@ end
 
 function make_data_std()
     ntest = length(STANDARD)
+
+    # Initialize the random number generator
+    seed = rand(1:10000) * myid() + 1981
+    rng = MersenneTwister(seed)
+    println("Random number seed: ", seed)
+
+    for i = 1:ntest
+        @printf("Test -> %4i / %4i\n", i, ntest)
+
+        dict = STANDARD[i] 
+
+        # Prepare grid for input data
+        grid = make_grid(dict["grid"])
+        println("Build grid for input data: ", length(grid), " points")
+
+        # Prepare mesh for output spectrum
+        mesh = make_mesh(dict["ktype"], dict["mesh"])
+        println("Build mesh for spectrum: ", length(mesh), " points")
+
+        # Prepare kernel function
+        kernel = make_kernel(mesh, grid)
+        println("Build default kernel: ", get_t("ktype"))
+
+        #@show typeof(grid), typeof(mesh)
+        #
+        # Generate spectral functions
+        sf = make_spectrum(mesh, dict["peaks"], dict["signs"])
+        #
+        # Generate Green's functions
+        green = make_green(rng, sf, kernel, grid)
+        #
+        # Write generated functions
+        write_spectrum(i, sf)
+        write_backward(i, green)
+        #
+        println()
+    end
 end
 
 """
@@ -234,6 +271,37 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     #
     # Normalize the spectrum
     if !offdiag
+        image = image ./ trapz(mesh,image)
+    end
+
+    return SpectralFunction(mesh, image)
+end
+
+function make_spectrum(
+    mesh::AbstractMesh,
+    pv::Vector{<:AbstractPeak},
+    sv::Vector{F64}
+    )
+    npeak = length(pv)
+    @assert length(pv) == length(sv)
+
+    @printf("number of peaks : %2i\n", npeak)
+
+    image = zeros(F64, length(mesh))
+    #
+    for i = 1:npeak
+        @printf("sign : %4.2f\n", sv[i])
+        #
+        # Generate peak
+        𝑝 = pv[i]
+        println(𝑝)
+        #
+        # Add up to the spectrum
+        image = image + sv[i] * 𝑝(mesh)
+    end
+    #
+    # Normalize the spectrum
+    if count(x -> x > 0.0, sv) == npeak
         image = image ./ trapz(mesh,image)
     end
 
