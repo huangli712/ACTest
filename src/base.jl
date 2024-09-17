@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/15
+# Last modified: 2024/09/18
 #
 
 """
@@ -297,9 +297,13 @@ N/A
 
 See also: [`AbstractGrid`](@ref).
 """
-function make_grid()
+function make_grid(_grid = nothing)
     # Extract key parameters
-    grid = get_t("grid")
+    if isnothing(_grid)
+        grid = get_t("grid")
+    else
+        grid = _grid
+    end
     ngrid = get_t("ngrid")
     β = get_t("beta")
 
@@ -343,7 +347,7 @@ N/A
 
 See also: [`LinearMesh`](@ref), [`TangentMesh`](@ref), [`LorentzMesh`](@ref).
 """
-function make_mesh()
+function make_mesh(_ktype = nothing, _mesh = nothing)
     # Predefined parameters for mesh generation
     #
     # Note that the parameters `f1` and `cut` are only for the generation
@@ -363,9 +367,17 @@ function make_mesh()
     end
 
     # Get essential parameters
-    ktype = get_t("ktype")
+    if isnothing(_ktype)
+        ktype = get_t("ktype")
+    else
+        ktype = _ktype
+    end
+    if isnothing(_mesh)
+        mesh = get_t("mesh")
+    else
+        mesh = _mesh
+    end
     nmesh = get_t("nmesh")
-    mesh = get_t("mesh")
     wmax::F64 = get_t("wmax")
     wmin::F64 = get_t("wmin")
     #
