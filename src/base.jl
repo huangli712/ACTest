@@ -82,7 +82,7 @@ function read_param()
 end
 
 function make_data_std()
-    
+    ntest = length(STANDARD)
 end
 
 """

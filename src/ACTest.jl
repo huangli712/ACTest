@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/15
+# Last modified: 2024/09/18
 #
 
 """
@@ -375,6 +375,8 @@ include("kernel.jl")
 export build_kernel
 export build_kernel_symm
 
+include("dataset.jl")
+
 #=
 ### *Includes And Exports* : *base.jl*
 =#
@@ -392,6 +394,7 @@ reprod      -> Try to generate the correlator via calculated spectrum.
 setup_param -> Setup parameters.
 read_param  -> Read parameters from case.toml.
 #
+make_data_Std -> Generate standard datasets for analytic continuation.
 make_data   -> Generate spectral functions and corresponding correlators.
 make_peak   -> Generate various peaks.
 make_spectrum -> Generate spectral function by peaks.
@@ -410,6 +413,7 @@ export reprod
 export setup_param
 export read_param
 #
+export make_data_std
 export make_data
 export make_peak
 export make_spectrum
