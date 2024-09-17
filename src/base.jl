@@ -81,6 +81,9 @@ function read_param()
     see_dict()
 end
 
+function make_data_std()
+end
+
 """
     make_data()
 
