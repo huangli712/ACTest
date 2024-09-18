@@ -15,8 +15,8 @@ functions. It is used to generate a lot of correlators and corresponding
 spectral functions. They are then employed to test the newly developed
 analytic continuation methods or tools.
 
-Now ACTest is used together with the ACFlow toolkit. But it is easily to
-be interfaced with the other analytic continuation codes.
+Now ACTest is used together with the `ACFlow` toolkit. But it is easily
+to be interfaced with the other analytic continuation codes.
 
 For more details about how to obtain, install and use the ACTest toolkit,
 please visit the following website:
