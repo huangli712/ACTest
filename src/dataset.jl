@@ -11,6 +11,11 @@
 ### *Fermionic Systems: Continuum Spectra*
 =#
 
+"""
+    STD_FG
+
+Dictionary for standard spectral functions: fermionic + gaussian peaks.
+"""
 const STD_FG = Dict{String,Any}[
     # Test: 001 / Fermionic + Gaussian Peaks
     # single peak, central
@@ -284,6 +289,11 @@ const STD_FG = Dict{String,Any}[
 ### *Fermionic Systems: Discrete Spectra*
 =#
 
+"""
+    STD_FD
+
+Dictionary for standard spectral functions: fermionic + delta-like peaks.
+"""
 const STD_FD = Dict{String,Any}[
     # Test: 001 / Fermionic + Delta Peaks
     # single peak, central
@@ -570,6 +580,11 @@ const STD_FD = Dict{String,Any}[
 ### *Fermionic Systems: Non-positive Definite Spectra*
 =#
 
+"""
+    STD_FRD
+
+Dictionary for standard spectral functions: fermionic + rise-and-decay peaks.
+"""
 const STD_FRD = Dict{String,Any}[
     # Test: 001 / Fermionic + Rise-And-Decay Peaks
     # single peak, central, down
