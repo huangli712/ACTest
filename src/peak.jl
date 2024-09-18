@@ -199,7 +199,7 @@ Evaluate the rise-and-decay peak at ω.
 * val -> 𝑝(ω).
 """
 function (𝑝::RiseDecayPeak)(ω::F64)
-    return 𝑝.h * exp( - abs( (ω - 𝑝.c)^𝑝.γ ) )
+    return 𝑝.h * exp( - ( abs(ω - 𝑝.c) ) ^ 𝑝.γ )
 end
 
 """
@@ -214,7 +214,7 @@ Evaluate the rise-and-decay peak at real mesh.
 * val -> 𝑝(ω).
 """
 function (𝑝::RiseDecayPeak)(ω::Vector{F64})
-    return @. 𝑝.h * exp( - abs( (ω - 𝑝.c)^𝑝.γ ) )
+    return @. 𝑝.h * exp( - ( abs(ω - 𝑝.c) ) ^ 𝑝.γ )
 end
 
 (𝑝::AbstractPeak)(ω::AbstractMesh) = 𝑝(ω.mesh)

@@ -566,7 +566,7 @@ const STD_FRD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            RiseDecayPeak(0.1,0.2,0.0)
+            RiseDecayPeak(0.0,0.2,1.0)
         ],
         "signs" => [-1.0]
     ),
