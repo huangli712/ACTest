@@ -304,6 +304,23 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     return SpectralFunction(mesh, image)
 end
 
+"""
+    make_spectrum(
+        mesh::AbstractMesh,
+        pv::Vector{<:AbstractPeak},
+        sv::Vector{F64}
+    )
+
+Generate a spectral function with given peaks and signs at given mesh.
+
+### Arguments
+* mesh -> Real frequency mesh, ω.
+* pv -> List of peaks.
+* sv -> List of signs.
+
+### Returns
+* sf -> A SpectralFunction struct.
+"""
 function make_spectrum(
     mesh::AbstractMesh,
     pv::Vector{<:AbstractPeak},
