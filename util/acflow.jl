@@ -1,16 +1,16 @@
 #!/usr/bin/env julia
   
 #
-# This script is used to start analytic continuation simulations.
-# It will launch only 1 process.
+# This script is used to start analytic continuation simulations with the
+# ACFlow toolkit. It will launch only 1 process.
+#
+# This script can be easily modified to support the other analytic
+# configuration tools / methods, or support parallel calculations.
 #
 # Usage:
 #
 #     $ acflow.jl act.toml
 #
-
-push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src")
-push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACFlow/src/")
 
 using ACTest
 using ACFlow:setup_param
