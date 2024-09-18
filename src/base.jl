@@ -81,19 +81,38 @@ function read_param()
     see_dict()
 end
 
+"""
+    make_data_std()
+
+Try to build a standard dataset (`ACT100`), which contains 100 typical
+spectral functions and the corresponding correlation functions. These
+spectral functions are defined in `src/dataset.jl`. Please use the script
+`util/acstd.jl` to do this job.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+"""
 function make_data_std()
-    STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
-    ntest = length(STANDARD)
+    # Get dicts for the standard test (ACT100)
+    ACT100 = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
+
+    # We have to make sure ntest == 100
+    ntest = get_t("ntest")
+    @assert ntest == length(ACT100) == 100
 
     # Initialize the random number generator
     seed = rand(1:10000) * myid() + 1981
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
+    # Start the loop
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
 
-        dict = STANDARD[i]
+        dict = ACT100[i]
 
         # Prepare grid for input data
         grid = make_grid(dict["grid"])

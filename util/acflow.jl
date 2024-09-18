@@ -54,7 +54,7 @@ end
 # fermionic or bosonic, diagonal or non-diagonal. We have to make sure
 # the configurations are consistent with the original setups.
 function fix_dict!(i::I64, B::Dict{String,Any})
-    # Get dict for the standard test (ACT100)
+    # Get dicts for the standard test (ACT100)
     ACT100 = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
 
     # We have to make sure ntest == 100
