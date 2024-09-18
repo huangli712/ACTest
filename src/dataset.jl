@@ -199,7 +199,7 @@ const STD_FG = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.0,0.05,-1.0),
-            GaussianPeak(0.4,0.8,-3.0),
+            GaussianPeak(0.1,0.8,-3.0),
             GaussianPeak(0.4,0.8,3.0)
         ],
         "signs" => [1.0,1.0,1.0]
@@ -214,7 +214,7 @@ const STD_FG = Dict{String,Any}[
         "peaks" => [
             GaussianPeak(1.0,0.05,1.0),
             GaussianPeak(0.4,0.8,-3.0),
-            GaussianPeak(0.4,0.8,3.0)
+            GaussianPeak(0.1,0.8,3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
