@@ -82,7 +82,7 @@ function read_param()
 end
 
 function make_data_std()
-    STANDARD = union(STD_FD)
+    STANDARD = union(STD_FL)
     ntest = length(STANDARD)
 
     # Initialize the random number generator
@@ -220,6 +220,13 @@ function make_peak(rng::AbstractRNG)
             h = rand(rng)
             @assert pmin ≤ c - w/2.0 ≤ c + w/2.0 ≤ pmax
             𝑝 = RectanglePeak(c, w, h)
+            break
+
+        @case "risedecay"
+            c = rand(rng) * (pmax - pmin) + pmin
+            γ = rand(rng) * 2.0
+            h = rand(rng)
+            𝑝 = RiseDecayPeak(c, γ, h)
             break
 
         @default
