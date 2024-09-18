@@ -378,6 +378,12 @@ export build_kernel
 export build_kernel_symm
 
 include("dataset.jl")
+export STD_FG
+export STD_FD
+export STD_FRD
+export STD_BG
+export STD_BD
+export STD_BRD
 
 #=
 ### *Includes And Exports* : *base.jl*
