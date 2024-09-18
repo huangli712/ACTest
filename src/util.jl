@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/18
 #
 
 #=
@@ -288,7 +288,7 @@ N/A
 N/A
 """
 function goodbye()
-    println("The spectral functions and correlation functions are generated successfully.")
+    println("The tasks have been done successfully.")
     println("Current Time : ", Dates.format(now(), "yyyy-mm-dd / HH:MM:SS"))
     #
     flush(stdout)
