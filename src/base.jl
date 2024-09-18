@@ -82,7 +82,7 @@ function read_param()
 end
 
 function make_data_std()
-    STANDARD = union(STD_FL)
+    STANDARD = union(STD_FRD)
     ntest = length(STANDARD)
 
     # Initialize the random number generator
