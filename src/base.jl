@@ -82,7 +82,7 @@ function read_param()
 end
 
 function make_data_std()
-    STANDARD = union(STD_FG, STD_FD)
+    STANDARD = union(STD_FD)
     ntest = length(STANDARD)
 
     # Initialize the random number generator
@@ -209,7 +209,7 @@ function make_peak(rng::AbstractRNG)
 
         @case "delta"
             A = rand(rng)
-            Γ = 0.01 # Very sharp gaussian peak
+            Γ = 0.02 # Very sharp gaussian peak
             ϵ = rand(rng) * (pmax - pmin) + pmin
             𝑝 = DeltaPeak(A, Γ, ϵ)
             break

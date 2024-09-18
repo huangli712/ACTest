@@ -315,7 +315,7 @@ end
     DeltaPeak
 
 Mutable struct. It represents the δ-like peak. Actually, it is a variation
-of the GaussianPeak with Γ = 0.01.
+of the GaussianPeak with Γ = 0.02.
 
 ### Members
 * A -> Amplitude of the peak.
