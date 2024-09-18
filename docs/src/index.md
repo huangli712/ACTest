@@ -29,6 +29,7 @@ Pages = [
     "library/base.md",
     "library/peak.md",
     "library/spectrum.md",
+    "library/dataset.md",
     "library/grid.md",
     "library/mesh.md",
     "library/kernel.md",

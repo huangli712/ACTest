@@ -27,6 +27,7 @@ makedocs(
             "Core" => "library/base.md",
             "Peaks" => "library/peak.md",
             "Spectra" => "library/spectrum.md",
+            "Standard dataset" => "library/dataset.md",
             "Grids" => "library/grid.md",
             "Meshes" => "library/mesh.md",
             "Kernels" => "library/kernel.md",
