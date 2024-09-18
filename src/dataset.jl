@@ -598,27 +598,29 @@ const STD_FRD = Dict{String,Any}[
     ),
     #
     # Test: 004 / Fermionic + Rise-And-Decay Peaks
-    # single peak, off-centered (left)
+    # two peaks, left down small + right up big
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            RiseDecayPeak(1.0,0.02,-4.0)
+            RiseDecayPeak(-3.0,2.0,0.2),
+            RiseDecayPeak(3.0,2.0,0.5)            
         ],
-        "signs" => [1.0]
+        "signs" => [-1.0,1.0]
     ),
     #
     # Test: 005 / Fermionic + Rise-And-Decay Peaks
-    # single peak, off-centered (right)
+    # two peaks, left up big + right down small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            RiseDecayPeak(1.0,0.02,4.0)
+            RiseDecayPeak(-3.0,2.0,0.5),
+            RiseDecayPeak(3.0,2.0,0.2)      
         ],
-        "signs" => [1.0]
+        "signs" => [1.0,-1.0]
     ),
     #
     # Test: 006 / Fermionic + Rise-And-Decay Peaks
