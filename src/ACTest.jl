@@ -12,8 +12,8 @@
 
 ACTest is an automatical generator for fermionic or bosonic correlation
 functions. It is used to generate a lot of correlators and corresponding
-spectral functions. They are then employed to benchmark the analytic
-continuation methods or tools.
+spectral functions. They are then employed to test the newly developed
+analytic continuation methods or tools.
 
 Now ACTest is used together with the ACFlow toolkit. But it is easily to
 be interfaced with the other analytic continuation codes.
@@ -377,10 +377,36 @@ include("kernel.jl")
 export build_kernel
 export build_kernel_symm
 
+#=
+### *Includes And Exports* : *dataset.jl*
+=#
+
+#=
+*Summary* :
+
+To define a standard dataset (namely ACT100), which contains 100 typical
+spectral functions.
+
+*Members* :
+
+```text
+STD_FG  -> Dicts for fermionic systems (continuum spectra).  
+STD_FD  -> Dicts for fermionic systems (discrete spectra).
+STD_FRD -> Dicts for fermionic systems (non-positive definite spectra).
+#
+STD_BG  -> Dicts for bosonic systems (continuum spectra).
+STD_BD  -> Dicts for bosonic systems (discrete spectra).
+STD_BRD -> Dicts for bosonic systems (non-positive definite spectra).
+```
+=#
+
+#
 include("dataset.jl")
+#
 export STD_FG
 export STD_FD
 export STD_FRD
+#
 export STD_BG
 export STD_BD
 export STD_BRD
@@ -402,7 +428,7 @@ reprod      -> Try to generate the correlator via calculated spectrum.
 setup_param -> Setup parameters.
 read_param  -> Read parameters from case.toml.
 #
-make_data_Std -> Generate standard datasets for analytic continuation.
+make_data_std -> Generate standard dataset (namely ACT100).
 make_data   -> Generate spectral functions and corresponding correlators.
 make_peak   -> Generate various peaks.
 make_spectrum -> Generate spectral function by peaks.
