@@ -243,7 +243,7 @@ function make_peak(rng::AbstractRNG)
 
         @case "risedecay"
             c = rand(rng) * (pmax - pmin) + pmin
-            γ = rand(rng) * 2.0
+            γ = rand(rng) * 2.0 # γ ∈ (0.0,2.0)
             h = rand(rng)
             𝑝 = RiseDecayPeak(c, γ, h)
             break
