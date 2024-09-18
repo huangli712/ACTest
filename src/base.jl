@@ -309,14 +309,15 @@ function make_spectrum(
     pv::Vector{<:AbstractPeak},
     sv::Vector{F64}
     )
+    # Get number of peaks
     npeak = length(pv)
     @assert length(pv) == length(sv)
-
     @printf("number of peaks : %2i\n", npeak)
 
     image = zeros(F64, length(mesh))
     #
     for i = 1:npeak
+        # Determine sign of the current peak
         @printf("sign : %4.2f\n", sv[i])
         #
         # Generate peak
