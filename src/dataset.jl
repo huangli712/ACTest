@@ -280,6 +280,10 @@ const STD_FG = Dict{String,Any}[
     ),
 ]
 
+#=
+### *Fermionic Systems: Discrete Spectra*
+=#
+
 const STD_FD = Dict{String,Any}[
     # Test: 001 / Fermionic + Delta Peaks
     # single peak, central
@@ -349,7 +353,7 @@ const STD_FD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             DeltaPeak(1.0,0.02,-2.0),
-            DeltaPeak(1.0,0.02,2.0)
+            DeltaPeak(1.0,0.02, 2.0)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -388,7 +392,7 @@ const STD_FD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -401,7 +405,7 @@ const STD_FD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
-            DeltaPeak(1.0,0.02,0.5)
+            DeltaPeak(1.0,0.02, 0.5)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -413,9 +417,9 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0),
+            DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,0.5)
+            DeltaPeak(1.0,0.02, 0.5)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
@@ -427,9 +431,9 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0),
+            DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
@@ -443,8 +447,8 @@ const STD_FD = Dict{String,Any}[
         "peaks" => [
             DeltaPeak(1.0,0.02,-1.5),
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,0.5),
-            DeltaPeak(1.0,0.02,1.5)
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 1.5)
         ],
         "signs" => [1.0,1.0,1.0,1.0]
     ),
@@ -458,8 +462,8 @@ const STD_FD = Dict{String,Any}[
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,0.5),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0]
     ),
@@ -473,8 +477,8 @@ const STD_FD = Dict{String,Any}[
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-1.0),
-            DeltaPeak(1.0,0.02,1.0),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 1.0),
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0]
     ),
@@ -486,11 +490,11 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0),
+            DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-2.5),
-            DeltaPeak(1.0,0.02,2.5),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 2.5),
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0,1.0]
     ),
@@ -502,11 +506,11 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0),
+            DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,0.5),
-            DeltaPeak(1.0,0.02,3.0)
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 3.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0,1.0]
     ),
@@ -518,11 +522,11 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0),
+            DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-2.0),
-            DeltaPeak(1.0,0.02,2.0),
-            DeltaPeak(1.0,0.02,4.0)
+            DeltaPeak(1.0,0.02, 2.0),
+            DeltaPeak(1.0,0.02, 4.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0,1.0]
     ),
@@ -537,9 +541,9 @@ const STD_FD = Dict{String,Any}[
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-3.5),
             DeltaPeak(1.0,0.02,-3.0),
-            DeltaPeak(1.0,0.02,3.0),
-            DeltaPeak(1.0,0.02,3.5),
-            DeltaPeak(1.0,0.02,4.0)
+            DeltaPeak(1.0,0.02, 3.0),
+            DeltaPeak(1.0,0.02, 3.5),
+            DeltaPeak(1.0,0.02, 4.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0,1.0,1.0]
     ),
@@ -554,9 +558,9 @@ const STD_FD = Dict{String,Any}[
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-1.0),
             DeltaPeak(1.0,0.02,-0.5),
-            DeltaPeak(1.0,0.02,0.5),
-            DeltaPeak(1.0,0.02,1.0),
-            DeltaPeak(1.0,0.02,4.0)
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 1.0),
+            DeltaPeak(1.0,0.02, 4.0)
         ],
         "signs" => [1.0,1.0,1.0,1.0,1.0,1.0]
     ),
