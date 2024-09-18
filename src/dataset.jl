@@ -559,127 +559,127 @@ const STD_FD = Dict{String,Any}[
 ]
 
 const STD_FL = Dict{String,Any}[
-    # Test: 001 / Fermionic + Lorentzian Peaks
+    # Test: 001 / Fermionic + Rise-And-Decay Peaks
     # single peak, central
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(0.1,0.2,0.0)
+            RiseDecayPeak(0.1,0.2,0.0)
         ],
         "signs" => [-1.0]
     ),
     #
-    # Test: 002 / Fermionic + Lorentzian Peaks
+    # Test: 002 / Fermionic + Rise-And-Decay Peaks
     # single peak, off-centered (left)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-2.0)
+            RiseDecayPeak(1.0,0.02,-2.0)
         ],
         "signs" => [1.0]
     ),
     #
-    # Test: 003 / Fermionic + Lorentzian Peaks
+    # Test: 003 / Fermionic + Rise-And-Decay Peaks
     # single peak, off-centered (right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,2.0)
+            RiseDecayPeak(1.0,0.02,2.0)
         ],
         "signs" => [1.0]
     ),
     #
-    # Test: 004 / Fermionic + Lorentzian Peaks
+    # Test: 004 / Fermionic + Rise-And-Decay Peaks
     # single peak, off-centered (left)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-4.0)
+            RiseDecayPeak(1.0,0.02,-4.0)
         ],
         "signs" => [1.0]
     ),
     #
-    # Test: 005 / Fermionic + Lorentzian Peaks
+    # Test: 005 / Fermionic + Rise-And-Decay Peaks
     # single peak, off-centered (right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,4.0)
+            RiseDecayPeak(1.0,0.02,4.0)
         ],
         "signs" => [1.0]
     ),
     #
-    # Test: 006 / Fermionic + Lorentzian Peaks
+    # Test: 006 / Fermionic + Rise-And-Decay Peaks
     # two peaks, off-centered (left + right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-2.0)
-            LorentzianPeak(1.0,0.02,2.0)
+            RiseDecayPeak(1.0,0.02,-2.0)
+            RiseDecayPeak(1.0,0.02,2.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
-    # Test: 007 / Fermionic + Lorentzian Peaks
+    # Test: 007 / Fermionic + Rise-And-Decay Peaks
     # two peaks, off-centered (left + left)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-1.0)
-            LorentzianPeak(1.0,0.02,-3.0)
+            RiseDecayPeak(1.0,0.02,-1.0)
+            RiseDecayPeak(1.0,0.02,-3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
-    # Test: 008 / Fermionic + Lorentzian Peaks
+    # Test: 008 / Fermionic + Rise-And-Decay Peaks
     # two peaks, off-centered (right + right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,1.0)
-            LorentzianPeak(1.0,0.02,3.0)
+            RiseDecayPeak(1.0,0.02,1.0)
+            RiseDecayPeak(1.0,0.02,3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
-    # Test: 009 / Fermionic + Lorentzian Peaks
+    # Test: 009 / Fermionic + Rise-And-Decay Peaks
     # two peaks, off-centered (left near + right far)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-0.5)
-            LorentzianPeak(1.0,0.02,3.0)
+            RiseDecayPeak(1.0,0.02,-0.5)
+            RiseDecayPeak(1.0,0.02,3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
-    # Test: 010 / Fermionic + Lorentzian Peaks
+    # Test: 010 / Fermionic + Rise-And-Decay Peaks
     # two peaks, off-centered (left far + right near)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,-3.0)
-            LorentzianPeak(1.0,0.02,0.5)
+            RiseDecayPeak(1.0,0.02,-3.0)
+            RiseDecayPeak(1.0,0.02,0.5)
         ],
         "signs" => [1.0,1.0]
     ),
