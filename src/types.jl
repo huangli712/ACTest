@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/18
 #
 
 #=
@@ -329,7 +329,7 @@ mutable struct DeltaPeak <: AbstractPeak
 end
 
 """
-    LorentzianPeak
+    RectanglePeak
 
 Mutable struct. It represents the rectangle peak.
 
@@ -342,6 +342,22 @@ mutable struct RectanglePeak <: AbstractPeak
     c :: F64
     w :: F64
     h :: F64
+end
+
+"""
+    RiseDecayPeak
+
+Mutable struct. It represents the rise-and-decay peak.
+
+### Members
+* c -> Center of the peak.
+* γ -> Exponential parameter.
+* h -> Height of the peak.
+"""
+mutable struct RiseDecayPeak <: AbstractPeak
+    c :: F64
+    γ :: F64
+    h :: F64ss
 end
 
 #=
