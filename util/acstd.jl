@@ -1,5 +1,5 @@
 #!/usr/bin/env julia
-  
+
 #
 # This script is used to create a standard dataset, which contains 100
 # spectral functions and related correlation functions. This dataset

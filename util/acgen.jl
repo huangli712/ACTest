@@ -1,5 +1,5 @@
 #!/usr/bin/env julia
-  
+
 #
 # This script is used to build the spectral functions and the related
 # correlation functions. It will launch only 1 process.

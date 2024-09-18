@@ -1,5 +1,5 @@
 #!/usr/bin/env julia
-  
+
 #
 # This script is used to start analytic continuation simulations with the
 # ACFlow toolkit. It will launch only 1 process.
@@ -56,7 +56,7 @@ end
 function fix_dict!(i::I64, B::Dict{String,Any})
     # Get dict for the standard test (ACT100)
     STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
-    
+
     # We have to make sure ntest == 100
     ntest = get_t("ntest")
     @assert ntest == length(STANDARD)
