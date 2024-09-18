@@ -6,7 +6,7 @@
 #
 # Usage:
 #
-#     $ actest.jl act.toml
+#     $ acflow.jl act.toml
 #
 
 push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src")
