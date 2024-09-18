@@ -46,8 +46,8 @@ function get_dict()
     return B, S
 end
 
-# Evaluate error for the current test. It just calculate distance between
-# the true and calculated spectral function.
+# Evaluate error for the current test. It just calculates the distance
+# between the true and calculated spectral function.
 function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
     # Read true solution
     data = readdlm("image.data." * string(i))
@@ -59,7 +59,7 @@ function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
     return error
 end
 
-# Write summary for the tests to external file: summary.data
+# Write summary for the tests to external file `summary.data`
 function write_summary(error, ctime)
     # Get number of tests
     ntest = get_t("ntest")
