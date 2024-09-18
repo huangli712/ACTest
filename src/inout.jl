@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/18
 #
 
 """
@@ -183,5 +183,17 @@ function Base.show(io::IO, 𝑝::RectanglePeak)
     println("peak type : rectangle")
     @printf("  center : %16.12f\n", 𝑝.c)
     @printf("  width  : %16.12f\n", 𝑝.w)
+    @printf("  height : %16.12f  ", 𝑝.h)
+end
+
+"""
+    Base.show(io::IO, 𝑝::RiseDecayPeak)
+
+Write a RiseDecayPeak struct.
+"""
+function Base.show(io::IO, 𝑝::RiseDecayPeak)
+    println("peak type : risedecay")
+    @printf("  center : %16.12f\n", 𝑝.c)
+    @printf("  expon. : %16.12f\n", 𝑝.γ)
     @printf("  height : %16.12f  ", 𝑝.h)
 end
