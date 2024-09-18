@@ -248,27 +248,29 @@ const STANDARD = Dict{String,Any}[
     ),
     #
     # Test: 019 / Fermionic + Gaussian Peaks
+    # three peaks, gapless, left small, right big
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0)
+            GaussianPeak(1.0,0.2,0.0),
+            GaussianPeak(0.1,0.4,-2.0),
+            GaussianPeak(0.6,1.0,2.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 020 / Fermionic + Gaussian Peaks
+    # three peaks, gapless, left big, right small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0)
+            GaussianPeak(1.0,0.2,0.0),
+            GaussianPeak(0.1,0.4,2.0),
+            GaussianPeak(0.6,1.0,-2.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
