@@ -1,15 +1,16 @@
 #!/usr/bin/env julia
   
 #
-# This script is used to generate spectral functions and corresponding
-# correlation functions. It will launch only 1 process.
+# This script is used to create a standard dataset, which contains 100
+# spectral functions and related correlation functions. This dataset
+# is called ACT100. It should be used to benchmark the newly developed
+# analytic continuation tools and methods. This script will launch only
+# 1 process.
 #
 # Usage:
 #
-#     $ acgen.jl act.toml
+#     $ acstd.jl act.toml
 #
-
-push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src")
 
 using ACTest
 
