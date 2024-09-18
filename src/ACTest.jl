@@ -117,6 +117,7 @@ GaussianPeak    -> Gaussian peak in spectral function.
 LorentzianPeak  -> Lorentzian peak in spectral function.
 DeltaPeak       -> δ-like peak in spectral function.
 RectanglePeak   -> Rectangle peak in spectral function.
+RiseDecayPeak   -> Rise-and-Decay peak in spectral function.
 #
 AbstractFunction -> Abstract function.
 SpectralFunction -> Spectral function.
@@ -149,6 +150,7 @@ export GaussianPeak
 export LorentzianPeak
 export DeltaPeak
 export RectanglePeak
+export RiseDecayPeak
 #
 export AbstractFunction
 export SpectralFunction
