@@ -1266,3 +1266,145 @@ const STD_BD = Dict{String,Any}[
         "signs" => [1.0,1.0,1.0,1.0,1.0,1.0]
     ),
 ]
+
+#=
+### *Bosonic Systems: Non-positive Definite Spectra*
+=#
+
+const STD_BRD = Dict{String,Any}[
+    # Test: 001 / Bosonic + Rise-And-Decay Peaks
+    # single peak, central
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(0.0,1.5,1.0)
+        ],
+        "signs" => [-1.0]
+    ),
+    #
+    # Test: 002 / Bosonic + Rise-And-Decay Peaks
+    # two peaks, left down + right up
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-1.0,1.5,0.5),
+            RiseDecayPeak( 1.0,1.5,0.5)
+        ],
+        "signs" => [-1.0,1.0]
+    ),
+    #
+    # Test: 003 / Bosonic + Rise-And-Decay Peaks
+    # two peaks, left up + right down
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-1.0,1.5,0.5),
+            RiseDecayPeak( 1.0,1.5,0.5)
+        ],
+        "signs" => [1.0,-1.0]
+    ),
+    #
+    # Test: 004 / Bosonic + Rise-And-Decay Peaks
+    # two peaks, left down small + right up large
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-3.0,2.0,0.2),
+            RiseDecayPeak( 3.0,2.0,0.5)
+        ],
+        "signs" => [-1.0,1.0]
+    ),
+    #
+    # Test: 005 / Bosonic + Rise-And-Decay Peaks
+    # two peaks, left up large + right down small
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-3.0,2.0,0.5),
+            RiseDecayPeak( 3.0,2.0,0.2)
+        ],
+        "signs" => [1.0,-1.0]
+    ),
+    #
+    # Test: 006 / Bosonic + Rise-And-Decay Peaks
+    # two peaks, left down + right down
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-2.0,1.5,0.5),
+            RiseDecayPeak( 2.0,1.5,0.5)
+        ],
+        "signs" => [-1.0,-1.0]
+    ),
+    #
+    # Test: 007 / Bosonic + Rise-And-Decay Peaks
+    # three peaks, left down + central up + right down
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-2.5,1.5,0.2),
+            RiseDecayPeak( 0.0,1.5,0.5),
+            RiseDecayPeak( 2.5,1.5,0.2)
+        ],
+        "signs" => [-1.0,1.0,-1.0]
+    ),
+    #
+    # Test: 008 / Bosonic + Rise-And-Decay Peaks
+    # three peaks, left up + central down + right up
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-2.5,1.5,0.5),
+            RiseDecayPeak( 0.0,1.5,0.2),
+            RiseDecayPeak( 2.5,1.5,0.5)
+        ],
+        "signs" => [1.0,-1.0,1.0]
+    ),
+    #
+    # Test: 009 / Bosonic + Rise-And-Decay Peaks
+    # four peaks, left down + left up + right up + right down
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-3.0,0.5,0.20),
+            RiseDecayPeak(-1.0,0.5,0.25),
+            RiseDecayPeak( 1.0,0.5,0.25),
+            RiseDecayPeak( 3.0,0.5,0.20)
+        ],
+        "signs" => [-1.0,1.0,1.0,-1.0]
+    ),
+    #
+    # Test: 010 / Bosonic + Rise-And-Decay Peaks
+    # five peaks, left up + left down + central up + right down + right up
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            RiseDecayPeak(-3.0,0.5,0.2),
+            RiseDecayPeak(-1.0,0.5,0.5),
+            RiseDecayPeak( 0.0,0.5,0.5),
+            RiseDecayPeak( 1.0,0.5,0.5),
+            RiseDecayPeak( 3.0,0.5,0.2)
+        ],
+        "signs" => [1.0,-1.0,1.0,-1.0,1.0]
+    ),
+]
