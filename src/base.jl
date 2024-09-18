@@ -362,7 +362,7 @@ end
     )
 
 For given spectral function A and kernel matrix K, try to generate the
-corresponding correlation function G ≡ KA.
+corresponding correlation function G (note that G ≡ KA).
 
 ### Arguments
 * rng -> Random number generator.
@@ -380,6 +380,7 @@ function make_green(
     grid::AbstractGrid
     )
     # Get the noise level
+    # If δ < 0, it means noise-free.
     δ = get_t("noise")
 
     # Calculate Green's function
@@ -401,13 +402,13 @@ function make_green(
 end
 
 """
-    make_grid()
+    make_grid(_grid = nothing)
 
 To generate imaginary time grid or Masubara grid for many-body correlator.
 It will return a sub-type of the AbstractGrid struct.
 
 ### Arguments
-N/A
+* _grid -> If it is present, we should use it to setup grid.
 
 ### Returns
 * grid -> Imaginary time or imaginary frequency grid.
@@ -451,13 +452,14 @@ function make_grid(_grid = nothing)
 end
 
 """
-    make_mesh()
+    make_mesh(_ktype = nothing, _mesh = nothing)
 
 Try to generate an uniform (linear) or non-uniform (non-linear) mesh for
 the spectral function in real axis.
 
 ### Arguments
-N/A
+* _ktype -> If it is present, we should use it to setup ktype.
+* _mesh -> If it is present, we should use it to setup mesh.
 
 ### Returns
 * mesh -> Real frequency mesh. It should be a subtype of AbstractMesh.
