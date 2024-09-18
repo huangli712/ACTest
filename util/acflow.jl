@@ -7,6 +7,9 @@
 # This script can be easily modified to support the other analytic
 # configuration tools / methods, or support parallel calculations.
 #
+# If you want to perform tests using the `ACT100` dataset, please modify
+# `make_test()` to `make_test(true)` in line 184.
+#
 # Usage:
 #
 #     $ acflow.jl act.toml
