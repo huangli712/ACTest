@@ -51,13 +51,19 @@ end
 # fermionic or bosonic, diagonal or non-diagonal. We have to make sure
 # the configurations are consistent with the original setups.
 function fix_dict!(i::I64, B::Dict{String,Any})
-    ntest = get_t("ntest")
+    # Get dict for the standard test (ACT100)
     STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
+    
+    # We have to make sure ntest == 100
+    ntest = get_t("ntest")
     @assert ntest == length(STANDARD)
 
+    # Fix ktype, grid, and mesh
     B["ktype"] = STANDARD[i]["ktype"]
     B["grid"] = STANDARD[i]["grid"]
     B["mesh"] = STANDARD[i]["mesh"]
+
+    # Special treatment for off-diagonal cases
     if STANDARD[i]["signs"] < 0.0
         B["offdiag"] = true
     end
