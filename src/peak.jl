@@ -217,4 +217,5 @@ function (𝑝::RiseDecayPeak)(ω::Vector{F64})
     return @. 𝑝.h * exp( - ( abs(ω - 𝑝.c) ) ^ 𝑝.γ )
 end
 
+# A general function to evaluate the peak at given mesh.
 (𝑝::AbstractPeak)(ω::AbstractMesh) = 𝑝(ω.mesh)
