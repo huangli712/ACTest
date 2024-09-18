@@ -166,6 +166,7 @@ function chk_dict()
     @assert get_t("wmax") > get_t("wmin")
     @assert get_t("pmax") > get_t("pmin")
     @assert get_t("beta") ≥ 0.0
+    @assert length(get_t("lpeak")) ≥ 1
     @assert all(x -> x > 0, get_t("lpeak"))
 
     foreach(x -> _v(x.first, x.second), PTEST)
