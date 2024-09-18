@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/17
+# Last modified: 2024/09/18
 #
 
 const STANDARD = Dict{String,Any}[
@@ -14,11 +14,9 @@ const STANDARD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0),
-            GaussianPeak(2.0,2.0,2.0)
+            GaussianPeak(1.0,1.0,0.0)
         ],
-        "signs" => [1.0,1.0,1.0]
+        "signs" => [1.0,1.0]
     ),
     #
     # Test: 002 / Fermionic + Gaussian Peaks
