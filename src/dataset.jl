@@ -980,3 +980,289 @@ const STD_BG = Dict{String,Any}[
         "signs" => [1.0,1.0,1.0]
     ),
 ]
+
+#=
+### *Bosonic Systems: Discrete Spectra*
+=#
+
+const STD_BD = Dict{String,Any}[
+    # Test: 001 / Bosonic + Delta Peaks
+    # single peak, central
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,0.0)
+        ],
+        "signs" => [1.0]
+    ),
+    #
+    # Test: 002 / Bosonic + Delta Peaks
+    # single peak, off-centered (left)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-2.0)
+        ],
+        "signs" => [1.0]
+    ),
+    #
+    # Test: 003 / Bosonic + Delta Peaks
+    # single peak, off-centered (right)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,2.0)
+        ],
+        "signs" => [1.0]
+    ),
+    #
+    # Test: 004 / Bosonic + Delta Peaks
+    # single peak, off-centered (left)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-4.0)
+        ],
+        "signs" => [1.0]
+    ),
+    #
+    # Test: 005 / Bosonic + Delta Peaks
+    # single peak, off-centered (right)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,4.0)
+        ],
+        "signs" => [1.0]
+    ),
+    #
+    # Test: 006 / Bosonic + Delta Peaks
+    # two peaks, off-centered (left + right)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-2.0),
+            DeltaPeak(1.0,0.02, 2.0)
+        ],
+        "signs" => [1.0,1.0]
+    ),
+    #
+    # Test: 007 / Bosonic + Delta Peaks
+    # two peaks, off-centered (left + left)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-1.0),
+            DeltaPeak(1.0,0.02,-3.0)
+        ],
+        "signs" => [1.0,1.0]
+    ),
+    #
+    # Test: 008 / Bosonic + Delta Peaks
+    # two peaks, off-centered (right + right)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,1.0),
+            DeltaPeak(1.0,0.02,3.0)
+        ],
+        "signs" => [1.0,1.0]
+    ),
+    #
+    # Test: 009 / Bosonic + Delta Peaks
+    # two peaks, off-centered (left near + right far)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0]
+    ),
+    #
+    # Test: 010 / Bosonic + Delta Peaks
+    # two peaks, off-centered (left far + right near)
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02, 0.5)
+        ],
+        "signs" => [1.0,1.0]
+    ),
+    #
+    # Test: 011 / Bosonic + Delta Peaks
+    # three peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02, 0.0),
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 0.5)
+        ],
+        "signs" => [1.0,1.0,1.0]
+    ),
+    #
+    # Test: 012 / Bosonic + Delta Peaks
+    # three peaks, large distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02, 0.0),
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0,1.0]
+    ),
+    #
+    # Test: 013 / Bosonic + Delta Peaks
+    # four peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-1.5),
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 1.5)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 014 / Bosonic + Delta Peaks
+    # four peaks, large distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 015 / Bosonic + Delta Peaks
+    # four peaks, large distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02,-1.0),
+            DeltaPeak(1.0,0.02, 1.0),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 016 / Bosonic + Delta Peaks
+    # five peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02, 0.0),
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02,-2.5),
+            DeltaPeak(1.0,0.02, 2.5),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 017 / Bosonic + Delta Peaks
+    # five peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02, 0.0),
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 3.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 018 / Bosonic + Delta Peaks
+    # five peaks, large distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02, 0.0),
+            DeltaPeak(1.0,0.02,-4.0),
+            DeltaPeak(1.0,0.02,-2.0),
+            DeltaPeak(1.0,0.02, 2.0),
+            DeltaPeak(1.0,0.02, 4.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 019 / Bosonic + Delta Peaks
+    # six peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-4.0),
+            DeltaPeak(1.0,0.02,-3.5),
+            DeltaPeak(1.0,0.02,-3.0),
+            DeltaPeak(1.0,0.02, 3.0),
+            DeltaPeak(1.0,0.02, 3.5),
+            DeltaPeak(1.0,0.02, 4.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0,1.0,1.0]
+    ),
+    #
+    # Test: 020 / Bosonic + Delta Peaks
+    # three peaks, small distance
+    Dict(
+        "ktype" => "boson",
+        "grid"  => "bfreq",
+        "mesh"  => "linear",
+        "peaks" => [
+            DeltaPeak(1.0,0.02,-4.0),
+            DeltaPeak(1.0,0.02,-1.0),
+            DeltaPeak(1.0,0.02,-0.5),
+            DeltaPeak(1.0,0.02, 0.5),
+            DeltaPeak(1.0,0.02, 1.0),
+            DeltaPeak(1.0,0.02, 4.0)
+        ],
+        "signs" => [1.0,1.0,1.0,1.0,1.0,1.0]
+    ),
+]
