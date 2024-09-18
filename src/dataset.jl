@@ -114,7 +114,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 009 / Fermionic + Gaussian Peaks
-    # two peaks, off-centered, left small + right big
+    # two peaks, off-centered, left small + right large
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -127,7 +127,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 010 / Fermionic + Gaussian Peaks
-    # two peaks, off-centered, left big + right small
+    # two peaks, off-centered, left large + right small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -252,7 +252,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 019 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, left small + right big
+    # three peaks, gapless, left small + right large
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -266,7 +266,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 020 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, left big + right small
+    # three peaks, gapless, left large + right small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -572,7 +572,7 @@ const STD_FD = Dict{String,Any}[
 
 const STD_FRD = Dict{String,Any}[
     # Test: 001 / Fermionic + Rise-And-Decay Peaks
-    # single peak, central
+    # single peak, central, down
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -591,7 +591,7 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-1.0,1.5,0.5),
-            RiseDecayPeak(1.0,1.5,0.5)
+            RiseDecayPeak( 1.0,1.5,0.5)
         ],
         "signs" => [-1.0,1.0]
     ),
@@ -604,33 +604,33 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-1.0,1.5,0.5),
-            RiseDecayPeak(1.0,1.5,0.5)
+            RiseDecayPeak( 1.0,1.5,0.5)
         ],
         "signs" => [1.0,-1.0]
     ),
     #
     # Test: 004 / Fermionic + Rise-And-Decay Peaks
-    # two peaks, left down small + right up big
+    # two peaks, left down small + right up large
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.2),
-            RiseDecayPeak(3.0,2.0,0.5)
+            RiseDecayPeak( 3.0,2.0,0.5)
         ],
         "signs" => [-1.0,1.0]
     ),
     #
     # Test: 005 / Fermionic + Rise-And-Decay Peaks
-    # two peaks, left up big + right down small
+    # two peaks, left up large + right down small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.5),
-            RiseDecayPeak(3.0,2.0,0.2)
+            RiseDecayPeak( 3.0,2.0,0.2)
         ],
         "signs" => [1.0,-1.0]
     ),
@@ -643,56 +643,56 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-2.0,1.5,0.5),
-            RiseDecayPeak(2.0,1.5,0.5)
+            RiseDecayPeak( 2.0,1.5,0.5)
         ],
         "signs" => [-1.0,-1.0]
     ),
     #
     # Test: 007 / Fermionic + Rise-And-Decay Peaks
-    # three peaks, down + up + down
+    # three peaks, left down + central up + right down
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.2),
-            RiseDecayPeak(0.0,1.5,0.5),
-            RiseDecayPeak(2.5,1.5,0.2)
+            RiseDecayPeak( 0.0,1.5,0.5),
+            RiseDecayPeak( 2.5,1.5,0.2)
         ],
         "signs" => [-1.0,1.0,-1.0]
     ),
     #
     # Test: 008 / Fermionic + Rise-And-Decay Peaks
-    # three peaks, up + down + up
+    # three peaks, left up + central down + right up
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.5),
-            RiseDecayPeak(0.0,1.5,0.2),
-            RiseDecayPeak(2.5,1.5,0.5)
+            RiseDecayPeak( 0.0,1.5,0.2),
+            RiseDecayPeak( 2.5,1.5,0.5)
         ],
         "signs" => [1.0,-1.0,1.0]
     ),
     #
     # Test: 009 / Fermionic + Rise-And-Decay Peaks
-    # four peaks, down + up + up + down
+    # four peaks, left down + left up + right up + right down
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            RiseDecayPeak(-3.0,0.5,0.2),
+            RiseDecayPeak(-3.0,0.5,0.20),
             RiseDecayPeak(-1.0,0.5,0.25),
-            RiseDecayPeak(1.0,0.5,0.25),
-            RiseDecayPeak(3.0,0.5,0.2)
+            RiseDecayPeak( 1.0,0.5,0.25),
+            RiseDecayPeak( 3.0,0.5,0.20)
         ],
         "signs" => [-1.0,1.0,1.0,-1.0]
     ),
     #
     # Test: 010 / Fermionic + Rise-And-Decay Peaks
-    # five peaks, up + down + up + down + up
+    # five peaks, left up + left down + central up + right down + right up
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -700,9 +700,9 @@ const STD_FRD = Dict{String,Any}[
         "peaks" => [
             RiseDecayPeak(-3.0,0.5,0.2),
             RiseDecayPeak(-1.0,0.5,0.5),
-            RiseDecayPeak(0.0,0.5,0.5),
-            RiseDecayPeak(1.0,0.5,0.5),
-            RiseDecayPeak(3.0,0.5,0.2)
+            RiseDecayPeak( 0.0,0.5,0.5),
+            RiseDecayPeak( 1.0,0.5,0.5),
+            RiseDecayPeak( 3.0,0.5,0.2)
         ],
         "signs" => [1.0,-1.0,1.0,-1.0,1.0]
     ),
@@ -811,7 +811,7 @@ const STD_BG = Dict{String,Any}[
     ),
     #
     # Test: 009 / Bosonic + Gaussian Peaks
-    # two peaks, off-centered (left small + right big)
+    # two peaks, off-centered (left small + right large)
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -824,7 +824,7 @@ const STD_BG = Dict{String,Any}[
     ),
     #
     # Test: 010 / Bosonic + Gaussian Peaks
-    # two peaks, off-centered (left big + right small)
+    # two peaks, off-centered (left large + right small)
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -949,7 +949,7 @@ const STD_BG = Dict{String,Any}[
     ),
     #
     # Test: 019 / Bosonic + Gaussian Peaks
-    # three peaks, gapless, left small, right big
+    # three peaks, gapless, left small, right large
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -963,7 +963,7 @@ const STD_BG = Dict{String,Any}[
     ),
     #
     # Test: 020 / Bosonic + Gaussian Peaks
-    # three peaks, gapless, left big, right small
+    # three peaks, gapless, left large, right small
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -1299,7 +1299,7 @@ const STD_BRD = Dict{String,Any}[
     ),
     #
     # Test: 004 / Bosonic + Rise-And-Decay Peaks
-    # two peaks, left down small + right up big
+    # two peaks, left down small + right up large
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -1312,7 +1312,7 @@ const STD_BRD = Dict{String,Any}[
     ),
     #
     # Test: 005 / Bosonic + Rise-And-Decay Peaks
-    # two peaks, left up big + right down small
+    # two peaks, left up large + right down small
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
