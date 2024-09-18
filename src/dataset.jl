@@ -7,6 +7,10 @@
 # Last modified: 2024/09/18
 #
 
+#=
+### *Fermionic Systems: Continuum Spectra*
+=#
+
 const STD_FG = Dict{String,Any}[
     # Test: 001 / Fermionic + Gaussian Peaks
     # single peak, central
@@ -52,7 +56,7 @@ const STD_FG = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.0,0.5,-0.8),
-            GaussianPeak(1.0,0.5,0.8)
+            GaussianPeak(1.0,0.5, 0.8)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -65,7 +69,7 @@ const STD_FG = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.0,0.5,-1.8),
-            GaussianPeak(1.0,0.5,1.8)
+            GaussianPeak(1.0,0.5, 1.8)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -78,7 +82,7 @@ const STD_FG = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.0,0.5,-3.0),
-            GaussianPeak(1.0,0.5,3.0)
+            GaussianPeak(1.0,0.5, 3.0)
         ],
         "signs" => [1.0,1.0]
     ),
@@ -90,7 +94,7 @@ const STD_FG = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.4,0.0),
+            GaussianPeak(1.0,0.4, 0.0),
             GaussianPeak(1.0,0.4,-3.0)
         ],
         "signs" => [1.0,1.0]
@@ -110,83 +114,83 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 009 / Fermionic + Gaussian Peaks
-    # two peaks, off-centered (left small + right big)
+    # two peaks, off-centered, left small + right big
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(0.5,0.5,-3.0),
-            GaussianPeak(1.5,0.5,3.0)
+            GaussianPeak(1.5,0.5, 3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 010 / Fermionic + Gaussian Peaks
-    # two peaks, off-centered (left big + right small)
+    # two peaks, off-centered, left big + right small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.5,0.5,-3.0),
-            GaussianPeak(0.5,0.5,3.0)
+            GaussianPeak(0.5,0.5, 3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 011 / Fermionic + Gaussian Peaks
-    # three peaks, gapless
+    # three peaks, sharp quasiparticle peak + two shoulder peaks
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.1,0.0),
+            GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-1.0),
-            GaussianPeak(0.5,1.0,1.0)
+            GaussianPeak(0.5,1.0, 1.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 012 / Fermionic + Gaussian Peaks
-    # three peaks, gapless
+    # three peaks, sharp quasiparticle peak + two shoulder peaks
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.1,0.0),
+            GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-2.0),
-            GaussianPeak(0.5,1.0,2.0)
+            GaussianPeak(0.5,1.0, 2.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 013 / Fermionic + Gaussian Peaks
-    # three peaks, gapless
+    # three peaks, sharp quasiparticle peak + two Hubbard bands
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.05,0.0),
-            GaussianPeak(0.5,1.0,-3.0),
-            GaussianPeak(0.5,1.0,3.0)
+            GaussianPeak(1.0,0.05, 0.0),
+            GaussianPeak(0.5,1.00,-3.0),
+            GaussianPeak(0.5,1.00, 3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 014 / Fermionic + Gaussian Peaks
-    # three peaks, gapless
+    # three peaks, sharp quasiparticle peak + two Hubbard bands
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.05,0.0),
-            GaussianPeak(0.4,0.5,-3.5),
-            GaussianPeak(0.4,0.5,3.5)
+            GaussianPeak(1.0,0.05, 0.0),
+            GaussianPeak(0.4,0.50,-3.5),
+            GaussianPeak(0.4,0.50, 3.5)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
@@ -199,8 +203,8 @@ const STD_FG = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             GaussianPeak(1.0,0.05,-1.0),
-            GaussianPeak(0.1,0.8,-3.0),
-            GaussianPeak(0.4,0.8,3.0)
+            GaussianPeak(0.1,0.80,-3.0),
+            GaussianPeak(0.4,0.80, 3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
@@ -212,21 +216,21 @@ const STD_FG = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.05,1.0),
-            GaussianPeak(0.4,0.8,-3.0),
-            GaussianPeak(0.1,0.8,3.0)
+            GaussianPeak(1.0,0.05, 1.0),
+            GaussianPeak(0.4,0.80,-3.0),
+            GaussianPeak(0.1,0.80, 3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 017 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, left
+    # three peaks, gapless, left half-axis
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.2,0.0),
+            GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.6,0.6,-1.0),
             GaussianPeak(0.6,0.6,-3.0)
         ],
@@ -234,7 +238,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 018 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, right
+    # three peaks, gapless, right half-axis
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -248,7 +252,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 019 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, left small, right big
+    # three peaks, gapless, left small + right big
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -262,7 +266,7 @@ const STD_FG = Dict{String,Any}[
     ),
     #
     # Test: 020 / Fermionic + Gaussian Peaks
-    # three peaks, gapless, left big, right small
+    # three peaks, gapless, left big + right small
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
