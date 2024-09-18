@@ -258,9 +258,9 @@ const STD_FG = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.2,0.0),
+            GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.1,0.4,-2.0),
-            GaussianPeak(0.6,1.0,2.0)
+            GaussianPeak(0.6,1.0, 2.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
@@ -272,8 +272,8 @@ const STD_FG = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            GaussianPeak(1.0,0.2,0.0),
-            GaussianPeak(0.1,0.4,2.0),
+            GaussianPeak(1.0,0.2, 0.0),
+            GaussianPeak(0.1,0.4, 2.0),
             GaussianPeak(0.6,1.0,-2.0)
         ],
         "signs" => [1.0,1.0,1.0]
