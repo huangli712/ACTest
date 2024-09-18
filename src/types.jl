@@ -357,7 +357,7 @@ Mutable struct. It represents the rise-and-decay peak.
 mutable struct RiseDecayPeak <: AbstractPeak
     c :: F64
     γ :: F64
-    h :: F64ss
+    h :: F64
 end
 
 #=
