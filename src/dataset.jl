@@ -727,6 +727,11 @@ const STD_FRD = Dict{String,Any}[
 ### *Bosonic Systems: Continuum Spectra*
 =#
 
+"""
+    STD_BG
+
+Dictionary for standard spectral functions: bosonic + gaussian peaks.
+"""
 const STD_BG = Dict{String,Any}[
     # Test: 001 / Bosonic + Gaussian Peaks
     # single peak, central
@@ -1000,6 +1005,11 @@ const STD_BG = Dict{String,Any}[
 ### *Bosonic Systems: Discrete Spectra*
 =#
 
+"""
+    STD_BD
+
+Dictionary for standard spectral functions: bosonic + delta-like peaks.
+"""
 const STD_BD = Dict{String,Any}[
     # Test: 001 / Bosonic + Delta Peaks
     # single peak, central
@@ -1286,6 +1296,11 @@ const STD_BD = Dict{String,Any}[
 ### *Bosonic Systems: Non-positive Definite Spectra*
 =#
 
+"""
+    STD_BRD
+
+Dictionary for standard spectral functions: bosonic + rise-and-decay peaks.
+"""
 const STD_BRD = Dict{String,Any}[
     # Test: 001 / Bosonic + Rise-And-Decay Peaks
     # single peak, central
