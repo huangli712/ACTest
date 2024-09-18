@@ -7,7 +7,7 @@
 # Last modified: 2024/09/18
 #
 
-const STANDARD = Dict{String,Any}[
+const STD_FG = Dict{String,Any}[
     # Test: 001 / Fermionic + Gaussian Peaks
     # single peak, central
     Dict(
