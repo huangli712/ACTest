@@ -56,6 +56,12 @@ function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
     # Calculate the difference
     error = trapz(mesh, abs.(Ainp .- Aout)) / trapz(mesh, abs.(Ainp))
 
+    # Sometimes Aout could be extremely high δ-like peaks. We have to
+    # take care of these cases.
+    if error > 1000.0
+        error = Inf
+    end
+
     return error
 end
 
@@ -76,7 +82,6 @@ function write_summary(error, ctime)
             end
         end
         #
-
         println(fout, "# Number of tests: ", ntest)
         println(fout, "# Failed tests: ", count(x -> iszero(x), error))
         println(fout, "# Abnormal tests: ", count(x -> isinf(x), error))
