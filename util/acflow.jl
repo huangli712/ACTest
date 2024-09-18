@@ -8,7 +8,7 @@
 # configuration tools / methods, or support parallel calculations.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 184.
+# `make_test()` to `make_test(true)` in line 186.
 #
 # Usage:
 #
@@ -55,19 +55,20 @@ end
 # the configurations are consistent with the original setups.
 function fix_dict!(i::I64, B::Dict{String,Any})
     # Get dict for the standard test (ACT100)
-    STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
+    ACT100 = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
 
     # We have to make sure ntest == 100
     ntest = get_t("ntest")
-    @assert ntest == length(STANDARD)
+    @assert ntest == length(ACT100) == 100
 
     # Fix ktype, grid, and mesh
-    B["ktype"] = STANDARD[i]["ktype"]
-    B["grid"] = STANDARD[i]["grid"]
-    B["mesh"] = STANDARD[i]["mesh"]
+    B["ktype"] = ACT100[i]["ktype"]
+    B["grid"] = ACT100[i]["grid"]
+    B["mesh"] = ACT100[i]["mesh"]
+    B["offdiag"] = false
 
     # Special treatment for off-diagonal cases
-    if STANDARD[i]["signs"] < 0.0
+    if any(x -> x < 0.0, ACT100[i]["signs"])
         B["offdiag"] = true
     end
 end
@@ -172,6 +173,7 @@ function make_test(std = false)
 
     @assert nfail + nsucc == ntest
     println("Only $nsucc / $ntest tests can survive!")
+    println("Please check summary.data for more details.")
     println()
 
     # Write summary for the test
