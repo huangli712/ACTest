@@ -344,8 +344,8 @@ const STD_FD = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.5,-3.0),
-            DeltaPeak(1.0,0.5,3.0)
+            DeltaPeak(1.0,0.02,-2.0)
+            DeltaPeak(1.0,0.02,2.0)
         ],
         "signs" => [1.0,1.0]
     ),
