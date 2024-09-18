@@ -566,6 +566,10 @@ const STD_FD = Dict{String,Any}[
     ),
 ]
 
+#=
+### *Fermionic Systems: Non-positive Definite Spectra*
+=#
+
 const STD_FRD = Dict{String,Any}[
     # Test: 001 / Fermionic + Rise-And-Decay Peaks
     # single peak, central
