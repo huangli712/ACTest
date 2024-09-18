@@ -1,4 +1,4 @@
-# Dataset
+# Standard dataset
 
 *Define the standard dataset of spectral functions (namely ACT100).*
 
