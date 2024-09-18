@@ -403,29 +403,29 @@ const STD_FD = Dict{String,Any}[
     ),
     #
     # Test: 011 / Fermionic + Delta Peaks
-    
+    # three peaks, small distance
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.1,0.0),
-            DeltaPeak(0.5,1.0,-1.0),
-            DeltaPeak(0.5,1.0,1.0)
+            DeltaPeak(1.0,0.02,0.0)
+            DeltaPeak(1.0,0.02,-0.5)
+            DeltaPeak(1.0,0.02,0.5)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
     #
     # Test: 012 / Fermionic + Delta Peaks
-    # three peaks, gapless
+    # three peaks, large distance
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.1,0.0),
-            DeltaPeak(0.5,1.0,-2.0),
-            DeltaPeak(0.5,1.0,2.0)
+            DeltaPeak(1.0,0.02,0.0)
+            DeltaPeak(1.0,0.02,-3.0)
+            DeltaPeak(1.0,0.02,3.0)
         ],
         "signs" => [1.0,1.0,1.0]
     ),
