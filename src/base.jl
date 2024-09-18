@@ -93,7 +93,7 @@ function make_data_std()
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
 
-        dict = STANDARD[i] 
+        dict = STANDARD[i]
 
         # Prepare grid for input data
         grid = make_grid(dict["grid"])

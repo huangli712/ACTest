@@ -605,7 +605,7 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.2),
-            RiseDecayPeak(3.0,2.0,0.5)            
+            RiseDecayPeak(3.0,2.0,0.5)
         ],
         "signs" => [-1.0,1.0]
     ),
@@ -618,7 +618,7 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.5),
-            RiseDecayPeak(3.0,2.0,0.2)      
+            RiseDecayPeak(3.0,2.0,0.2)
         ],
         "signs" => [1.0,-1.0]
     ),
@@ -631,7 +631,7 @@ const STD_FRD = Dict{String,Any}[
         "mesh"  => "linear",
         "peaks" => [
             RiseDecayPeak(-2.0,1.5,0.5),
-            RiseDecayPeak(2.0,1.5,0.5)   
+            RiseDecayPeak(2.0,1.5,0.5)
         ],
         "signs" => [-1.0,-1.0]
     ),
@@ -645,7 +645,7 @@ const STD_FRD = Dict{String,Any}[
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.2),
             RiseDecayPeak(0.0,1.5,0.5),
-            RiseDecayPeak(2.5,1.5,0.2)   
+            RiseDecayPeak(2.5,1.5,0.2)
         ],
         "signs" => [-1.0,1.0,-1.0]
     ),
