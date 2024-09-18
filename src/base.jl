@@ -109,9 +109,11 @@ function make_data_std()
     println("Random number seed: ", seed)
 
     # Start the loop
+    println()
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
 
+        # Get dict for current test
         dict = ACT100[i]
 
         # Prepare grid for input data
@@ -126,15 +128,13 @@ function make_data_std()
         kernel = make_kernel(mesh, grid)
         println("Build default kernel: ", get_t("ktype"))
 
-        #@show typeof(grid), typeof(mesh)
-        #
         # Generate spectral functions
         sf = make_spectrum(mesh, dict["peaks"], dict["signs"])
         #
         # Generate Green's functions
         green = make_green(rng, sf, kernel, grid)
         #
-        # Write generated functions
+        # Write generated data
         write_spectrum(i, sf)
         write_backward(i, green)
         #
@@ -174,7 +174,7 @@ function make_data()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
-    # Run the task
+    # Start the loop
     println()
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
@@ -185,7 +185,7 @@ function make_data()
         # Generate Green's functions
         green = make_green(rng, sf, kernel, grid)
         #
-        # Write generated functions
+        # Write generated data
         write_spectrum(i, sf)
         write_backward(i, green)
         #
