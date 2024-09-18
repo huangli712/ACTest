@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/18
 #
 
 #=
@@ -33,7 +33,7 @@ p(\omega) = \frac{A}{\pi} \frac{\Gamma}{(\omega - \epsilon)^2 + \Gamma^2}
 ```math
 \begin{equation}
 p(\omega) = A\exp{\left[-\frac{(\omega - ϵ)^2}{2\Gamma^2}\right]},~
-where~\Gamma = 0.01
+\text{where}~\Gamma = 0.01
 \end{equation}
 ```
 
@@ -43,9 +43,17 @@ where~\Gamma = 0.01
 \begin{equation}
 p(\omega) =
 \begin{cases}
-h, \quad if~\omega \in [c-w/2,c+w/2], \\
-0, \quad else. \\
+h, \quad \text{if}~\omega \in [c-w/2,c+w/2], \\
+0, \quad \text{else}. \\
 \end{cases}
+\end{equation}
+```
+
+**Rise-And-Decay peak**
+
+```math
+\begin{equation}
+p(\omega) = h \exp{(-|x - c|^{\gamma})}
 \end{equation}
 ```
 
