@@ -187,4 +187,34 @@ function (𝑝::RectanglePeak)(ω::Vector{F64})
     return map(x -> f(x) ? 𝑝.h : zero(eltype(ω)), ω)
 end
 
+"""
+    (𝑝::RiseDecayPeak)(ω::F64)
+
+Evaluate the rise-and-decay peak at ω.
+
+### Arguments
+* ω -> ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
+"""
+function (𝑝::RiseDecayPeak)(ω::F64)
+    return 𝑝.h * exp( - abs( (ω - 𝑝.c)^𝑝.γ ) )
+end
+
+"""
+    (𝑝::RiseDecayPeak)(ω::Vector{F64})
+
+Evaluate the rise-and-decay peak at real mesh.
+
+### Arguments
+* ω -> Real mesh, ω ∈ ℝ.
+
+### Returns
+* val -> 𝑝(ω).
+"""
+function (𝑝::RiseDecayPeak)(ω::Vector{F64})
+    return @. 𝑝.h * exp( - abs( (ω - 𝑝.c)^𝑝.γ ) )
+end
+
 (𝑝::AbstractPeak)(ω::AbstractMesh) = 𝑝(ω.mesh)
