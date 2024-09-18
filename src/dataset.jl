@@ -338,7 +338,7 @@ const STD_FD = Dict{String,Any}[
     ),
     #
     # Test: 006 / Fermionic + Delta Peaks
-    # two peaks, large gap
+    # two peaks, off-centered (left + right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
@@ -351,59 +351,59 @@ const STD_FD = Dict{String,Any}[
     ),
     #
     # Test: 007 / Fermionic + Delta Peaks
-    # two peaks, central + off-centered (left)
+    # two peaks, off-centered (left + left)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.4,0.0),
-            DeltaPeak(1.0,0.4,-3.0)
+            DeltaPeak(1.0,0.02,-1.0)
+            DeltaPeak(1.0,0.02,-3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 008 / Fermionic + Delta Peaks
-    # two peaks, central + off-centered (right)
+    # two peaks, off-centered (right + right)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.0,0.4,0.0),
-            DeltaPeak(1.0,0.4,3.0)
+            DeltaPeak(1.0,0.02,1.0)
+            DeltaPeak(1.0,0.02,3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 009 / Fermionic + Delta Peaks
-    # two peaks, off-centered (left small + right big)
+    # two peaks, off-centered (left near + right far)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(0.5,0.5,-3.0),
-            DeltaPeak(1.5,0.5,3.0)
+            DeltaPeak(1.0,0.02,-1.0)
+            DeltaPeak(1.0,0.02,3.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 010 / Fermionic + Delta Peaks
-    # two peaks, off-centered (left big + right small)
+    # two peaks, off-centered (left far + right near)
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            DeltaPeak(1.5,0.5,-3.0),
-            DeltaPeak(0.5,0.5,3.0)
+            DeltaPeak(1.0,0.02,-3.0)
+            DeltaPeak(1.0,0.02,1.0)
         ],
         "signs" => [1.0,1.0]
     ),
     #
     # Test: 011 / Fermionic + Delta Peaks
-    # three peaks, gapless
+    
     Dict(
         "ktype" => "fermi",
         "grid"  => "ffreq",
