@@ -46,6 +46,19 @@ function get_dict()
     return B, S
 end
 
+function fix_dict!(i::I64, B::Dict{String,Any})
+    ntest = get_t("ntest")
+    STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
+    @assert ntest == length(STANDARD)
+
+    B["ktype"] = STANDARD[i]["ktype"]
+    B["grid"] = STANDARD[i]["grid"]
+    B["mesh"] = STANDARD[i]["mesh"]
+    if STANDARD[i]["signs"] < 0.0
+        B["offdiag"] = true
+    end
+end
+
 # Evaluate error for the current test. It just calculates the distance
 # between the true and calculated spectral function.
 function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
@@ -89,7 +102,7 @@ function write_summary(error, ctime)
 end
 
 # Perform analytic continuation simulations using the ACFlow toolkit
-function make_test()
+function make_test(std = false)
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -108,6 +121,11 @@ function make_test()
         #
         # Setup configurations further for the current test
         B["finput"] = "green.data." * string(i)
+        # If we want to perform standard test, we have to change `ktype`
+        # and `grid` parameters dynamically.
+        if std == true
+            fix_dict!(i, B)
+        end
         setup_param(B, S)
         #
         try
