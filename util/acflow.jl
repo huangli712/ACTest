@@ -46,6 +46,10 @@ function get_dict()
     return B, S
 end
 
+# Fix configuration dynamically. This is essential for standard test.
+# Note that for standard test, the correlation functions could be
+# fermionic or bosonic, diagonal or non-diagonal. We have to make sure
+# the configurations are consistent with the original setups.
 function fix_dict!(i::I64, B::Dict{String,Any})
     ntest = get_t("ntest")
     STANDARD = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
