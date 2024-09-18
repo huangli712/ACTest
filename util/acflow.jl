@@ -102,6 +102,7 @@ function make_test()
     # Prepare configurations
     B, S = get_dict()
 
+    # Start the loop
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
@@ -116,7 +117,7 @@ function make_test()
             mesh, Aout, _ = solve(read_data())
             finish = time_ns()
             #
-            # Backup the calculated results
+            # Backup the calculated results for further analytics
             cp("Aout.data", "Aout.data." * string(i), force = true)
             cp("Gout.data", "Gout.data." * string(i), force = true)
             cp("repr.data", "repr.data." * string(i), force = true)
@@ -132,7 +133,7 @@ function make_test()
             error[i] = 0.0
             ctime[i] = 0.0
             nfail = nfail + 1
-            println("something wrong for test case $i")
+            println("Something wrong for test case $i")
         end
         #
         println()
