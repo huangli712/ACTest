@@ -351,7 +351,7 @@ Mutable struct. It represents the rise-and-decay peak.
 
 ### Members
 * c -> Center of the peak.
-* γ -> Exponential parameter.
+* γ -> Exponential parameter. It is used to control the width of the peak.
 * h -> Height of the peak.
 """
 mutable struct RiseDecayPeak <: AbstractPeak
