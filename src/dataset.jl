@@ -566,9 +566,9 @@ const STD_FL = Dict{String,Any}[
         "grid"  => "ffreq",
         "mesh"  => "linear",
         "peaks" => [
-            LorentzianPeak(1.0,0.02,0.0)
+            LorentzianPeak(0.1,0.2,0.0)
         ],
-        "signs" => [1.0]
+        "signs" => [-1.0]
     ),
     #
     # Test: 002 / Fermionic + Lorentzian Peaks
