@@ -62,7 +62,9 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         xticksmirrored = true,
         yticksmirrored = true,
         xtickalign = 1.0,
-        ytickalign = 1.0
+        ytickalign = 1.0,
+        xminortickalign = 1.0,
+        yminortickalign = 1.0,
     )
     #
     lines!(
