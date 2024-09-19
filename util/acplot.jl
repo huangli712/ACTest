@@ -47,7 +47,36 @@ function read_Aout(ind::I64)
 end
 
 function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
-    error("plot")
+    f = Figure()
+    #
+    ax = Axis(f[1, 1],
+        title = L"x^2",
+        xlabel = L"\omega",
+        ylabel = L"A(\omega)",
+    )
+    #
+    lines!(
+        ax,
+        sf1.mesh.mesh,
+        sf1.image,
+        color = :tomato,
+        linestyle = :dash,
+        label = "True",
+    )
+    #
+    lines!(
+        ax,
+        sf2.mesh.mesh,
+        sf2.image,
+        color = :crimson,
+        linestyle = :solid,
+        label = "Calc.",
+    )
+    #
+    axislegend(position = :rb)
+    #
+    fn = "image." * string(ind) * ".pdf"
+    save(fn, f)
 end
 
 function make_figures()
@@ -60,10 +89,8 @@ function make_figures()
         #
         try
             sf1 = read_image(i)
-            println("sf1 is ready")
             sf2 = read_Aout(i)
-            println("sf2 is ready")
-            make_plot(i, sf1, sf2)        
+            make_plot(i, sf1, sf2)
         catch ex
             println("Something wrong for test case $i")
         end
