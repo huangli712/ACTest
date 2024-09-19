@@ -122,7 +122,7 @@ end
 # Perform analytic continuation simulations using the ACFlow toolkit.
 # if `std` is true, then the ACT100 dataset is considered.
 # if `inds` is not empty, then only the selected tests are handled.
-function make_test(std::Bool = false, inds::Vector{I64} = [])
+function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     # Get number of tests (ntest).
     # cinds is used to store the indices of tests.
     ntest = get_t("ntest")
