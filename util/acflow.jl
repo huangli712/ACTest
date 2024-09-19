@@ -8,7 +8,7 @@
 # configuration tools / methods, or support parallel calculations.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 186.
+# `make_test()` to `make_test(true)` in line 200.
 #
 # Usage:
 #
@@ -101,7 +101,7 @@ function write_summary(
     # Get number of tests
     ntest = length(inds)
 
-    open("summary.data", "w") do fout
+    open("summary.data", "a") do fout
         println(fout, "# index            error         time (s) passed")
         #
         for i in inds
@@ -119,7 +119,9 @@ function write_summary(
     end
 end
 
-# Perform analytic continuation simulations using the ACFlow toolkit
+# Perform analytic continuation simulations using the ACFlow toolkit.
+# if `std` is true, then the ACT100 dataset is considered.
+# if `inds` is not empty, then only the selected tests are handled.
 function make_test(std::Bool = false, inds::Vector{I64} = [])
     # Get number of tests (ntest).
     # cinds is used to store the indices of tests.
@@ -148,6 +150,7 @@ function make_test(std::Bool = false, inds::Vector{I64} = [])
         # If we want to perform standard test, we have to change `ktype`
         # and `grid` parameters dynamically.
         if std == true
+            println("Note: the act100 dataset is being used!")
             fix_dict!(i, B)
         end
         setup_param(B, S)
@@ -176,7 +179,6 @@ function make_test(std::Bool = false, inds::Vector{I64} = [])
             ctime[i] = 0.0
             nfail = nfail + 1
             println("Something wrong for test case $i")
-            println(ex.msg)
         end
         #
         println()
