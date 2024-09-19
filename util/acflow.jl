@@ -93,14 +93,18 @@ function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
 end
 
 # Write summary for the tests to external file `summary.data`
-function write_summary(error, ctime)
+function write_summary(
+    inds::Vector{I64},
+    error::Vector{F64},
+    ctime::Vector{F64}
+    )
     # Get number of tests
-    ntest = get_t("ntest")
+    ntest = length(inds)
 
     open("summary.data", "w") do fout
         println(fout, "# index            error         time (s) passed")
         #
-        for i = 1:ntest
+        for i in inds
             @printf(fout, "%7i %16.12f %16.12f", i, error[i], ctime[i])
             if error[i] == 0.0
                 @printf(fout, "%7s\n", "false")
