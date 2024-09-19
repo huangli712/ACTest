@@ -120,9 +120,15 @@ function write_summary(
 end
 
 # Perform analytic continuation simulations using the ACFlow toolkit
-function make_test(std = false)
-    # Get number of tests
+function make_test(std::Bool = false, inds::Vector{I64} = [])
+    # Get number of tests (ntest).
+    # cinds is used to store the indices of tests.
     ntest = get_t("ntest")
+    if isempty(inds)
+        cinds = collect(1:ntest)
+    else
+        cinds = inds
+    end
 
     # Prepare some counters and essential variables
     nfail = 0
@@ -134,7 +140,7 @@ function make_test(std = false)
     B, S = get_dict()
 
     # Start the loop
-    for i = 1:ntest
+    for i in cinds
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
         # Setup configurations further for the current test
@@ -170,18 +176,19 @@ function make_test(std = false)
             ctime[i] = 0.0
             nfail = nfail + 1
             println("Something wrong for test case $i")
+            println(ex.msg)
         end
         #
         println()
     end
 
-    @assert nfail + nsucc == ntest
-    println("Only $nsucc / $ntest tests can survive!")
+    @assert nfail + nsucc == length(cinds)
+    println("Only $nsucc / $(length(cinds)) tests can survive!")
     println("Please check summary.data for more details.")
     println()
 
     # Write summary for the test
-    write_summary(error, ctime)
+    write_summary(cinds, error, ctime)
 end
 
 welcome()
