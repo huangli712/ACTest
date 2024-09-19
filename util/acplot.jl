@@ -150,7 +150,8 @@ function make_figures()
     end
 end
 
-# Try to generate figure for selected test.
+# Try to generate figure for selected test. With this function, you can
+# only visualize the test that you are interested in.
 function make_figures(ind::I64)
     # Get number of tests
     ntest = get_t("ntest")
