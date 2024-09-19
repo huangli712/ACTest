@@ -100,7 +100,7 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         sf2.image,
         color = :crimson,
         linestyle = :solid,
-        label = "Calc.",
+        label = get_t("solver"),
     )
     #
     # Get y-limits
@@ -150,8 +150,23 @@ function make_figures()
     end
 end
 
+function make_figures(ind::I64)
+    @printf("Test -> %4i / %4i\n", ind, ind)
+    #
+    try
+        sf1 = read_image(ind)
+        sf2 = read_Aout(ind)
+        make_plot(ind, sf1, sf2)
+    catch ex
+        println("Something wrong for test case $ind")
+        println(ex.msg)
+    end
+    #
+    println()
+end
+
 welcome()
 overview()
 read_param()
-make_figures()
+make_figures(101)
 goodbye()
