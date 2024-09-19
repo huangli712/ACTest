@@ -16,16 +16,23 @@ push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src/")
 
 using ACTest
 
+using DelimitedFiles
 using CairoMakie
 using Printf
 
 function read_Aout(ind::I64)
-    println("1Aout")
     error("Aout")
 end
 
 function read_image(ind::I64)
-    error("image")
+    fn = "image.data." * string(ind)
+    if isfile(fn)
+        data = readdlm(fn)
+        ω = data[:,1]
+        image = data[:,2]
+    else
+        error("File $fn does not exits!")
+    end
 end
 
 function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
