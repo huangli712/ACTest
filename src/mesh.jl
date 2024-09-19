@@ -187,6 +187,41 @@ function HalfLorentzMesh(nmesh::I64, wmax::F64, 𝑝::F64 = 0.01)
 end
 
 #=
+### *Struct : DynamicMesh*
+=#
+
+"""
+    DynamicMesh(mesh::Vector{T}) where {T}
+
+A constructor for the DynamicMesh struct, which is announced in
+`src/types.jl`. The δ peaks in the stochastic analytic continuation
+or the poles in the stochastic pole expansion method could be placed
+in this mesh. This mesh should not be used to define the spectrum.
+
+### Arguments
+* mesh -> Usually a mesh from file `fmesh.inp`. See util/gmesh.jl.
+
+### Returns
+* dm -> A DynamicMesh struct.
+
+See also: [`DynamicMesh`](@ref).
+"""
+function DynamicMesh(mesh::Vector{T}) where {T}
+    nmesh = length(mesh)
+
+    wmin = mesh[1]
+    wmax = mesh[end]
+    @assert wmax > wmin
+
+    weight = (mesh[2:end] + mesh[1:end-1]) / 2.0
+    pushfirst!(weight, mesh[1])
+    push!(weight, mesh[end])
+    weight = diff(weight)
+
+    return DynamicMesh(nmesh, wmax, wmin, mesh, weight)
+end
+
+#=
 ### *Common Interface*
 =#
 
@@ -200,6 +235,7 @@ the basic operations for the following types of mesh:
 * TangentMesh
 * LorentzMesh
 * HalfLorentzMesh
+* DynamicMesh
 
 With the help of these functions, we can easily access the mesh's elements.
 =#

@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/18
+# Last modified: 2024/09/19
 #
 
 """
@@ -111,6 +111,7 @@ LinearMesh      -> Linear mesh.
 TangentMesh     -> Tangent mesh.
 LorentzMesh     -> Lorentzian mesh.
 HalfLorentzMesh -> Lorentzian mesh at half-positive axis.
+DynamicMesh     -> Dynamic mesh. We don't know its formula.
 #
 AbstractPeak    -> Abstract peak in spectral function.
 GaussianPeak    -> Gaussian peak in spectral function.
@@ -144,6 +145,7 @@ export LinearMesh
 export TangentMesh
 export LorentzMesh
 export HalfLorentzMesh
+export DynamicMesh
 #
 export AbstractPeak
 export GaussianPeak
