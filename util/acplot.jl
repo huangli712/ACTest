@@ -44,6 +44,7 @@ function read_Aout(ind::I64)
         data = readdlm(fn)
         ω = data[:,1]
         image = data[:,2]
+        # We should check the spectral function data further
         if any(x -> abs(x) > 100.0, image)
             error("The data in $fn is quite strange.")
         end
@@ -53,36 +54,46 @@ function read_Aout(ind::I64)
     end
 end
 
+# Draw the true and calculated spectral functions in the same figure. The
+# `CairoMakie.jl` package is employed to do this job. The figure file is
+# just `image.i.pdf`.
 function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
+    # Get boundary for the x-axis
     wmin = get_t("wmin")
     wmax = get_t("wmax")
 
+    # Try to draw the spectral functions
+    #
+    # Create a Figure
     f = Figure()
     #
+    # Setup the axis
     ax = Axis(f[1, 1],
-        xlabel = L"\omega",
-        ylabel = L"A(\omega)",
-        xgridvisible = false,
-        ygridvisible = false,
-        xminorticksvisible = true,
-        yminorticksvisible = true,
-        xticksmirrored = true,
-        yticksmirrored = true,
-        xtickalign = 1.0,
-        ytickalign = 1.0,
-        xminortickalign = 1.0,
-        yminortickalign = 1.0,
+        xlabel = L"\omega",        # Setup x-label and y-label
+        ylabel = L"A(\omega)",     #
+        xgridvisible = false,      # Disable the grid
+        ygridvisible = false,      #
+        xminorticksvisible = true, # Enable minor ticks
+        yminorticksvisible = true, #
+        xticksmirrored = true,     # Enable mirrored ticks
+        yticksmirrored = true,     #
+        xtickalign = 1.0,          # Setup directions of ticks, in = 1
+        ytickalign = 1.0,          #
+        xminortickalign = 1.0,     # Setup directions of minor ticks, out = 0
+        yminortickalign = 1.0,     #
     )
     #
+    # Draw true spectral functions
     lines!(
         ax,
         sf1.mesh.mesh,
         sf1.image,
-        color = :lawngreen,
+        color = :tomato,
         linestyle = :dash,
         label = "True",
     )
     #
+    # Draw calculated spectral functions
     lines!(
         ax,
         sf2.mesh.mesh,
@@ -92,12 +103,16 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         label = "Calc.",
     )
     #
+    # Get y-limits
     reset_limits!(ax)
     ymin, ymax = ax.yaxis.attributes.limits[]
+    #
+    # Setup x-limits and y-limits, legend.
     xlims!(ax, wmin, wmax)
     ylims!(ax, ymin, ymax)
     axislegend(position = :rt)
     #
+    # Draw the Fermi level
     lines!(
         ax,
         [0.0,0.0],
@@ -106,6 +121,7 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         linestyle = :dash,
     )
     #
+    # Save the figure
     fn = "image." * string(ind) * ".pdf"
     save(fn, f)
 end
