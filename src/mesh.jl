@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/14
+# Last modified: 2024/09/19
 #
 
 #=
@@ -191,22 +191,21 @@ end
 =#
 
 """
-    DynamicMesh(mesh::Vector{T}) where {T}
+    DynamicMesh(mesh::Vector{F64})
 
 A constructor for the DynamicMesh struct, which is announced in
-`src/types.jl`. The δ peaks in the stochastic analytic continuation
-or the poles in the stochastic pole expansion method could be placed
-in this mesh. This mesh should not be used to define the spectrum.
+`src/types.jl`. This mesh is usually used to describe the real frequency
+mesh that read from files.
 
 ### Arguments
-* mesh -> Usually a mesh from file `fmesh.inp`. See util/gmesh.jl.
+* mesh -> Usually a mesh from file `image.data` or `Aout.data`.
 
 ### Returns
 * dm -> A DynamicMesh struct.
 
 See also: [`DynamicMesh`](@ref).
 """
-function DynamicMesh(mesh::Vector{T}) where {T}
+function DynamicMesh(mesh::Vector{F64})
     nmesh = length(mesh)
 
     wmin = mesh[1]
