@@ -20,16 +20,27 @@ using DelimitedFiles
 using CairoMakie
 using Printf
 
-function read_Aout(ind::I64)
-    error("Aout")
-end
-
 function read_image(ind::I64)
     fn = "image.data." * string(ind)
+    #
     if isfile(fn)
         data = readdlm(fn)
         ω = data[:,1]
         image = data[:,2]
+        return SpectralFunction(DynamicMesh(ω), image)
+    else
+        error("File $fn does not exits!")
+    end
+end
+
+function read_Aout(ind::I64)
+    fn = "Aout.data." * string(ind)
+    #
+    if isfile(fn)
+        data = readdlm(fn)
+        ω = data[:,1]
+        image = data[:,2]
+        return SpectralFunction(DynamicMesh(ω), image)
     else
         error("File $fn does not exits!")
     end
@@ -49,7 +60,9 @@ function make_figures()
         #
         try
             sf1 = read_image(i)
+            println("sf1 is ready")
             sf2 = read_Aout(i)
+            println("sf2 is ready")
             make_plot(i, sf1, sf2)        
         catch ex
             println("Something wrong for test case $i")
