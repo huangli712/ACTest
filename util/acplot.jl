@@ -20,6 +20,8 @@ using DelimitedFiles
 using CairoMakie
 using Printf
 
+# Read true spectral functions from `image.data.i`. This function will
+# return a SpectralFunction struct.
 function read_image(ind::I64)
     fn = "image.data." * string(ind)
     #
@@ -33,6 +35,8 @@ function read_image(ind::I64)
     end
 end
 
+# Read calculated spectral functions from `Aout.data.i`. This function
+# will return a SpectralFunction struct.
 function read_Aout(ind::I64)
     fn = "Aout.data." * string(ind)
     #
@@ -71,7 +75,7 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         ax,
         sf1.mesh.mesh,
         sf1.image,
-        color = :tomato,
+        color = :lawngreen,
         linestyle = :dash,
         label = "True",
     )
