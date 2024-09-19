@@ -150,6 +150,7 @@ function make_figures()
     end
 end
 
+# Try to generate figure for selected test.
 function make_figures(ind::I64)
     # Get number of tests
     ntest = get_t("ntest")
@@ -168,6 +169,8 @@ function make_figures(ind::I64)
     println()
 end
 
+# Try to generate figures for selected tests. With this function, you can
+# only visualize calculated results for a subset of tests.
 function make_figures(inds::Vector{I64})
     # Get number of tests
     ntest = get_t("ntest")
@@ -192,5 +195,5 @@ end
 welcome()
 overview()
 read_param()
-make_figures(101)
+make_figures()
 goodbye()
