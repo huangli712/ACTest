@@ -16,6 +16,18 @@
 using CairoMakie
 using ACTest
 
+function read_Aout(ind::I64)
+
+end
+
+function read_image(ind::I64)
+
+end
+
+function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
+    
+end
+
 welcome()
 overview()
 read_param()
