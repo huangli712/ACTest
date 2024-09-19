@@ -6,13 +6,19 @@
 # the analytic continuation tools, such as the ACFlow toolkit. This
 # will launch only 1 process.
 #
+# By default, this script will visualize the calculated results for all
+# the tests. But you can also visualize those results for the tests that
+# you are interested in. To do so, please change `make_figures()` in line
+# 206 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
+# `inds` denote an int64 number and a vector of int64 number, respectively.
+# They are the indices of the tests that you want to visualize.
+#
 # This script requires the CairoMakie.jl package.
 #
 # Usage:
 #
 #     $ acplot.jl act.toml
 #
-push!(LOAD_PATH, "/Users/lihuang/Working/devel/ACTest/src/")
 
 using ACTest
 
