@@ -114,8 +114,8 @@ function write_summary(
         end
         #
         println(fout, "# Number of tests: ", ntest)
-        println(fout, "# Failed tests: ", count(x -> iszero(x), error))
-        println(fout, "# Abnormal tests: ", count(x -> isinf(x), error))
+        println(fout, "# Failed tests: ", count(x -> iszero(x), error[inds]))
+        println(fout, "# Abnormal tests: ", count(x -> isinf(x), error[inds]))
     end
 end
 
