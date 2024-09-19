@@ -151,7 +151,10 @@ function make_figures()
 end
 
 function make_figures(ind::I64)
-    @printf("Test -> %4i / %4i\n", ind, ind)
+    # Get number of tests
+    ntest = get_t("ntest")
+
+    @printf("Test -> %4i / %4i\n", ind, ntest)
     #
     try
         sf1 = read_image(ind)
@@ -163,6 +166,27 @@ function make_figures(ind::I64)
     end
     #
     println()
+end
+
+function make_figures(inds::Vector{I64})
+    # Get number of tests
+    ntest = get_t("ntest")
+
+    # Start the loop
+    for i in inds
+        @printf("Test -> %4i / %4i\n", i, ntest)
+        #
+        try
+            sf1 = read_image(i)
+            sf2 = read_Aout(i)
+            make_plot(i, sf1, sf2)
+        catch ex
+            println("Something wrong for test case $i")
+            println(ex.msg)
+        end
+        #
+        println()
+    end
 end
 
 welcome()
