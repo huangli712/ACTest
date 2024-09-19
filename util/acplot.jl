@@ -124,23 +124,27 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
     # Save the figure
     fn = "image." * string(ind) * ".pdf"
     save(fn, f)
+    println("File $fn is generated successfully.")
 end
 
+# Try to generate all the figures, in which the true and calculated
+# spectral functions are compared with each other.
 function make_figures()
+    # Get number of tests
     ntest = get_t("ntest")
-    @show ntest
 
     # Start the loop
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
-        #try
+        try
             sf1 = read_image(i)
             sf2 = read_Aout(i)
             make_plot(i, sf1, sf2)
-        #catch ex
-            #println("Something wrong for test case $i")
-        #end
+        catch ex
+            println("Something wrong for test case $i")
+            println(ex.msg)
+        end
         #
         println()
     end
