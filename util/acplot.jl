@@ -47,12 +47,22 @@ function read_Aout(ind::I64)
 end
 
 function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
+    wmin = get_t("wmin")
+    wmax = get_t("wmax")
+
     f = Figure()
     #
     ax = Axis(f[1, 1],
-        title = L"x^2",
         xlabel = L"\omega",
         ylabel = L"A(\omega)",
+        xgridvisible = false,
+        ygridvisible = false,
+        xminorticksvisible = true,
+        yminorticksvisible = true,
+        xticksmirrored = true,
+        yticksmirrored = true,
+        xtickalign = 1.0,
+        ytickalign = 1.0
     )
     #
     lines!(
@@ -73,7 +83,19 @@ function make_plot(ind::I64, sf1::SpectralFunction, sf2::SpectralFunction)
         label = "Calc.",
     )
     #
-    axislegend(position = :rb)
+    reset_limits!(ax)
+    ymin, ymax = ax.yaxis.attributes.limits[]
+    xlims!(ax, wmin, wmax)
+    ylims!(ax, ymin, ymax)
+    axislegend(position = :rt)
+    #
+    lines!(
+        ax,
+        [0.0,0.0],
+        [ymin,ymax],
+        color = :black,
+        linestyle = :dash,
+    )
     #
     fn = "image." * string(ind) * ".pdf"
     save(fn, f)
@@ -87,13 +109,13 @@ function make_figures()
     for i = 1:ntest
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
-        try
+        #try
             sf1 = read_image(i)
             sf2 = read_Aout(i)
             make_plot(i, sf1, sf2)
-        catch ex
-            println("Something wrong for test case $i")
-        end
+        #catch ex
+            #println("Something wrong for test case $i")
+        #end
         #
         println()
     end
