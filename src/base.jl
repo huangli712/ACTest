@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/18
+# Last modified: 2024/09/20
 #
 
 """
@@ -278,15 +278,20 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     npeak, = rand(rng, lpeak, 1)
     @printf("number of peaks : %2i\n", npeak)
 
+    # Determine signs for all peaks
+    signs = ones(F64, npeak)
+    if offdiag
+        # How many negative signs are there?
+        # We have to make sure that at least one sign is negative.
+        nsign = rand(rng, 1:npeak)
+        signs[rand(rng, 1:npeak, nsign)] = -1.0
+        @assert count(x -> x < 0.0, signs) ≥ 1
+    end
+
     image = zeros(F64, length(mesh))
     #
-    for _ = 1:npeak
-        # Determine sign of the current peak
-        if offdiag
-            sign = rand(rng) > 0.5 ? 1.0 : -1.0
-        else
-            sign = 1.0
-        end
+    for sign in signs
+        # Get sign for the current peak
         @printf("sign : %4.2f\n", sign)
         #
         # Generate peak
