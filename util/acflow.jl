@@ -75,10 +75,24 @@ end
 
 # Evaluate error for the current test. It just calculates the distance
 # between the true and calculated spectral function.
-function get_error(i::I64, mesh::Vector{F64}, Aout::Vector{F64})
+function get_error(
+    i::I64,
+    mesh::Vector{F64},
+    Aout::Vector{F64},
+    B::Dict{String,Any}
+    )
     # Read true solution
     data = readdlm("image.data." * string(i))
+    ω = data[:,1]
     Ainp = data[:,2]
+
+    # If there is a bosonic system, Ainp is actually A(ω) / ω
+    if B["grid"] != "fermi"
+        # The BarRat solver would write A(ω) always
+        if B["solver"] == "BarRat"
+            @. Ainp = Ainp * ω
+        end
+    end
 
     # Calculate the difference
     error = trapz(mesh, abs.(Ainp .- Aout)) / trapz(mesh, abs.(Ainp))
@@ -168,7 +182,7 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             cp("repr.data", "repr.data." * string(i), force = true)
             #
             # Calculate the accuracy / error
-            error[i] = get_error(i, mesh, Aout)
+            error[i] = get_error(i, mesh, Aout, B)
             ctime[i] = (finish - start) / 1e9
             #
             # Increase the counter
