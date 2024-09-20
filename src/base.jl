@@ -284,7 +284,8 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
         # How many negative signs are there?
         # We have to make sure that at least one sign is negative.
         nsign = rand(rng, 1:npeak)
-        signs[rand(rng, 1:npeak, nsign)] = -1.0
+        selected = rand(rng, 1:npeak, nsign)
+        signs[selected] .= -1.0
         @assert count(x -> x < 0.0, signs) ≥ 1
     end
 
