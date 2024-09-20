@@ -8,7 +8,7 @@
 # configuration tools / methods, or support parallel calculations.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 200.
+# `make_test()` to `make_test(true)` in line 213.
 #
 # Usage:
 #
