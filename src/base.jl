@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/20
+# Last modified: 2024/09/23
 #
 
 """
@@ -104,6 +104,7 @@ function make_data_std()
     @assert ntest == length(ACT100) == 100
 
     # Initialize the random number generator
+    # It is used to generate random noise only.
     seed = rand(1:10000) * myid() + 1981
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
@@ -428,6 +429,7 @@ function make_grid(_grid = nothing)
     else
         grid = _grid
     end
+    #
     ngrid = get_t("ngrid")
     β = get_t("beta")
 
@@ -497,11 +499,13 @@ function make_mesh(_ktype = nothing, _mesh = nothing)
     else
         ktype = _ktype
     end
+    #
     if isnothing(_mesh)
         mesh = get_t("mesh")
     else
         mesh = _mesh
     end
+    #
     nmesh = get_t("nmesh")
     wmax::F64 = get_t("wmax")
     wmin::F64 = get_t("wmin")
