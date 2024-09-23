@@ -317,9 +317,12 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
             if count(x -> x < 0.0, image) == 0
                 @. image = image * (-1.0)
             end
+            #
+            @assert any(x -> x < 0.0, image)
         # For bosonic systems
         else
             _, zero_point = findmin(abs.(mesh.mesh))
+            #
             # A(ω > 0) / ω > 0   =>   A(ω > 0) > 0 
             if count(x -> x < 0.0, image[zero_point:end]) == 0
                 # A(ω < 0) / ω < 0   =>   A(ω < 0) > 0
@@ -327,6 +330,8 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
                     @. image = image * (-1.0)
                 end
             end
+            #
+            @assert any(x -> x < 0.0, image .* mesh.mesh)
         end
     end
 
