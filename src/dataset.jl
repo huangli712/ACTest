@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/18
+# Last modified: 2024/09/23
 #
 
 #=
@@ -1321,7 +1321,7 @@ const STD_BRD = Dict{String,Any}[
         "grid"  => "bfreq",
         "mesh"  => "linear",
         "peaks" => [
-            RiseDecayPeak(-1.0,1.5,0.5),
+            RiseDecayPeak(-0.5,1.5,0.5),
             RiseDecayPeak( 1.0,1.5,0.5)
         ],
         "signs" => [-1.0,1.0]
@@ -1341,7 +1341,7 @@ const STD_BRD = Dict{String,Any}[
     ),
     #
     # Test: 004 / Bosonic + Rise-And-Decay Peaks
-    # two peaks, left down small + right up large
+    # two peaks, left up small + right down large
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
@@ -1350,7 +1350,7 @@ const STD_BRD = Dict{String,Any}[
             RiseDecayPeak(-3.0,2.0,0.2),
             RiseDecayPeak( 3.0,2.0,0.5)
         ],
-        "signs" => [-1.0,1.0]
+        "signs" => [1.0,-1.0]
     ),
     #
     # Test: 005 / Bosonic + Rise-And-Decay Peaks
