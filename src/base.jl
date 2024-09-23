@@ -272,6 +272,7 @@ Generate a spectral function randomly at given mesh.
 """
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     # Extract essential parameters
+    ktype = get_t("ktype")
     offdiag = get_t("offdiag")
     lpeak = get_t("lpeak")
 
@@ -306,6 +307,27 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     # Normalize the spectrum
     if !offdiag
         image = image ./ trapz(mesh,image)
+    else
+        # We have to make sure that A(ω) should exhibit negative weights
+        # at some points.
+        #
+        # For fermionic systems
+        if ktype == "fermi"
+            # A(ω) > 0
+            if count(x -> x < 0.0, image) == 0
+                @. image = image * (-1.0)
+            end
+        # For bosonic systems
+        else
+            _, zero_point = findmin(abs.(mesh.mesh))
+            # A(ω > 0) / ω > 0   =>   A(ω > 0) > 0 
+            if count(x -> x < 0.0, image[zero_point:end]) == 0
+                # A(ω < 0) / ω < 0   =>   A(ω < 0) > 0
+                if count(x -> x > 0.0, image[1:zero_point-1]) == 0
+                    @. image = image * (-1.0)
+                end
+            end
+        end
     end
 
     return SpectralFunction(mesh, image)
