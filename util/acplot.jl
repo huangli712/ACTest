@@ -10,7 +10,7 @@
 # the tests. But you can also visualize those results for the tests that
 # you are interested in. To do so, please change `make_figures()` in line
 # 206 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
-# `inds` denote an int64 number and a vector of int64 number, respectively.
+# `inds` denote an I64 number and a vector of I64 numbers, respectively.
 # They are the indices of the tests that you want to visualize.
 #
 # This script requires the CairoMakie.jl package.
