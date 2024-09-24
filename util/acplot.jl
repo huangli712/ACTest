@@ -253,9 +253,22 @@ function make_figures(ind::I64, only_true_spectrum::Bool = false)
     println()
 end
 
-# Try to generate figures for selected tests. With this function, you can
-# only visualize calculated results for a subset of tests.
-function make_figures(inds::Vector{I64})
+"""
+    make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
+
+Try to generate figures for selected spectra. With this function, you can
+only visualize calculated spectra for a subset of tests.
+
+If only_true_spectrum is true, only true spectral functions will be plotted.
+
+### Arguments
+* ind -> Indices of selected spectra.
+* only_true_spectrum -> Whether only the true spectra will be plotted.
+
+### Returns
+N/A
+"""
+function make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
     # Get number of tests
     ntest = get_t("ntest")
 
