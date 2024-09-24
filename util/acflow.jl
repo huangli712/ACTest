@@ -82,7 +82,7 @@ function get_error(
     Ainp = data[:,2]
 
     # If there is a bosonic system, Ainp is actually A(ω) / ω
-    if B["grid"] != "fermi"
+    if B["ktype"] != "fermi"
         # The BarRat solver would write A(ω) always
         if B["solver"] == "BarRat"
             @. Ainp = Ainp * ω
