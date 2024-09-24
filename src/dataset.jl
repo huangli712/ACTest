@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/23
+# Last modified: 2024/09/24
 #
 
 #=
@@ -23,6 +23,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,0.0)
         ],
@@ -35,6 +36,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,-2.0)
         ],
@@ -47,6 +49,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,2.0)
         ],
@@ -59,6 +62,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-0.8),
             GaussianPeak(1.0,0.5, 0.8)
@@ -72,6 +76,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-1.8),
             GaussianPeak(1.0,0.5, 1.8)
@@ -85,6 +90,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-3.0),
             GaussianPeak(1.0,0.5, 3.0)
@@ -98,6 +104,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.4, 0.0),
             GaussianPeak(1.0,0.4,-3.0)
@@ -111,6 +118,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.4,0.0),
             GaussianPeak(1.0,0.4,3.0)
@@ -124,6 +132,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(0.5,0.5,-3.0),
             GaussianPeak(1.5,0.5, 3.0)
@@ -137,6 +146,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.5,0.5,-3.0),
             GaussianPeak(0.5,0.5, 3.0)
@@ -150,6 +160,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-1.0),
@@ -164,6 +175,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-2.0),
@@ -178,6 +190,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 0.0),
             GaussianPeak(0.5,1.00,-3.0),
@@ -192,6 +205,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 0.0),
             GaussianPeak(0.4,0.50,-3.5),
@@ -206,6 +220,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05,-1.0),
             GaussianPeak(0.1,0.80,-3.0),
@@ -220,6 +235,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 1.0),
             GaussianPeak(0.4,0.80,-3.0),
@@ -234,6 +250,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.6,0.6,-1.0),
@@ -248,6 +265,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2,0.0),
             GaussianPeak(0.6,0.6,1.0),
@@ -262,6 +280,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.1,0.4,-2.0),
@@ -276,6 +295,7 @@ const STD_FG = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.1,0.4, 2.0),
@@ -301,6 +321,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,0.0)
         ],
@@ -313,6 +334,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-2.0)
         ],
@@ -325,6 +347,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,2.0)
         ],
@@ -337,6 +360,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0)
         ],
@@ -349,6 +373,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,4.0)
         ],
@@ -361,6 +386,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-2.0),
             DeltaPeak(1.0,0.02, 2.0)
@@ -374,6 +400,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-1.0),
             DeltaPeak(1.0,0.02,-3.0)
@@ -387,6 +414,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,1.0),
             DeltaPeak(1.0,0.02,3.0)
@@ -400,6 +428,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-0.5),
             DeltaPeak(1.0,0.02, 3.0)
@@ -413,6 +442,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02, 0.5)
@@ -426,6 +456,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-0.5),
@@ -440,6 +471,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -454,6 +486,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-1.5),
             DeltaPeak(1.0,0.02,-0.5),
@@ -469,6 +502,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-0.5),
@@ -484,6 +518,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-1.0),
@@ -499,6 +534,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -515,6 +551,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -531,6 +568,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-4.0),
@@ -547,6 +585,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-3.5),
@@ -564,6 +603,7 @@ const STD_FD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-1.0),
@@ -592,6 +632,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(0.0,1.5,1.0)
         ],
@@ -604,6 +645,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-1.0,1.5,0.5),
             RiseDecayPeak( 1.0,1.5,0.5)
@@ -617,6 +659,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-1.0,1.5,0.5),
             RiseDecayPeak( 1.0,1.5,0.5)
@@ -630,6 +673,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.2),
             RiseDecayPeak( 3.0,2.0,0.5)
@@ -643,6 +687,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.5),
             RiseDecayPeak( 3.0,2.0,0.2)
@@ -656,6 +701,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.0,1.5,0.5),
             RiseDecayPeak( 2.0,1.5,0.5)
@@ -669,6 +715,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.2),
             RiseDecayPeak( 0.0,1.5,0.5),
@@ -683,6 +730,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.5),
             RiseDecayPeak( 0.0,1.5,0.2),
@@ -697,6 +745,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,0.5,0.20),
             RiseDecayPeak(-1.0,0.5,0.25),
@@ -712,6 +761,7 @@ const STD_FRD = Dict{String,Any}[
         "ktype" => "fermi",
         "grid"  => "ffreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,0.5,0.2),
             RiseDecayPeak(-1.0,0.5,0.5),
@@ -739,6 +789,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,0.0)
         ],
@@ -751,6 +802,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,-2.0)
         ],
@@ -763,6 +815,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.8,2.0)
         ],
@@ -775,6 +828,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-0.8),
             GaussianPeak(1.0,0.5, 0.8)
@@ -788,6 +842,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-1.8),
             GaussianPeak(1.0,0.5, 1.8)
@@ -801,6 +856,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.5,-3.0),
             GaussianPeak(1.0,0.5, 3.0)
@@ -814,6 +870,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.4, 0.0),
             GaussianPeak(1.0,0.4,-3.0)
@@ -827,6 +884,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.4,0.0),
             GaussianPeak(1.0,0.4,3.0)
@@ -840,6 +898,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(0.5,0.5,-3.0),
             GaussianPeak(1.5,0.5, 3.0)
@@ -853,6 +912,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.5,0.5,-3.0),
             GaussianPeak(0.5,0.5, 3.0)
@@ -866,6 +926,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-1.0),
@@ -880,6 +941,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.1, 0.0),
             GaussianPeak(0.5,1.0,-2.0),
@@ -894,6 +956,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 0.0),
             GaussianPeak(0.5,1.00,-3.0),
@@ -908,6 +971,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 0.0),
             GaussianPeak(0.4,0.50,-3.5),
@@ -922,6 +986,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05,-1.0),
             GaussianPeak(0.1,0.80,-3.0),
@@ -936,6 +1001,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.05, 1.0),
             GaussianPeak(0.4,0.80,-3.0),
@@ -950,6 +1016,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.6,0.6,-1.0),
@@ -964,6 +1031,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2,0.0),
             GaussianPeak(0.6,0.6,1.0),
@@ -978,6 +1046,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.1,0.4,-2.0),
@@ -992,6 +1061,7 @@ const STD_BG = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             GaussianPeak(1.0,0.2, 0.0),
             GaussianPeak(0.1,0.4, 2.0),
@@ -1017,6 +1087,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,0.0)
         ],
@@ -1029,6 +1100,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-2.0)
         ],
@@ -1041,6 +1113,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,2.0)
         ],
@@ -1053,6 +1126,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0)
         ],
@@ -1065,6 +1139,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,4.0)
         ],
@@ -1077,6 +1152,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-2.0),
             DeltaPeak(1.0,0.02, 2.0)
@@ -1090,6 +1166,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-1.0),
             DeltaPeak(1.0,0.02,-3.0)
@@ -1103,6 +1180,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,1.0),
             DeltaPeak(1.0,0.02,3.0)
@@ -1116,6 +1194,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-0.5),
             DeltaPeak(1.0,0.02, 3.0)
@@ -1129,6 +1208,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02, 0.5)
@@ -1142,6 +1222,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-0.5),
@@ -1156,6 +1237,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -1170,6 +1252,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-1.5),
             DeltaPeak(1.0,0.02,-0.5),
@@ -1185,6 +1268,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-0.5),
@@ -1200,6 +1284,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-3.0),
             DeltaPeak(1.0,0.02,-1.0),
@@ -1215,6 +1300,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -1231,6 +1317,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-3.0),
@@ -1247,6 +1334,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02, 0.0),
             DeltaPeak(1.0,0.02,-4.0),
@@ -1263,6 +1351,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-3.5),
@@ -1280,6 +1369,7 @@ const STD_BD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => false,
         "peaks" => [
             DeltaPeak(1.0,0.02,-4.0),
             DeltaPeak(1.0,0.02,-1.0),
@@ -1308,6 +1398,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(0.0,1.5,1.0)
         ],
@@ -1320,6 +1411,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-0.5,1.5,0.5),
             RiseDecayPeak( 1.0,1.5,0.5)
@@ -1333,6 +1425,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-1.0,1.5,0.5),
             RiseDecayPeak( 1.0,1.5,0.5)
@@ -1346,6 +1439,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.2),
             RiseDecayPeak( 3.0,2.0,0.5)
@@ -1359,6 +1453,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,2.0,0.5),
             RiseDecayPeak( 3.0,2.0,0.2)
@@ -1372,6 +1467,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.0,1.5,0.5),
             RiseDecayPeak( 2.0,1.5,0.5)
@@ -1385,6 +1481,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.2),
             RiseDecayPeak( 0.0,1.5,0.5),
@@ -1399,6 +1496,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-2.5,1.5,0.5),
             RiseDecayPeak( 0.0,1.5,0.2),
@@ -1413,6 +1511,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,0.5,0.20),
             RiseDecayPeak(-1.0,0.5,0.25),
@@ -1428,6 +1527,7 @@ const STD_BRD = Dict{String,Any}[
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
+        "offdiag" => true,
         "peaks" => [
             RiseDecayPeak(-3.0,0.5,0.2),
             RiseDecayPeak(-1.0,0.5,0.5),
