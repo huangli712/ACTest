@@ -80,11 +80,25 @@ function read_Aout(ind::I64)
     end
 end
 
-# Draw the true and calculated spectral functions in the same figure. The
-# `CairoMakie.jl` package is employed to do this job. The figure file is
-# just `image.i.pdf`.
-#
-# Here, `ind`
+"""
+    make_plot(
+        ind::I64,
+        sf1::SpectralFunction,
+        sf2::Union{SpectralFunction, Nothing} = nothing
+    )
+
+Draw the true and calculated spectral functions in the same figure. The
+`CairoMakie.jl` package is employed to do this job. The figure file is
+just `image.i.pdf`.
+
+### Arguments
+* ind -> Index of selected spectral function.
+* sf1 -> True spectral function.
+* sf2 -> Calculated spectral function.
+
+### Returns
+See above explanations.
+"""
 function make_plot(
     ind::I64,
     sf1::SpectralFunction,
