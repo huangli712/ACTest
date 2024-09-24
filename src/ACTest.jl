@@ -392,7 +392,7 @@ spectral functions.
 *Members* :
 
 ```text
-STD_FG  -> Dicts for fermionic systems (continuum spectra).  
+STD_FG  -> Dicts for fermionic systems (continuum spectra).
 STD_FD  -> Dicts for fermionic systems (discrete spectra).
 STD_FRD -> Dicts for fermionic systems (non-positive definite spectra).
 #

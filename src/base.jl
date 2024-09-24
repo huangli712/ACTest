@@ -323,7 +323,7 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
         else
             _, zero_point = findmin(abs.(mesh.mesh))
             #
-            # A(ω > 0) / ω > 0   =>   A(ω > 0) > 0 
+            # A(ω > 0) / ω > 0   =>   A(ω > 0) > 0
             if count(x -> x < 0.0, image[zero_point:end]) == 0
                 # A(ω < 0) / ω < 0   =>   A(ω < 0) > 0
                 if count(x -> x > 0.0, image[1:zero_point-1]) == 0
