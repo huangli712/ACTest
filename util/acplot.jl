@@ -27,24 +27,46 @@ using CairoMakie
 using Printf
 
 """
-    read_image(ind::I64)
+    read_image(ind::I64, std::Bool)
 
 Read true spectral functions from `image.data.i`. This function will
 return a SpectralFunction struct.
 
 ### Arguments
 * ind -> Index of selected spectral function.
+* std -> Is it for standard dataset ACT100?
 
 ### Returns
 See above explanations.
 """
-function read_image(ind::I64)
+function read_image(ind::I64, std::Bool)
+    # Get essential parameters
+    solver = get_t("solver")
+    ktype = get_t("ktype")
+
+    # Now we are handling the ACT100 dataset, so ktype might be not
+    # compatible with the `act.toml`.
+    if std
+        ACT100 = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
+        ktype = ACT100[ind]["ktype"]
+    end
+
     fn = "image.data." * string(ind)
     #
     if isfile(fn)
         data = readdlm(fn)
         ω = data[:,1]
         image = data[:,2]
+        #
+        # For bosonic systems, ACTest will always output A(ω) / ω.
+        # In order to be compatible with the outputs from some solvers in
+        # the ACFlow toolkit, we have to convert it to A(ω).
+        if ktype != "fermi"
+            if solver == "BarRat"
+                @. image = image * ω
+            end
+        end
+        #
         return SpectralFunction(DynamicMesh(ω), image)
     else
         error("File $fn does not exits!")
