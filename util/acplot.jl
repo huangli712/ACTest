@@ -179,19 +179,20 @@ function make_plot(
 end
 
 """
-    make_figures(only_true_spectrum::Bool = false)
+    make_figures(only_true_spectrum::Bool = false, std::Bool = false)
 
 Try to generate all the figures, in which the true and calculated
 spectral functions are compared with each other. But if only_true_spectrum
 is true, only true spectral functions will be plotted.
 
 ### Arguments
-See above explanations.
+* only_true_spectrum -> See above explanations.
+* std -> Is it for standard dataset ACT100?
 
 ### Returns
 N/A
 """
-function make_figures(only_true_spectrum::Bool = false)
+function make_figures(only_true_spectrum::Bool = false, std::Bool = false)
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -200,7 +201,7 @@ function make_figures(only_true_spectrum::Bool = false)
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
         try
-            sf1 = read_image(i)
+            sf1 = read_image(i, std)
             if only_true_spectrum
                 make_plot(i, sf1)
             else
@@ -217,7 +218,11 @@ function make_figures(only_true_spectrum::Bool = false)
 end
 
 """
-    make_figures(ind::I64, only_true_spectrum::Bool = false)
+    make_figures(
+        ind::I64,
+        only_true_spectrum::Bool = false,
+        std::Bool = false
+    )
 
 Try to generate figure for selected spectrum. With this function, you can
 only visualize the spectrum that you are interested in.
@@ -227,18 +232,23 @@ If only_true_spectrum is true, only true spectral function will be plotted.
 ### Arguments
 * ind -> Index of selected spectrum.
 * only_true_spectrum -> Whether only the true spectrum will be plotted.
+* std -> Is it for standard dataset ACT100?
 
 ### Returns
 N/A
 """
-function make_figures(ind::I64, only_true_spectrum::Bool = false)
+function make_figures(
+    ind::I64,
+    only_true_spectrum::Bool = false,
+    std::Bool = false
+    )
     # Get number of tests
     ntest = get_t("ntest")
 
     @printf("Test -> %4i / %4i\n", ind, ntest)
     #
     try
-        sf1 = read_image(ind)
+        sf1 = read_image(ind, std)
         if only_true_spectrum
             make_plot(ind, sf1)
         else
@@ -254,7 +264,11 @@ function make_figures(ind::I64, only_true_spectrum::Bool = false)
 end
 
 """
-    make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
+    make_figures(
+        inds::Vector{I64},
+        only_true_spectrum::Bool = false,
+        std::Bool = false
+    )
 
 Try to generate figures for selected spectra. With this function, you can
 only visualize calculated spectra for a subset of tests.
@@ -264,11 +278,16 @@ If only_true_spectrum is true, only true spectral functions will be plotted.
 ### Arguments
 * inds -> Indices of selected spectra.
 * only_true_spectrum -> Whether only the true spectra will be plotted.
+* std -> Is it for standard dataset ACT100?
 
 ### Returns
 N/A
 """
-function make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
+function make_figures(
+    inds::Vector{I64},
+    only_true_spectrum::Bool = false,
+    std::Bool = false
+    )
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -277,7 +296,7 @@ function make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
         try
-            sf1 = read_image(i)
+            sf1 = read_image(i, std)
             if only_true_spectrum
                 make_plot(i, sf1)
             else
