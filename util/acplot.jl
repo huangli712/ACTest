@@ -143,14 +143,16 @@ function make_plot(
     )
     #
     # Draw calculated spectral functions
-    lines!(
-        ax,
-        sf2.mesh.mesh,
-        sf2.image,
-        color = :crimson,
-        linestyle = :solid,
-        label = get_t("solver"),
-    )
+    if !isnothing(sf2)
+        lines!(
+            ax,
+            sf2.mesh.mesh,
+            sf2.image,
+            color = :crimson,
+            linestyle = :solid,
+            label = get_t("solver"),
+        )
+    end
     #
     # Get y-limits
     reset_limits!(ax)
