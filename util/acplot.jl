@@ -262,7 +262,7 @@ only visualize calculated spectra for a subset of tests.
 If only_true_spectrum is true, only true spectral functions will be plotted.
 
 ### Arguments
-* ind -> Indices of selected spectra.
+* inds -> Indices of selected spectra.
 * only_true_spectrum -> Whether only the true spectra will be plotted.
 
 ### Returns
@@ -278,8 +278,12 @@ function make_figures(inds::Vector{I64}, only_true_spectrum::Bool = false)
         #
         try
             sf1 = read_image(i)
-            sf2 = read_Aout(i)
-            make_plot(i, sf1, sf2)
+            if only_true_spectrum
+                make_plot(i, sf1)
+            else
+                sf2 = read_Aout(i)
+                make_plot(i, sf1, sf2)
+            end
         catch ex
             println("Something wrong for test case $i")
             println(ex.msg)
