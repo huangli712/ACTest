@@ -178,8 +178,19 @@ function make_plot(
     println("File $fn is generated successfully.")
 end
 
-# Try to generate all the figures, in which the true and calculated
-# spectral functions are compared with each other.
+"""
+    make_figures(only_true_spectrum::Bool = false)
+
+Try to generate all the figures, in which the true and calculated
+spectral functions are compared with each other. But if only_true_spectrum
+is true, only true spectral functions will be plotted.
+
+### Arguments
+See above explanations.
+
+### Returns
+N/A
+"""
 function make_figures()
     # Get number of tests
     ntest = get_t("ntest")
