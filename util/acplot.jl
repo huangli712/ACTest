@@ -92,10 +92,12 @@ function read_Aout(ind::I64)
         data = readdlm(fn)
         ω = data[:,1]
         image = data[:,2]
+        #
         # We should check the spectral function data further
         if any(x -> abs(x) > 100.0, image)
             error("The data in $fn is quite strange.")
         end
+        #
         return SpectralFunction(DynamicMesh(ω), image)
     else
         error("File $fn does not exits!")
