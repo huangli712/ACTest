@@ -91,6 +91,9 @@ Draw the true and calculated spectral functions in the same figure. The
 `CairoMakie.jl` package is employed to do this job. The figure file is
 just `image.i.pdf`.
 
+If `sf2` is nothing, then this function will only plot the true spectral
+function (`sf1`).
+
 ### Arguments
 * ind -> Index of selected spectral function.
 * sf1 -> True spectral function.
