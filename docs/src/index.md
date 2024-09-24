@@ -4,7 +4,7 @@
 
 !!! info
 
-    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v0.5.0-devel.240923.
+    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v0.6.0-devel.240924.
 
 !!! note
 
