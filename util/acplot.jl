@@ -216,9 +216,22 @@ function make_figures(only_true_spectrum::Bool = false)
     end
 end
 
-# Try to generate figure for selected test. With this function, you can
-# only visualize the test that you are interested in.
-function make_figures(ind::I64)
+"""
+    make_figures(ind::I64, only_true_spectrum::Bool = false)
+
+Try to generate figure for selected spectrum. With this function, you can
+only visualize the spectrum that you are interested in.
+
+If only_true_spectrum is true, only true spectral function will be plotted.
+
+### Arguments
+* ind -> Index of selected spectrum.
+* only_true_spectrum -> Whether only the true spectrum will be plotted.
+
+### Returns
+N/A
+"""
+function make_figures(ind::I64, only_true_spectrum::Bool = false)
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -226,8 +239,12 @@ function make_figures(ind::I64)
     #
     try
         sf1 = read_image(ind)
-        sf2 = read_Aout(ind)
-        make_plot(ind, sf1, sf2)
+        if only_true_spectrum
+            make_plot(ind, sf1)
+        else
+            sf2 = read_Aout(ind)
+            make_plot(ind, sf1, sf2)
+        end
     catch ex
         println("Something wrong for test case $ind")
         println(ex.msg)
