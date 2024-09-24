@@ -8,7 +8,7 @@
 # configuration tools / methods, or support parallel calculations.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 213.
+# `make_test()` to `make_test(true)` in line 208.
 #
 # Usage:
 #
@@ -65,12 +65,7 @@ function fix_dict!(i::I64, B::Dict{String,Any})
     B["ktype"] = ACT100[i]["ktype"]
     B["grid"] = ACT100[i]["grid"]
     B["mesh"] = ACT100[i]["mesh"]
-    B["offdiag"] = false
-
-    # Special treatment for off-diagonal cases
-    if any(x -> x < 0.0, ACT100[i]["signs"])
-        B["offdiag"] = true
-    end
+    B["offdiag"] = ACT100[i]["offdiag"]
 end
 
 # Evaluate error for the current test. It just calculates the distance
