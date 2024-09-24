@@ -9,7 +9,7 @@
 # By default, this script will visualize the calculated results for all
 # the tests. But you can also visualize those results for the tests that
 # you are interested in. To do so, please change `make_figures()` in line
-# 206 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
+# 299 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
 # `inds` denote an I64 number and a vector of I64 numbers, respectively.
 # They are the indices of the tests that you want to visualize.
 #
