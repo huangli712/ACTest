@@ -191,7 +191,7 @@ See above explanations.
 ### Returns
 N/A
 """
-function make_figures()
+function make_figures(only_true_spectrum::Bool = false)
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -201,8 +201,12 @@ function make_figures()
         #
         try
             sf1 = read_image(i)
-            sf2 = read_Aout(i)
-            make_plot(i, sf1, sf2)
+            if only_true_spectrum
+                make_plot(i, sf1)
+            else
+                sf2 = read_Aout(i)
+                make_plot(i, sf1, sf2)
+            end
         catch ex
             println("Something wrong for test case $i")
             println(ex.msg)
