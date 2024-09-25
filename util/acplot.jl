@@ -9,7 +9,7 @@
 # By default, this script will visualize the calculated results for all
 # the tests. But you can also visualize those results for the tests that
 # you are interested in. To do so, please change `make_figures()` in line
-# 299 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
+# 342 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
 # `inds` denote an I64 number and a vector of I64 numbers, respectively.
 # They are the indices of the tests that you want to visualize.
 #
@@ -62,7 +62,7 @@ function read_image(ind::I64, std::Bool)
         # In order to be compatible with the outputs from some solvers in
         # the ACFlow toolkit, we have to convert it to A(ω).
         if ktype != "fermi"
-            if solver == "BarRat"
+            if solver in ("BarRat")
                 @. image = image * ω
             end
         end
@@ -161,8 +161,8 @@ function make_plot(
         ax,
         sf1.mesh.mesh,
         sf1.image,
-        color = :tomato,
-        linestyle = :dash,
+        color = isnothing(sf2) ? :crimson : :tomato,
+        linestyle = isnothing(sf2) ? :solid : :dash,
         label = "True",
     )
     #
