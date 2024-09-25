@@ -159,7 +159,7 @@ function make_data()
     ntest = get_t("ntest")
 
     # Initialize the random number generator
-    seed = rand(1:10000) * myid() + 1981
+    seed = 2002 #rand(1:10000) * myid() + 1981
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
@@ -321,14 +321,9 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
             @assert any(x -> x < 0.0, image)
         # For bosonic systems
         else
-            _, zero_point = findmin(abs.(mesh.mesh))
-            #
-            # A(ω > 0) / ω > 0   =>   A(ω > 0) > 0
-            if count(x -> x < 0.0, image[zero_point:end]) == 0
-                # A(ω < 0) / ω < 0   =>   A(ω < 0) > 0
-                if count(x -> x > 0.0, image[1:zero_point-1]) == 0
-                    @. image = image * (-1.0)
-                end
+            # A(ω) > 0
+            if count(x -> x < 0.0, image .* mesh.mesh) == 0
+                @. image = image * (-1.0)
             end
             #
             @assert any(x -> x < 0.0, image .* mesh.mesh)
