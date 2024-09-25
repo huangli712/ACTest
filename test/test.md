@@ -27,3 +27,9 @@
     * Bosonic + Matsubara
     * Lorentzian peaks
     * Offdiagonal
+
+* **A07**
+    * ACT100
+    * Fermionic + Bosonic + Matsubara
+    * Gaussian + Delta + Lorentzian peaks
+    * Diagonal + Offdiagonal
