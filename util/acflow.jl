@@ -8,7 +8,7 @@
 # configuration tools / methods, or support parallel calculations.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 208.
+# `make_test()` to `make_test(true)` in line 211.
 #
 # Usage:
 #
@@ -81,11 +81,14 @@ function get_error(
     ω = data[:,1]
     Ainp = data[:,2]
 
-    # If there is a bosonic system, Ainp is actually A(ω) / ω
+    # If there is a bosonic system, Ainp is actually A(ω) / ω. We should
+    # convert it to A(ω).
     if B["ktype"] != "fermi"
-        # The BarRat solver would write A(ω) always
-        if B["solver"] == "BarRat"
-            @. Ainp = Ainp * ω
+        @. Ainp = Ainp * ω
+        # For the following solvers, their outputs (`Aout`) are A(ω) / ω
+        # as well. We have to convert them to A(ω) too.
+        if B["solver"] in ("MaxEnt", "StochAC", "StochSK", "StochOM")
+            @. Aout = Aout * mesh
         end
     end
 
