@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/23
+# Last modified: 2024/09/25
 #
 
 """
@@ -127,7 +127,7 @@ function make_data_std()
 
         # Prepare kernel function
         kernel = make_kernel(mesh, grid)
-        println("Build default kernel: ", get_t("ktype"))
+        println("Build default kernel: ", dict["ktype"])
 
         # Generate spectral functions
         sf = make_spectrum(mesh, dict["peaks"], dict["signs"])
