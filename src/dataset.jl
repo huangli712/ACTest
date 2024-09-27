@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/24
+# Last modified: 2024/09/28
 #
 
 #=
@@ -1082,14 +1082,14 @@ Dictionary for standard spectral functions: bosonic + delta-like peaks.
 """
 const STD_BD = Dict{String,Any}[
     # Test: 001 / Bosonic + Delta Peaks
-    # single peak, central
+    # single peak, off-centered (left)
     Dict(
         "ktype" => "boson",
         "grid"  => "bfreq",
         "mesh"  => "linear",
         "offdiag" => false,
         "peaks" => [
-            DeltaPeak(1.0,0.02,0.0)
+            DeltaPeak(1.0,0.02,-0.2)
         ],
         "signs" => [1.0]
     ),
