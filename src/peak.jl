@@ -32,8 +32,8 @@ p(\omega) = \frac{A}{\pi} \frac{\Gamma}{(\omega - \epsilon)^2 + \Gamma^2}
 
 ```math
 \begin{equation}
-p(\omega) = A\exp{\left[-\frac{(\omega - ϵ)^2}{2\Gamma^2}\right]},~
-\text{where}~\Gamma = 0.01
+p(\omega) = A\exp{\left[-\frac{(\omega - ϵ)^2}{2\gamma^2}\right]},~
+\text{where}~\gamma = 0.01
 \end{equation}
 ```
 
@@ -53,7 +53,7 @@ h, \quad \text{if}~\omega \in [c-w/2,c+w/2], \\
 
 ```math
 \begin{equation}
-p(\omega) = h \exp{(-|x - c|^{\gamma})}
+p(\omega) = h \exp{(-|\omega - c|^{\gamma})}
 \end{equation}
 ```
 
