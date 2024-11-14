@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/25
+# Last modified: 2024/11/14
 #
 
 """
@@ -269,6 +269,8 @@ Generate a spectral function randomly at given mesh.
 
 ### Returns
 * sf -> A SpectralFunction struct.
+
+See also: [`make_data`](@ref).
 """
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     # Extract essential parameters
@@ -349,6 +351,8 @@ Generate a spectral function with given peaks and signs at given mesh.
 
 ### Returns
 * sf -> A SpectralFunction struct.
+
+See also: [`make_data_std`](@ref).
 """
 function make_spectrum(
     mesh::AbstractMesh,
@@ -376,6 +380,8 @@ function make_spectrum(
     #
     # Normalize the spectrum
     if count(x -> x > 0.0, sv) == npeak
+        # All signs are positive. It is not for off-diagonal element.
+        # We have to normalize the spectrum.
         image = image ./ trapz(mesh,image)
     end
 
