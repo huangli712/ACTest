@@ -6,7 +6,7 @@ Just as stated above, the spectral function and the imaginary time or Matsubara 
 G(x) = \int d\omega~K(x,\omega) A(\omega).
 \end{equation}
 ```
-Here $K(x,\omega)$ is the so-called kernel function~\cite{PhysRevB.108.235143}. It plays a key role in this equation. In this section, we would like to introduce the kernels that have been implemented in ACTest.
+Here ``K(x,\omega)`` is the so-called kernel function. It plays a key role in this equation. In this section, we would like to introduce the kernels that have been implemented in ACTest.
 
 ## Fermionic kernels
 
@@ -36,7 +36,7 @@ and
 K(\omega_n,\omega) = \frac{1}{i\omega_n - \omega}.
 \end{equation}
 ```
-For fermionic systems, $A(\omega)$ is defined on $(-\infty,\infty)$. It is causal, i.e., $A(\omega) \ge 0$.
+For fermionic systems, ``A(\omega)`` is defined on ``(-\infty,\infty)``. It is causal, i.e., ``A(\omega) \ge 0``.
 
 ## Bosonic kernels
 
@@ -46,13 +46,13 @@ For bosonic system, the spectral function obeys the following constraint:
 \text{sign}(\omega) A(\omega) \ge 0.
 \end{equation}
 ```
-It is quite convenient to introduce a new variable $\tilde{A}(\omega)$:
+It is quite convenient to introduce a new variable ``\tilde{A}(\omega)``:
 ```math
 \begin{equation}
 \tilde{A}(\omega) = \frac{A(\omega)}{\omega}.
 \end{equation}
 ```
-Clearly, $\tilde{A}(\omega) \ge 0$. It means that $\tilde{A}(\omega)$ is positive definite. So, we have
+Clearly, ``\tilde{A}(\omega) \ge 0``. It means that ``\tilde{A}(\omega)`` is positive definite. So, we have
 ```math
 \begin{equation}
 G(\tau)
@@ -100,7 +100,7 @@ K(\omega_n = 0,\omega = 0) \equiv -1.
 
 ## Symmetric bosonic kernels
 
-This is a special case for the bosonic Green's function with Hermitian bosonic operators. Here, the spectral function $A(\omega)$ is an odd function. Let us introduce $\tilde{A}(\omega) = A(\omega)/\omega$ again. Since $\tilde{A}(\omega)$ is an even function, we can restrict it in $(0,\infty)$. Now we have
+This is a special case for the bosonic Green's function with Hermitian bosonic operators. Here, the spectral function ``A(\omega)`` is an odd function. Let us introduce ``\tilde{A}(\omega) = A(\omega)/\omega`` again. Since ``\tilde{A}(\omega)`` is an even function, we can restrict it in ``(0,\infty)``. Now we have
 ```math
 \begin{equation}
 G(\tau)
