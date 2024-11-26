@@ -26,9 +26,23 @@ makedocs(
         ],
         "Manual" => Any[
             "Main Features" => "man/feature.md",
+            "Installation" => "man/install.md",
+            "Scripts" => "man/script.md",
+            "Inputs" => "man/input.md",
+            "Outputs" => "man/output.md",
+            "Parameters" => "man/param.md",
+            "Built-in testing dataset" => "man/act100.md",
+            "Interface to analytic continuation toolkits" => "man/interface.md",
         ],
         "Theory" => Any[
             "Grids" => "theory/grid.md",
+            "Meshes" => "theory/mesh.md",
+            "Peaks" => "theory/peak.md",
+            "Kernels" => "theory/kernel.md",
+            "Noise" => "theory/noise.md",
+        ],
+        "Examples" => Any[
+
         ],
         "Library" => Any[
             "Outline" => "library/outline.md",
