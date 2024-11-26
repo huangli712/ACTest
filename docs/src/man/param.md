@@ -189,12 +189,18 @@ Depth = 3
 
 *Definition:*
 
-> Inverse temperature of the system $\beta$ ($\equiv 1/T$). It is used to define the imaginary time or Matsubara frequency grids for Green's functions. See Section~\ref{subsec:grids} for more details.
+> Inverse temperature of the system ``\beta`` (``\equiv 1/T``). It is used to define the imaginary time or Matsubara frequency grids for Green's functions.
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> beta = 40.0
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### noise
