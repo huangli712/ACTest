@@ -117,12 +117,18 @@ Depth = 3
 
 *Definition:*
 
-> Number of mesh points for the spectral function. It is $N_{\omega}$. See Section~\ref{subsec:meshes} for more details.
+> Number of mesh points for the spectral function. It is ``N_{\omega}``.
 
 *Type:*
-> String.
+
+> Integer.
+
 *Examples:*
+
+> nmesh = 101
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### ntest
