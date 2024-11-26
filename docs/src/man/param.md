@@ -2,7 +2,7 @@
 
 *A comprehensive dictionary about parameters.*
 
-In this part, we will provide brief explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow toolkit for configuring the analytic continuation methods. They will be explained in the documentation of the ACFlow toolkit.
+In this part, we will provide detailed explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow toolkit for configuring the analytic continuation methods. They will be explained in the documentation of the ACFlow toolkit.
 
 ## Contents
 
@@ -15,7 +15,17 @@ Depth = 3
 
 *Definition:*
 
-> Specify analytic continuation solver. Possible values include ``\texttt{MaxEnt}'', ``\texttt{BarRat}'', ``\texttt{NevanAC}'', ``\texttt{StochAC}'', ``\texttt{StochSK}'', ``\texttt{StochOM}'', and ``\texttt{StochPX}''. They are the analytic continuation methods supported by the ACFlow toolkit. This parameter is only relevant for the \texttt{acflow.jl} and \texttt{acplot.jl} scripts.
+> Specify analytic continuation solver. Possible values include
+>
+> * MaxEnt
+> * BarRat
+> * NevanAC
+> * StochAC
+> * StochSK
+> * StochOM
+> * StochPX
+>
+> They are the analytic continuation methods supported by the ACFlow toolkit. This parameter is only relevant for the **acflow.jl** and **acplot.jl** scripts.
 
 *Type:*
 
@@ -31,12 +41,26 @@ Depth = 3
 
 ### ptype
 
-> Specify type of peaks. Possible values include ``\texttt{gauss}'', ``\texttt{lorentz}'', ``\texttt{delta}'', ``\texttt{rectangle}'', and ``\texttt{risedecay}''. They are corresponding to the Gaussian, Lorentzian, $\delta$-like, rectangular, and Rise-And-Decay peaks, respectively. This parameter is only relevant for the \texttt{acgen.jl} script. See Section~\ref{subsec:peaks} for more details.
+> Specify type of peaks. Possible values include
+>
+> * gauss
+> * lorentz
+> * delta
+> * rectangle
+> * risedecay
+>
+> They are corresponding to the Gaussian, Lorentzian, ``\delta``-like, rectangular, and Rise-And-Decay peaks, respectively. This parameter is only relevant for the **acgen.jl** script.
 
 *Type:*
+
 > String.
+
 *Examples:*
+
+> ptype = "gauss"
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### ktype
