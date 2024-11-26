@@ -42,7 +42,9 @@ makedocs(
             "Noise" => "theory/noise.md",
         ],
         "Examples" => Any[
-
+            "Generating spectra and correlators" => "examples/generate.md",
+            "Analytic continuation simulations" => "examples/acflow.md",
+            "Visualizations" => "examples/plot.md",
         ],
         "Library" => Any[
             "Outline" => "library/outline.md",
