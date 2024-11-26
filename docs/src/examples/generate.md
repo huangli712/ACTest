@@ -26,6 +26,6 @@ lpeak   = [1,2,3,4,5,6] # Possible number of peaks
 ```
 Once the \texttt{act.toml} file is prepared, the following command should be executed in the terminal:
 ```shell
-    $ actest/util/acgen.jl act.toml
+$ actest/util/acgen.jl act.toml
 ```
 Then, the ACTest toolkit will generate the required data in the present directory. Now there are 100 **image.data.i** and **green.data.i** files, where ``i`` ranges from 1 to 100. These correspond to ``A(\omega)`` and ``G(i\omega_n)`` for bosonic systems. We can further verify the data to make sure ``A(\omega) > 0``. Finally, we have to copy the **act.toml** file to another directory, change the *ktype*, *grid*, and *offdiag* parameters in it, and then execute the above command again to generate testing datasets for the other scenarios.

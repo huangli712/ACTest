@@ -23,7 +23,7 @@ It is able to read ``A_{\text{calc}}(\omega)`` and ``A_{\text{true}}(\omega)``, 
 Please execute the above scripts using the following command:
 
 ```shell
-    $ actest/util/script_name act.toml
+$ actest/util/script_name act.toml
 ```
 
 Here, **act.toml** is the configuration file. It is a standard TOML file, primarily used for storing user's settings (i.e., control parameters). The technical details of the **act.toml** file will be introduced in the following text.

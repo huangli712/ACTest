@@ -22,7 +22,7 @@ blur   = -1.0       # Whether we should broaden the kernel
 ```
 Please execute the following command in the terminal:
 ```shell
-    $ actest/util/acflow.jl act.toml
+$ actest/util/acflow.jl act.toml
 ```
 It will launch the ACFlow toolkit to perform analytic continuation calculations and generate a lot of output files. In addition to the **Aout.data.i** file, perhaps the most important file is **summary.data**. It records the error, status (pass or fail), and duration time for each test. So, we visualize the **summary.data** file in Figure **1**. It is evident that the errors for the analytic continuations of non-diagonal Green's functions [i.e., scenarios (2) and (4)] are slightly larger than those of diagonal Green's functions [i.e., scenarios (1) and (3)]. Furthermore, scenarios (2) and (4) consume much less time to solve the problems. Surprisingly, we found that the pass rates for scenarios (1) and (3) are approximately 80\%, while those for scenarios (2) and (4) are close to 100\%. If we further change the computational configurations (such as increasing the size of the dataset, altering the noise level or changing the type of peaks), and then repeat the aforementioned tests, the final conclusions could be similar.
 

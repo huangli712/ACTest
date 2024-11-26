@@ -6,7 +6,7 @@
 
 Finally, we can utilize the **acplot.jl** script to generate figures for the spectral functions. To achieve that effect, please execute the following command in the terminal:
 ```shell
-    $ actest/util/acplot.jl act.toml
+$ actest/util/acplot.jl act.toml
 ```
 These figures are in standard PDF format. They are used to analyze the differences between the true spectral functions ``A_{\text{true}}(\omega)`` and the calculated spectral functions ``A_{\text{calc}}(\omega)``. Figures **1** and **2** illustrate the spectral functions of typical fermionic systems and bosonic systems, respectively. As can be seen from the figures, aside from some very sharp peaks, the calculated spectral functions agree quite well with the true ones.
 
