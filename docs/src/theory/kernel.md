@@ -67,7 +67,7 @@ G(\tau)
 and
 ```math
 \begin{equation}
-G_{B}(i\omega_n) = \int^{+\infty}_{-\infty} d\omega
+G(i\omega_n) = \int^{+\infty}_{-\infty} d\omega
                \frac{1}{i\omega_n - \omega} A(\omega)
                  = \int^{+\infty}_{-\infty} d\omega
                \frac{\omega}{i\omega_n - \omega} \tilde{A}(\omega).
