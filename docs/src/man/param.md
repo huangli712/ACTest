@@ -81,12 +81,25 @@ Depth = 3
 
 *Definition:*
 
-> Specify grid for the Green's functions. Possible values include ``\texttt{ftime}'', ``\texttt{btime}'', ``\texttt{ffreq}'', and ``\texttt{bfreq}''. Here, the characters ``\texttt{f}'' and ``\texttt{b}'' mean fermionic and bosonic, respectively. The strings ``\texttt{time}'' and ``\texttt{freq}'' mean imaginary time and Matsubara frequency axes, respectively. See Section~\ref{subsec:grids} for more details. 
+> Specify grid for the Green's functions. Possible values include
+>
+> * ftime
+> * btime
+> * ffreq
+> * bfreq
+>
+> Here, the characters **f** and **b** mean fermionic and bosonic, respectively. The strings **time** and **freq** mean imaginary time and Matsubara frequency axes, respectively.
 
 *Type:*
+
 > String.
+
 *Examples:*
+
+> grid = "ftime"
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### mesh
