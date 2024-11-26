@@ -299,12 +299,18 @@ Depth = 3
 
 *Definition:*
 
-> Specify whether the spectral function is positive definite or not. If \texttt{offdiag} is true, it implies that the spectral function is not positive definite and the ACTest toolkit will generate off-diagonal Green's function.  
+> Specify whether the spectral function is positive definite or not. If **offdiag** is true, it implies that the spectral function is not positive definite and the ACTest toolkit will generate off-diagonal Green's function.  
 
 *Type:*
-> String.
+
+> Bool.
+
 *Examples:*
+
+> offdiag = true
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### lpeak
