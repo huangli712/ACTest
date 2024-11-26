@@ -1,10 +1,33 @@
 # Parameters
 
-In this subsection, we will provide brief explanations of the control parameters of the ACTest toolkit. The detailed descriptions for these parameters are available in the user's manual. As mentioned before, the \texttt{act.toml} file contains two sections: \texttt{[Test]} and \texttt{[Solver]}. The parameters described here are specific to the \texttt{[Test]} section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the \texttt{[Solver]} section will be transferred to the ACFlow toolkit for configuring the analytic continuation methods. They will be explained in the documentation of the ACFlow toolkit~\cite{Huang:2022}. 
-\begin{itemize}
-\item \texttt{solver}
+*A comprehensive dictionary about parameters.*
 
-Specify analytic continuation solver. Possible values include ``\texttt{MaxEnt}'', ``\texttt{BarRat}'', ``\texttt{NevanAC}'', ``\texttt{StochAC}'', ``\texttt{StochSK}'', ``\texttt{StochOM}'', and ``\texttt{StochPX}''. They are the analytic continuation methods supported by the ACFlow toolkit. This parameter is only relevant for the \texttt{acflow.jl} and \texttt{acplot.jl} scripts.
+In this part, we will provide brief explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow toolkit for configuring the analytic continuation methods. They will be explained in the documentation of the ACFlow toolkit.
+
+## Contents
+
+```@contents
+Pages = ["param.md"]
+Depth = 3
+```
+
+### solver
+
+*Definition:*
+
+> Specify analytic continuation solver. Possible values include ``\texttt{MaxEnt}'', ``\texttt{BarRat}'', ``\texttt{NevanAC}'', ``\texttt{StochAC}'', ``\texttt{StochSK}'', ``\texttt{StochOM}'', and ``\texttt{StochPX}''. They are the analytic continuation methods supported by the ACFlow toolkit. This parameter is only relevant for the \texttt{acflow.jl} and \texttt{acplot.jl} scripts.
+
+*Type:*
+
+> String.
+
+*Examples:*
+
+> solver = "MaxEnt"
+
+*Comment:*
+
+> This parameter is mandatory.
 
 \item \texttt{ptype}
 
@@ -65,5 +88,3 @@ Specify whether the spectral function is positive definite or not. If \texttt{of
 \item \texttt{lpeak}
 
 It is an integer array that sets the number of peaks (features) that the synthetic spectral function may contain. For example: \texttt{lpeak = [1,2,3,4,5]}, then the ACTest toolkit can generate spectral functions with the number of peaks ranging from 1 to 5. This parameter is only relevant for the \texttt{acgen.jl} script.
-
-\end{itemize}
