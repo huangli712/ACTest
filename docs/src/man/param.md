@@ -93,12 +93,25 @@ Depth = 3
 
 *Definition:*
 
-> Specify mesh for the spectral function. Possible values are ``\texttt{linear}'', ``\texttt{tangent}'', ``\texttt{lorentz}'', and ``\texttt{halflorentz}''. They are corresponding to the linear, tangent, Lorentzian, and half-Lorentzian meshes, respectively. See Section~\ref{subsec:meshes} for more details.
+> Specify mesh for the spectral function. Possible values are
+>
+> * linear
+> * tangent
+> * lorentz
+> * halflorentz
+>
+> They are corresponding to the linear, tangent, Lorentzian, and half-Lorentzian meshes, respectively.
 
 *Type:*
+
 > String.
+
 *Examples:*
+
+> mesh = "linear"
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### ngrid
