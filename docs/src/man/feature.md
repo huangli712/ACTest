@@ -1,6 +1,6 @@
 # Main Features
 
-The current version of the ACTest toolkit is v1.0. Its major features are as follows:
+The major features of the ACTest toolkit are as follows:
 
 * ACTest can randomly generate any number of ``A(\omega)``, as well as corresponding ``G(\tau)`` or ``G(i\omega_n)``.
 
