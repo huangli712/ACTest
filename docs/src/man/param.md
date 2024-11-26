@@ -105,12 +105,18 @@ Depth = 3
 
 *Definition:*
 
-> Number of imaginary time or Matsubara frequency points for the Green's function. It denotes $N_{\tau}$ or $N$. See Section~\ref{subsec:grids} for more details.
+> Number of imaginary time or Matsubara frequency points for the Green's function. It denotes ``N_{\tau}`` or ``N``.
 
 *Type:*
-> String.
+
+> Integer.
+
 *Examples:*
+
+> ngrid = 10
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### nmesh
