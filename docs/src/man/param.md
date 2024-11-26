@@ -177,24 +177,36 @@ Depth = 3
 
 *Definition:*
 
-> Right boundary of features in the spectrum. It is used to restrict the centers of Gaussian and Lorentzian peaks. $\texttt{wmin} < \texttt{pmin} < \texttt{pmax} < \texttt{wmax}$. See Section~\ref{subsec:peaks} for more details. 
+> Right boundary of features in the spectrum. It is used to restrict the centers of Gaussian and Lorentzian peaks. ``\texttt{wmin} < \texttt{pmin} < \texttt{pmax} < \texttt{wmax}``.
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> pmax = 4.0
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### pmin
 
 *Definition:*
 
-> Left boundary of features in the spectrum. It is used to restrict the centers of Gaussian and Lorentzian peaks. $\texttt{wmin} < \texttt{pmin} < \texttt{pmax} < \texttt{wmax}$. See Section~\ref{subsec:peaks} for more details. 
+> Left boundary of features in the spectrum. It is used to restrict the centers of Gaussian and Lorentzian peaks. ``\texttt{wmin} < \texttt{pmin} < \texttt{pmax} < \texttt{wmax}``.
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> pmin = -4.0
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### beta
