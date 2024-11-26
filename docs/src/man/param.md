@@ -311,10 +311,16 @@ Depth = 3
 
 *Definition:*
 
-> It is an integer array that sets the number of peaks (features) that the synthetic spectral function may contain. For example: \texttt{lpeak = [1,2,3,4,5]}, then the ACTest toolkit can generate spectral functions with the number of peaks ranging from 1 to 5. This parameter is only relevant for the \texttt{acgen.jl} script.
+> It is an integer array that sets the number of peaks (features) that the synthetic spectral function may contain. For example: **lpeak = [1,2,3,4,5]**, then the ACTest toolkit can generate spectral functions with the number of peaks ranging from 1 to 5. This parameter is only relevant for the **acgen.jl** script.
 
 *Type:*
-> String.
+
+> Array (Integer).
+
 *Examples:*
+
+> lpeak = [1,2,3,5]
+
 *Comment:*
+
 > This parameter is mandatory.
