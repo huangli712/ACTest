@@ -69,12 +69,24 @@ Depth = 3
 
 *Definition:*
 
-> Specify kernel function. Possible values include ``\texttt{fermi}'', ``\texttt{boson}'', and ``\texttt{bsymm}''. They are corresponding to the fermionic, bosonic, and symmetric bosonic kernels, respectively. See Section~\ref{subsec:kernels} for more details. 
+> Specify kernel function. Possible values include
+>
+> * fermi
+> * boson
+> * bsymm
+>
+> They are corresponding to the fermionic, bosonic, and symmetric bosonic kernels, respectively.
 
 *Type:*
+
 > String.
+
 *Examples:*
+
+> ktype = "fermi"
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### grid
