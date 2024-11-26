@@ -141,24 +141,36 @@ Depth = 3
 
 *Definition:*
 
-> Right boundary of the real frequency mesh ($\omega_{\text{max}}$). See Section~\ref{subsec:meshes} for more details.
+> Right boundary of the real frequency mesh (``\omega_{\text{max}}``).
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> wmax = 8.0
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### wmin
 
 *Definition:*
 
-> Left boundary of the real frequency mesh ($\omega_{\text{min}}$). See Section~\ref{subsec:meshes} for more details.
+> Left boundary of the real frequency mesh (``\omega_{\text{min}}``).
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> wmin = -8.0
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### pmax
