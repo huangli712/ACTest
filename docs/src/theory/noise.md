@@ -1,8 +1,9 @@
 # Artificial noise
 
-Assuming that we already construct the spectral function $ A(\omega) $, it is then straightforward to calculate $ G(\tau) $ or $G(i\omega_n)$ via Eqs.~(\ref{eq:ft_kernel})-(\ref{eq:bw_kernel_0}). At this point, the synthetic Green's function $G$ is exact, containing no numerical noise. We name it $G_{\text{exact}}$. However, the Green's functions obtained from quantum many-body calculations are often noisy~\cite{ASAKAWA2001459,PhysRevB.34.4744,PhysRevLett.55.1204}. This is especially the case in finite-temperature quantum Monte Carlo simulations, where numerical noise is inevitable. To make things worse, when the fermionic sign problem is severe, the noise correspondingly increases. To simulate this scenario, the ACTest toolkit can introduce artificial noise into the synthetic Green's function as follows~\cite{PhysRevB.107.075151}:
+Assuming that we already construct the spectral function ``A(\omega)``, it is then straightforward to calculate ``G(\tau)`` or ``G(i\omega_n)`` via Laplace transformation. At this point, the synthetic Green's function ``G`` is exact, containing no numerical noise. We name it ``G_{\text{exact}}``. However, the Green's functions obtained from quantum many-body calculations are often noisy. This is especially the case in finite-temperature quantum Monte Carlo simulations, where numerical noise is inevitable. To make things worse, when the fermionic sign problem is severe, the noise correspondingly increases. To simulate this scenario, the ACTest toolkit can introduce artificial noise into the synthetic Green's function as follows:
+```math
 \begin{equation}
-\label{eq:gnoisy}
 G_{\text{noisy}} = G_{\text{exact}}[1 + \delta \mathcal{N}_{C}(0,1)]
 \end{equation}
-where $\mathcal{N}_{C}(0,1)$ represents complex-valued Gaussian noise with zero mean and unit variance, and the parameter $\delta$ is used to control the noise level ($0 \le \delta \le 1$).
+```
+where ``\mathcal{N}_{C}(0,1)`` represents complex-valued Gaussian noise with zero mean and unit variance, and the parameter ``\delta`` is used to control the noise level (``0 \le \delta \le 1``).
