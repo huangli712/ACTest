@@ -287,12 +287,18 @@ Depth = 3
 
 *Definition:*
 
-> The noise level, i.e., the $\delta$ parameter seen in Eq.~(\ref{eq:gnoisy}). See Section~\ref{subsec:noise} for more details.
+> The noise level, i.e., the ``\delta`` parameter.
 
 *Type:*
-> String.
+
+> Float.
+
 *Examples:*
+
+> noise = 1e-6
+
 *Comment:*
+
 > This parameter is mandatory.
 
 ### offdiag
