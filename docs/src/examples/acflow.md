@@ -4,13 +4,13 @@
 
     In the **actest/tests** directory, there are seven typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
 
-Next, we have to add a \texttt{[Solver]} section in the \texttt{act.toml} file to setup the control parameters for the MaxEnt analytic continuation solver (which implements the maximum entropy method) in the ACFlow toolkit~\cite{Huang:2022}. The spirit of the maximum entropy entropy is to figure out the optimal $A$, that minimizes the following functional~\cite{JARRELL1996133}:
+Next, we have to add a \texttt{[Solver]} section in the \texttt{act.toml} file to setup the control parameters for the MaxEnt analytic continuation solver (which implements the maximum entropy method) in the ACFlow toolkit. The spirit of the maximum entropy entropy is to figure out the optimal ``A``, that minimizes the following functional:
 ```math
 \begin{equation}
 Q[A] = \frac{1}{2}\chi^2[A] - \alpha S[A].
 \end{equation}
 ```
-Here, $\chi^{2}$ is the so-called goodness-of-fit functional, which measures the distance between the reconstructed Green's function and the original Green's function. $S$ is the entropic term. Usually the Shannon-Jaynes entropy is used. $\alpha$ is a hyperparameter. In this example, we adopt the chi2kink algorithm~\cite{PhysRevE.94.023303} to determine the optimized \(\alpha\) parameters. The list of the $\alpha$ parameters contains 10 elements. The initial value of $\alpha$ is $\alpha_1 = 10^{12}$, and the ratio between two consecutive $\alpha$ parameters ($\alpha_i / \alpha_{i+1}$) is 10. The complete \texttt{[Solver]} section is shown as follows:
+Here, ``\chi^{2}`` is the so-called goodness-of-fit functional, which measures the distance between the reconstructed Green's function and the original Green's function. $S$ is the entropic term. Usually the Shannon-Jaynes entropy is used. ``\alpha`` is a hyperparameter. In this example, we adopt the chi2kink algorithm to determine the optimized ``\alpha`` parameters. The list of the $\alpha$ parameters contains 10 elements. The initial value of ``\alpha`` is ``\alpha_1 = 10^{12}``, and the ratio between two consecutive ``\alpha`` parameters (``\alpha_i / \alpha_{i+1}``) is 10. The complete \texttt{[Solver]} section is shown as follows:
 ```toml
 [Solver]
 method = "chi2kink" # Method to optimize the \alpha parameter
