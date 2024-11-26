@@ -24,7 +24,7 @@ Since the ACTest toolkit has not yet been registered as a regular Julia package,
     julia> Pkg.add("https://github.com/huangli712/ACTest")
 ```
 
-If this method fails due to an unstable network connection, an offline method should be adopted. First of all, please download the compressed package for the ACTest toolkit from github. Usually it is called \texttt{actest.tar.gz} or \texttt{actest.zip}. Second, please copy it to your favorite directory (such as \texttt{/home/your\_home}), and then enter the following command in the terminal to decompress it:
+If this method fails due to an unstable network connection, an offline method should be adopted. First of all, please download the compressed package for the ACTest toolkit from github. Usually it is called **actest.tar.gz** or **actest.zip**. Second, please copy it to your favorite directory (such as **/home/your\_home**), and then enter the following command in the terminal to decompress it:
 
 ```shell
     $ tar xvfz actest.tar.gz
