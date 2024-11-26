@@ -32,7 +32,7 @@ makedocs(
             "Outputs" => "man/output.md",
             "Parameters" => "man/param.md",
             "Built-in testing dataset" => "man/act100.md",
-            "Interface to analytic continuation toolkits" => "man/interface.md",
+            "Interface to ACFlow" => "man/interface.md",
         ],
         "Theory" => Any[
             "Grids" => "theory/grid.md",
