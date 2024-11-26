@@ -1,27 +1,29 @@
 # Scripts
 
-The ACTest toolkit provides four Julia scripts. They are located in the \texttt{actest/util} directory. Here are brief descriptions for these scripts:
+The ACTest toolkit provides four Julia scripts. They are located in the **actest/util** directory. Here are brief descriptions for these scripts:
 
-\begin{itemize}
-\item \texttt{acgen.jl}
+## acgen.jl
 
 This is the core script of the ACTest toolkit. It is able to randomly generate any number of spectral functions and corresponding Green's functions according to the user's settings.
 
-\item \texttt{acstd.jl}
+## acstd.jl
 
 It is similar to \texttt{acgen.jl}. But its task is to generate the ACT100 dataset, which includes 100 predefined spectral functions and corresponding Green's functions.
 
-\item \texttt{acflow.jl}
+## acflow.jl
 
-This script provides a bridge between the ACTest toolkit and the ACFlow toolkit~\cite{Huang:2022}. At first, it will parse outputs from the \texttt{acgen.jl} or \texttt{acstd.jl} script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, \texttt{acflow.jl} script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the ACFlow toolkit. 
+This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the ACFlow toolkit. 
 
-\item \texttt{acplot.jl}
+## acplot.jl
 
-It is able to read $A_{\text{calc}}(\omega)$ and $A_{\text{true}}(\omega)$, and plot them in the same figure for comparison. It adopts the PDF format to output the figure. This script requires support of the CairoMakie.jl package.
+It is able to read ``A_{\text{calc}}(\omega)`` and ``A_{\text{true}}(\omega)``, and plot them in the same figure for comparison. It adopts the PDF format to output the figure. This script requires support of the CairoMakie.jl package.
 
-\end{itemize}
+---
+
 Please execute the above scripts using the following command:
-\begin{verbatim}
+
+```shell
     $ actest/util/script_name act.toml
-\end{verbatim}
-Here, \texttt{act.toml} is the configuration file. It is a standard TOML file, primarily used for storing user's settings (i.e., control parameters). The technical details of the \texttt{act.toml} file will be introduced in the following text.
+```
+
+Here, **act.toml** is the configuration file. It is a standard TOML file, primarily used for storing user's settings (i.e., control parameters). The technical details of the **act.toml** file will be introduced in the following text.
