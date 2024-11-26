@@ -18,6 +18,9 @@
 
 ```@contents
 Pages = [
+    "intro/motivation.md",
+    "intro/ack.md",
+    "intro/cite.md",
 ]
 Depth = 1
 ```
@@ -26,6 +29,14 @@ Depth = 1
 
 ```@contents
 Pages = [
+    "man/feature.md",
+    "man/install.md",
+    "man/script.md",
+    "man/input.md",
+    "man/output.md",
+    "man/param.md",
+    "man/act100.md",
+    "man/interface.md",
 ]
 Depth = 1
 ```
@@ -34,6 +45,11 @@ Depth = 1
 
 ```@contents
 Pages = [
+    "theory/grid.md",
+    "theory/mesh.md",
+    "theory/peak.md",
+    "theory/kernel.md",
+    "theory/noise.md",
 ]
 Depth = 1
 ```
@@ -42,6 +58,9 @@ Depth = 1
 
 ```@contents
 Pages = [
+    "examples/generate.md",
+    "examples/acflow.md",
+    "examples/plot.md",
 ]
 Depth = 1
 ```
