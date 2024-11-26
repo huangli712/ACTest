@@ -19,6 +19,17 @@ makedocs(
     modules = [ACTest],
     pages = [
         "Home" => "index.md",
+        "Introduction" => Any[
+            "Motivation" => "intro/motivation.md",
+            "Acknowledgements" => "intro/ack.md",
+            "Citation" => "intro/cite.md",
+        ],
+        "Manual" => Any[
+            "Main Features" => "man/feature.md",
+        ],
+        "Theory" => Any[
+            "Grids" => "theory/grid.md",
+        ],
         "Library" => Any[
             "Outline" => "library/outline.md",
             "ACTest" => "library/actest.md",
