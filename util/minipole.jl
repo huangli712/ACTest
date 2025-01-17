@@ -212,6 +212,7 @@ end
 
 function python_functions()
     py"""
+    import sys
     import numpy as np
     #from mini_pole import GreenFunc
     #from mini_pole.spectrum_example import *
@@ -233,7 +234,19 @@ function python_functions()
     #    #print(p.pole_weight)
     #    #print(np.shape(p.pole_weight))
     #    return p.pole_location, p.pole_weight[:,0,0]
-    
+
+    def cal_G_scalar(z, Al, xl):
+        G_z = 0.0
+        for i in range(xl.size):
+            G_z += Al[i] / (z - xl[i])
+        return G_z
+
+    def cal_G_vector(z, Al, xl):
+        G_z = 0.0
+        for i in range(xl.size):
+            G_z += Al[[i]] / (z.reshape(-1, 1) - xl[i])
+        return G_z
+
     def setup_param(B, S):
         global _B
         _B = B
@@ -245,11 +258,25 @@ function python_functions()
         print(_S)
     
     def read_data():
-        print("read data")
+        w, gre, gim = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2) )
+        #print(w)
+        gw = gre + gim * 1j
+        #print(gw)
+        return w, gw
     
     def solve_me():
-        read_data()
-        print("here")
+        w, gw = read_data()
+        p = MiniPole(gw, w, err = 1e-2)
+        print(p.pole_weight)
+        print(p.pole_location)
+        x = np.linspace(-5, 5, 1000)
+        #print(x)
+        Gr = cal_G_vector(x, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
+        Aout = -1.0 / np.pi * G_f_r[:, 0, 0].imag
+        print(Aout)
+        for i in ranges(x.size):
+            print(i, x[i], Aout[i])
+        sys.exit(-1)
     """
 end
 
