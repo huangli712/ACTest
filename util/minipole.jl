@@ -174,15 +174,15 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             # Solve the analytic continuation problem.
             # The elapsed time is recorded as well.
             start = time_ns()
-            py"solve_me"()
-            exit()
-            mesh, Aout, _ = solve(read_data())
+            mesh, Aout = py"solve_me"()
+            #exit()
+            #mesh, Aout, _ = solve(read_data())
             finish = time_ns()
             #
             # Backup the calculated results for further analytics
             cp("Aout.data", "Aout.data." * string(i), force = true)
-            cp("Gout.data", "Gout.data." * string(i), force = true)
-            cp("repr.data", "repr.data." * string(i), force = true)
+            #cp("Gout.data", "Gout.data." * string(i), force = true)
+            #cp("repr.data", "repr.data." * string(i), force = true)
             #
             # Calculate the accuracy / error
             error[i] = get_error(i, mesh, Aout, B)
@@ -267,16 +267,22 @@ function python_functions()
     def solve_me():
         w, gw = read_data()
         p = MiniPole(gw, w, err = 1e-2)
-        print(p.pole_weight)
-        print(p.pole_location)
-        x = np.linspace(-5, 5, 1000)
-        #print(x)
+        #print(np.shape(p.pole_weight.reshape(-1, 1 ** 2)))
+        #print(np.shape(p.pole_location))
+        x = np.linspace(_B["wmin"], _B["wmax"], _B["nmesh"])
+        #print(x.size)
+        #print("dfdf")
         Gr = cal_G_vector(x, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
-        Aout = -1.0 / np.pi * G_f_r[:, 0, 0].imag
-        print(Aout)
-        for i in ranges(x.size):
-            print(i, x[i], Aout[i])
-        sys.exit(-1)
+        #print("dfdf")
+        #print(Gr)
+        Aout = -1.0 / np.pi * Gr[:, 0, 0].imag
+        #print(x.size)
+        #print(Aout.size)
+        with open("Aout.data", "w") as f:
+            for i in range(x.size):
+                print(i, x[i], Aout[i], file = f)
+        #sys.exit(-1)
+        return x, Aout
     """
 end
 
