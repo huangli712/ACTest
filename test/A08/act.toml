@@ -1,0 +1,40 @@
+#
+# Test: A08
+#
+# 1. Execute ../../util/acgen.jl act.toml.
+# 2. Change solver = "MiniPole" and the [Solver] block.
+# 3. Execute ../../util/minipole.jl act.toml.
+# 4. Execute ../../util/acplot.jl act.toml.
+#
+
+[Test]
+solver  = "MiniPole"
+ptype   = "gauss"
+ktype   = "fermi"
+grid    = "ffreq"
+mesh    = "linear"
+ngrid   = 10
+nmesh   = 801
+ntest   = 100
+wmax    = 8.0
+wmin    = -8.0
+pmax    = 4.0
+pmin    = -4.0
+beta    = 20.0
+noise   = 1.0e-6
+offdiag = false
+lpeak   = [1,2,3,4,5,6]
+
+[Solver]
+n0 = "auto"
+n0_shift = 0
+err = None
+err_type = "abs"
+M = None
+symmetry = False
+G_symmetric = False
+compute_const = False
+plane = None
+include_n0 = False
+k_max = 999
+ratio_max = 10
