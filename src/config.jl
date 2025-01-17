@@ -155,7 +155,7 @@ N/A
 See also: [`fil_dict`](@ref), [`_v`](@ref).
 """
 function chk_dict()
-    @assert get_t("solver") in ("MaxEnt", "BarRat", "NevanAC", "StochAC", "StochSK", "StochOM", "StochPX")
+    @assert get_t("solver") in ("MaxEnt", "BarRat", "NevanAC", "StochAC", "StochSK", "StochOM", "StochPX", "MiniPole")
     @assert get_t("ptype") in ("gauss", "lorentz", "delta", "rectangle", "risedecay")
     @assert get_t("ktype") in ("fermi", "boson", "bsymm")
     @assert get_t("grid") in ("ftime", "btime", "ffreq", "bfreq")
