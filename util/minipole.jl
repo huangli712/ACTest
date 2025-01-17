@@ -10,14 +10,14 @@
 #    ENV["PYTHON"] = 
 #    Pkg.build("PyCall")
 #
-#
 
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 
-using PyCall
 #using ACTest
-#using Printf
-#using DelimitedFiles
+
+using PyCall
+using Printf
+using DelimitedFiles
 
 function python_functions()
     py"""
@@ -40,21 +40,16 @@ function python_functions()
         #print(p.pole_weight)
         #print(np.shape(p.pole_weight))
         return p.pole_location, p.pole_weight[:,0,0]
-
-    def hello_world(s):
-        return s + " hello world!"
-
-    def test_struct(s):
-        print(s)
-
+    
+    def try_pole():
+        return "hhh"
     """
 end
 
 #pole = pyimport("numpy")
-python_functions()
+#python_functions()
 #println(py"hello_world"("Li Huang"))
 #location, weight = py"test_mini_pole"()
 #@show location
 #@show weight
-
-py"test_struct"(Dict("A"=>1, "B"=>2))
+#py"test_struct"(Dict("A"=>1, "B"=>2))
