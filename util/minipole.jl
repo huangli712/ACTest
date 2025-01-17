@@ -11,9 +11,13 @@
 #    Pkg.build("PyCall")
 #
 
+push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 
 using ACTest
+using ACFlow:setup_param
+using ACFlow:read_data
+using ACFlow:solve
 
 using PyCall
 using Printf
