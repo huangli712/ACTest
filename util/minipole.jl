@@ -44,12 +44,17 @@ function python_functions()
     def hello_world(s):
         return s + " hello world!"
 
+    def test_struct(s):
+        print(s)
+
     """
 end
 
 #pole = pyimport("numpy")
 python_functions()
 #println(py"hello_world"("Li Huang"))
-location, weight = py"test_mini_pole"()
-@show location
-@show weight
+#location, weight = py"test_mini_pole"()
+#@show location
+#@show weight
+
+py"test_struct"(Dict("A"=>1, "B"=>2))
