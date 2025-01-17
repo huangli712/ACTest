@@ -13,7 +13,7 @@
 
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 
-#using ACTest
+using ACTest
 
 using PyCall
 using Printf
@@ -233,8 +233,6 @@ overview()
 read_param()
 make_test()
 goodbye()
-
-
 
 #pole = pyimport("numpy")
 #python_functions()
