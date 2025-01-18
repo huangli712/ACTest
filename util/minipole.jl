@@ -7,7 +7,7 @@
 # 2. install PyCall.jl
 #
 # 3. setup PyCall.jl
-#    ENV["PYTHON"] = 
+#    ENV["PYTHON"] =
 #    Pkg.build("PyCall")
 #
 
@@ -15,9 +15,6 @@ push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 
 using ACTest
-#using ACFlow:setup_param
-using ACFlow:read_data
-using ACFlow:solve
 
 using PyCall
 using Printf
@@ -152,7 +149,6 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
 
     # Prepare configurations
     B, S = get_dict()
-    #@show S
 
     # Start the loop
     for i in cinds
@@ -167,8 +163,6 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             fix_dict!(i, B)
         end
         py"setup_param"(B, S)
-        #py"get_param"()
-        #exit()
         #
         try
             # Solve the analytic continuation problem.
@@ -210,30 +204,14 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
-function python_functions()
+function python()
     py"""
     import sys
     import numpy as np
-    #from mini_pole import GreenFunc
-    #from mini_pole.spectrum_example import *
     from mini_pole import MiniPole
-    
+
     _S = None
     _B = None
-    #def test_mini_pole():
-    #    beta = 100
-    #    n_w = 500
-    #    n_orb = 1
-    #    A_f_diag = lambda x: 0.25 * gaussian(x, mu=-1.5, sigma=0.5) + 0.5 * gaussian(x, mu=0, sigma=0.5) + 0.25 * gaussian(x, mu=1.5, sigma=0.5)
-    #    gf_f1 = GreenFunc("F", beta, "continuous", A_x=A_f_diag   , x_min=-np.inf, x_max=np.inf)
-    #    gf_f1.get_matsubara(n_w)
-    #    w = gf_f1.w
-    #    p = MiniPole(gf_f1.G_w, w, err=1.e-2)
-    #    #print(p.pole_location)
-    #    #print(np.shape(p.pole_location))
-    #    #print(p.pole_weight)
-    #    #print(np.shape(p.pole_weight))
-    #    return p.pole_location, p.pole_weight[:,0,0]
 
     def cal_G_scalar(z, Al, xl):
         G_z = 0.0
@@ -252,18 +230,12 @@ function python_functions()
         _B = B
         global _S
         _S = S
-    
-    def get_param():
-        print(_B)
-        print(_S)
-    
+
     def read_data():
         w, gre, gim = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2) )
-        #print(w)
         gw = gre + gim * 1j
-        #print(gw)
         return w, gw
-    
+
     def solve_me():
         w, gw = read_data()
         p = MiniPole(gw, w, err = 1e-2)
@@ -286,7 +258,7 @@ function python_functions()
     """
 end
 
-python_functions()
+python()
 welcome()
 overview()
 read_param()
