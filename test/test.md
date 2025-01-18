@@ -2,6 +2,8 @@
 
 ## Standard tests
 
+The following tests are designed for the ACTest + ACFlow toolkits.
+
 * **A01**
     * Fermionic + Matsubara
     * Gaussian peaks
@@ -33,3 +35,19 @@
     * Fermionic + Bosonic + Matsubara
     * Gaussian + Delta + Lorentzian peaks
     * Diagonal + Offdiagonal
+
+## Experimental tests
+
+The following tests are designed for the ACTest + MiniPole toolkits.
+
+* **B01**
+    * Fermionic + Matsubara
+    * Gaussian peaks
+    * A clone of **A01**
+
+* **B02**
+    * ACT100
+    * Fermionic + Bosonic + Matsubara
+    * Gaussian + Delta + Lorentzian peaks
+    * Diagonal + Offdiagonal
+    * A clone of **A07**
