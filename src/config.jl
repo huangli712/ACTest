@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/09/18
+# Last modified: 2025/01/18
 #
 
 """
@@ -155,7 +155,23 @@ N/A
 See also: [`fil_dict`](@ref), [`_v`](@ref).
 """
 function chk_dict()
-    @assert get_t("solver") in ("MaxEnt", "BarRat", "NevanAC", "StochAC", "StochSK", "StochOM", "StochPX", "MiniPole")
+    #
+    # The MiniPole solver implements the minimal pole method (MPM), which
+    # is provided by the MiniPole code. Please see the following webs and
+    # references for more details:
+    #
+    # https://github.com/Green-Phys/MiniPole
+    # Phys. Rev. B 110, 235131 (2024)
+    # Phys. Rev. B 110, 035154 (2024)
+    #
+    # The other solvers are provided by the ACFlow toolkit.
+    #
+    @assert get_t("solver") in (
+        "MaxEnt",
+        "BarRat", "NevanAC",
+        "StochAC", "StochSK", "StochOM", "StochPX",
+        "MiniPole"
+    )
     @assert get_t("ptype") in ("gauss", "lorentz", "delta", "rectangle", "risedecay")
     @assert get_t("ktype") in ("fermi", "boson", "bsymm")
     @assert get_t("grid") in ("ftime", "btime", "ffreq", "bfreq")
