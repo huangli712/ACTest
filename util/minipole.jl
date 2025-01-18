@@ -206,18 +206,11 @@ end
 
 function python()
     py"""
-    import sys
     import numpy as np
     from mini_pole import MiniPole
 
     _S = None
     _B = None
-
-    def cal_G_scalar(z, Al, xl):
-        G_z = 0.0
-        for i in range(xl.size):
-            G_z += Al[i] / (z - xl[i])
-        return G_z
 
     def cal_G_vector(z, Al, xl):
         G_z = 0.0
