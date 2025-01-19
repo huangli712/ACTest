@@ -20,7 +20,7 @@ using PyCall
 using Printf
 using DelimitedFiles
 
-# Prepare configurations for the ACFlow toolkit
+# Prepare configurations for the MiniPole toolkit
 function get_dict()
     # General setup
     B = Dict{String,Any}(
