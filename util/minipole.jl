@@ -308,6 +308,7 @@ function python()
             else:
                 _P[k] = S[k]
 
+    # Read Matsubara data from input file
     def read_data():
         iωₙ, Gᵣ, Gᵢ = np.loadtxt(
             _B["finput"],
@@ -317,6 +318,7 @@ function python()
         G = Gᵣ + Gᵢ * 1j
         return iωₙ, G
 
+    # Write A(ω), G(ω), and G(iωₙ) to external files
     def write_data(iωₙ, Gout, Grep, Aout):
         with open("Gout.data", "w") as f:
             for i in range(_ω.size):
@@ -330,18 +332,23 @@ function python()
             for i in range(_ω.size):
                 print(_ω[i], Aout[i], file = f)
 
+    # Calculate Green's function by pole representation
     def calc_green(z, 𝔸, 𝕏):
         Gz = 0.0
         for i in range(𝕏.size):
             Gz += 𝔸[i] / (z - 𝕏[i])
         return Gz
 
+    # Calculate spectral function
     def calc_spectrum(G):
         return -1.0 / np.pi * G.imag
 
+    # Solve the analytic continuation problem by the MiniPole solver
     def solve():
+        # Read Matsubara data
         iωₙ, G = read_data()
         #
+        # Solve the problem
         p = MiniPole(
             G, iωₙ, 
             n0 = _P["n0"],
@@ -358,12 +365,18 @@ function python()
             ratio_max = _P["ratio_max"]
         )
         #
+        # Get pole representation
         location = p.pole_location
         weight = p.pole_weight.reshape(-1)
+        #
+        # Calculate G(ω), G(iωₙ), and A(ω)
         Gout = calc_green(_ω, weight, location)
         Grep = calc_green(iωₙ * 1j, weight, location)
         Aout = calc_spectrum(Gout)
+        #
+        # Write analytic continuation results
         write_data(iωₙ, Gout, Grep, Aout)
+
         return _ω, Aout
     """
 end
