@@ -121,7 +121,7 @@ function write_summary(
     end
 end
 
-# Perform analytic continuation simulations using the ACFlow toolkit.
+# Perform analytic continuation simulations using the MiniPole toolkit.
 # if `std` is true, then the ACT100 dataset is considered.
 # if `inds` is not empty, then only the selected tests are handled.
 function make_test(std::Bool = false, inds::Vector{I64} = I64[])
@@ -155,13 +155,14 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             println("Note: the act100 dataset is being used!")
             fix_dict!(i, B)
         end
-        py"setup_param"(B, S)
+        mesh = make_mesh(B["ktype"])
+        py"setup_param"(B, S, mesh.mesh)
         #
         try
             # Solve the analytic continuation problem.
             # The elapsed time is recorded as well.
             start = time_ns()
-            mesh, Aout = py"solve_me"()
+            mesh, Aout = py"solve"()
             #exit()
             #mesh, Aout, _ = solve(read_data())
             finish = time_ns()
@@ -204,6 +205,7 @@ function python()
 
     _S = None
     _B = None
+    _ω = None
 
     def cal_G_vector(z, Al, xl):
         G_z = 0.0
@@ -211,27 +213,30 @@ function python()
             G_z += Al[[i]] / (z.reshape(-1, 1) - xl[i])
         return G_z
 
-    def setup_param(B, S):
+    def setup_param(B, S, ω):
         global _B
         _B = B
+        #
         global _S
         _S = S
+        #
+        global _ω
+        _ω = ω
 
     def read_data():
-        w, gre, gim = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2) )
-        gw = gre + gim * 1j
-        return w, gw
+        iωₙ, Gᵣ, Gᵢ = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2) )
+        G = Gᵣ + Gᵢ * 1j
+        return iωₙ, G
 
-    def solve_me():
-        w, gw = read_data()
-        p = MiniPole(gw, w, err = 1e-2)
-        x = np.linspace(_B["wmin"], _B["wmax"], _B["nmesh"])
-        Gr = cal_G_vector(x, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
+    def solve():
+        iωₙ, G = read_data()
+        p = MiniPole(G, iωₙ, err = 1e-2)
+        Gr = cal_G_vector(_ω, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
         Aout = -1.0 / np.pi * Gr[:, 0, 0].imag
         with open("Aout.data", "w") as f:
-            for i in range(x.size):
-                print(i, x[i], Aout[i], file = f)
-        return x, Aout
+            for i in range(_ω.size):
+                print(i, _ω[i], Aout[i], file = f)
+        return _ω, Aout
     """
 end
 
