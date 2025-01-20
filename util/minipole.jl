@@ -163,14 +163,12 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             # The elapsed time is recorded as well.
             start = time_ns()
             mesh, Aout = py"solve"()
-            #exit()
-            #mesh, Aout, _ = solve(read_data())
             finish = time_ns()
             #
             # Backup the calculated results for further analytics
             cp("Aout.data", "Aout.data." * string(i), force = true)
-            #cp("Gout.data", "Gout.data." * string(i), force = true)
-            #cp("repr.data", "repr.data." * string(i), force = true)
+            cp("Gout.data", "Gout.data." * string(i), force = true)
+            cp("repr.data", "repr.data." * string(i), force = true)
             #
             # Calculate the accuracy / error
             error[i] = get_error(i, mesh, Aout, B)
@@ -251,7 +249,7 @@ function python()
             for i in range(_ω.size):
                 print(_ω[i], Gout[i].real, Gout[i].imag, file = f)
         #
-        with open("Grep.data", "w") as f:
+        with open("repr.data", "w") as f:
             for i in range(iωₙ.size):
                 print(iωₙ[i], Grep[i].real, Grep[i].imag, file = f)
         #
