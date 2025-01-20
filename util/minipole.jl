@@ -268,9 +268,15 @@ function python()
     import numpy as np
     from mini_pole import MiniPole
 
+    # Global variables
+    #
+    # For general configurations
     _B = None
+    #
+    # For real mesh
     _ω = None
     #
+    # For MiniPole's parameters. See mini_pole.py for more details. 
     _P = {
         'n0' : "auto",
         'n0_shift' : 0,
