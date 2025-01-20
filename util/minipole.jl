@@ -1,14 +1,48 @@
 #!/usr/bin/env julia
 
 #
-# 1. install MiniPole
-#    python setup.py install
+# This script is used to start analytic continuation simulations with the
+# MiniPole toolkit. It will launch only 1 process.
 #
-# 2. install PyCall.jl
+# If you want to perform tests using the `ACT100` dataset, please modify
+# `make_test()` to `make_test(true)` in line 211.
 #
-# 3. setup PyCall.jl
-#    ENV["PYTHON"] =
-#    Pkg.build("PyCall")
+# Usage:
+#
+#     $ julia minipole.jl act.toml
+#
+# In order to execute this script correctly, please read the following
+# instructions carefully.
+#
+# 1. Install MiniPole
+#
+# Please download the source codes of MiniPole from github:
+#    https://github.com/Green-Phys/MiniPole
+# And then execute the following commands:
+#    $ python setup.py install
+#
+# 2. Install PyCall.jl
+#
+# The MiniPole toolkit is written by the Python language. In order to call
+# it from Julia script, we need the PyCall.jl package. Note that PyCall.jl
+# doesn't belong to the Julia's standard library, we have to install it
+# manually:
+#    $ julia> using Pkg
+#    $ julia> Pkg.add("PyCall")
+#
+# 3. Setup PyCall.jl
+#
+# PyCall.jl is shipped with a built-in Python runtime environment (it is
+# probably in your .julia/conda directory). By default, PyCall.jl will use
+# its own Python interpreter. But, we should enfore PyCall.jl to adopt the
+# system's Python interpreter. So, please execute the following commands
+# in Julia's REPL:
+#    julia> ENV["PYTHON"] = "... path of the python executable ..."
+#    julia> using Pkg
+#    julia> Pkg.build("PyCall")
+# To force Julia to use its own Python distribution, via Conda, simply set
+# ENV["PYTHON"] to the empty string "" and re-run Pkg.build("PyCall").
+#
 #
 
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
