@@ -221,12 +221,6 @@ function python()
         'ratio_max' : 10
     }
 
-    def calc_green(z, 𝔸, 𝕏):
-        Gz = 0.0
-        for i in range(𝕏.size):
-            Gz += 𝔸[i] / (z - 𝕏[i])
-        return Gz
-
     def setup_param(B, S, ω):
         global _B
         _B = B
@@ -244,12 +238,27 @@ function python()
                 _P[k] = S[k]
 
     def read_data():
-        iωₙ, Gᵣ, Gᵢ = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2))
+        iωₙ, Gᵣ, Gᵢ = np.loadtxt(
+            _B["finput"],
+            unpack = True,
+            usecols = (0,1,2)
+        )
         G = Gᵣ + Gᵢ * 1j
         return iωₙ, G
 
     def write_data():
-        pass
+        with open("Aout.data", "w") as f:
+            for i in range(_ω.size):
+                print(i, _ω[i], Aout[i], file = f)
+
+    def calc_green(z, 𝔸, 𝕏):
+        Gz = 0.0
+        for i in range(𝕏.size):
+            Gz += 𝔸[i] / (z - 𝕏[i])
+        return Gz
+
+    def calc_spectrum(G):
+        return -1.0 / np.pi * G.imag
 
     def solve():
         iωₙ, G = read_data()
@@ -270,11 +279,11 @@ function python()
             ratio_max = _P["ratio_max"]
         )
         #
-        Gr = calc_green(_ω, p.pole_weight.reshape(-1), p.pole_location)
-        Aout = -1.0 / np.pi * Gr.imag
-        with open("Aout.data", "w") as f:
-            for i in range(_ω.size):
-                print(i, _ω[i], Aout[i], file = f)
+        location = p.pole_location
+        weight = p.pole_weight.reshape(-1)
+        Gout = calc_green(_ω, weight, location)
+        Grepr = calc_green(iωₙ, weight, location)
+        Aout = calc_spectrum(Gout)
         return _ω, Aout
     """
 end
