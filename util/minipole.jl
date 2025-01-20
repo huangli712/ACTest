@@ -203,9 +203,23 @@ function python()
     import numpy as np
     from mini_pole import MiniPole
 
-    _S = None
     _B = None
     _ω = None
+    #
+    _P = {
+        'n0' : "auto",
+        'n0_shift' : 0,
+        'err' : None,
+        'err_type' : "abs",
+        'M' : None,
+        'symmetry' : False,
+        'G_symmetric' : False,
+        'compute_const' : False,
+        'plane' : None,
+        'include_n0' : False,
+        'k_max' : 999,
+        'ratio_max' : 10
+    }
 
     def cal_G_vector(z, Al, xl):
         G_z = 0.0
@@ -217,14 +231,11 @@ function python()
         global _B
         _B = B
         #
-        global _S
-        _S = S
-        #
         global _ω
         _ω = ω
 
     def read_data():
-        iωₙ, Gᵣ, Gᵢ = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2) )
+        iωₙ, Gᵣ, Gᵢ = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2))
         G = Gᵣ + Gᵢ * 1j
         return iωₙ, G
 
