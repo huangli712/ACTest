@@ -222,10 +222,10 @@ function python()
     }
 
     def cal_G_vector(z, Al, xl):
-        G_z = 0.0
+        Gz = 0.0
         for i in range(xl.size):
-            G_z += Al[[i]] / (z.reshape(-1, 1) - xl[i])
-        return G_z
+            Gz += Al[i] / (z - xl[i])
+        return Gz
 
     def setup_param(B, S, ω):
         global _B
@@ -267,11 +267,8 @@ function python()
             ratio_max = _P["ratio_max"]
         )
         #
-        print(np.shape(p.pole_weight.reshape(-1)))
-        print(np.shape(p.pole_location.reshape(-1)))
-        Gr = cal_G_vector(_ω, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
-        print(np.shape(Gr))
-        Aout = -1.0 / np.pi * Gr[:, 0, 0].imag
+        Gr = cal_G_vector(_ω, p.pole_weight.reshape(-1), p.pole_location)
+        Aout = -1.0 / np.pi * Gr.imag
         with open("Aout.data", "w") as f:
             for i in range(_ω.size):
                 print(i, _ω[i], Aout[i], file = f)
