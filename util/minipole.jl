@@ -107,6 +107,8 @@ end
 # Note that for standard test, the correlation functions could be
 # fermionic or bosonic, diagonal or non-diagonal. We have to make sure
 # the configurations are consistent with the original setups.
+#
+# It seems that the MiniPole solver doesn't care about this.
 function fix_dict!(i::I64, B::Dict{String,Any})
     # Get dicts for the standard test (ACT100)
     ACT100 = union(STD_FG, STD_FD, STD_FRD, STD_BG, STD_BD, STD_BRD)
