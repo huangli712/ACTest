@@ -43,6 +43,19 @@
 # To force Julia to use its own Python distribution, via Conda, simply set
 # ENV["PYTHON"] to the empty string "" and re-run Pkg.build("PyCall").
 #
+# 4. Setup act.toml
+#
+# Usually there are two blocks in the `act.toml` file. In the [Test] block,
+# we have to change the `solver` parameter to "MiniPole". In the [Solver]
+# block, please set the parameters for the MiniPole solver. A typical
+# [Solver] block is as follows:
+#     [Solver]
+#     n0 = "auto"
+#     n0_shift = 0
+#     err = 1e-4
+#     compute_const = true
+# Please see documentation of MiniPole for all the possible parameters. Be
+# careful, all the parameters are optional. 
 #
 
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
