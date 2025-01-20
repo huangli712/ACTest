@@ -17,8 +17,11 @@
 # 1. Install MiniPole
 #
 # Please download the source codes of MiniPole from github:
+#
 #    https://github.com/Green-Phys/MiniPole
+#
 # And then execute the following commands:
+#
 #    $ python setup.py install
 #
 # 2. Install PyCall.jl
@@ -27,6 +30,7 @@
 # it from Julia script, we need the PyCall.jl package. Note that PyCall.jl
 # doesn't belong to the Julia's standard library, we have to install it
 # manually:
+#
 #    $ julia> using Pkg
 #    $ julia> Pkg.add("PyCall")
 #
@@ -37,9 +41,11 @@
 # its own Python interpreter. But, we should enfore PyCall.jl to adopt the
 # system's Python interpreter. So, please execute the following commands
 # in Julia's REPL:
+#
 #    julia> ENV["PYTHON"] = "... path of the python executable ..."
 #    julia> using Pkg
 #    julia> Pkg.build("PyCall")
+#
 # To force Julia to use its own Python distribution, via Conda, simply set
 # ENV["PYTHON"] to the empty string "" and re-run Pkg.build("PyCall").
 #
@@ -49,13 +55,19 @@
 # we have to change the `solver` parameter to "MiniPole". In the [Solver]
 # block, please set the parameters for the MiniPole solver. A typical
 # [Solver] block is as follows:
+#
 #     [Solver]
 #     n0 = "auto"
 #     n0_shift = 0
 #     err = 1e-4
 #     compute_const = true
+#
 # Please see documentation of MiniPole for all the possible parameters. Be
-# careful, all the parameters are optional. 
+# careful, all the parameters are optional.
+#
+# 5. Tests about this script
+#
+# See actest/test/B01 and B02. 
 #
 
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
