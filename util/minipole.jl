@@ -221,10 +221,10 @@ function python()
         'ratio_max' : 10
     }
 
-    def cal_G_vector(z, Al, xl):
+    def calc_green(z, 𝔸, xl):
         Gz = 0.0
         for i in range(xl.size):
-            Gz += Al[i] / (z - xl[i])
+            Gz += 𝔸[i] / (z - xl[i])
         return Gz
 
     def setup_param(B, S, ω):
@@ -248,6 +248,9 @@ function python()
         G = Gᵣ + Gᵢ * 1j
         return iωₙ, G
 
+    def write_data():
+        pass
+
     def solve():
         iωₙ, G = read_data()
         #
@@ -267,7 +270,7 @@ function python()
             ratio_max = _P["ratio_max"]
         )
         #
-        Gr = cal_G_vector(_ω, p.pole_weight.reshape(-1), p.pole_location)
+        Gr = calc_green(_ω, p.pole_weight.reshape(-1), p.pole_location)
         Aout = -1.0 / np.pi * Gr.imag
         with open("Aout.data", "w") as f:
             for i in range(_ω.size):
