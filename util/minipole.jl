@@ -261,6 +261,8 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
+# Define the interface to the MiniPole toolkit. Now it doesn't support the
+# DLR feature of the MiniPole toolkit.
 function python()
     py"""
     import numpy as np
