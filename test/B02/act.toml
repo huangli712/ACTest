@@ -1,19 +1,19 @@
 #
-# Test: A07
+# Test: B02
 #
 # 1. Execute ../../util/acstd.jl act.toml.
-# 2. Change solver = "MaxEnt" and the [Solver] block.
-# 3. Execute ../../util/acflow.jl act.toml.
+# 2. Change solver = "MiniPole" and the [Solver] block.
+# 3. Execute ../../util/minipole.jl act.toml.
 # 4. Execute ../../util/acplot.jl act.toml.
 #
 
 [Test]
-solver  = "MaxEnt"
+solver  = "MiniPole"
 ptype   = "gauss"
 ktype   = "fermi"
 grid    = "ffreq"
 mesh    = "linear"
-ngrid   = 10
+ngrid   = 500
 nmesh   = 801
 ntest   = 100
 wmax    = 8.0
@@ -26,9 +26,4 @@ offdiag = false
 lpeak   = [1,2,3,4,5,6]
 
 [Solver]
-method = "chi2kink"
-stype  = "sj"
-nalph  = 12
-alpha  = 1e12
-ratio  = 10.0
-blur   = -1.0
+n0 = "auto"
