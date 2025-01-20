@@ -165,6 +165,8 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             println("Note: the act100 dataset is being used!")
             fix_dict!(i, B)
         end
+        #
+        # Transfer parameters to the ACFlow toolkit
         setup_param(B, S)
         #
         try

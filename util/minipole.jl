@@ -216,7 +216,11 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
             println("Note: the act100 dataset is being used!")
             fix_dict!(i, B)
         end
+        #
+        # Prepare real mesh for spectral function
         mesh = make_mesh(B["ktype"])
+        #
+        # Transfer parameters to the MiniPole toolkit
         py"setup_param"(B, S, mesh.mesh)
         #
         try
