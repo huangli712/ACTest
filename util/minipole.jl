@@ -292,14 +292,14 @@ function python()
         'ratio_max' : 10
     }
 
+    # Update the configurations
     def setup_param(B, S, ω):
-        global _B
-        _B = B
+        global _B, _ω, _P
         #
-        global _ω
+        _B = B
         _ω = ω
         #
-        global _P
+        # We should scan all the keys in S, and check whether it is valid.
         for k in S.keys():
             if k not in _P:
                 print("error: this parameter " + k + " is not supported")
