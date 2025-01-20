@@ -67,11 +67,8 @@
 #
 # 5. Tests about this script
 #
-# See actest/test/B01 and B02. 
+# See actest/test/B01 and B02.
 #
-
-push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
-push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 
 using ACTest
 
@@ -276,7 +273,7 @@ function python()
     # For real mesh
     _ω = None
     #
-    # For MiniPole's parameters. See mini_pole.py for more details. 
+    # For MiniPole's parameters. See mini_pole.py for more details.
     _P = {
         'n0' : "auto",
         'n0_shift' : 0,
@@ -350,7 +347,7 @@ function python()
         #
         # Solve the problem
         p = MiniPole(
-            G, iωₙ, 
+            G, iωₙ,
             n0 = _P["n0"],
             n0_shift = _P["n0_shift"],
             err = _P["err"],
