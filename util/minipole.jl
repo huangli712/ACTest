@@ -25,9 +25,7 @@ function get_dict()
     # General setup
     B = Dict{String,Any}(
         "finput" => "green.data",
-        "solver" => get_t("solver"),
         "ktype"  => get_t("ktype"),
-        "mtype"  => "flat",
         "grid"   => get_t("grid"),
         "mesh"   => get_t("mesh"),
         "ngrid"  => get_t("ngrid"),
@@ -82,11 +80,6 @@ function get_error(
     # convert it to A(ω).
     if B["ktype"] != "fermi"
         @. Ainp = Ainp * ω
-        # For the following solvers, their outputs (`Aout`) are A(ω) / ω
-        # as well. We have to convert them to A(ω) too.
-        if B["solver"] in ("MaxEnt", "StochAC", "StochSK", "StochOM")
-            @. Aout = Aout * mesh
-        end
     end
 
     # Calculate the difference
