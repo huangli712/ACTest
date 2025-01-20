@@ -60,9 +60,9 @@ function read_image(ind::I64, std::Bool)
         #
         # For bosonic systems, ACTest will always output A(ω) / ω.
         # In order to be compatible with the outputs from some solvers in
-        # the ACFlow toolkit, we have to convert it to A(ω).
+        # the ACFlow and MiniPole toolkits, we have to convert it to A(ω).
         if ktype != "fermi"
-            if solver in ("BarRat", "StochPX")
+            if solver in ("BarRat", "StochPX", "MiniPole")
                 @. image = image * ω
             end
         end
