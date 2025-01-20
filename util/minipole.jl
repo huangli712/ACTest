@@ -246,10 +246,18 @@ function python()
         G = Gᵣ + Gᵢ * 1j
         return iωₙ, G
 
-    def write_data():
+    def write_data(iωₙ, Gout, Grep, Aout):
+        with open("Gout.data", "w") as f:
+            for i in range(_ω.size):
+                print(_ω[i], Gout[i].real, Gout[i].imag, file = f)
+        #
+        with open("Grep.data", "w") as f:
+            for i in range(iωₙ.size):
+                print(iωₙ[i], Grep[i].real, Grep[i].imag, file = f)
+        #
         with open("Aout.data", "w") as f:
             for i in range(_ω.size):
-                print(i, _ω[i], Aout[i], file = f)
+                print(_ω[i], Aout[i], file = f)
 
     def calc_green(z, 𝔸, 𝕏):
         Gz = 0.0
@@ -282,8 +290,9 @@ function python()
         location = p.pole_location
         weight = p.pole_weight.reshape(-1)
         Gout = calc_green(_ω, weight, location)
-        Grepr = calc_green(iωₙ, weight, location)
+        Grep = calc_green(iωₙ * 1j, weight, location)
         Aout = calc_spectrum(Gout)
+        write_data(iωₙ, Gout, Grep, Aout)
         return _ω, Aout
     """
 end
