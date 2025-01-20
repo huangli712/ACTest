@@ -233,6 +233,15 @@ function python()
         #
         global _ω
         _ω = ω
+        #
+        global _P
+        for k in S.keys():
+            if k not in _P:
+                print("error: this parameter " + k + " is not supported")
+                import sys
+                sys.exit(-1)
+            else:
+                _P[k] = S[k]
 
     def read_data():
         iωₙ, Gᵣ, Gᵢ = np.loadtxt(_B["finput"], unpack = True, usecols = (0,1,2))
@@ -241,8 +250,27 @@ function python()
 
     def solve():
         iωₙ, G = read_data()
-        p = MiniPole(G, iωₙ, err = 1e-2)
+        #
+        p = MiniPole(
+            G, iωₙ, 
+            n0 = _P["n0"],
+            n0_shift = _P["n0_shift"],
+            err = _P["err"],
+            err_type = _P["err_type"],
+            M = _P["M"],
+            symmetry = _P["symmetry"],
+            G_symmetric = _P["G_symmetric"],
+            compute_const = _P["compute_const"],
+            plane = _P["plane"],
+            include_n0 = _P["include_n0"],
+            k_max = _P["k_max"],
+            ratio_max = _P["ratio_max"]
+        )
+        #
+        print(np.shape(p.pole_weight.reshape(-1)))
+        print(np.shape(p.pole_location.reshape(-1)))
         Gr = cal_G_vector(_ω, p.pole_weight.reshape(-1, 1 ** 2), p.pole_location).reshape(-1, 1, 1)
+        print(np.shape(Gr))
         Aout = -1.0 / np.pi * Gr[:, 0, 0].imag
         with open("Aout.data", "w") as f:
             for i in range(_ω.size):
