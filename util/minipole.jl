@@ -221,10 +221,10 @@ function python()
         'ratio_max' : 10
     }
 
-    def calc_green(z, 𝔸, xl):
+    def calc_green(z, 𝔸, 𝕏):
         Gz = 0.0
-        for i in range(xl.size):
-            Gz += 𝔸[i] / (z - xl[i])
+        for i in range(𝕏.size):
+            Gz += 𝔸[i] / (z - 𝕏[i])
         return Gz
 
     def setup_param(B, S, ω):
