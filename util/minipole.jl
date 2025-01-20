@@ -5,7 +5,7 @@
 # MiniPole toolkit. It will launch only 1 process.
 #
 # If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 211.
+# `make_test()` to `make_test(true)` in line 385.
 #
 # Usage:
 #
