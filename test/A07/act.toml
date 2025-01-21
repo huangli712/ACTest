@@ -3,8 +3,8 @@
 #
 # 1. Execute ../../util/acstd.jl act.toml.
 # 2. Change solver = "MaxEnt" and the [Solver] block.
-# 3. Execute ../../util/acflow.jl act.toml.
-# 4. Execute ../../util/acplot.jl act.toml.
+# 3. Execute ../../util/acflow.jl act.toml std=true.
+# 4. Execute ../../util/acplot.jl act.toml std=true.
 #
 
 [Test]
