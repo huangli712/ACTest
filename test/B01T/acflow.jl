@@ -25,8 +25,7 @@
 #
 #     $ acflow.jl act.toml std=true inds=1:40
 #
-push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
-push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
+
 using ACTest
 using ACFlow:setup_param
 using ACFlow:read_data
