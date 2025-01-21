@@ -7,12 +7,23 @@
 # This script can be easily modified to support the other analytic
 # configuration tools / methods, or support parallel calculations.
 #
-# If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 211.
-#
 # Usage:
 #
+# (1) Perform normal test
+#
 #     $ acflow.jl act.toml
+#
+# (2) Perform standard test (using ACT100 dataset)
+#
+#     $ acflow.jl act.toml std=true
+#
+# (3) Perform normal test, only tests 11, 12, and 13 are treated
+#
+#     $ acflow.jl act.toml std=false inds=[11,12,13]
+#
+# (4) Perform standard test (using ACT100 dataset), only tests 1~40 are used.
+#
+#     $ acflow.jl act.toml std=true inds=1:40
 #
 
 using ACTest
@@ -207,8 +218,47 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
+# Entry of this script. It will parse the command line arguments and call
+# the corresponding functions.
+function main()
+    nargs = length(ARGS)
+
+    # Besides the case.toml, no arguments.
+    #
+    # $ acflow.jl act.toml
+    if nargs == 1
+        make_test()
+    end
+
+    # Two arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used.
+    #
+    # $ acflow.jl act.toml std=true
+    if nargs == 2
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        make_test(std)
+    end
+
+    # Three arguments. We can specify whether the ACT100 dataset is used,
+    # and the indices of selected tests.
+    #
+    # $ acflow.jl act.toml std=true inds=[11,12,13]
+    # $ acflow.jl act.toml std=true inds=11:13
+    if nargs == 3
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        str = split(ARGS[3],"=")[2]
+        if contains(str, ",")
+            inds = parse.(Int, split(chop(str; head=1, tail=1), ','))
+        else
+            arr = parse.(Int, split(str, ':'))
+            inds = collect(arr[1]:arr[2])
+        end
+        make_test(std, inds)
+    end
+end
+
 welcome()
 overview()
 read_param()
-make_test()
+main()
 goodbye()
