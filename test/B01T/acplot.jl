@@ -247,8 +247,8 @@ end
 """
     make_figures(
         inds::Vector{I64},
-        only_true_spectrum::Bool = false,
-        std::Bool = false
+        std::Bool = false,
+        only_true_spectrum::Bool = false
     )
 
 Try to generate figures for selected spectra. With this function, you can
@@ -258,16 +258,16 @@ If only_true_spectrum is true, only true spectral functions will be plotted.
 
 ### Arguments
 * inds -> Indices of selected spectra.
-* only_true_spectrum -> Whether only the true spectra will be plotted.
 * std -> Is it for standard dataset ACT100?
+* only_true_spectrum -> Whether only the true spectra will be plotted.
 
 ### Returns
 N/A
 """
 function make_figures(
     inds::Vector{I64},
-    only_true_spectrum::Bool = false,
-    std::Bool = false
+    std::Bool = false,
+    only_true_spectrum::Bool = false
     )
     # Get number of tests
     ntest = get_t("ntest")
@@ -311,7 +311,14 @@ function main()
     # $ acplot.jl act.toml std=true
     if nargs == 2
         std = parse(Bool, split(ARGS[2],"=")[2])
-        make_test(std)
+        make_figures(std)
+    end
+
+    # $ acplot.jl act.toml std=true only=true
+    if nargs == 3
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        only = parse(Bool, split(ARGS[3],"=")[2])
+        make_figures(std, only)
     end
 
     # Three arguments. We can specify whether the ACT100 dataset is used,
@@ -319,7 +326,7 @@ function main()
     #
     # $ acplot.jl act.toml std=true inds=[11,12,13]
     # $ acplot.jl act.toml std=true inds=11:13
-    if nargs == 3
+    if nargs == 5
         std = parse(Bool, split(ARGS[2],"=")[2])
         str = split(ARGS[3],"=")[2]
         if contains(str, ",")
@@ -328,7 +335,7 @@ function main()
             arr = parse.(Int, split(str, ':'))
             inds = collect(arr[1]:arr[2])
         end
-        make_test(std, inds)
+        make_figures(std, inds)
     end
 end
 
