@@ -296,14 +296,15 @@ function main()
     # $ acplot.jl act.toml std=true inds=11:13
     if nargs == 4
         std = parse(Bool, split(ARGS[2],"=")[2])
-        str = split(ARGS[3],"=")[2]
+        only = parse(Bool, split(ARGS[3],"=")[2])
+        str = split(ARGS[4],"=")[2]
         if contains(str, ",")
             inds = parse.(Int, split(chop(str; head=1, tail=1), ','))
         else
             arr = parse.(Int, split(str, ':'))
             inds = collect(arr[1]:arr[2])
         end
-        make_figures(std, inds)
+        make_figures(std, only, inds)
     end
 end
 
