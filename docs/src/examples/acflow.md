@@ -2,7 +2,7 @@
 
 !!! info
 
-    In the **actest/tests** directory, there are seven typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
+    In the **actest/tests** directory, there are nine typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
 
 Next, we have to add a **[Solver]** section in the **act.toml** file to setup the control parameters for the MaxEnt analytic continuation solver (which implements the maximum entropy method) in the ACFlow toolkit. The spirit of the maximum entropy entropy is to figure out the optimal ``A``, that minimizes the following functional:
 ```math
