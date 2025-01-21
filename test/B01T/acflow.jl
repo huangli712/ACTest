@@ -7,12 +7,23 @@
 # This script can be easily modified to support the other analytic
 # configuration tools / methods, or support parallel calculations.
 #
-# If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 211.
-#
 # Usage:
 #
+# (1) Perform normal test
+#
 #     $ acflow.jl act.toml
+#
+# (2) Perform standard test (using ACT100 dataset)
+#
+#     $ acflow.jl act.toml std=true
+#
+# (3) Perform normal test, only tests 11, 12, and 13 are treated
+#
+#     $ acflow.jl act.toml std=false inds=[11,12,13]
+#
+# (4) Perform standard test (using ACT100 dataset), only tests 1~40 are used.
+#
+#     $ acflow.jl act.toml std=true inds=1:40
 #
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACTest/src")
 push!(LOAD_PATH,"/Users/lihuang/Working/devel/ACFlow/src")
