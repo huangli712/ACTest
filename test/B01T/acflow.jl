@@ -208,8 +208,30 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
+function main()
+    nargs = length(ARGS)
+    println(ARGS)
+    println(nargs)
+
+    if nargs == 1
+        make_test()
+    end
+
+    if nargs == 2
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        make_test(std)
+    end
+
+    if nargs == 3
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        str = split(ARGS[3],"=")[2]
+        inds = parse.(Int, split(chop(str; head=1, tail=1), ','))
+        make_test(std, inds)
+    end
+end
+
 welcome()
 overview()
 read_param()
-make_test()
+main()
 goodbye()
