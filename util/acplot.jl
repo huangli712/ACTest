@@ -249,7 +249,7 @@ N/A
 function make_figures(
     std::Bool = false,
     only_true_spectrum::Bool = false,
-    inds::Vector{I64}
+    inds::Vector{I64} = I64[]
     )
     # Get number of tests (ntest).
     # cinds is used to store the indices of tests.
