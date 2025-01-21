@@ -20,7 +20,7 @@ It is able to read ``A_{\text{calc}}(\omega)`` and ``A_{\text{true}}(\omega)``, 
 
 ## minipole.jl
 
-This script provides a bridge between the ACTest toolkit and the MiniPole toolkit. It does the same things like the **acflow.jl** script. This script needs support of the MiniPole toolkit.
+This script provides a bridge between the ACTest toolkit and the MiniPole toolkit. It does the same things like the **acflow.jl** script. This script needs support of the [MiniPole toolkit](https://github.com/Green-Phys/MiniPole).
 
 ---
 
