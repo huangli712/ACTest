@@ -9,6 +9,10 @@
 #
 # Usage:
 #
+#     $ acflow.jl act.toml std=false inds=[]
+#
+# The arguments `std` and `inds` are optional.
+#
 # (1) Perform normal test.
 #
 #     $ acflow.jl act.toml
