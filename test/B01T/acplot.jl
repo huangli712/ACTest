@@ -265,7 +265,6 @@ end
 # the corresponding functions.
 function main()
     nargs = length(ARGS)
-    @show nargs
 
     # Besides the case.toml, no arguments.
     #
