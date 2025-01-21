@@ -219,18 +219,32 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
+# Entry of this script. It will parse the command line arguments and call
+# the corresponding functions.
 function main()
     nargs = length(ARGS)
 
+    # Besides the case.toml, no arguments.
+    #
+    # $ acflow.jl act.toml
     if nargs == 1
         make_test()
     end
 
+    # Two arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used.
+    #
+    # $ acflow.jl act.toml std=true
     if nargs == 2
         std = parse(Bool, split(ARGS[2],"=")[2])
         make_test(std)
     end
 
+    # Three arguments. We can specify whether the ACT100 dataset is used,
+    # and the indices of selected tests.
+    #
+    # $ acflow.jl act.toml std=true inds=[11,12,13]
+    # $ acflow.jl act.toml std=true inds=11:13
     if nargs == 3
         std = parse(Bool, split(ARGS[2],"=")[2])
         str = split(ARGS[3],"=")[2]
