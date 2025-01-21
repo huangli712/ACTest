@@ -206,20 +206,20 @@ function make_plot(
 end
 
 """
-    make_figures(only_true_spectrum::Bool = false, std::Bool = false)
+    make_figures(std::Bool = false, only_true_spectrum::Bool = false)
 
 Try to generate all the figures, in which the true and calculated
 spectral functions are compared with each other. But if only_true_spectrum
 is true, only true spectral functions will be plotted.
 
 ### Arguments
-* only_true_spectrum -> See above explanations.
 * std -> Is it for standard dataset ACT100?
+* only_true_spectrum -> See above explanations.
 
 ### Returns
 N/A
 """
-function make_figures(only_true_spectrum::Bool = false, std::Bool = false)
+function make_figures(std::Bool = false, only_true_spectrum::Bool = false)
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -242,52 +242,6 @@ function make_figures(only_true_spectrum::Bool = false, std::Bool = false)
         #
         println()
     end
-end
-
-"""
-    make_figures(
-        ind::I64,
-        only_true_spectrum::Bool = false,
-        std::Bool = false
-    )
-
-Try to generate figure for selected spectrum. With this function, you can
-only visualize the spectrum that you are interested in.
-
-If only_true_spectrum is true, only true spectral function will be plotted.
-
-### Arguments
-* ind -> Index of selected spectrum.
-* only_true_spectrum -> Whether only the true spectrum will be plotted.
-* std -> Is it for standard dataset ACT100?
-
-### Returns
-N/A
-"""
-function make_figures(
-    ind::I64,
-    only_true_spectrum::Bool = false,
-    std::Bool = false
-    )
-    # Get number of tests
-    ntest = get_t("ntest")
-
-    @printf("Test -> %4i / %4i\n", ind, ntest)
-    #
-    try
-        sf1 = read_image(ind, std)
-        if only_true_spectrum
-            make_plot(ind, sf1)
-        else
-            sf2 = read_Aout(ind)
-            make_plot(ind, sf1, sf2)
-        end
-    catch ex
-        println("Something wrong for test case $ind")
-        println(ex.msg)
-    end
-    #
-    println()
 end
 
 """
@@ -346,15 +300,15 @@ function main()
 
     # Besides the case.toml, no arguments.
     #
-    # $ acflow.jl act.toml
+    # $ acplot.jl act.toml
     if nargs == 1
-        make_test()
+        make_figures()
     end
 
     # Two arguments. Besides the case.toml, we can specify whether the
     # ACT100 dataset is used.
     #
-    # $ acflow.jl act.toml std=true
+    # $ acplot.jl act.toml std=true
     if nargs == 2
         std = parse(Bool, split(ARGS[2],"=")[2])
         make_test(std)
@@ -363,8 +317,8 @@ function main()
     # Three arguments. We can specify whether the ACT100 dataset is used,
     # and the indices of selected tests.
     #
-    # $ acflow.jl act.toml std=true inds=[11,12,13]
-    # $ acflow.jl act.toml std=true inds=11:13
+    # $ acplot.jl act.toml std=true inds=[11,12,13]
+    # $ acplot.jl act.toml std=true inds=11:13
     if nargs == 3
         std = parse(Bool, split(ARGS[2],"=")[2])
         str = split(ARGS[3],"=")[2]
