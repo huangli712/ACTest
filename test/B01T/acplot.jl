@@ -239,6 +239,7 @@ function make_figures(
     else
         cinds = inds
     end
+    @show std, only_true_spectrum, inds
 
     # Start the loop
     for i in cinds
