@@ -8,16 +8,37 @@
 #
 # By default, this script will visualize the calculated results for all
 # the tests. But you can also visualize those results for the tests that
-# you are interested in. To do so, please change `make_figures()` in line
-# 342 to `make_figures(ind)` or `make_figures(inds)`. Here, `ind` and
-# `inds` denote an I64 number and a vector of I64 numbers, respectively.
-# They are the indices of the tests that you want to visualize.
+# you are interested in.
 #
 # This script requires the CairoMakie.jl package to generate the figures.
 #
 # Usage:
 #
+#     $ acplot.jl act.toml std=false only=false inds=[]
+#
+# The arguments `std`, `only`, and `inds` are optional.
+#
+# (1) Perform normal visualization.
+#
 #     $ acplot.jl act.toml
+#
+# (2) Perform standard visualization (using ACT100 dataset).
+#
+#     $ acplot.jl act.toml std=true
+#
+# (3) Perform normal visualization, only true spectrum is plotted.
+#
+#     $ acplot.jl act.toml std=false only=true
+#
+# (4) Perform standard visualization (using ACT100 dataset), only tests
+#     11, 12, and 13 are treated.
+#
+#     $ acplot.jl act.toml std=true only=false inds=[11,12,13]
+#
+# (5) Perform standard visualization (using ACT100 dataset), only tests
+#     1~40 are used.
+#
+#     $ acplot.jl act.toml std=true only=false inds=1:40
 #
 
 using ACTest
@@ -206,95 +227,10 @@ function make_plot(
 end
 
 """
-    make_figures(only_true_spectrum::Bool = false, std::Bool = false)
-
-Try to generate all the figures, in which the true and calculated
-spectral functions are compared with each other. But if only_true_spectrum
-is true, only true spectral functions will be plotted.
-
-### Arguments
-* only_true_spectrum -> See above explanations.
-* std -> Is it for standard dataset ACT100?
-
-### Returns
-N/A
-"""
-function make_figures(only_true_spectrum::Bool = false, std::Bool = false)
-    # Get number of tests
-    ntest = get_t("ntest")
-
-    # Start the loop
-    for i = 1:ntest
-        @printf("Test -> %4i / %4i\n", i, ntest)
-        #
-        try
-            sf1 = read_image(i, std)
-            if only_true_spectrum
-                make_plot(i, sf1)
-            else
-                sf2 = read_Aout(i)
-                make_plot(i, sf1, sf2)
-            end
-        catch ex
-            println("Something wrong for test case $i")
-            println(ex.msg)
-        end
-        #
-        println()
-    end
-end
-
-"""
     make_figures(
-        ind::I64,
+        std::Bool = false,
         only_true_spectrum::Bool = false,
-        std::Bool = false
-    )
-
-Try to generate figure for selected spectrum. With this function, you can
-only visualize the spectrum that you are interested in.
-
-If only_true_spectrum is true, only true spectral function will be plotted.
-
-### Arguments
-* ind -> Index of selected spectrum.
-* only_true_spectrum -> Whether only the true spectrum will be plotted.
-* std -> Is it for standard dataset ACT100?
-
-### Returns
-N/A
-"""
-function make_figures(
-    ind::I64,
-    only_true_spectrum::Bool = false,
-    std::Bool = false
-    )
-    # Get number of tests
-    ntest = get_t("ntest")
-
-    @printf("Test -> %4i / %4i\n", ind, ntest)
-    #
-    try
-        sf1 = read_image(ind, std)
-        if only_true_spectrum
-            make_plot(ind, sf1)
-        else
-            sf2 = read_Aout(ind)
-            make_plot(ind, sf1, sf2)
-        end
-    catch ex
-        println("Something wrong for test case $ind")
-        println(ex.msg)
-    end
-    #
-    println()
-end
-
-"""
-    make_figures(
-        inds::Vector{I64},
-        only_true_spectrum::Bool = false,
-        std::Bool = false
+        inds::Vector{I64} = I64[]
     )
 
 Try to generate figures for selected spectra. With this function, you can
@@ -303,23 +239,31 @@ only visualize calculated spectra for a subset of tests.
 If only_true_spectrum is true, only true spectral functions will be plotted.
 
 ### Arguments
-* inds -> Indices of selected spectra.
-* only_true_spectrum -> Whether only the true spectra will be plotted.
 * std -> Is it for standard dataset ACT100?
+* only_true_spectrum -> Whether only the true spectra will be plotted.
+* inds -> Indices of selected spectra.
 
 ### Returns
 N/A
 """
 function make_figures(
-    inds::Vector{I64},
+    std::Bool = false,
     only_true_spectrum::Bool = false,
-    std::Bool = false
+    inds::Vector{I64}
     )
-    # Get number of tests
+    @show std, only_true_spectrum, inds
+    # Get number of tests (ntest).
+    # cinds is used to store the indices of tests.
     ntest = get_t("ntest")
+    if isempty(inds)
+        cinds = collect(1:ntest)
+    else
+        cinds = inds
+    end
+    @show std, only_true_spectrum, inds
 
     # Start the loop
-    for i in inds
+    for i in cinds
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
         try
@@ -339,8 +283,60 @@ function make_figures(
     end
 end
 
+# Entry of this script. It will parse the command line arguments and call
+# the corresponding functions.
+function main()
+    nargs = length(ARGS)
+
+    # Besides the case.toml, no arguments.
+    #
+    # $ acplot.jl act.toml
+    if nargs == 1
+        make_figures()
+    end
+
+    # Two arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used.
+    #
+    # $ acplot.jl act.toml std=true
+    if nargs == 2
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        make_figures(std)
+    end
+
+    # Three arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used, and whether only the true spectrum is plotted.
+    #
+    # $ acplot.jl act.toml std=true only=true
+    # $ acplot.jl act.toml std=false only=true
+    if nargs == 3
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        only = parse(Bool, split(ARGS[3],"=")[2])
+        make_figures(std, only)
+    end
+
+    # Four arguments. We can specify whether the ACT100 dataset is used,
+    # whether only the true spectrum is plotted, and the indices of those
+    # selected tests.
+    #
+    # $ acplot.jl act.toml std=true only=true inds=[11,12,13]
+    # $ acplot.jl act.toml std=true only=false inds=11:13
+    if nargs == 4
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        only = parse(Bool, split(ARGS[3],"=")[2])
+        str = split(ARGS[4],"=")[2]
+        if contains(str, ",")
+            inds = parse.(Int, split(chop(str; head=1, tail=1), ','))
+        else
+            arr = parse.(Int, split(str, ':'))
+            inds = collect(arr[1]:arr[2])
+        end
+        make_figures(std, only, inds)
+    end
+end
+
 welcome()
 overview()
 read_param()
-make_figures()
+main()
 goodbye()

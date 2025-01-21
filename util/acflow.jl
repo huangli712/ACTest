@@ -9,15 +9,19 @@
 #
 # Usage:
 #
-# (1) Perform normal test
+#     $ acflow.jl act.toml std=false inds=[]
+#
+# The arguments `std` and `inds` are optional.
+#
+# (1) Perform normal test.
 #
 #     $ acflow.jl act.toml
 #
-# (2) Perform standard test (using ACT100 dataset)
+# (2) Perform standard test (using ACT100 dataset).
 #
 #     $ acflow.jl act.toml std=true
 #
-# (3) Perform normal test, only tests 11, 12, and 13 are treated
+# (3) Perform normal test, only tests 11, 12, and 13 are treated.
 #
 #     $ acflow.jl act.toml std=false inds=[11,12,13]
 #
