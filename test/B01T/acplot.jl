@@ -206,45 +206,6 @@ function make_plot(
 end
 
 """
-    make_figures(std::Bool = false, only_true_spectrum::Bool = false)
-
-Try to generate all the figures, in which the true and calculated
-spectral functions are compared with each other. But if only_true_spectrum
-is true, only true spectral functions will be plotted.
-
-### Arguments
-* std -> Is it for standard dataset ACT100?
-* only_true_spectrum -> See above explanations.
-
-### Returns
-N/A
-"""
-function make_figures(std::Bool = false, only_true_spectrum::Bool = false)
-    # Get number of tests
-    ntest = get_t("ntest")
-
-    # Start the loop
-    for i = 1:ntest
-        @printf("Test -> %4i / %4i\n", i, ntest)
-        #
-        try
-            sf1 = read_image(i, std)
-            if only_true_spectrum
-                make_plot(i, sf1)
-            else
-                sf2 = read_Aout(i)
-                make_plot(i, sf1, sf2)
-            end
-        catch ex
-            println("Something wrong for test case $i")
-            println(ex.msg)
-        end
-        #
-        println()
-    end
-end
-
-"""
     make_figures(
         inds::Vector{I64},
         std::Bool = false,
@@ -269,6 +230,7 @@ function make_figures(
     std::Bool = false,
     only_true_spectrum::Bool = false
     )
+    @show "here", std, only_true_spectrum, inds
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -297,6 +259,7 @@ end
 # the corresponding functions.
 function main()
     nargs = length(ARGS)
+    @show nargs
 
     # Besides the case.toml, no arguments.
     #
@@ -326,7 +289,7 @@ function main()
     #
     # $ acplot.jl act.toml std=true inds=[11,12,13]
     # $ acplot.jl act.toml std=true inds=11:13
-    if nargs == 5
+    if nargs == 4
         std = parse(Bool, split(ARGS[2],"=")[2])
         str = split(ARGS[3],"=")[2]
         if contains(str, ",")
