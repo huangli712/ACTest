@@ -207,9 +207,9 @@ end
 
 """
     make_figures(
-        inds::Vector{I64},
         std::Bool = false,
-        only_true_spectrum::Bool = false
+        only_true_spectrum::Bool = false,
+        inds::Vector{I64} = I64[]
     )
 
 Try to generate figures for selected spectra. With this function, you can
@@ -218,24 +218,30 @@ only visualize calculated spectra for a subset of tests.
 If only_true_spectrum is true, only true spectral functions will be plotted.
 
 ### Arguments
-* inds -> Indices of selected spectra.
 * std -> Is it for standard dataset ACT100?
 * only_true_spectrum -> Whether only the true spectra will be plotted.
+* inds -> Indices of selected spectra.
 
 ### Returns
 N/A
 """
 function make_figures(
-    inds::Vector{I64},
     std::Bool = false,
-    only_true_spectrum::Bool = false
+    only_true_spectrum::Bool = false,
+    inds::Vector{I64}
     )
-    @show "here", std, only_true_spectrum, inds
-    # Get number of tests
+    @show std, only_true_spectrum, inds
+    # Get number of tests (ntest).
+    # cinds is used to store the indices of tests.
     ntest = get_t("ntest")
+    if isempty(inds)
+        cinds = collect(1:ntest)
+    else
+        cinds = inds
+    end
 
     # Start the loop
-    for i in inds
+    for i in cinds
         @printf("Test -> %4i / %4i\n", i, ntest)
         #
         try
