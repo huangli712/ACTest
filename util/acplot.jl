@@ -65,6 +65,9 @@ function read_image(ind::I64, std::Bool)
             if solver in ("BarRat", "StochPX", "MiniPole")
                 @. image = image * ω
             end
+            # For solvers in ("MaxEnt", "StochAC", "StochSK", "StochOM"),
+            # they output A(ω) / ω for bosonic systems. So we don't need
+            # to convert the output of ACTest to A(ω).
         end
         #
         return SpectralFunction(DynamicMesh(ω), image)
