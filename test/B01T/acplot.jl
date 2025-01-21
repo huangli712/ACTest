@@ -283,18 +283,23 @@ function main()
         make_figures(std)
     end
 
+    # Three arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used, and whether only the true spectrum is plotted.
+    #
     # $ acplot.jl act.toml std=true only=true
+    # $ acplot.jl act.toml std=false only=true
     if nargs == 3
         std = parse(Bool, split(ARGS[2],"=")[2])
         only = parse(Bool, split(ARGS[3],"=")[2])
         make_figures(std, only)
     end
 
-    # Three arguments. We can specify whether the ACT100 dataset is used,
-    # and the indices of selected tests.
+    # Four arguments. We can specify whether the ACT100 dataset is used,
+    # whether only the true spectrum is plotted, and the indices of those
+    # selected tests.
     #
-    # $ acplot.jl act.toml std=true inds=[11,12,13]
-    # $ acplot.jl act.toml std=true inds=11:13
+    # $ acplot.jl act.toml std=true only=true inds=[11,12,13]
+    # $ acplot.jl act.toml std=true only=false inds=11:13
     if nargs == 4
         std = parse(Bool, split(ARGS[2],"=")[2])
         only = parse(Bool, split(ARGS[3],"=")[2])
