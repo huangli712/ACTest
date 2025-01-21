@@ -4,15 +4,32 @@
 # This script is used to start analytic continuation simulations with the
 # MiniPole toolkit. It will launch only 1 process.
 #
-# If you want to perform tests using the `ACT100` dataset, please modify
-# `make_test()` to `make_test(true)` in line 385.
-#
 # Usage:
+#
+#     $ julia minipole.jl act.toml std=false inds=[]
+#
+# The arguments `std` and `inds` are optional.
+#
+# (1) Perform normal test.
 #
 #     $ julia minipole.jl act.toml
 #
+# (2) Perform standard test (using ACT100 dataset).
+#
+#     $ julia minipole.jl act.toml std=true
+#
+# (3) Perform normal test, only tests 11, 12, and 13 are treated.
+#
+#     $ julia minipole.jl act.toml std=false inds=[11,12,13]
+#
+# (4) Perform standard test (using ACT100 dataset), only tests 1~40 are used.
+#
+#     $ julia minipole.jl act.toml std=true inds=1:40
+#
 # In order to execute this script correctly, please read the following
 # instructions carefully.
+#
+# Important notes:
 #
 # 1. Install MiniPole
 #
@@ -47,7 +64,11 @@
 #    julia> Pkg.build("PyCall")
 #
 # To force Julia to use its own Python distribution, via Conda, simply set
-# ENV["PYTHON"] to the empty string "" and re-run Pkg.build("PyCall").
+# ENV["PYTHON"] to the empty string "" and re-run Pkg.build("PyCall"). To
+# check which Python distribution is being used by PyCall.jl, please input
+#
+#    julia> using PyCall
+#    julia> PyCall.pyprogramname
 #
 # 4. Setup act.toml
 #
@@ -258,6 +279,45 @@ function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     write_summary(cinds, error, ctime)
 end
 
+# Entry of this script. It will parse the command line arguments and call
+# the corresponding functions.
+function main()
+    nargs = length(ARGS)
+
+    # Besides the case.toml, no arguments.
+    #
+    # $ minipole.jl act.toml
+    if nargs == 1
+        make_test()
+    end
+
+    # Two arguments. Besides the case.toml, we can specify whether the
+    # ACT100 dataset is used.
+    #
+    # $ minipole.jl act.toml std=true
+    if nargs == 2
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        make_test(std)
+    end
+
+    # Three arguments. We can specify whether the ACT100 dataset is used,
+    # and the indices of selected tests.
+    #
+    # $ minipole.jl act.toml std=true inds=[11,12,13]
+    # $ minipole.jl act.toml std=true inds=11:13
+    if nargs == 3
+        std = parse(Bool, split(ARGS[2],"=")[2])
+        str = split(ARGS[3],"=")[2]
+        if contains(str, ",")
+            inds = parse.(Int, split(chop(str; head=1, tail=1), ','))
+        else
+            arr = parse.(Int, split(str, ':'))
+            inds = collect(arr[1]:arr[2])
+        end
+        make_test(std, inds)
+    end
+end
+
 # Define the interface to the MiniPole toolkit. Now it doesn't support the
 # DLR feature of the MiniPole toolkit.
 function python()
@@ -382,5 +442,5 @@ python()
 welcome()
 overview()
 read_param()
-make_test()
+main()
 goodbye()
