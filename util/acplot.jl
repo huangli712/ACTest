@@ -251,7 +251,6 @@ function make_figures(
     only_true_spectrum::Bool = false,
     inds::Vector{I64}
     )
-    @show std, only_true_spectrum, inds
     # Get number of tests (ntest).
     # cinds is used to store the indices of tests.
     ntest = get_t("ntest")
@@ -260,7 +259,6 @@ function make_figures(
     else
         cinds = inds
     end
-    @show std, only_true_spectrum, inds
 
     # Start the loop
     for i in cinds
