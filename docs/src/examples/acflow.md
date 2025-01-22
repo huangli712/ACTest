@@ -1,4 +1,4 @@
-# Analytic continuation simulations
+# Analytic Continuation Simulations
 
 !!! info
 
