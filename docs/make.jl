@@ -32,8 +32,8 @@ makedocs(
             "Inputs" => "man/input.md",
             "Outputs" => "man/output.md",
             "Parameters" => "man/param.md",
-            "Built-in testing dataset" => "man/act100.md",
-            "Interface to analytic continuation toolkits" => "man/interface.md",
+            "Built-in Testing Dataset" => "man/act100.md",
+            "Interface to Analytic Continuation Toolkits" => "man/interface.md",
         ],
         "Theory" => Any[
             "Grids" => "theory/grid.md",
