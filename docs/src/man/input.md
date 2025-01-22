@@ -4,7 +4,7 @@ The scripts in the ACTest toolkit require only one input file, which is **act.to
 
 The **[Test]** section is mandatory, which controls generation of spectral functions and corresponding Green's functions. We would like to explain the relevant control parameters in the following text.
 
-The **[Solver]** section is optional. Now it is used to configure the analytic continuation methods as implemented in the ACFlow and MiniPole toolkits. Only the **acflow.jl** and **minipole.jl** scripts needs to read the **[Solver]** section. It will transfer these parameters to the ACFlow and MiniPole toolkits to customize the successive analytic continuation calculations. For possible parameters within the **[Solver]** section, please refer to the documentations of the ACFlow and MiniPole toolkits.
+The **[Solver]** section is optional. Now it is used to configure the analytic continuation methods as implemented in the ACFlow and MiniPole toolkits. Only the **acflow.jl** and **minipole.jl** scripts needs to read the **[Solver]** section. It will transfer these parameters to the ACFlow and MiniPole toolkits to customize the successive analytic continuation calculations. For possible parameters within the **[Solver]** section, please refer to the documentations of the [ACFlow](https://github.com/huangli712/ACFlow) and [MiniPole](https://github.com/Green-Phys/MiniPole) toolkits.
 
 ```toml
 #
