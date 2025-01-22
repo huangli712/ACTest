@@ -8,11 +8,11 @@ This is the core script of the ACTest toolkit. It is able to randomly generate a
 
 ## acstd.jl
 
-It is similar to \texttt{acgen.jl}. But its task is to generate the ACT100 dataset, which includes 100 predefined spectral functions and corresponding Green's functions.
+It is similar to **acgen.jl**. But its task is to generate the ACT100 dataset, which includes 100 predefined spectral functions and corresponding Green's functions.
 
 ## acflow.jl
 
-This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the ACFlow toolkit.
+This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the [ACFlow toolkit](https://github.com/huangli712/ACFlow).
 
 ## acplot.jl
 
@@ -31,3 +31,9 @@ $ actest/util/script_name act.toml
 ```
 
 Here, **act.toml** is the configuration file. It is a standard TOML file, primarily used for storing user's settings (i.e., control parameters). The technical details of the **act.toml** file will be introduced in the following text.
+
+---
+
+!!! note
+
+    Please read the comments in the head of these scripts carefully for detailed usages.
