@@ -29,3 +29,7 @@ It will launch the ACFlow toolkit to perform analytic continuation calculations 
 ![T_maxent.png](../assets/T_maxent.png)
 
 **Figure 1 |** Tests of the maximum entropy method as implemented in the ACFlow package. The tests are classified as four categories (scenarios): (1) F\_D, (2) F\_OD, (3) B\_D, and (4) B\_OD. Here, **F** means fermionic systems and **B** means bosonic systems. **D** means diagonal Green's functions [``A(\omega) > 0``] and **OD** means off-diagonal Green's functions [``A(\omega)`` is non-positive definite]. Each category contains 100 tests. In this figure, the information contained in the **summary.data** file is visualized. (Left) Box-and-whisker plot for error statistics. The black solid segments denote the median values. (Right) Histogram plot for duration times consumed in the tests.
+
+!!! note
+
+    Please read the comments in the head of the **acflow.jl** script carefully for detailed usage.

@@ -17,3 +17,7 @@ These figures are in standard PDF format. They are used to analyze the differenc
 ![T_b.png](../assets/T_b.png)
 
 **Figure 2 |** Selected analytic continuation results for Matsubara Green's functions (bosonic systems). (Left) Spectra for diagonal Green's function. (Right) Spectra for off-diagonal Green's function. The exact spectra are generated randomly by the ACTest toolkit. The vertical dashed lines denote the Fermi level.
+
+!!! note
+
+    Please read the comments in the head of the **acplot.jl** script carefully for detailed usage.
