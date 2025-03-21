@@ -14,6 +14,7 @@ makedocs(
         repolink = "https://github.com/huangli712/ACTest",
         size_threshold = 409600, # 400kb
         assets = ["assets/actest.css"],
+        collapselevel = 1,
     ),
     #format = Documenter.LaTeX(),
     remotes = nothing,
