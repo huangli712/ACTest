@@ -16,7 +16,6 @@ makedocs(
         assets = ["assets/actest.css"],
         collapselevel = 1,
     ),
-    #format = Documenter.LaTeX(),
     remotes = nothing,
     modules = [ACTest],
     pages = [
