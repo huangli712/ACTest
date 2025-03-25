@@ -1,6 +1,6 @@
 # ACTest
 
-*A spectral function and correlation function generator in Julia.*
+*A testing toolkit for analytic continuation methods and codes*
 
 !!! info
 
