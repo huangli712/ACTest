@@ -1,4 +1,4 @@
-push!(LOAD_PATH, "../src")
+haskey(ENV,"ACTEST_HOME") && pushfirst!(LOAD_PATH, ENV["ACTEST_HOME"])
 
 using Documenter
 using Random
