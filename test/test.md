@@ -36,6 +36,10 @@ The following tests are designed for the ACTest + ACFlow toolkits.
     * Gaussian + Delta + Lorentzian peaks
     * Diagonal + Offdiagonal
 
+* **A08**
+    * Fermionic + Matsubara
+    * Random peaks
+
 ## Experimental tests
 
 The following tests are designed for the ACTest + MiniPole toolkits.
