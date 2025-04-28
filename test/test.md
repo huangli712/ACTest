@@ -40,6 +40,11 @@ The following tests are designed for the ACTest + ACFlow toolkits.
     * Fermionic + Matsubara
     * Random peaks
 
+* **A09**
+    * Fermionic + Imaginary time
+    * Gaussian peaks
+    * Exponentially correlated noise in imaginary time
+
 ## Experimental tests
 
 The following tests are designed for the ACTest + MiniPole toolkits.
