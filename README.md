@@ -6,7 +6,7 @@ This toolkit is currently under developement. **PLEASE USE IT AT YOUR OWN RISK!*
 
 ## Version
 
-v1.1.2-devel.250403
+v1.1.3-devel.250428
 
 ## License
 
@@ -30,4 +30,6 @@ julia> Pkg.update("ACTest")
 
 ## Documentation
 
-See `actest/docs` or visit https://huangli712.github.io/projects/actest/index.html for the latest manual.
+Source: See `actest/docs`.
+
+Online: https://huangli712.github.io/projects/actest/index.html
