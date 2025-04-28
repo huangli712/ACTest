@@ -65,4 +65,4 @@ After a few seconds, the documentation is built and saved in the **actest/docs/b
 
 !!! tip
 
-    If the ACTest toolkit was intalled in the offline mode, please make sure that the environment variable **ACTEST_HOME** is correct setup, or else you can not launch the scripts in *actest/util* folder or build the documentation. A good place to setup **ACTEST_HOME** is in the **.bashrc** (for Linux system) or **.profile** (for MacOS system) file.
+    If the ACTest toolkit was intalled in the offline mode, please make sure that the environment variable **ACTEST_HOME** is correctly setup, or else you can not launch the scripts in *actest/util* folder or build the documentation. A good place to setup the environment variable **ACTEST_HOME** is in the **.bashrc** (for Linux system) or **.profile** (for MacOS system) file.
