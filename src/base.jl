@@ -416,16 +416,16 @@ G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
          {\sum_j e^{-2|\tau_j-\tau_i|/\xi}},
 ```
 where the sum is performed assuming periodic boundary conditions, and
-``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a Normal
+``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal
 distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have
-a different sign that ``G(\tau_i)``.
+a different sign to ``G(\tau_i)``.
 =#
 
 """
     make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
 
-Add noise to an imaginary time correlation function ``G(\tau)`` that is
-exponentially correlated in imaginary time.
+Generate noise for an imaginary time correlation function ``G(\tau)``.
+The noise is exponentially correlated in imaginary time.
 
 ### Arguments
 * τ -> Vector specifying the imaginary time ``\tau`` grid.
@@ -436,7 +436,7 @@ By default, the last element of ``\tau`` is assumed to be equal to the
 inverse temperature, i.e., ``\tau[end] = \beta``.
 """
 function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
-    # Evaluate length of imaginary-time axis
+    # Evaluate length of imaginary time axis
     Lτ = length(τ) - 1
 
     # Initialize noise to zero
