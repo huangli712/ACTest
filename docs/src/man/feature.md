@@ -16,6 +16,6 @@ The major features of the ACTest toolkit are as follows:
 
 * ACTest also provides a plotting script, that can be used to visualize and compare the true and reconstructed spectral functions.
 
-* ACTest is an open-source software developed in Julia language. It is quite easy to be extended to implement new features or support the other analytic continuation codes, such as Nevanlinna.jl and SmoQyDEAC.jl. Furthermore, ACTest offers extensive documentation and examples, making it user-friendly.
+* ACTest is an open-source software developed in Julia language. It is quite easy to be extended to implement new features or support the other analytic continuation codes, such as [Nevanlinna.jl](https://github.com/SpM-lab/Nevanlinna.jl) and [SmoQyDEAC.jl](https://github.com/SmoQySuite/SmoQyDEAC.jl). Furthermore, ACTest offers extensive documentation and examples, making it user-friendly.
 
 In the following text, we will elaborate on the technical details inside ACTest.

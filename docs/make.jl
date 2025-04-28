@@ -34,6 +34,7 @@ makedocs(
             "Parameters" => "man/param.md",
             "Built-in Testing Dataset" => "man/act100.md",
             "Interface to Analytic Continuation Toolkits" => "man/interface.md",
+            "Graphic user interface" => "man/gui.md",
         ],
         "Theory" => Any[
             "Grids" => "theory/grid.md",

@@ -4,7 +4,7 @@
 
 !!! info
 
-    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v1.1.2-devel.250403.
+    Thank you for using ACTest. This documentation will help you to be familiar with and explore the ACTest toolkit. It is just compatible with ACTest v1.1.3-devel.250428.
 
 !!! note
 
@@ -37,6 +37,7 @@ Pages = [
     "man/param.md",
     "man/act100.md",
     "man/interface.md",
+    "man/gui.md",
 ]
 Depth = 1
 ```
