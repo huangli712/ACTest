@@ -62,3 +62,7 @@ $ julia make.jl
 ```
 
 After a few seconds, the documentation is built and saved in the **actest/docs/build** directory. The entry of the documentation is **actest/docs/build/index.html**. You can open it with any web browser.
+
+!!! tip
+
+    If the ACTest toolkit was intalled in the offline mode, please make sure that the environment variable **ACTEST_HOME** is correct setup, or else you can not launch the scripts in *actest/util* folder or build the documentation. A good place to setup **ACTEST_HOME** is in the **.bashrc** (for Linux system) or **.profile** (for MacOS system) file.
