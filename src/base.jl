@@ -419,6 +419,8 @@ where the sum is performed assuming periodic boundary conditions, and
 ``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal
 distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have
 a different sign to ``G(\tau_i)``.
+
+See Phys. Rev. X 7, 041072 (2017) for more details.
 =#
 
 """
