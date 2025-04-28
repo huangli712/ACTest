@@ -404,7 +404,36 @@ function make_spectrum(
     return SpectralFunction(mesh, image)
 end
 
-function make_noise()
+"""
+    make_noise(
+        Gexact::Vector{F64},
+        τ::Vector{F64},
+        σ::F64,
+        ξ::F64,
+        sum_rule::Function = C0 -> 1 - C0
+    )
+
+Add noise to an imaginary time correlation function ``G(\tau)`` that is
+exponentially correlated in imaginary time.
+
+### Arguments
+* Gexact -> Vector containing the exact values for ``G(\tau)``.
+* τ -> Vector specifying the imaginary time ``\tau`` grid.
+* σ -> Standard deviation of the noise; controls the typical amplitude of the error.
+* ξ -> Correlation length associated with the noise in imaginary time.
+* sum_rule -> Enforces sum rule, or bounday condition in imaginay time.
+
+By default, a fermionic correlation function is assumed, which enforcing
+that ``G(\beta) = 1 - G(0)``. The last element of ``\tau`` is assumed to
+be equal to the inverse temperature, i.e. ``\tau[end] = \beta``.
+"""
+function make_noise(
+    Gexact::Vector{F64},
+    τ::Vector{F64},
+    σ::F64,
+    ξ::F64,
+    sum_rule::Function = C0 -> 1 - C0
+)
 end
 
 """
