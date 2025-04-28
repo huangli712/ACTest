@@ -465,15 +465,20 @@ function make_noise(Gexact::Vector{F64}, τ::Vector{F64}, σ::F64, ξ::F64)
         for j in eachindex(R′)
             # Calculate weight
             Δτ = abs(τ′[j] - τ′[i])
-            Wij = exp(-min(Δτ, β-Δτ)/ξ)
-            # update noise
-            Cτ_noisy[i] += R′[j] * Wij
-            # update normalization
-            V += Wij^2
+            Wᵢⱼ = exp(-min(Δτ, β-Δτ)/ξ)
+            #
+            # Update noise
+            Gnoisy[i] += R′[j] * Wᵢⱼ
+            #
+            # Update normalization
+            V += (Wᵢⱼ) ^ 2
         end
+
         # normalize noise
-        Cτ_noisy[i] /= sqrt(V)
+        Gnoisy[i] /= sqrt(V)
     end
+
+    return Gnoisy
 end
 
 """
