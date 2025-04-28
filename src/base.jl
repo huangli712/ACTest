@@ -423,13 +423,7 @@ the other two distributions.
 =#
 
 """
-    make_noise(
-        Gexact::Vector{F64},
-        τ::Vector{F64},
-        σ::F64,
-        ξ::F64,
-        sum_rule::Function = C0 -> 1 - C0
-    )
+    make_noise(Gexact::Vector{F64}, τ::Vector{F64}, σ::F64, ξ::F64)
 
 Add noise to an imaginary time correlation function ``G(\tau)`` that is
 exponentially correlated in imaginary time.
@@ -445,36 +439,31 @@ By default, a fermionic correlation function is assumed, which enforcing
 that ``G(\beta) = 1 - G(0)``. The last element of ``\tau`` is assumed to
 be equal to the inverse temperature, i.e. ``\tau[end] = \beta``.
 """
-function make_noise(
-    Gexact::Vector{F64},
-    τ::Vector{F64},
-    σ::F64,
-    ξ::F64,
-    sum_rule::Function = C0 -> 1 - C0
-    )
-
+function make_noise(Gexact::Vector{F64}, τ::Vector{F64}, σ::F64, ξ::F64)
     Gnoisy = zero(Gexact)
     R = σ * randn(length(Gexact))
 
-    # length of imaginary-time axis
+    # Evaluate length of imaginary-time axis
     Lτ = length(τ) - 1
 
-    # get the inverse temperature
+    # Get the inverse temperature
     β = τ[end]
 
-    # R and τ arrays on interval τ ∈[0, β-Δτ]
+    # Setup R and τ arrays on interval τ ∈ [0, β-Δτ]
     τ′ = @view τ[1:Lτ]
     R′ = @view R[1:Lτ]
 
-    # iterate over imaginary time
+    # Iterate over imaginary time: Outer
     @inbounds for i in eachindex(R′)
-        # initialize noise to zero
-        Cτ_noisy[i] = 0.0
-        # initialize normalization factor
+        # Initialize noise to zero
+        Gnoisy[i] = 0.0
+
+        # Initialize normalization factor
         V = 0.0
-        # iterate over imaginary time
+
+        # Iterate over imaginary time: Inner
         for j in eachindex(R′)
-            # calculate weight
+            # Calculate weight
             Δτ = abs(τ′[j] - τ′[i])
             Wij = exp(-min(Δτ, β-Δτ)/ξ)
             # update noise
@@ -485,19 +474,6 @@ function make_noise(
         # normalize noise
         Cτ_noisy[i] /= sqrt(V)
     end
-    
-    # # calculate exponential smoothing function
-    # f  = @. exp(-min(τ′, β-τ′)/ξ)
-    # V  = sqrt(sum(fi^2 for fi in f))
-    # f /= V
-    # # convolve iid noise with exponential to generate correlated noise
-    # Cτ_noisy[1:Lτ] .= real.(ifft( fft(R′) .* fft(f) ))
-
-    # generate noisy correlation data by summing true correlation with the correlated noise
-    @. Cτ_noisy = Cτ_exact + Cτ_noisy
-
-    # apply sum rule for τ = β
-    Cτ_noisy[end] = sum_rule(Cτ_noisy[1])
 end
 
 """
