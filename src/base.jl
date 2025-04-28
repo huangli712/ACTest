@@ -453,6 +453,51 @@ function make_noise(
     sum_rule::Function = C0 -> 1 - C0
     )
 
+    Gnoisy = zero(Gexact)
+    R = σ * randn(length(Gexact))
+
+    # length of imaginary-time axis
+    Lτ = length(τ) - 1
+
+    # get the inverse temperature
+    β = τ[end]
+
+    # R and τ arrays on interval τ ∈[0, β-Δτ]
+    τ′ = @view τ[1:Lτ]
+    R′ = @view R[1:Lτ]
+
+    # iterate over imaginary time
+    @inbounds for i in eachindex(R′)
+        # initialize noise to zero
+        Cτ_noisy[i] = 0.0
+        # initialize normalization factor
+        V = 0.0
+        # iterate over imaginary time
+        for j in eachindex(R′)
+            # calculate weight
+            Δτ = abs(τ′[j] - τ′[i])
+            Wij = exp(-min(Δτ, β-Δτ)/ξ)
+            # update noise
+            Cτ_noisy[i] += R′[j] * Wij
+            # update normalization
+            V += Wij^2
+        end
+        # normalize noise
+        Cτ_noisy[i] /= sqrt(V)
+    end
+    
+    # # calculate exponential smoothing function
+    # f  = @. exp(-min(τ′, β-τ′)/ξ)
+    # V  = sqrt(sum(fi^2 for fi in f))
+    # f /= V
+    # # convolve iid noise with exponential to generate correlated noise
+    # Cτ_noisy[1:Lτ] .= real.(ifft( fft(R′) .* fft(f) ))
+
+    # generate noisy correlation data by summing true correlation with the correlated noise
+    @. Cτ_noisy = Cτ_exact + Cτ_noisy
+
+    # apply sum rule for τ = β
+    Cτ_noisy[end] = sum_rule(Cτ_noisy[1])
 end
 
 """
