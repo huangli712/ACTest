@@ -436,11 +436,14 @@ By default, the last element of ``\tau`` is assumed to be equal to the
 inverse temperature, i.e., ``\tau[end] = \beta``.
 """
 function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
-    Gnoisy = zero(F64,length(τ))
-    R = σ * randn(length(τ))
-
     # Evaluate length of imaginary-time axis
     Lτ = length(τ) - 1
+
+    # Initialize noise to zero
+    Gnoisy = zero(F64, Lτ+1)
+
+    # Evaluate normal distribution
+    R = σ * randn(Lτ+1)
 
     # Get the inverse temperature
     β = τ[end]
@@ -451,9 +454,6 @@ function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
 
     # Iterate over imaginary time: Outer
     @inbounds for i in eachindex(R′)
-        # Initialize noise to zero
-        Gnoisy[i] = 0.0
-
         # Initialize normalization factor
         V = 0.0
 
@@ -470,7 +470,7 @@ function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
             V += (Wᵢⱼ) ^ 2
         end
 
-        # normalize noise
+        # Normalize noise
         Gnoisy[i] /= sqrt(V)
     end
 
