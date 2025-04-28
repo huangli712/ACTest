@@ -507,6 +507,9 @@ function make_green(
     # If δ < 0, it means noise-free.
     δ = get_t("noise")
 
+    # Get correlation length of noise
+    ξ = get_t("lcorr")
+
     # Get type of noise
     # Now only imaginary time Green's function supports correlated noise.
     tcorr = get_t("tcorr")
@@ -530,7 +533,6 @@ function make_green(
 
     # Setup random noise
     if tcorr
-        ξ = 0.5
         noise = make_noise(grid.τ, δ, ξ)
     else
         noise = randn(rng, F64, ngrid) * δ
