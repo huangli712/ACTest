@@ -77,6 +77,7 @@ const _PTEST   = Dict{String,Any}(
     "pmin"    => -4.0,
     "beta"    => 10.0,
     "noise"   => 1.0e-6,
+    "tcorr"   => false,
     "offdiag" => false,
     "lpeak"   => [1,2,3],
 )
