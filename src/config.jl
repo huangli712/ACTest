@@ -86,6 +86,7 @@ function see_dict()
     println("pmin    : ", get_t("pmin")   )
     println("beta    : ", get_t("beta")   )
     println("noise   : ", get_t("noise")  )
+    println("lcorr   : ", get_t("lcorr")  )
     println("tcorr   : ", get_t("tcorr")  )
     println("offdiag : ", get_t("offdiag"))
     println("lpeak   : ", get_t("lpeak")  )
@@ -187,6 +188,7 @@ function chk_dict()
     @assert get_t("pmax") > get_t("pmin")
     @assert get_t("beta") ≥ 0.0
     @assert get_t("noise") ≥ 0.0
+    @assert get_t("lcorr") > 0.0
     @assert length(get_t("lpeak")) ≥ 1
     @assert all(x -> x > 0, get_t("lpeak"))
 
