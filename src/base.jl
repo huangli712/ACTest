@@ -404,6 +404,24 @@ function make_spectrum(
     return SpectralFunction(mesh, image)
 end
 
+#=
+*Remarks* :
+
+For the correlation function ``G(\tau_i)``, the corresponding noisy
+correlation function is given by
+
+```math
+G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
+    \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi} R_j}
+         {\sum_j e^{-2|\tau_j-\tau_i|/\xi}},
+```
+where the sum is performed assuming periodic boundary conditions, and
+``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a Normal
+distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have
+a different sign that ``G(\tau_i)``, whereas this is not possible with
+the other two distributions.
+=#
+
 """
     make_noise(
         Gexact::Vector{F64},
@@ -433,7 +451,8 @@ function make_noise(
     σ::F64,
     ξ::F64,
     sum_rule::Function = C0 -> 1 - C0
-)
+    )
+
 end
 
 """
