@@ -29,6 +29,7 @@ make_data_std
 make_data
 make_peak
 make_spectrum
+make_noise
 make_green
 ```
 
