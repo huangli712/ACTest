@@ -42,14 +42,13 @@ Finally, we just assume that the ACTest toolkit is placed in the directory:
 /home/your_home/actest
 ```
 
-Now we have to manually insert the following codes at the beginning of all ACTest's scripts:
+Now we have to manually setup the environment variable **ACTEST_HOME**. It should be associated with the above directory:
 
-```julia
-# Add the ACTest package to the Julia load path
-push!(LOAD_PATH, "/home/your_home/actest/src")
+```shell
+export ACTEST_HOME=/home/your_home/actest/src
 ```
 
-These modifications just ensure that the Julia interpreter can find and import the ACTest toolkit correctly. Now it should work as expected.
+These steps just ensure that the Julia interpreter can find and import the ACTest toolkit correctly. Now it should work as expected.
 
 ## Documentation
 
