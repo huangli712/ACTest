@@ -507,6 +507,15 @@ function make_green(
     # If δ < 0, it means noise-free.
     δ = get_t("noise")
 
+    # Get type of noise
+    # Now only imaginary time Green's function supports correlated noise.
+    tcorr = get_t("tcorr")
+    if get_t(grid) in ("ffreq", "bfreq")
+        if tcorr
+            error("Matsubara data does not support this type of noise")
+        end
+    end
+
     # Calculate Green's function
     green = reprod(sf.mesh, kernel, sf.image)
 
@@ -520,7 +529,12 @@ function make_green(
     end
 
     # Setup random noise
-    noise = randn(rng, F64, ngrid) * δ
+    if tcorr
+        ξ = 0.5
+        noise = make_noise(grid.τ, δ, ξ)
+    else
+        noise = randn(rng, F64, ngrid) * δ
+    end
 
     return GreenFunction(grid, green .+ noise, error)
 end
