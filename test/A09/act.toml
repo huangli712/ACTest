@@ -22,6 +22,7 @@ pmax    = 4.0
 pmin    = -4.0
 beta    = 20.0
 noise   = 1.0e-6
+lcorr   = 0.5
 tcorr   = true
 offdiag = false
 lpeak   = [1,2,3,4,5,6]
