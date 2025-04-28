@@ -510,7 +510,7 @@ function make_green(
     # Get type of noise
     # Now only imaginary time Green's function supports correlated noise.
     tcorr = get_t("tcorr")
-    if get_t(grid) in ("ffreq", "bfreq")
+    if get_t("grid") in ("ffreq", "bfreq")
         if tcorr
             error("Matsubara data does not support this type of noise")
         end
