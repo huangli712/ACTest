@@ -412,8 +412,8 @@ correlation function is given by
 
 ```math
 G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
-    \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi} R_j}
-         {\sum_j e^{-2|\tau_j-\tau_i|/\xi}},
+    \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi}R_j}
+         {\sqrt{\sum_j e^{-2|\tau_j-\tau_i|/\xi}}},
 ```
 where the sum is performed assuming periodic boundary conditions, and
 ``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal
