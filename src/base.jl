@@ -404,6 +404,9 @@ function make_spectrum(
     return SpectralFunction(mesh, image)
 end
 
+function make_noise()
+end
+
 """
     make_green(
         rng::AbstractRNG,
