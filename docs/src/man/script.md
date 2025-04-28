@@ -12,7 +12,7 @@ It is similar to **acgen.jl**. But its task is to generate the ACT100 dataset, w
 
 ## acflow.jl
 
-This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the [ACFlow toolkit](https://github.com/huangli712/ACFlow).
+This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the [ACFlow](https://github.com/huangli712/ACFlow) toolkit.
 
 ## acplot.jl
 
@@ -20,7 +20,7 @@ It is able to read ``A_{\text{calc}}(\omega)`` and ``A_{\text{true}}(\omega)``, 
 
 ## minipole.jl
 
-This script provides a bridge between the ACTest toolkit and the MiniPole toolkit. It does the same things like the **acflow.jl** script. This script needs support of the [MiniPole toolkit](https://github.com/Green-Phys/MiniPole).
+This script provides a bridge between the ACTest toolkit and the MiniPole toolkit. It does the same things like the **acflow.jl** script. This script needs support of the [MiniPole](https://github.com/Green-Phys/MiniPole) toolkit.
 
 ---
 
