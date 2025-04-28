@@ -440,7 +440,7 @@ function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
     Lτ = length(τ) - 1
 
     # Initialize noise to zero
-    Gnoisy = zero(F64, Lτ+1)
+    Gnoisy = zeros(F64, Lτ+1)
 
     # Evaluate normal distribution
     R = σ * randn(Lτ+1)
@@ -523,9 +523,9 @@ function make_green(
     ngrid = length(green)
     if δ < 0.0
         δ = 0.0
-        error = fill(1.0e-4, ngrid)
+        err = fill(1.0e-4, ngrid)
     else
-        error = fill(δ, ngrid)
+        err = fill(δ, ngrid)
     end
 
     # Setup random noise
@@ -536,7 +536,7 @@ function make_green(
         noise = randn(rng, F64, ngrid) * δ
     end
 
-    return GreenFunction(grid, green .+ noise, error)
+    return GreenFunction(grid, green .+ noise, err)
 end
 
 """
