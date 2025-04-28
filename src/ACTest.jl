@@ -435,6 +435,7 @@ make_data_std -> Generate standard dataset (namely ACT100).
 make_data   -> Generate spectral functions and corresponding correlators.
 make_peak   -> Generate various peaks.
 make_spectrum -> Generate spectral function by peaks.
+make_noise  -> Generate noise.
 make_green  -> Generate Green's functions at imaginary axis.
 make_grid   -> Generate grid for the Green's function data.
 make_mesh   -> Generate mesh for the calculated spectrum.
@@ -454,6 +455,7 @@ export make_data_std
 export make_data
 export make_peak
 export make_spectrum
+export make_noise
 export make_green
 export make_grid
 export make_mesh
