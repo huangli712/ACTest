@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2024/11/14
+# Last modified: 2025/04/28
 #
 
 """
@@ -94,6 +94,8 @@ N/A
 
 ### Returns
 N/A
+
+See also: [`make_data`](@ref).
 """
 function make_data_std()
     # Get dicts for the standard test (ACT100)
@@ -153,13 +155,15 @@ N/A
 
 ### Returns
 N/A
+
+See also: [`make_data_std`](@ref).
 """
 function make_data()
     # Get number of tests
     ntest = get_t("ntest")
 
     # Initialize the random number generator
-    seed = 2002 #rand(1:10000) * myid() + 1981
+    seed = rand(1:10000) * myid() + 1981
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
@@ -208,9 +212,21 @@ Generate peak to build the final spectral function.
 See also: [`AbstractPeak`](@ref).
 """
 function make_peak(rng::AbstractRNG)
+    # Get essential parameters
     ptype = get_t("ptype")
     pmax  = get_t("pmax")
     pmin  = get_t("pmin")
+
+    # Special treatment for ptype
+    if ptype in ["random1", "random2"]
+        if ptype == "random1"
+            plist = ["gauss", "lorentz", "risedecay"]
+        else
+            plist = ["gauss", "lorentz", "delta", "rectangle", "risedecay"]
+        end
+        ptype, = rand(plist, 1)
+        println("ptype is randomized to: $ptype")
+    end
 
     @cswitch ptype begin
         @case "gauss"
