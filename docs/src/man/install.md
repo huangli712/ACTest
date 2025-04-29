@@ -24,7 +24,7 @@ julia> using Pkg
 julia> Pkg.add("https://github.com/huangli712/ACTest")
 ```
 
-If this method fails due to an unstable network connection, an offline method should be adopted. First of all, please download the compressed package for the ACTest toolkit from github. Usually it is called **actest.tar.gz** or **actest.zip**. Second, please copy it to your favorite directory (such as **/home/your\_home**), and then enter the following command in the terminal to decompress it:
+If this method fails due to an unstable network connection, an offline method should be adopted. First of all, please download the compressed package for the ACTest toolkit from github. Usually it is called actest.tar.gz or actest.zip. Second, please copy it to your favorite directory (such as /home/your\_home), and then enter the following command in the terminal to decompress it:
 
 ```shell
 $ tar xvfz actest.tar.gz
@@ -52,7 +52,7 @@ These steps just ensure that the Julia interpreter can find and import the ACTes
 
 ## Documentation
 
-The ACTest toolkit ships with detailed documentation, including the user's manual and application programming interface. They are developed with the Markdown language and the Documenter.jl package. So, please make sure that the latest version of the Documenter.jl package is ready (see **https://github.com/JuliaDocs/Documenter.jl** for more details). If everything is OK, users can generate the documentation by themselves. Please enter the following commands in the terminal:
+The ACTest toolkit ships with detailed documentation, including the user's manual and application programming interface. They are developed with the Markdown language and the Documenter.jl package. So, please make sure that the latest version of the Documenter.jl package is ready (see https://github.com/JuliaDocs/Documenter.jl for more details). If everything is OK, users can generate the documentation by themselves. Please enter the following commands in the terminal:
 
 ```shell
 $ pwd
@@ -61,8 +61,8 @@ $ cd docs
 $ julia make.jl
 ```
 
-After a few seconds, the documentation is built and saved in the **actest/docs/build** directory. The entry of the documentation is **actest/docs/build/index.html**. You can open it with any web browser.
+After a few seconds, the documentation is built and saved in the actest/docs/build directory. The entry of the documentation is actest/docs/build/index.html. You can open it with any web browser.
 
 !!! tip
 
-    If the ACTest toolkit was intalled in the offline mode, please make sure that the environment variable **ACTEST_HOME** is correctly setup, or else you can not launch the scripts in **actest/util** folder or build the documentation. A good place to setup the environment variable **ACTEST_HOME** is in the **.bashrc** (for Linux system) or **.profile** (for MacOS system) file.
+    If the ACTest toolkit was intalled in the offline mode, please make sure that the environment variable **ACTEST_HOME** is correctly setup, or else you can not launch the scripts in actest/util folder or build the documentation. A good place to setup the environment variable **ACTEST_HOME** is in the **.bashrc** (for Linux system) or **.profile** (for MacOS system) file.
