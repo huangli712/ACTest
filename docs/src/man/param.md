@@ -309,6 +309,42 @@ Depth = 3
 
 > This parameter is mandatory.
 
+### lcorr
+
+*Definition:*
+
+> Correlation length ``\xi`` associated with the noise in the imaginary time axis. This parameter is useful only when tcorr = true.
+
+*Type:*
+
+> Float.
+
+*Examples:*
+
+> lcorr = 0.5
+
+*Comment:*
+
+> This parameter is mandatory.
+
+### tcorr
+
+*Definition:*
+
+> Is the noise correlated in imaginary time axis? If tcorr = true, and grid is "ftime" or "btime", then this toolkit will try to generate correlated noise in imaginary time axis. If tcorr = false, then this toolkit will generate uncorrelated noise. Note that this feature is only valid for imaginary time correlation function. If tcorr = true and grid is "ffreq" or "bfreq", this toolkit will report an error.
+
+*Type:*
+
+> Bool.
+
+*Examples:*
+
+> tcorr = false
+
+*Comment:*
+
+> This parameter is mandatory.
+
 ### offdiag
 
 *Definition:*
