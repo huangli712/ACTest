@@ -424,13 +424,14 @@ See Phys. Rev. X 7, 041072 (2017) for more details.
 =#
 
 """
-    make_noise(τ::Vector{F64}, δ::F64, ξ::F64)
+    make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
 
 Generate noise for an imaginary time correlation function ``G(\tau)``.
 The noise is exponentially correlated in imaginary time. This function is
 adopted from https://github.com/SmoQySuite/SmoQySynthAC.jl.
 
 ### Arguments
+* rng -> Random number generator.
 * τ -> Vector specifying the imaginary time ``\tau`` grid.
 * δ -> Standard deviation of the noise; controls the typical amplitude of the error.
 * ξ -> Correlation length associated with the noise in imaginary time.
@@ -438,7 +439,7 @@ adopted from https://github.com/SmoQySuite/SmoQySynthAC.jl.
 By default, the last element of ``\tau`` is assumed to be equal to the
 inverse temperature, i.e., ``\tau[end] = \beta``.
 """
-function make_noise(τ::Vector{F64}, δ::F64, ξ::F64)
+function make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
     # Evaluate length of imaginary time axis
     Lτ = length(τ) - 1
 
@@ -446,7 +447,7 @@ function make_noise(τ::Vector{F64}, δ::F64, ξ::F64)
     Gnoisy = zeros(F64, Lτ+1)
 
     # Evaluate normal distribution
-    R = δ * randn(Lτ+1)
+    R = δ * randn(rng, Lτ+1)
 
     # Get the inverse temperature
     β = τ[end]
@@ -536,7 +537,7 @@ function make_green(
 
     # Setup random noise
     if tcorr
-        noise = make_noise(grid.τ, δ, ξ)
+        noise = make_noise(rng, grid.τ, δ, ξ)
     else
         noise = randn(rng, F64, ngrid) * δ
     end
