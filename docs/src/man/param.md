@@ -51,12 +51,13 @@ Depth = 3
 > * delta
 > * rectangle
 > * risedecay
+>
+> They are corresponding to the Gaussian, Lorentzian, ``\delta``-like, rectangular, and Rise-And-Decay peaks, respectively. Besides, there are two special choices:
+>
 > * random1
 > * random2
 >
-> They are corresponding to the Gaussian, Lorentzian, ``\delta``-like, rectangular, and Rise-And-Decay peaks, respectively.
->
-> Especially, when ptype = "random1", this toolkit will randomly generate Gaussian, Lorentzian, or Rise-And-Decay peaks. And when ptype = "random2", this toolkit will randomly generate Gaussian, Lorentzian, ``\delta``-like, rectangular, or Rise-And-Decay peaks. That is to say, at this time the types of peaks are not fixed. They are controlled by a random number.
+> When ptype = "random1", this toolkit will randomly generate Gaussian, Lorentzian, or Rise-And-Decay peaks. When ptype = "random2", this toolkit will randomly generate Gaussian, Lorentzian, ``\delta``-like, rectangular, or Rise-And-Decay peaks. That is to say, at this time the types of peaks are not fixed. They are controlled by a random number.
 >
 > This parameter is only relevant for the **acgen.jl** script.
 

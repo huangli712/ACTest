@@ -2,6 +2,8 @@
 
 The ACTest toolkit provides four Julia scripts. They are located in the actest/util directory. Here are brief descriptions for these scripts:
 
+---
+
 ## acgen.jl
 
 This is the core script of the ACTest toolkit. It is able to randomly generate any number of spectral functions and corresponding Green's functions according to the user's settings.
