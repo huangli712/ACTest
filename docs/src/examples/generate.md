@@ -22,7 +22,7 @@ pmin    = -4.0     # Left boundary of peaks
 beta    = 20.0     # Inverse temperature
 noise   = 1.0e-6   # Noise level
 lcorr   = 0.5      # Correlation length
-tcorr   = fallse   # Is noise correlated in imaginary time axis
+tcorr   = false    # Is noise correlated in imaginary time axis
 offdiag = false    # Whether the spectrum is positive
 lpeak   = [1,2,3,4,5,6] # Possible number of peaks
 ```
