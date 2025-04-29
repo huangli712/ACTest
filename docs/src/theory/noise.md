@@ -14,6 +14,6 @@ G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
     \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi}R_j}
          {\sqrt{\sum_j e^{-2|\tau_j-\tau_i|/\xi}}},
 ```
-where the sum is performed assuming periodic boundary conditions, ``\xi`` denotes the correlation length, and ``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have a different sign to ``G(\tau_i)``. The ACTest toolkit also supports this feature.
+where the sum is performed assuming periodic boundary conditions, ``\xi`` denotes the correlation length, and ``R_j \sim \mathcal{N}(0,\delta)``. Note that in the case that a normal distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have a different sign to ``G(\tau_i)``. The ACTest toolkit also supports this feature.
 
 [^1]: See Phys. Rev. X 7, 041072 (2017) for more details.
