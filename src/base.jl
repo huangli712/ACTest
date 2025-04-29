@@ -415,29 +415,30 @@ G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
     \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi}R_j}
          {\sqrt{\sum_j e^{-2|\tau_j-\tau_i|/\xi}}},
 ```
-where the sum is performed assuming periodic boundary conditions, and
-``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal
-distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have
-a different sign to ``G(\tau_i)``.
+where the sum is performed assuming periodic boundary conditions, ``\xi``
+denotes the correlation length, and ``R_j \sim {\rm Normal}(0,\sigma)``.
+Note that in the case that a normal distribution is used it is possible
+for ``G_{\rm noisy}(\tau_i)`` to have a different sign to ``G(\tau_i)``.
 
 See Phys. Rev. X 7, 041072 (2017) for more details.
 =#
 
 """
-    make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
+    make_noise(τ::Vector{F64}, δ::F64, ξ::F64)
 
 Generate noise for an imaginary time correlation function ``G(\tau)``.
-The noise is exponentially correlated in imaginary time.
+The noise is exponentially correlated in imaginary time. This function is
+adopted from https://github.com/SmoQySuite/SmoQySynthAC.jl.
 
 ### Arguments
 * τ -> Vector specifying the imaginary time ``\tau`` grid.
-* σ -> Standard deviation of the noise; controls the typical amplitude of the error.
+* δ -> Standard deviation of the noise; controls the typical amplitude of the error.
 * ξ -> Correlation length associated with the noise in imaginary time.
 
 By default, the last element of ``\tau`` is assumed to be equal to the
 inverse temperature, i.e., ``\tau[end] = \beta``.
 """
-function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
+function make_noise(τ::Vector{F64}, δ::F64, ξ::F64)
     # Evaluate length of imaginary time axis
     Lτ = length(τ) - 1
 
@@ -445,7 +446,7 @@ function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
     Gnoisy = zeros(F64, Lτ+1)
 
     # Evaluate normal distribution
-    R = σ * randn(Lτ+1)
+    R = δ * randn(Lτ+1)
 
     # Get the inverse temperature
     β = τ[end]
@@ -463,7 +464,7 @@ function make_noise(τ::Vector{F64}, σ::F64, ξ::F64)
         for j in eachindex(R′)
             # Calculate weight
             Δτ = abs(τ′[j] - τ′[i])
-            Wᵢⱼ = exp(-min(Δτ, β-Δτ)/ξ)
+            Wᵢⱼ = exp(-min(Δτ, β - Δτ) / ξ)
             #
             # Update noise
             Gnoisy[i] += R′[j] * Wᵢⱼ
