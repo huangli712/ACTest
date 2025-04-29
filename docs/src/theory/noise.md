@@ -7,3 +7,13 @@ G_{\text{noisy}} = G_{\text{exact}}[1 + \delta \mathcal{N}_{C}(0,1)]
 \end{equation}
 ```
 where ``\mathcal{N}_{C}(0,1)`` represents complex-valued Gaussian noise with zero mean and unit variance, and the parameter ``\delta`` is used to control the noise level (``0 \le \delta \le 1``).
+
+In Eq.(1), the noise is uncorrelated. Shao *et al.*[^1] proposed a new method to generate correlated noise for imaginary time Green's function:
+```math
+G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
+    \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi}R_j}
+         {\sqrt{\sum_j e^{-2|\tau_j-\tau_i|/\xi}}},
+```
+where the sum is performed assuming periodic boundary conditions, ``\xi`` denotes the correlation length, and ``R_j \sim {\rm Normal}(0,\sigma)``. Note that in the case that a normal distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have a different sign to ``G(\tau_i)``. The ACTest toolkit also supports this feature.
+
+[^1]: See Phys. Rev. X 7, 041072 (2017) for more details.
