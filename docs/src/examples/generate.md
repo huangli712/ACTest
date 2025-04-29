@@ -2,7 +2,7 @@
 
 !!! info
 
-    In the **actest/tests** directory, there are nine typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
+    In the **actest/tests** directory, there are eleven typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
 
 Now let us test the performance of the maximum entropy method in the ACFlow toolkit. We just consider four typical scenarios: (1) Fermionic Green's functions, ``A(\omega) > 0``; (2) Fermionic Green's functions, ``A(\omega)`` is non-positive definite; (3) Bosonic Green's functions, ``A(\omega) > 0``; (4) Bosonic Green's functions, ``A(\omega)`` is non-positive definite. For each scenario, we apply the ACTest toolkit to randomly generate 100 spectral functions and corresponding Green's functions. The spectral functions are continuum. They are constructed with Gaussian peaks. The number of possible peaks in each ``A(\omega)`` ranges from 1 to 6. The synthetic Green's functions are on the Matsubara frequency axis. The number of Matsubara frequency points is 10. The noise level is ``10^{-6}``. The **act.toml** file for scenario (3) is shown below.
 ```toml
@@ -21,10 +21,12 @@ pmax    = 4.0      # Right boundary of peaks
 pmin    = -4.0     # Left boundary of peaks
 beta    = 20.0     # Inverse temperature
 noise   = 1.0e-6   # Noise level
+lcorr   = 0.5      # Correlation length
+tcorr   = fallse   # Is noise correlated in imaginary time axis
 offdiag = false    # Whether the spectrum is positive
 lpeak   = [1,2,3,4,5,6] # Possible number of peaks
 ```
-Once the \texttt{act.toml} file is prepared, the following command should be executed in the terminal:
+Once the **act.toml** file is prepared, the following command should be executed in the terminal:
 ```shell
 $ actest/util/acgen.jl act.toml
 ```
