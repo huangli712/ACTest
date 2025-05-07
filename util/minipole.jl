@@ -88,7 +88,7 @@
 #
 # 5. Tests about this script
 #
-# See actest/test/B01 and B02.
+# See actest/test/B01 and actest/test/B02.
 #
 
 haskey(ENV,"ACTEST_HOME") && pushfirst!(LOAD_PATH, ENV["ACTEST_HOME"])
