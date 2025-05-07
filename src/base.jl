@@ -513,7 +513,7 @@ function make_green(
     if nbins > 1
         @assert get_t("grid") in ("ftime", "btime")
     end
-    @printf("number of data bins : %2i\n", nbins)
+    @printf("number of data bins : %6i\n", nbins)
 
     # Get the noise level
     # If δ < 0, it means noise-free.
