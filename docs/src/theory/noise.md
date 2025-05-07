@@ -10,9 +10,11 @@ where ``\mathcal{N}_{C}(0,1)`` represents complex-valued Gaussian noise with zer
 
 In Eq.(1), the noise is uncorrelated. Shao *et al.*[^1] proposed a new method to generate correlated noise for imaginary time Green's function:
 ```math
+\begin{equation}
 G_{\rm noisy}(\tau_i) = G_{\rm exact}(\tau_i) +
     \frac{\sum_j e^{-|\tau_j-\tau_i|/\xi}R_j}
          {\sqrt{\sum_j e^{-2|\tau_j-\tau_i|/\xi}}},
+\end{equation}
 ```
 where the sum is performed assuming periodic boundary conditions, ``\xi`` denotes the correlation length, and ``R_j \sim \mathcal{N}(0,\delta)``. Note that in the case that a normal distribution is used it is possible for ``G_{\rm noisy}(\tau_i)`` to have a different sign to ``G(\tau_i)``. The ACTest toolkit also supports this feature.
 
