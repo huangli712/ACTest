@@ -165,14 +165,17 @@ function write_backward(ind::I64, gf::Vector{GreenFunction})
     # The reproduced data must be defined in imaginary time axis.
     open("green.bin." * string(ind), "w") do fout
         for i = 1:nbins
+            # Unpack the GreenFunction struct
             ag = gf[i].grid
             G = gf[i].green
             err = gf[i].error
             #
+            # Check the dimensional parameters
             ngrid = length(ag)
             ng = length(G)
             @assert ngrid == ng
             #
+            # Write data bin
             @printf(fout, "# data bin : %6i\n", i)
             for i in eachindex(ag)
                 @printf(fout, "%16.12f ", ag[i])
