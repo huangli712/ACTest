@@ -16,6 +16,7 @@ mesh    = "linear"
 ngrid   = 501
 nmesh   = 801
 ntest   = 100
+nbins   = 100
 wmax    = 8.0
 wmin    = -8.0
 pmax    = 4.0
