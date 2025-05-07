@@ -1,4 +1,4 @@
-# Generating Spectra and Correlators
+# Generating Spectra And Correlators
 
 !!! info
 

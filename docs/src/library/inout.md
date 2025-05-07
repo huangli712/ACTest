@@ -1,4 +1,4 @@
-# Input and Output
+# Input And Output
 
 *Define input and output functions for the ACTest toolkit.*
 
