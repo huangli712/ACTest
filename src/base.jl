@@ -444,7 +444,7 @@ function make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
     Lτ = length(τ) - 1
 
     # Initialize noise to zero
-    Gnoisy = zeros(F64, Lτ+1)
+    noise = zeros(F64, Lτ+1)
 
     # Evaluate normal distribution
     R = δ * randn(rng, Lτ+1)
@@ -468,17 +468,17 @@ function make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
             Wᵢⱼ = exp(-min(Δτ, β - Δτ) / ξ)
             #
             # Update noise
-            Gnoisy[i] += R′[j] * Wᵢⱼ
+            noise[i] += R′[j] * Wᵢⱼ
             #
             # Update normalization
             V += (Wᵢⱼ) ^ 2
         end
 
         # Normalize noise
-        Gnoisy[i] /= sqrt(V)
+        noise[i] /= sqrt(V)
     end
 
-    return Gnoisy
+    return noise
 end
 
 """
@@ -542,12 +542,23 @@ function make_green(
 
     # Setup random noise
     if tcorr
-        noise = make_noise(rng, grid.τ, δ, ξ)
+        if nbins == 1 # Single data bin
+            noise = make_noise(rng, grid.τ, δ, ξ)
+            return GreenFunction(grid, green .+ noise, err)
+        else         # Multiple data bins
+            GFArray = GreenFunction[]
+            # For each data bin, the noise is different.
+            for _ = 1:nbins
+                noise = make_noise(rng, grid.τ, δ, ξ)
+                push!(GFArray, GreenFunction(grid, green .+ noise, err))
+            end
+            @assert length(GFArray) == nbins
+            return GFArray
+        end
     else
         noise = randn(rng, F64, ngrid) * δ
+        return GreenFunction(grid, green .+ noise, err)
     end
-
-    return GreenFunction(grid, green .+ noise, err)
 end
 
 """
