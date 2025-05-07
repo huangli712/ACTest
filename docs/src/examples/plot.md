@@ -2,7 +2,7 @@
 
 !!! info
 
-    In the **actest/test** directory, there are eleven typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
+    In the **actest/test** directory, there are twelve typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
 
 Finally, we can utilize the **acplot.jl** script to generate figures for the spectral functions. To achieve that effect, please execute the following command in the terminal:
 ```shell
