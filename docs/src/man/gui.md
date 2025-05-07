@@ -1,6 +1,6 @@
 # Graphic User Interface
 
-[ZenGui](https://github.com/huangli712/ZenGui) provides a graphic user interface for ACTest. It is based on the `Dear ImGui` C++ library and its Julia language wrapper `CImGui.jl`. With ZenGui, users can easily generate valid act.toml files.
+[ZenGui](https://github.com/huangli712/ZenGui) provides a graphic user interface for ACTest. It is based on the `Dear ImGui` C++ library and its Julia language wrapper `CImGui.jl`. With ZenGui, users can easily generate valid "act.toml" files. See [Inputs](input.md) for more details.
 
 ![gui1.png](../assets/gui1.png)
 

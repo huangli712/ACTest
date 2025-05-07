@@ -24,3 +24,7 @@ solver  = "MaxEnt"
 method = "chi2kink"
 ...
 ```
+
+!!! tip
+
+    A graphic user interface, namely ZenGui, is provided to generate the **act.toml** file automatically. See [Graphic User Interfce](gui.md) for more details.

@@ -33,8 +33,8 @@ makedocs(
             "Outputs" => "man/output.md",
             "Parameters" => "man/param.md",
             "Built-in Testing Dataset" => "man/act100.md",
-            "Interface to Analytic Continuation Toolkits" => "man/interface.md",
-            "Graphic user interface" => "man/gui.md",
+            "Interface To Analytic Continuation Toolkits" => "man/interface.md",
+            "Graphic User Interface" => "man/gui.md",
         ],
         "Theory" => Any[
             "Grids" => "theory/grid.md",
@@ -44,7 +44,7 @@ makedocs(
             "Noise" => "theory/noise.md",
         ],
         "Examples" => Any[
-            "Generating Spectra and Correlators" => "examples/generate.md",
+            "Generating Spectra And Correlators" => "examples/generate.md",
             "Analytic Continuation Simulations" => "examples/acflow.md",
             "Visualizations" => "examples/plot.md",
         ],
@@ -61,7 +61,7 @@ makedocs(
             "Meshes" => "library/mesh.md",
             "Kernels" => "library/kernel.md",
             "Configuration" => "library/config.md",
-            "Input and Output" => "library/inout.md",
+            "Input And Output" => "library/inout.md",
             "Math" => "library/math.md",
             "Utilities" => "library/util.md",
         ],
