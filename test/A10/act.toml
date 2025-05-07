@@ -1,0 +1,36 @@
+#
+# Test: A10
+#
+# 1. Execute ../../util/acgen.jl act.toml.
+# 2. Actually, the analytic continuation solvers as implemented in the
+#    ACFlow toolkit don't support multiple data bins in a single data
+#    file. So, the ../../util/acflow.jl script won't work for this test.
+#
+
+[Test]
+solver  = "MaxEnt"
+ptype   = "gauss"
+ktype   = "fermi"
+grid    = "ftime"
+mesh    = "linear"
+ngrid   = 501
+nmesh   = 801
+ntest   = 100
+wmax    = 8.0
+wmin    = -8.0
+pmax    = 4.0
+pmin    = -4.0
+beta    = 20.0
+noise   = 1.0e-6
+lcorr   = 0.5
+tcorr   = true
+offdiag = false
+lpeak   = [1,2,3,4,5,6]
+
+[Solver]
+method = "chi2kink"
+stype  = "sj"
+nalph  = 12
+alpha  = 1e12
+ratio  = 10.0
+blur   = -1.0

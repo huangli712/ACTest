@@ -45,6 +45,12 @@ The following tests are designed for the ACTest + ACFlow toolkits.
     * Gaussian peaks
     * Exponentially correlated noise in imaginary time
 
+* **A10**
+    * Fermionic + Imaginary time
+    * Gaussian peaks
+    * Exponentially correlated noise in imaginary time
+    * Multiple data bins per test
+
 ## Experimental tests
 
 The following tests are designed for the ACTest + MiniPole toolkits.
