@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/04/28
+# Last modified: 2025/05/07
 #
 
 """
@@ -507,6 +507,10 @@ function make_green(
     kernel::Matrix{F64},
     grid::AbstractGrid
     )
+    # Get the number of data bins per test
+    nbins = get_t("nbins")
+    @echo nbins
+
     # Get the noise level
     # If δ < 0, it means noise-free.
     δ = get_t("noise")
