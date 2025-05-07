@@ -114,7 +114,7 @@ function make_data_std()
     # Start the loop
     println()
     for i = 1:ntest
-        @printf("Test -> %4i / %4i\n", i, ntest)
+        @printf("Test -> %6i / %6i\n", i, ntest)
 
         # Get dict for current test
         dict = ACT100[i]
@@ -182,7 +182,7 @@ function make_data()
     # Start the loop
     println()
     for i = 1:ntest
-        @printf("Test -> %4i / %4i\n", i, ntest)
+        @printf("Test -> %6i / %6i\n", i, ntest)
         #
         # Generate spectral functions
         sf = make_spectrum(rng, mesh)
