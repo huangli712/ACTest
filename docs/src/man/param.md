@@ -209,7 +209,7 @@ Depth = 3
 >
 > When nbins > 1, it means that the synthetic Green's function will contain multiple data bins (it is only valid for grid = "ftime" or "btime"). In this case, the synthetic Green's function will be written in "green.bin.i".
 >
-> However, when nbins = 1, it means that the synthetic Green's function only contains 1 data bin (it is valid for any type of grid), and the file for synthetic Green's function is "green.data.i". 
+> However, when nbins = 1, it means that the synthetic Green's function only contains 1 data bin (it is valid for any type of grid), and the file for synthetic Green's function is "green.data.i".
 
 *Type:*
 
