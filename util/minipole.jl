@@ -261,7 +261,7 @@ empty, then only the selected tests are handled.
 
 ### Arguments
 * std -> Is the ACT100 dataset is adopted?
-* inds -> A collection of indices for the tests. 
+* inds -> A collection of indices for the tests.
 """
 function make_test(std::Bool = false, inds::Vector{I64} = I64[])
     # Get number of tests (ntest).
