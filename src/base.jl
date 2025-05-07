@@ -508,8 +508,11 @@ function make_green(
     grid::AbstractGrid
     )
     # Get the number of data bins per test
+    # Now only imaginary time Green's function supports multiple data bins.
     nbins = get_t("nbins")
-    @echo nbins
+    if nbins > 1
+        @assert get_t("grid") in ("ftime", "btime")
+    end
 
     # Get the noise level
     # If δ < 0, it means noise-free.
@@ -521,10 +524,8 @@ function make_green(
     # Get type of noise
     # Now only imaginary time Green's function supports correlated noise.
     tcorr = get_t("tcorr")
-    if get_t("grid") in ("ffreq", "bfreq")
-        if tcorr
-            error("Matsubara data does not support this type of noise")
-        end
+    if tcorr
+        @assert get_t("grid") in ("ftime", "btime")
     end
 
     # Calculate Green's function
