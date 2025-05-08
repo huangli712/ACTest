@@ -1,6 +1,6 @@
 # Scripts
 
-The ACTest toolkit provides four Julia scripts. They are located in the actest/util directory. Here are brief descriptions for these scripts:
+The ACTest toolkit provides five Julia scripts. They are located in the actest/util directory. Here are brief descriptions for these scripts:
 
 ---
 

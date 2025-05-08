@@ -335,7 +335,7 @@ Depth = 3
 
 *Definition:*
 
-> Correlation length ``\xi`` associated with the noise in the imaginary time axis. This parameter is useful only when tcorr = true.
+> Autocorrelation length ``\xi`` associated with the noise in the imaginary time axis. This parameter is useful only when tcorr = true.
 
 *Type:*
 
