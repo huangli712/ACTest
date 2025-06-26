@@ -39,3 +39,7 @@ Here, **act.toml** is the configuration file. It is a standard TOML file, primar
 !!! note
 
     Please read the comments in the head of these scripts carefully for detailed usages.
+
+!!! tip
+
+    All these scripts adopt the same configuration file, i.e., **act.toml**.
