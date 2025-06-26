@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/05/07
+# Last modified: 2025/06/26
 #
 
 """
@@ -495,8 +495,8 @@ corresponding correlation function G (note that G ≡ KA).
 ### Arguments
 * rng -> Random number generator.
 * sf -> A SpectralFunction struct, A(ω).
-* kernel -> Kernel matrix.
-* grid -> Grid for correlation function.
+* kernel -> Kernel matrix, K(τ,ω) or K(iωₙ,ω).
+* grid -> Grid for correlation function, τ or iωₙ.
 
 ### Returns
 * gf -> A GreenFunction struct.
@@ -507,6 +507,12 @@ function make_green(
     kernel::Matrix{F64},
     grid::AbstractGrid
     )
+    # Calculate Green's function
+    green = reprod(sf.mesh, kernel, sf.image)
+
+    # Next we should prepare error bar and artifical noise for Green's
+    # function to mimic realistic situation.
+
     # Get the number of data bins per test
     # Now only imaginary time Green's function supports multiple data bins.
     nbins = get_t("nbins")
@@ -529,8 +535,13 @@ function make_green(
         @assert get_t("grid") in ("ftime", "btime")
     end
 
-    # Calculate Green's function
-    green = reprod(sf.mesh, kernel, sf.image)
+    # Apply physical boundary condition
+    # Now only imaginary time Green's function supports boundary condition.
+    fpbc = get_t("fpbc")
+    if fpbc
+        @assert get_t("grid") in ("ftime", "btime")
+        # TODO
+    end
 
     # Setup standard deviation
     ngrid = length(green)
