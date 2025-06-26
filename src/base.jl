@@ -507,7 +507,7 @@ function make_green(
     kernel::Matrix{F64},
     grid::AbstractGrid
     )
-    # Calculate Green's function
+    # Calculate Green's function at first
     green = reprod(sf.mesh, kernel, sf.image)
 
     # Next we should prepare error bar and artifical noise for Green's
@@ -553,6 +553,9 @@ function make_green(
         δ = 0.0
         err = fill(1.0e-4, ngrid)
     else
+        # Only for imaginary time Green's function
+        #     err(τ) = δ * 4 * τ/β ( 1 - τ/β )
+        # Note that err(0) = err(β) = 0, and err(β/2) = 1
         if get_t("grid") in ("ftime", "btime")
             ampl = map(x -> 4.0 * x / β * (1.0 - x / β), grid)
             err = 100 * δ * (ampl .+ 100 * δ)
@@ -563,6 +566,8 @@ function make_green(
 
     # Setup random noise
     if tcorr
+        # Imaginary time correlated noise only suits for imaginary time
+        # Green's function. So here we use grid.τ directly.
         if nbins == 1 # Single data bin
             noise = make_noise(rng, grid.τ, δ, ξ)
             return GreenFunction(grid, green .+ noise, err)
