@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/05/07
+# Last modified: 2025/06/26
 #
 
 """
@@ -90,6 +90,7 @@ function see_dict()
     println("lcorr   : ", get_t("lcorr")  )
     println("tcorr   : ", get_t("tcorr")  )
     println("offdiag : ", get_t("offdiag"))
+    println("fpbc    : ", get_t("fpbc")   )
     println("lpeak   : ", get_t("lpeak")  )
     println("pmesh   : ", get_t("pmesh")  )
     #
