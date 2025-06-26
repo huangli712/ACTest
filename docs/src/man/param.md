@@ -2,7 +2,7 @@
 
 *A comprehensive dictionary about parameters.*
 
-In this part, we will provide detailed explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow and MiniPole toolkits for configuring the analytic continuation methods. They will be explained in the documentations of the ACFlow and MiniPole toolkits.
+In this part, we will provide detailed explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow and MiniPole toolkits for configuring the analytic continuation methods. They will be explained in the documentations of the ACFlow and MiniPole toolkits, respectively.
 
 ## Contents
 
@@ -380,6 +380,24 @@ Depth = 3
 *Examples:*
 
 > offdiag = true
+
+*Comment:*
+
+> This parameter is mandatory.
+
+### fpbc
+
+*Definition:*
+
+> Specify whether the physical boundary condition should be applied. If **fpbc** is true, it implies that ``G(0) + G(\beta) = 1`` for the generated Green's function. Clearly, this feature is only useful for imaginary time Green's functions of fermionic systems.
+
+*Type:*
+
+> Bool.
+
+*Examples:*
+
+> fpbc = false
 
 *Comment:*
 
