@@ -59,7 +59,7 @@ const PTEST    = Dict{String,ADT}(
     "lcorr"   => [missing, 1, :F64   , "Correlation length associated with the noise"],
     "tcorr"   => [missing, 1, :Bool  , "Is the noise correlated in imaginary time axis"],
     "offdiag" => [missing, 1, :Bool  , "Is it the offdiagonal part in matrix-valued function"],
-    "fpbc"    => [missing, 1, :Bool  , "Is the physical boundary condition applied"], 
+    "fpbc"    => [missing, 1, :Bool  , "Is the physical boundary condition applied"],
     "lpeak"   => [missing, 1, :Array , "Number of peaks in the spectrum"],
     "pmesh"   => [missing, 0, :Array , "Additional parameters for customizing the mesh"],
 )
