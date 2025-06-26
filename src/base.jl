@@ -535,21 +535,30 @@ function make_green(
         @assert get_t("grid") in ("ftime", "btime")
     end
 
-    # Apply physical boundary condition
+    # Apply physical boundary condition: G(0) + G(β) = 1
     # Now only imaginary time Green's function supports boundary condition.
     fpbc = get_t("fpbc")
     if fpbc
         @assert get_t("grid") in ("ftime", "btime")
-        # TODO
+        #
+        Δ = green[1] + green[end] - 1.0
+        green[1] = green[1] - Δ / 2.0
+        green[end] = green[end] - Δ / 2.0
     end
 
     # Setup standard deviation
     ngrid = length(green)
+    β = get_t("beta")
     if δ < 0.0
         δ = 0.0
         err = fill(1.0e-4, ngrid)
     else
-        err = fill(δ, ngrid)
+        if get_t("grid") in ("ftime", "btime")
+            ampl = map(x -> 4.0 * x / β * (1.0 - x / β), grid)
+            err = 100 * δ * (ampl .+ 100 * δ)
+        else
+            err = fill(100 * δ, ngrid)
+        end
     end
 
     # Setup random noise
