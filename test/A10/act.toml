@@ -26,6 +26,7 @@ noise   = 1.0e-6
 lcorr   = 0.5
 tcorr   = true
 offdiag = false
+fpbc    = true
 lpeak   = [1,2,3,4,5,6]
 
 [Solver]
