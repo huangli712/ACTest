@@ -385,6 +385,10 @@ Depth = 3
 
 > This parameter is mandatory.
 
+!!! warning
+
+    You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function.
+
 ### fpbc
 
 *Definition:*
