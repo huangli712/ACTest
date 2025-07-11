@@ -12,11 +12,11 @@ These figures are in standard PDF format. They are used to analyze the differenc
 
 ![T_f.png](../assets/T_f.png)
 
-**Figure 1 |** Selected analytic continuation results for Matsubara Green's functions (fermionic systems). (Left) Spectra for diagonal Green's function. (Right) Spectra for off-diagonal Green's function. The exact spectra are generated randomly by the ACTest toolkit. The vertical dashed lines denote the Fermi level.
+**Figure 1 |** Selected analytic continuation results for Matsubara Green's functions (fermionic systems). (Left) Spectra for diagonal Green's function. (Right) Spectra for off-diagonal-like Green's function. The exact spectra are generated randomly by the ACTest toolkit. The vertical dashed lines denote the Fermi level.
 
 ![T_b.png](../assets/T_b.png)
 
-**Figure 2 |** Selected analytic continuation results for Matsubara Green's functions (bosonic systems). (Left) Spectra for diagonal Green's function. (Right) Spectra for off-diagonal Green's function. The exact spectra are generated randomly by the ACTest toolkit. The vertical dashed lines denote the Fermi level.
+**Figure 2 |** Selected analytic continuation results for Matsubara Green's functions (bosonic systems). (Left) Spectra for diagonal Green's function. (Right) Spectra for off-diagonal-like Green's function. The exact spectra are generated randomly by the ACTest toolkit. The vertical dashed lines denote the Fermi level.
 
 !!! note
 
