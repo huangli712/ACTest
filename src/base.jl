@@ -396,7 +396,7 @@ function make_spectrum(
     #
     # Normalize the spectrum
     if count(x -> x > 0.0, sv) == npeak
-        # All signs are positive. It is not for off-diagonal element.
+        # All signs are positive. It is positive definite spectrum.
         # We have to normalize the spectrum.
         image = image ./ trapz(mesh,image)
     end
