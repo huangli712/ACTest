@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/06/26
+# Last modified: 2025/07/12
 #
 
 """
@@ -291,7 +291,7 @@ See also: [`make_data`](@ref).
 function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     # Extract essential parameters
     ktype = get_t("ktype")
-    offdiag = get_t("offdiag")
+    fnpd = get_t("fnpd")
     lpeak = get_t("lpeak")
 
     # Get number of peaks
@@ -300,7 +300,7 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
 
     # Determine signs for all peaks
     signs = ones(F64, npeak)
-    if offdiag
+    if fnpd
         # How many negative signs are there?
         # We have to make sure that at least one sign is negative.
         nsign = rand(rng, 1:npeak)
@@ -323,7 +323,7 @@ function make_spectrum(rng::AbstractRNG, mesh::AbstractMesh)
     end
     #
     # Normalize the spectrum
-    if !offdiag
+    if !fnpd
         image = image ./ trapz(mesh,image)
     else
         # We have to make sure that A(ω) should exhibit negative weights
