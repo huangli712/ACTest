@@ -15,7 +15,7 @@ The following tests are designed for the ACTest + ACFlow toolkits.
 * **A03**
     * Fermionic + Matsubara
     * Lorentzian peaks
-    * Offdiagonal
+    * Non-positive definite spectrum
 
 * **A04**
     * Bosonic + Matsubara
@@ -28,13 +28,13 @@ The following tests are designed for the ACTest + ACFlow toolkits.
 * **A06**
     * Bosonic + Matsubara
     * Lorentzian peaks
-    * Offdiagonal
+    * Non-positive definite spectrum
 
 * **A07**
-    * ACT100
+    * ACT100 dataset
     * Fermionic + Bosonic + Matsubara
     * Gaussian + Delta + Lorentzian peaks
-    * Diagonal + Offdiagonal
+    * Positive definite spectrum + Non-positive definite spectrum
 
 * **A08**
     * Fermionic + Matsubara
@@ -61,8 +61,8 @@ The following tests are designed for the ACTest + MiniPole toolkits.
     * A clone of **A01**
 
 * **B02**
-    * ACT100
+    * ACT100 dataset
     * Fermionic + Bosonic + Matsubara
     * Gaussian + Delta + Lorentzian peaks
-    * Diagonal + Offdiagonal
+    * Positive definite spectrum + Non-positive definite spectrum
     * A clone of **A07**
