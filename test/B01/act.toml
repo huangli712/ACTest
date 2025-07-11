@@ -8,26 +8,26 @@
 #
 
 [Test]
-solver  = "MiniPole"
-ptype   = "gauss"
-ktype   = "fermi"
-grid    = "ffreq"
-mesh    = "linear"
-ngrid   = 500
-nmesh   = 801
-ntest   = 100
-nbins   = 1
-wmax    = 8.0
-wmin    = -8.0
-pmax    = 4.0
-pmin    = -4.0
-beta    = 20.0
-noise   = 1.0e-6
-lcorr   = 0.5
-tcorr   = false
-offdiag = false
-fpbc    = false
-lpeak   = [1,2,3,4,5,6]
+solver = "MiniPole"
+ptype  = "gauss"
+ktype  = "fermi"
+grid   = "ffreq"
+mesh   = "linear"
+ngrid  = 500
+nmesh  = 801
+ntest  = 100
+nbins  = 1
+wmax   = 8.0
+wmin   = -8.0
+pmax   = 4.0
+pmin   = -4.0
+beta   = 20.0
+noise  = 1.0e-6
+lcorr  = 0.5
+tcorr  = false
+fnpd   = false
+fpbc   = false
+lpeak  = [1,2,3,4,5,6]
 
 [Solver]
 n0 = "auto"
