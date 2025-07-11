@@ -8,26 +8,26 @@
 #
 
 [Test]
-solver  = "MaxEnt"
-ptype   = "gauss"
-ktype   = "fermi"
-grid    = "ftime"
-mesh    = "linear"
-ngrid   = 501
-nmesh   = 801
-ntest   = 100
-nbins   = 1
-wmax    = 8.0
-wmin    = -8.0
-pmax    = 4.0
-pmin    = -4.0
-beta    = 20.0
-noise   = 1.0e-6
-lcorr   = 0.5
-tcorr   = true
-offdiag = false
-fpbc    = true
-lpeak   = [1,2,3,4,5,6]
+solver = "MaxEnt"
+ptype  = "gauss"
+ktype  = "fermi"
+grid   = "ftime"
+mesh   = "linear"
+ngrid  = 501
+nmesh  = 801
+ntest  = 100
+nbins  = 1
+wmax   = 8.0
+wmin   = -8.0
+pmax   = 4.0
+pmin   = -4.0
+beta   = 20.0
+noise  = 1.0e-6
+lcorr  = 0.5
+tcorr  = true
+fnpd   = false
+fpbc   = true
+lpeak  = [1,2,3,4,5,6]
 
 [Solver]
 method = "chi2kink"
