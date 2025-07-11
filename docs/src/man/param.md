@@ -367,11 +367,11 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### offdiag
+### fnpd
 
 *Definition:*
 
-> Specify whether the spectral function is positive definite or not. If **offdiag** is true, it implies that the spectral function is not positive definite and the ACTest toolkit will generate off-diagonal Green's function.
+> Specify whether the spectral function is non-positive definite or not. If **fnpd** is true, it implies that the spectral function is not positive definite. If **fnpd** is false, it means that the spectral function is positive definite.
 
 *Type:*
 
@@ -379,7 +379,7 @@ Depth = 3
 
 *Examples:*
 
-> offdiag = true
+> fnpd = false
 
 *Comment:*
 
