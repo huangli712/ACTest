@@ -1,7 +1,7 @@
 #
-# Test: A09
+# Test: A12
 #
-# 1. Execute ../../util/acgen.jl act.toml.
+# 1. Execute ../../util/acmat.jl act.toml.
 # 2. Change solver = "MaxEnt" and the [Solver] block.
 # 3. Execute ../../util/acflow.jl act.toml.
 # 4. Execute ../../util/acplot.jl act.toml.
