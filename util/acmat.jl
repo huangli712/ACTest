@@ -1,11 +1,9 @@
 #!/usr/bin/env julia
 
 #
-# This script is used to create a standard dataset, which contains 100
-# spectral functions and related correlation functions. This dataset
-# is called ACT100. It should be used to benchmark the newly developed
-# analytic continuation tools and methods. This script will launch only
-# 1 process.
+# This script is used to build the spectral functions with negative
+# weights, and the corresponding matrix-value Green's functions. This
+# script will launch only 1 process.
 #
 # Usage:
 #
@@ -19,4 +17,5 @@ using ACTest
 welcome()
 overview()
 read_param()
+make_data()
 goodbye()
