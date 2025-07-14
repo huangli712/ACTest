@@ -51,6 +51,21 @@ The following tests are designed for the ACTest + ACFlow toolkits.
     * Exponentially correlated noise in imaginary time
     * Multiple data bins per test
 
+* **A11**
+    * Fermionic + Matsubara
+    * Random peaks
+    * Matrix-valued Green's functions
+    * Spectral functions with negative weights
+    * A clone of **A08**
+
+* **A12**
+    * Fermionic + Imaginary time
+    * Gaussian peaks
+    * Exponentially correlated noise in imaginary time
+    * Matrix-valued Green's functions
+    * Spectral functions with negative weights
+    * A clone of **A09**
+
 ## Experimental tests
 
 The following tests are designed for the ACTest + MiniPole toolkits.
