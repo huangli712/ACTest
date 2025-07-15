@@ -3,7 +3,7 @@
 #
 # 1. Execute ../../util/acmat.jl act.toml.
 # 2. Change solver = "MaxEnt" and the [Solver] block.
-# 3. Change fnpd to true.
+# 3. Change fnpd from false to true.
 # 4. Execute ../../util/acflow.jl act.toml.
 # 5. Execute ../../util/acplot.jl act.toml.
 # 6. Change ptype = "random2" and repeat the above steps.
