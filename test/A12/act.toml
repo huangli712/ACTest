@@ -3,7 +3,7 @@
 #
 # 1. Execute ../../util/acmat.jl act.toml.
 # 2. Change solver = "MaxEnt" and the [Solver] block.
-# 3. Change value of ntest to value * (value - 1) / 2.
+# 3. Change value of ntest to value - 1.
 # 4. Execute ../../util/acflow.jl act.toml.
 # 5. Execute ../../util/acplot.jl act.toml.
 #
