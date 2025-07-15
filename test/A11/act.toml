@@ -3,7 +3,7 @@
 #
 # 1. Execute ../../util/acmat.jl act.toml.
 # 2. Change solver = "MaxEnt" and the [Solver] block.
-# 3. Change value of ntest to value - 1.
+# 3. Change fnpd to true.
 # 4. Execute ../../util/acflow.jl act.toml.
 # 5. Execute ../../util/acplot.jl act.toml.
 # 6. Change ptype = "random2" and repeat the above steps.
@@ -34,7 +34,7 @@ lpeak  = [1,2,3,4,5,6]
 [Solver]
 method = "chi2kink"
 stype  = "sj"
-nalph  = 12
-alpha  = 1e12
+nalph  = 18
+alpha  = 1e18
 ratio  = 10.0
 blur   = -1.0
