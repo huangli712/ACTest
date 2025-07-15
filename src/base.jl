@@ -99,6 +99,9 @@ N/A
 See also: [`make_data_std`](@ref).
 """
 function make_data_mat()
+    # Get number of mesh points
+    nmesh = get_t("nmesh")
+
     # Get number of tests
     ntest = get_t("ntest")
 
@@ -119,6 +122,17 @@ function make_data_mat()
     kernel = make_kernel(mesh, grid)
     println("Build default kernel: ", get_t("ktype"))
 
+    # Set rotation angle
+    θ = 0.1
+    #
+    # Build rotation matrix
+    ℝ = [cos(θ) sin(θ); -sin(θ) cos(θ)]
+
+    # Prepare memories for spectral functions
+    @assert nmesh == length(mesh)
+    𝔸 = zeros(F64, (2, 2, nmesh))
+    𝒜 = zeros(F64, (2, 2, nmesh))
+
     # Start the loop
     println()
     for i = 1:ntest
@@ -126,6 +140,18 @@ function make_data_mat()
         #
         # Generate spectral functions
         sf = make_spectrum(rng, mesh)
+        #
+        # Build diagonal spectral functions
+        𝔸[1,1,:] .= sf.image
+        𝔸[2,2,:] .= sf.image
+        #
+        # Rotation
+        for w = 1:nmesh
+            𝒜[:,:,w] = ℝ * 𝔸[:,:,w] * ℝ'
+        end
+        #
+        # Extract off-diagonal spectral function
+        sf = SpectralFunction(mesh, 𝒜[1,2,:])
         #
         # Generate Green's functions
         green = make_green(rng, sf, kernel, grid)
