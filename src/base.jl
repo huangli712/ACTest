@@ -129,6 +129,8 @@ function make_data_mat()
     ℝ = [cos(θ) sin(θ); -sin(θ) cos(θ)]
 
     # Prepare memories for spectral functions
+    # 𝔸 : diagonal spectral function
+    # 𝒜 : full matrix-valued spectral function
     @assert nmesh == length(mesh)
     𝔸 = zeros(F64, (2, 2, nmesh))
     𝒜 = zeros(F64, (2, 2, nmesh))
@@ -139,11 +141,12 @@ function make_data_mat()
         @printf("Test -> %6i / %6i\n", i, ntest)
         #
         # Generate spectral functions
-        sf = make_spectrum(rng, mesh)
+        sf1 = make_spectrum(rng, mesh)
+        sf2 = make_spectrum(rng, mesh)
         #
-        # Build diagonal spectral functions
-        𝔸[1,1,:] .= sf.image
-        𝔸[2,2,:] .= sf.image
+        # Build diagonal spectral function
+        𝔸[1,1,:] .= sf1.image
+        𝔸[2,2,:] .= sf2.image
         #
         # Rotation
         for w = 1:nmesh
