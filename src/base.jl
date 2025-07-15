@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/07/12
+# Last modified: 2025/07/15
 #
 
 """
@@ -79,6 +79,63 @@ function read_param()
     fil_dict(cfg)
     chk_dict()
     see_dict()
+end
+
+"""
+    make_data_mat()
+
+Try to generate spectral functions and the corresponding Green's functions.
+However, the spectral functions are with negative weights, and the Green's
+functions are off-diagonal elements of matrix-valued Green's functions.
+
+This function is called by the `util/acmat.jl` script only.
+
+### Arguments
+N/A
+
+### Returns
+N/A
+
+See also: [`make_data_std`](@ref).
+"""
+function make_data_mat()
+    # Get number of tests
+    ntest = get_t("ntest")
+
+    # Initialize the random number generator
+    seed = rand(1:10000) * myid() + 1981
+    rng = MersenneTwister(seed)
+    println("Random number seed: ", seed)
+
+    # Prepare grid for input data
+    grid = make_grid()
+    println("Build grid for input data: ", length(grid), " points")
+
+    # Prepare mesh for output spectrum
+    mesh = make_mesh()
+    println("Build mesh for spectrum: ", length(mesh), " points")
+
+    # Prepare kernel function
+    kernel = make_kernel(mesh, grid)
+    println("Build default kernel: ", get_t("ktype"))
+
+    # Start the loop
+    println()
+    for i = 1:ntest
+        @printf("Test -> %6i / %6i\n", i, ntest)
+        #
+        # Generate spectral functions
+        sf = make_spectrum(rng, mesh)
+        #
+        # Generate Green's functions
+        green = make_green(rng, sf, kernel, grid)
+        #
+        # Write generated data
+        write_spectrum(i, sf)
+        write_backward(i, green)
+        #
+        println()
+    end
 end
 
 """
