@@ -623,6 +623,11 @@ function make_green(
 
     # Apply physical boundary condition: G(0) + G(β) = 1
     # Now only imaginary time Green's function supports boundary condition.
+    #
+    # For off-diagonal Green's function, the boundary condition becomes
+    # G(0) + G(β) = 0. So, if the script `util/acmat.jl` is used to build
+    # the off-diagonal Green's function, please make sure fpbc = false.
+    #
     fpbc = get_t("fpbc")
     if fpbc
         @assert get_t("grid") in ("ftime", "btime")
