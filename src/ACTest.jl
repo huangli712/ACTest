@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/04/28
+# Last modified: 2025/07/15
 #
 
 """
@@ -431,6 +431,7 @@ reprod      -> Try to generate the correlator via calculated spectrum.
 setup_param -> Setup parameters.
 read_param  -> Read parameters from case.toml.
 #
+make_data_mat -> Generate matrix-valued Green's function.
 make_data_std -> Generate standard dataset (namely ACT100).
 make_data   -> Generate spectral functions and corresponding correlators.
 make_peak   -> Generate various peaks.
@@ -451,6 +452,7 @@ export reprod
 export setup_param
 export read_param
 #
+export make_data_mat
 export make_data_std
 export make_data
 export make_peak
