@@ -25,6 +25,7 @@ noise   = 1.0e-6   # Noise level
 lcorr   = 0.5      # Correlation length
 tcorr   = false    # Is noise correlated in imaginary time axis
 fnpd    = false    # Whether the spectrum is non-positive definite
+fpbc    = false    # Whether the physical boundary condition is applied
 lpeak   = [1,2,3,4,5,6] # Possible number of peaks
 ```
 Once the **act.toml** file is prepared, the following command should be executed in the terminal:
