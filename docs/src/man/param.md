@@ -11,7 +11,7 @@ Pages = ["param.md"]
 Depth = 3
 ```
 
-### solver
+### [solver](@id solver)
 
 *Definition:*
 
@@ -40,7 +40,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### ptype
+### [ptype](@id ptype)
 
 *Definition:*
 
@@ -73,7 +73,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### ktype
+### [ktype](@id ktype)
 
 *Definition:*
 
@@ -97,7 +97,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### grid
+### [grid](@id grid)
 
 *Definition:*
 
@@ -122,7 +122,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### mesh
+### [mesh](@id mesh)
 
 *Definition:*
 
@@ -147,7 +147,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### ngrid
+### [ngrid](@id ngrid)
 
 *Definition:*
 
@@ -165,7 +165,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### nmesh
+### [nmesh](@id nmesh)
 
 *Definition:*
 
@@ -183,7 +183,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### ntest
+### [ntest](@id ntest)
 
 *Definition:*
 
@@ -201,7 +201,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### nbins
+### [nbins](@id nbins)
 
 *Definition:*
 
@@ -223,7 +223,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### wmax
+### [wmax](@id wmax)
 
 *Definition:*
 
@@ -241,7 +241,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### wmin
+### [wmin](@id wmin)
 
 *Definition:*
 
@@ -259,7 +259,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### pmax
+### [pmax](@id pmax)
 
 *Definition:*
 
@@ -277,7 +277,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### pmin
+### [pmin](@id pmin)
 
 *Definition:*
 
@@ -295,7 +295,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### beta
+### [beta](@id beta)
 
 *Definition:*
 
@@ -313,7 +313,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### noise
+### [noise](@id noise)
 
 *Definition:*
 
@@ -331,7 +331,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### lcorr
+### [lcorr](@id lcorr)
 
 *Definition:*
 
@@ -349,7 +349,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### tcorr
+### [tcorr](@id tcorr)
 
 *Definition:*
 
@@ -407,7 +407,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### lpeak
+### [lpeak](@id lpeak)
 
 *Definition:*
 
