@@ -57,7 +57,7 @@ Depth = 3
 > * random1
 > * random2
 >
-> When ptype = "random1", this toolkit will randomly generate Gaussian, Lorentzian, or Rise-And-Decay peaks. When ptype = "random2", this toolkit will randomly generate Gaussian, Lorentzian, ``\delta``-like, rectangular, or Rise-And-Decay peaks. That is to say, at this time the types of peaks are not fixed. They are controlled by a random number.
+> When **ptype** = "random1", this toolkit will randomly generate Gaussian, Lorentzian, or Rise-And-Decay peaks. When **ptype** = "random2", this toolkit will randomly generate Gaussian, Lorentzian, ``\delta``-like, rectangular, or Rise-And-Decay peaks. That is to say, at this time the types of peaks are not fixed. They are controlled by a random number.
 >
 > This parameter is only relevant for the **acgen.jl** script.
 
@@ -207,9 +207,9 @@ Depth = 3
 
 > Number of data bins per test.
 >
-> When nbins > 1, it means that the synthetic Green's function will contain multiple data bins (it is only valid for grid = "ftime" or "btime"). In this case, the synthetic Green's function will be written in "green.bin.i".
+> When **nbins** > 1, it means that the synthetic Green's function will contain multiple data bins (it is only valid for grid = "ftime" or "btime"). In this case, the synthetic Green's function will be written in "green.bin.i".
 >
-> However, when nbins = 1, it means that the synthetic Green's function only contains 1 data bin (it is valid for any type of grid), and the file for synthetic Green's function is "green.data.i".
+> However, when **nbins** = 1, it means that the synthetic Green's function only contains 1 data bin (it is valid for any type of grid), and the file for synthetic Green's function is "green.data.i".
 
 *Type:*
 
@@ -335,7 +335,7 @@ Depth = 3
 
 *Definition:*
 
-> Autocorrelation length ``\xi`` associated with the noise in the imaginary time axis. This parameter is useful only when tcorr = true.
+> Autocorrelation length ``\xi`` associated with the noise in the imaginary time axis. This parameter is useful only when **tcorr** = true. See [`tcorr`](@ref tcorr) for more details.
 
 *Type:*
 
@@ -353,7 +353,7 @@ Depth = 3
 
 *Definition:*
 
-> Is the noise correlated in imaginary time axis? If tcorr = true, and grid is "ftime" or "btime", then this toolkit will try to generate correlated noise in imaginary time axis. If tcorr = false, then this toolkit will generate uncorrelated noise. Note that this feature is only valid for imaginary time correlation function. If tcorr = true and grid is "ffreq" or "bfreq", this toolkit will report an error.
+> Is the noise correlated in imaginary time axis? If **tcorr** = true, and **grid** is "ftime" or "btime", then this toolkit will try to generate correlated noise in imaginary time axis. If **tcorr** = false, then this toolkit will generate uncorrelated noise. Note that this feature is only valid for imaginary time correlation function. If **tcorr** = true and **grid** is "ffreq" or "bfreq", this toolkit will report an error. See [`grid`](@ref grid) for more details.
 
 *Type:*
 
@@ -387,7 +387,7 @@ Depth = 3
 
 !!! warning
 
-    You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function. If you want to have off-diagonal Green's functions, please use the **util/acmat.jl** script and set **fnpd** to false.
+    You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function. If you want to have off-diagonal Green's functions, please use the **acmat.jl** script and set **fnpd** to false.
 
 ### [fpbc](@id fpbc)
 
@@ -409,7 +409,7 @@ Depth = 3
 
 !!! warning
 
-    For off-diagonal Green's functions, this parameter must be false. In other words, when you apply the **util/acmat.jl** script to generate off-diagonal Green's functions, you must turn **fpbc** to false at first.
+    For off-diagonal Green's functions, this parameter must be false. In other words, when you apply the **acmat.jl** script to generate off-diagonal Green's functions, you must turn **fpbc** to false at first.
 
 ### [lpeak](@id lpeak)
 
