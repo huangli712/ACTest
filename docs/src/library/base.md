@@ -25,6 +25,7 @@ read_param
 ## Data
 
 ```@docs
+make_data_mat
 make_data_std
 make_data
 make_peak
