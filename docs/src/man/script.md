@@ -12,6 +12,10 @@ This is the core script of the ACTest toolkit. It is able to randomly generate a
 
 It is similar to **acgen.jl**. But its task is to generate the ACT100 dataset, which includes 100 predefined spectral functions and corresponding Green's functions.
 
+## acmat.jl
+
+It is similar to **acgen.jl**. But it is designed for generation of matrix-valued Green's functions.
+
 ## acflow.jl
 
 This script provides a bridge between the ACTest toolkit and the ACFlow toolkit. At first, it will parse outputs from the **acgen.jl** or **acstd.jl** script to get the synthetic Green's functions. Next, these Green's functions are fed into the ACFlow toolkit, which will perform analytic continuation calculations and return the calculated spectral functions. Finally, **acflow.jl** script will compare the calculated spectral functions with the true solutions, and produce benchmark reports. This script needs support of the [ACFlow](https://github.com/huangli712/ACFlow) toolkit.

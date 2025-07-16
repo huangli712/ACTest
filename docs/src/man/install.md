@@ -52,7 +52,7 @@ These steps just ensure that the Julia interpreter can find and import the ACTes
 
 ## Documentation
 
-The ACTest toolkit ships with detailed documentation, including the user's manual and application programming interface. They are developed with the Markdown language and the Documenter.jl package. So, please make sure that the latest version of the Documenter.jl package is ready (see https://github.com/JuliaDocs/Documenter.jl for more details). If everything is OK, users can generate the documentation by themselves. Please enter the following commands in the terminal:
+The ACTest toolkit ships with detailed documentation, including the user's manual and application programming interface. They are developed with the Markdown language and the Documenter.jl package. So, please make sure that the latest version of the Documenter.jl package is correctly installed (please visit the website https://github.com/JuliaDocs/Documenter.jl for more details). If everything is OK, users can generate the documentation by themselves. Please enter the following commands in the terminal:
 
 ```shell
 $ pwd
