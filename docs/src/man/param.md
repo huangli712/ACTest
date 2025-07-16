@@ -387,7 +387,7 @@ Depth = 3
 
 !!! warning
 
-    You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function.
+    You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function. If you want to have off-diagonal Green's functions, please use the **util/acmat.jl** script and set **fnpd** to false.
 
 ### [fpbc](@id fpbc)
 
@@ -406,6 +406,10 @@ Depth = 3
 *Comment:*
 
 > This parameter is mandatory.
+
+!!! warning
+
+    For off-diagonal Green's functions, this parameter must be false. In other words, when you apply the **util/acmat.jl** script to generate off-diagonal Green's functions, you must turn **fpbc** to false at first.
 
 ### [lpeak](@id lpeak)
 
