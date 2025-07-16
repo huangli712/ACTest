@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/07/15
+# Last modified: 2025/07/16
 #
 
 """
@@ -99,6 +99,9 @@ N/A
 See also: [`make_data_std`](@ref).
 """
 function make_data_mat()
+    # We have to make sure the diagonal spectra are positive definite
+    @assert get_t("npd") == false
+
     # Get number of mesh points
     nmesh = get_t("nmesh")
 
@@ -123,7 +126,7 @@ function make_data_mat()
     println("Build default kernel: ", get_t("ktype"))
 
     # Set rotation angle
-    θ = 0.1
+    θ = 0.1234
     #
     # Build rotation matrix
     ℝ = [cos(θ) sin(θ); -sin(θ) cos(θ)]
@@ -141,12 +144,12 @@ function make_data_mat()
         @printf("Test -> %6i / %6i\n", i, ntest)
         #
         # Generate spectral functions
-        sf1 = make_spectrum(rng, mesh)
-        sf2 = make_spectrum(rng, mesh)
+        sf₁ = make_spectrum(rng, mesh)
+        sf₂ = make_spectrum(rng, mesh)
         #
         # Build diagonal spectral function
-        𝔸[1,1,:] .= sf1.image
-        𝔸[2,2,:] .= sf2.image
+        𝔸[1,1,:] .= sf₁.image
+        𝔸[2,2,:] .= sf₂.image
         #
         # Rotation
         for w = 1:nmesh
