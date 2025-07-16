@@ -99,8 +99,11 @@ N/A
 See also: [`make_data_std`](@ref).
 """
 function make_data_mat()
-    # We have to make sure the diagonal spectra are positive definite
-    @assert get_t("npd") == false
+    # We have to make sure the diagonal spectra are positive definite.
+    @assert get_t("fnpd") == false
+
+    # We have to make sure the physical boundary condition is disabled.
+    @assert get_t("fpbc") == false
 
     # Get number of mesh points
     nmesh = get_t("nmesh")
