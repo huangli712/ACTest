@@ -6,27 +6,11 @@ This toolkit is currently under developement. **PLEASE USE IT AT YOUR OWN RISK!*
 
 ## Version
 
-v1.2.0-devel.250716
+v1.2.1-devel.250817
 
 ## License
 
 GNU General Public License Version 3
-
-## Installation
-
-Please type the following commands in Julia's REPL to install the ACTest toolkit:
-
-```julia-repl
-julia> using Pkg
-julia> Pkg.add("https://github.com/huangli712/ACTest")
-```
-
-To update the ACTest toolkit, please use the following commands:
-
-```julia-repl
-julia> using Pkg
-julia> Pkg.update("ACTest")
-```
 
 ## Documentation
 
