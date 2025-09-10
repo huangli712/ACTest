@@ -6,9 +6,9 @@
 
 Next, we have to add a **[Solver]** section in the **act.toml** file to setup the control parameters for the MaxEnt analytic continuation solver (which implements the maximum entropy method) in the ACFlow toolkit. The spirit of the maximum entropy entropy is to figure out the optimal ``A``, that minimizes the following functional:
 ```math
-\begin{equation}
+\begin{align}
 Q[A] = \frac{1}{2}\chi^2[A] - \alpha S[A].
-\end{equation}
+\end{align}
 ```
 Here, ``\chi^{2}`` is the so-called goodness-of-fit functional, which measures the distance between the reconstructed Green's function and the original Green's function. ``S`` is the entropic term. Usually the Shannon-Jaynes entropy is used. ``\alpha`` is a hyperparameter. In this example, we adopt the chi2kink algorithm to determine the optimized ``\alpha`` parameters. The list of the ``\alpha`` parameters contains 10 elements. The initial value of ``\alpha`` is ``\alpha_1 = 10^{12}``, and the ratio between two consecutive ``\alpha`` parameters (``\alpha_i / \alpha_{i+1}``) is 10. The complete **[Solver]** section is shown as follows:
 ```toml
