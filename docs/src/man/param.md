@@ -4,14 +4,12 @@
 
 In this part, we will provide detailed explanations of the control parameters of the ACTest toolkit. As mentioned before, the **act.toml** file contains two sections: **[Test]** and **[Solver]**. The parameters described here are specific to the **[Test]** section. They are primarily used for setting generation rules for the spectral functions and Green's functions. However, the parameters within the **[Solver]** section will be transferred to the ACFlow and MiniPole toolkits for configuring the analytic continuation methods. They will be explained in the documentations of the ACFlow and MiniPole toolkits, respectively.
 
-## Contents
-
 ```@contents
 Pages = ["param.md"]
 Depth = 3
 ```
 
-### [solver](@id solver)
+## [solver](@id solver)
 
 *Definition:*
 
@@ -40,7 +38,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [ptype](@id ptype)
+## [ptype](@id ptype)
 
 *Definition:*
 
@@ -73,7 +71,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [ktype](@id ktype)
+## [ktype](@id ktype)
 
 *Definition:*
 
@@ -97,7 +95,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [grid](@id grid)
+## [grid](@id grid)
 
 *Definition:*
 
@@ -122,7 +120,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [mesh](@id mesh)
+## [mesh](@id mesh)
 
 *Definition:*
 
@@ -147,7 +145,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [ngrid](@id ngrid)
+## [ngrid](@id ngrid)
 
 *Definition:*
 
@@ -165,7 +163,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [nmesh](@id nmesh)
+## [nmesh](@id nmesh)
 
 *Definition:*
 
@@ -183,7 +181,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [ntest](@id ntest)
+## [ntest](@id ntest)
 
 *Definition:*
 
@@ -201,7 +199,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [nbins](@id nbins)
+## [nbins](@id nbins)
 
 *Definition:*
 
@@ -223,7 +221,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [wmax](@id wmax)
+## [wmax](@id wmax)
 
 *Definition:*
 
@@ -241,7 +239,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [wmin](@id wmin)
+## [wmin](@id wmin)
 
 *Definition:*
 
@@ -259,7 +257,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [pmax](@id pmax)
+## [pmax](@id pmax)
 
 *Definition:*
 
@@ -277,7 +275,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [pmin](@id pmin)
+## [pmin](@id pmin)
 
 *Definition:*
 
@@ -295,7 +293,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [beta](@id beta)
+## [beta](@id beta)
 
 *Definition:*
 
@@ -313,7 +311,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [noise](@id noise)
+## [noise](@id noise)
 
 *Definition:*
 
@@ -331,7 +329,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [lcorr](@id lcorr)
+## [lcorr](@id lcorr)
 
 *Definition:*
 
@@ -349,7 +347,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [tcorr](@id tcorr)
+## [tcorr](@id tcorr)
 
 *Definition:*
 
@@ -367,7 +365,7 @@ Depth = 3
 
 > This parameter is mandatory.
 
-### [fnpd](@id fnpd)
+## [fnpd](@id fnpd)
 
 *Definition:*
 
@@ -389,7 +387,7 @@ Depth = 3
 
     You should not use this parameter to control the generation of off-diagonal Green's function, because non-positive definite spectrum is not always for off-diagonal Green's function. If you want to have off-diagonal Green's functions, please use the **acmat.jl** script and set **fnpd** to false.
 
-### [fpbc](@id fpbc)
+## [fpbc](@id fpbc)
 
 *Definition:*
 
@@ -411,7 +409,7 @@ Depth = 3
 
     For off-diagonal Green's functions, this parameter must be false. In other words, when you apply the **acmat.jl** script to generate off-diagonal Green's functions, you must turn **fpbc** to false at first.
 
-### [lpeak](@id lpeak)
+## [lpeak](@id lpeak)
 
 *Definition:*
 
