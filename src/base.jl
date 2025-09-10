@@ -518,18 +518,18 @@ See Phys. Rev. X 7, 041072 (2017) for more details.
 """
     make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
 
-Generate noise for an imaginary time correlation function ``G(\tau)``.
+Generate noise for an imaginary time correlation function `G(τ)`.
 The noise is exponentially correlated in imaginary time. This function is
 adopted from https://github.com/SmoQySuite/SmoQySynthAC.jl.
 
 ### Arguments
 * rng -> Random number generator.
-* τ -> Vector specifying the imaginary time ``\tau`` grid.
+* τ -> Vector specifying the imaginary time `τ` grid.
 * δ -> Standard deviation of the noise; controls the typical amplitude of the error.
 * ξ -> Correlation length associated with the noise in imaginary time.
 
-By default, the last element of ``\tau`` is assumed to be equal to the
-inverse temperature, i.e., ``\tau[end] = \beta``.
+By default, the last element of `τ` is assumed to be equal to the
+inverse temperature, i.e., `τ[end] = β`.
 """
 function make_noise(rng::AbstractRNG, τ::Vector{F64}, δ::F64, ξ::F64)
     # Evaluate length of imaginary time axis
