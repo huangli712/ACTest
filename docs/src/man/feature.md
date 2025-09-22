@@ -1,5 +1,3 @@
-# Main Features
-
 The major features of the ACTest toolkit are as follows:
 
 * ACTest can randomly generate any number of ``A(\omega)``, as well as corresponding ``G(\tau)`` or ``G(i\omega_n)``.

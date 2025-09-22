@@ -1,5 +1,3 @@
-# Installation
-
 ## Prerequisites
 
 We chose the Julia language to develop the ACTest toolkit. Julia is an interpreted language. Hence, to run the ACTest toolkit, the latest version of the Julia interpreter must be installed on the target system. Actually, Julia's version number should not be less than 1.6. The core features of the ACTest toolkit rely only on Julia's standard library. However, if one needs to invoke the ACFlow and MiniPole toolkits for analytic continuation calculations, these toolkits must be available in the system. As for how to install and configure the ACFlow and MiniPole toolkit, please refer to the relevant papers. Additionally, if one wants to use the built-in script of ACTest to visualize the calculated results (i.e., the spectral functions), support from the CairoMakie.jl package is necessary. CairoMakie.jl is a 2D plotting program developed in Julia. It can be installed via Julia's package manager:
@@ -9,7 +7,7 @@ julia> ]
 (@v1.11) pkg> add CairoMakie
 ```
 
-## Main program
+## Main Program
 
 The official repository of the ACTest toolkit is hosted on github. Its URL is as follows:
 

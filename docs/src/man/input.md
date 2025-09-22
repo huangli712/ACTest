@@ -1,5 +1,3 @@
-# Inputs
-
 The scripts in the ACTest toolkit require only one input file, which is **act.toml**. Below is a typical **act.toml** file with some omissions. In this **act.toml**, text following the **#** symbol is considered as a comment. It contains two sections: **[Test]** and **[Solver]**.
 
 The **[Test]** section is mandatory, which controls generation of spectral functions and corresponding Green's functions. We would like to explain the relevant control parameters in the following text.

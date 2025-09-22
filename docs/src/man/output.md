@@ -1,5 +1,3 @@
-# Outputs
-
 Both **acgen.jl** and **acstd.jl** scripts generate **image.data.i**, **green.data.i**, and **green.bin.i** files. The **image.data.i** file stores the exact spectral function, i.e., ``A_{\text{true}}(\omega)``. The **green.data.i** file stores the imaginary time Green's function ``G(\tau)`` or the Matsubara Green's function ``G(i\omega_n)``. The **green.bin.i** file stores the imaginary time Green's function ``G(\tau)`` only. The suffix ``i`` in filename denotes index for tests. It starts from 1.
 
 The **acflow.jl** and **minipole.jl** scripts will output quite a few files. The most important one is **Aout.data.i**. For other possible output files, please refer to the documentation of the [ACFlow](https://github.com/huangli712/ACFlow) toolkit. The **Aout.data.i** file stores the calculated spectral function, i.e., ``A_{\text{calc}}(\omega)``. The suffix ``i`` in filename also represents index for tests.
