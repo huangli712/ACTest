@@ -1,5 +1,3 @@
-# Grids for Green's Functions
-
 As mentioned before, Green's functions in quantum many-body physics are usually defined on imaginary time or Matsubara frequency axes. Imaginary time Green's functions ``G(\tau)`` and Matsubara Green's functions ``G(i\omega_n)`` are related via Fourier transformation:
 
 ```math

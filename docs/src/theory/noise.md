@@ -1,5 +1,3 @@
-# Artificial Noise
-
 Assuming that we already construct the spectral function ``A(\omega)``, it is then straightforward to calculate ``G(\tau)`` or ``G(i\omega_n)`` via Laplace transformation. At this point, the synthetic Green's function ``G`` is exact, containing no numerical noise. We name it ``G_{\text{exact}}``. However, the Green's functions obtained from quantum many-body calculations are often noisy. This is especially the case in finite-temperature quantum Monte Carlo simulations, where numerical noise is inevitable. To make things worse, when the fermionic sign problem is severe, the noise correspondingly increases. To simulate this scenario, the ACTest toolkit can introduce artificial noise into the synthetic Green's function as follows:
 ```math
 \begin{align}

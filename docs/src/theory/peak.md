@@ -1,5 +1,3 @@
-# Peaks
-
 In the ACTest toolkit, the spectral function ``A(\omega)`` is treated as a superposition of some peaks (i.e., features). That is to say:
 ```math
 \begin{align}

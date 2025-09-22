@@ -1,4 +1,4 @@
-# Kernels
+## Kernel Function
 
 Just as stated above, the spectral function and the imaginary time or Matsubara Green's function are related with each other by the Laplace transformation:
 ```math
@@ -8,7 +8,7 @@ G(x) = \int d\omega~K(x,\omega) A(\omega).
 ```
 Here ``K(x,\omega)`` is the so-called kernel function. It plays a key role in this equation. In this section, we would like to introduce the kernels that have been implemented in ACTest.
 
-## Fermionic kernels
+## Fermionic Kernels
 
 For fermionic Green's function, we have
 ```math
@@ -38,7 +38,7 @@ K(\omega_n,\omega) = \frac{1}{i\omega_n - \omega}.
 ```
 For fermionic systems, ``A(\omega)`` is defined on ``(-\infty,\infty)``. It is causal, i.e., ``A(\omega) \ge 0``.
 
-## Bosonic kernels
+## Bosonic Kernels
 
 For bosonic system, the spectral function obeys the following constraint:
 ```math
@@ -98,7 +98,7 @@ K(\omega_n = 0,\omega = 0) \equiv -1.
 \end{align}
 ```
 
-## Symmetric bosonic kernels
+## Symmetric Bosonic Kernels
 
 This is a special case for the bosonic Green's function with Hermitian bosonic operators. Here, the spectral function ``A(\omega)`` is an odd function. Let us introduce ``\tilde{A}(\omega) = A(\omega)/\omega`` again. Since ``\tilde{A}(\omega)`` is an even function, we can restrict it in ``(0,\infty)``. Now we have
 ```math
