@@ -1,5 +1,3 @@
-# Analytic Continuation Simulations
-
 !!! info
 
     In the **actest/test** directory, there are twelve typical test cases. Users can modify them to meet their requirements. This section will use an independent example to demonstrate the basic usage of the ACTest toolkit.
