@@ -1,6 +1,4 @@
-# Citation
-
-Please cite the following papers:
+Please cite the following papers.
 
 ---
 

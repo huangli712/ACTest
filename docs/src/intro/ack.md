@@ -1,4 +1,4 @@
-# Acknowledgements
+## Funds
 
 This project has been supported by the following fundings:
 
@@ -8,3 +8,5 @@ This project has been supported by the following fundings:
 * National Science Foundation of China (under Grant No. 12434009, 2025-2029)
 * National Science Foundation of China (under Grant No. 11934020, 2020-2024)
 * Sichuan Science and Technology Program (under Grant No. 2025NSFJQ0049, 2025-2027)
+
+## Contributors
