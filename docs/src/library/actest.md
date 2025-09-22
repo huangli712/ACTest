@@ -1,5 +1,3 @@
-# ACTest.jl
-
 *Declare the module and public members.*
 
 ## Modules

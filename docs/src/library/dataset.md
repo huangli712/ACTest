@@ -1,15 +1,4 @@
-# Standard Dataset
-
 *Define the standard dataset of spectral functions (namely ACT100).*
-
-## Contents
-
-```@contents
-Pages = ["dataset.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["dataset.md"]

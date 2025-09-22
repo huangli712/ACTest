@@ -1,5 +1,3 @@
-# Kernels
-
 *Build kernel functions.*
 
 The ACTest toolkit supports twelve types of kernel functions. They are:
@@ -10,15 +8,6 @@ The ACTest toolkit supports twelve types of kernel functions. They are:
 * Bosonc Matsubara kernel (`ktype = "boson", grid = "bfreq"`)
 * Symmetric bosonic imaginary time kernel (`ktype = "bsymm", grid = "btime"`)
 * Symmetric bosonic Matsubara kernel (`ktype = "bsymm", grid = "bfreq"`)
-
-## Contents
-
-```@contents
-Pages = ["kernel.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["kernel.md"]

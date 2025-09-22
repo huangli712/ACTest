@@ -1,17 +1,6 @@
-# Grids
-
 *Grids on imaginary axis.*
 
 In the ACTest toolkit, the output correlators are defined on `grid`, while the spectral functions are defined on `mesh`. The ACTest toolkit supports both imaginary time and Matsubara frequency grids. Note that for Matsubara frequency grid, the bosonic and fermionic grids are different.
-
-## Contents
-
-```@contents
-Pages = ["grid.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["grid.md"]

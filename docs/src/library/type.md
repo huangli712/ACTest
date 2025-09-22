@@ -1,15 +1,4 @@
-# Types
-
 *Define some fundamental types and structs for the ACTest toolkit.*
-
-## Contents
-
-```@contents
-Pages = ["type.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["type.md"]

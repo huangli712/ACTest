@@ -1,15 +1,4 @@
-# Constants
-
 *Define some type aliases and string constants for the ACTest toolkit.*
-
-## Contents
-
-```@contents
-Pages = ["global.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["global.md"]
