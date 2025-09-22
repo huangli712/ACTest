@@ -1,5 +1,3 @@
-# Peaks
-
 *Declare various peaks, which are used to build the spectral functions.*
 
 Now the ACTest toolkit supports the following five types of peaks:
@@ -9,15 +7,6 @@ Now the ACTest toolkit supports the following five types of peaks:
 * ``\delta``-like peak (`ptype = "delta"`)
 * Rectangle peak (`ptype = "rectangle"`)
 * Rise-And-Decay peak (`ptype = "risedecay"`)
-
-## Contents
-
-```@contents
-Pages = ["peak.md"]
-Depth = 2
-```
-
-## Index
 
 ```@index
 Pages = ["peak.md"]
