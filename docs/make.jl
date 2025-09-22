@@ -5,8 +5,8 @@ using Random
 using ACTest
 
 makedocs(
-    sitename = "ACTest",
-    clean = false,
+    sitename = "ACTest: The User Guide",
+    clean = true,
     authors = "Li Huang <huangli@caep.cn> and contributors",
     format = Documenter.HTML(
         prettyurls = false,
@@ -20,7 +20,7 @@ makedocs(
     remotes = nothing,
     modules = [ACTest],
     pages = [
-        "Home" => "index.md",
+        "Welcome" => "index.md",
         "Introduction" => Any[
             "Motivation" => "intro/motivation.md",
             "Acknowledgements" => "intro/ack.md",
