@@ -4,7 +4,7 @@
 # Author  : Li Huang (huangli@caep.cn)
 # Status  : Unstable
 #
-# Last modified: 2025/07/16
+# Last modified: 2025/09/25
 #
 
 """
@@ -82,6 +82,26 @@ function read_param()
 end
 
 """
+    make_seed()
+
+Read random number seed from terminal input.
+
+See also: [`query_args`](@ref).
+"""
+function make_seed()
+    # Default random number seed
+    seed = rand(1:10000) * myid() + 1981
+
+    # The second argument is the seed
+    nargs = length(ARGS)
+    if nargs == 2
+        seed = parse(I64, ARGS[2])
+    end
+
+    return seed
+end
+
+"""
     make_data_mat()
 
 Try to generate spectral functions and the corresponding Green's functions.
@@ -112,7 +132,7 @@ function make_data_mat()
     ntest = get_t("ntest")
 
     # Initialize the random number generator
-    seed = rand(1:10000) * myid() + 1981
+    seed = make_seed()
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
@@ -199,7 +219,7 @@ function make_data_std()
 
     # Initialize the random number generator
     # It is used to generate random noise only.
-    seed = rand(1:10000) * myid() + 1981
+    seed = make_seed()
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
@@ -255,7 +275,7 @@ function make_data()
     ntest = get_t("ntest")
 
     # Initialize the random number generator
-    seed = rand(1:10000) * myid() + 1981
+    seed = make_seed()
     rng = MersenneTwister(seed)
     println("Random number seed: ", seed)
 
