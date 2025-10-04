@@ -27,7 +27,7 @@ p(\omega) = \frac{A}{\pi} \frac{\Gamma}{(\omega - \epsilon)^2 + \Gamma^2}
 ```math
 \begin{align}
 p(\omega) = A\exp{\left[-\frac{(\omega - \epsilon)^2}{2\gamma^2}\right]},~
-\text{where}~\gamma = 0.01
+\text{where}~\gamma = 0.02
 \end{align}
 ```
 
@@ -37,7 +37,7 @@ p(\omega) = A\exp{\left[-\frac{(\omega - \epsilon)^2}{2\gamma^2}\right]},~
 \begin{align}
 p(\omega) =
 \begin{cases}
-h, \quad \text{if}~\omega \in [c-w/2,c+w/2], \\
+h, \quad \text{if}~\omega \in [\epsilon-w/2,\epsilon+w/2], \\
 0, \quad \text{else}. \\
 \end{cases}
 \end{align}
@@ -47,8 +47,8 @@ h, \quad \text{if}~\omega \in [c-w/2,c+w/2], \\
 
 ```math
 \begin{align}
-p(\omega) = h \exp{(-|\omega - c|^{\gamma})}
+p(\omega) = h \exp{(-|\omega - \epsilon|^{\gamma})}
 \end{align}
 ```
 
-Here we just use a narrow Gaussian peak to mimic the ``\delta``-like peak. In the above equations, ``\mathcal{C} = \{A,~\Gamma,~\epsilon,~h,~c,~w,~\gamma\}`` is a collection for essential parameters. The ACTest toolkit will randomize ``\mathcal{C}`` and use it to parameterize the peaks.
+Here we just use a narrow Gaussian peak to mimic the ``\delta``-like peak. In the above equations, ``\mathcal{C} = \{A,~\Gamma,~\epsilon,~h,~w,~\gamma\}`` is a collection for essential parameters. The ACTest toolkit will randomize ``\mathcal{C}`` and use it to parameterize the peaks.
